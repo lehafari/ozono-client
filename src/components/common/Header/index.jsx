@@ -6,7 +6,8 @@ import {
   Container4,
   HeaderContainer,
 } from './styles';
-import logo from '../../../assets/images/gobierno-bolivariano-logo.png';
+import logo from '../../../assets/images/gobierno-bolivariano-logo.webp';
+import logo2 from '../../../assets/images/200años.webp';
 
 export const Header = () => {
   return (
@@ -16,12 +17,17 @@ export const Header = () => {
       </Container1>
       <Container2>
         <p>
-          Ministry of Popular Power of the Ofﬁce of the Presidency and
+          Ministry of Popular Power of the Ofﬁce of the Presidency <br /> and
           Monitoring of Government Management.
         </p>
       </Container2>
-      <Container3>Scientiﬁc Center Foundation Ozone National</Container3>
-      <Container4></Container4>
+      <Container3>
+        Scientiﬁc Center Foundation <br />
+        Ozone National
+      </Container3>
+      <Container4>
+        <img src={logo2} alt="200 años de la batalla de carabobo" />
+      </Container4>
     </HeaderContainer>
   );
 };
