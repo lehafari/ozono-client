@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button } from './styles';
 
 export const Header = () => {
-  return <Button></Button>;
+  return (
+    <div>
+      <h1>Header</h1>
+    </div>
+  );
 };
