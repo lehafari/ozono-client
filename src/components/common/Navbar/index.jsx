@@ -7,6 +7,7 @@ import {
 } from './styles';
 import cenaozLogo from '../../../assets/images/cenaoz-logo.webp';
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
@@ -15,7 +16,10 @@ export const Navbar = () => {
         <img src={cenaozLogo} alt="cenaoz" />
       </LogoContainer>
       <NavbarMenu>
-        <MenuContainer></MenuContainer>
+        <MenuContainer>
+          <Link to="/">Home</Link>
+          <Link to="/clasroom">ClassRoom</Link>
+        </MenuContainer>
         <LoginContainer>
           <Button></Button>
           <Button></Button>

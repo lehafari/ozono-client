@@ -13,10 +13,10 @@ const theme = {
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <AppRouter />
       <StyledGlobal />
       <Header />
       <Navbar />
-      <AppRouter />
     </ThemeProvider>
   );
 }
