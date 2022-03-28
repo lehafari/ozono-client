@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   background: ${(props) => props.theme.colors.headerBlue};
@@ -9,7 +9,6 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 0px 2rem;
   box-sizing: border-box;
-<<<<<<< HEAD
 `;
 export const Container = styled.div`
   color: ${(props) => props.theme.colors.white};
@@ -20,8 +19,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-=======
->>>>>>> 4917687d0c62c9c94caee6f3575cbbe38780d022
 `;
 
 export const Container1 = styled(Container)`
