@@ -34,8 +34,8 @@ function App() {
 =======
       <AuthContext.Provider
         value={{
-          hola: "mundo",
-          name: "Jorge quintero",
+          user,
+          dispatch,
         }}
       >
         <Header />
