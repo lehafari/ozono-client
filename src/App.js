@@ -2,7 +2,7 @@ import { Header } from './components/common/Header';
 import { Navbar } from './components/common/Navbar';
 
 import { ThemeProvider } from 'styled-components';
-
+import AppRouter from './routes/AppRouter';
 import colors from './const/colors';
 import StyledGlobal from './globalStyles';
 
@@ -16,6 +16,7 @@ function App() {
       <StyledGlobal />
       <Header />
       <Navbar />
+      <AppRouter />
     </ThemeProvider>
   );
 }
