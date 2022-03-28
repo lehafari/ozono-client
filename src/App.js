@@ -1,10 +1,16 @@
 import { Header } from './components/common/Header';
+import { ThemeProvider } from 'styled-components';
+import colors from './const/colors';
+
+const theme = {
+  colors,
+};
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <Header />
-    </div>
+    </ThemeProvider>
   );
 }
 
