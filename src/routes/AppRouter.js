@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Header } from "../components/common/Header";
+import { Navbar } from "../components/common/Navbar";
 import Clasroom from "../pages/Clasroom/Clasroom";
 import Contac from "../pages/Contac/Contac";
 import Course from "../pages/Course/Course";
@@ -11,6 +13,8 @@ import Register from "../pages/Register/Register";
 const AppRouter = () => {
   return (
     <BrowserRouter>
+      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

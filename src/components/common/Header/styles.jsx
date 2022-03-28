@@ -9,19 +9,16 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 0px 2rem;
   box-sizing: border-box;
-<<<<<<< HEAD
 `;
 export const Container = styled.div`
   color: ${(props) => props.theme.colors.white};
-  font-size: 13.5px;
+  font-size: 13px;
   height: 50%;
   padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-=======
->>>>>>> 4917687d0c62c9c94caee6f3575cbbe38780d022
+  font-weight: 500;
 `;
 
 export const Container1 = styled(Container)`
