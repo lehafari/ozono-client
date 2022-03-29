@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   background: ${(props) => props.theme.colors.headerBlue};
   width: 100vw;
-  height: 9vh;
+  height: 100px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
