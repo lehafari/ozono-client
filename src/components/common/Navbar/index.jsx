@@ -25,7 +25,7 @@ export const Navbar = () => {
     };
     dispatch(action);
     // console.log("FUNCIONA");
-    navigate("/profile");
+    // navigate("/profile");
   };
 
   const handleLogout = () => {
