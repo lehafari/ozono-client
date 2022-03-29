@@ -7,13 +7,13 @@ import {
   NavbarMenu,
   NavButton,
   SignupButton,
-} from './styles';
-import cenaozLogo from '../../../assets/images/cenaoz-logo.webp';
+} from "./styles";
+import cenaozLogo from "../../../assets/images/cenaoz-logo.webp";
 
-import { useContext } from 'react';
-import { AuthContext } from '../../../auth/authContext';
-import { types } from '../../../types/types';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../../auth/authContext";
+import { types } from "../../../types/types";
+import { Link, useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,11 +21,19 @@ export const Navbar = () => {
   const handleLogin = () => {
     const action = {
       type: types.login,
-      payload: { name: 'Jorgito Candelero' },
+      payload: { name: "Jorgito Candelero" },
     };
     dispatch(action);
     // console.log("FUNCIONA");
-    navigate('/profile');
+    navigate("/profile");
+  };
+
+  const handleLogout = () => {
+    const action = {
+      type: types.logout,
+    };
+    dispatch(action);
+    navigate("/");
   };
 
   return (
@@ -47,7 +55,9 @@ export const Navbar = () => {
         </MenuContainer>
         <LoginContainer>
           <LoginButton onClick={handleLogin}>Iniciar Sesion </LoginButton>
-          <SignupButton>Registrarse</SignupButton>
+          <SignupButton onClick={handleLogout}>
+            Registrarse (logout)
+          </SignupButton>
         </LoginContainer>
       </NavbarMenu>
     </NavbarContainer>
