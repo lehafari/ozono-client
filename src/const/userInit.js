@@ -1,6 +1,3 @@
 export const userInit = () => {
-  return {
-    name: "Jorge Temporal",
-    logged: true,
-  };
+  return JSON.parse(localStorage.getItem("user")) || { logged: false };
 };

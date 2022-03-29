@@ -5,10 +5,12 @@ import { types } from "../types/types";
 // }
 
 export const authReducer = (state = {}, action) => {
-  switch (action.types) {
+  console.log(action);
+  switch (action.type) {
     case types.login:
+      console.log("OLA ENTRE AL CASO LOGIN");
       return {
-        ...action.paylod,
+        ...action.payload,
         logged: true,
       };
     case types.logout:
