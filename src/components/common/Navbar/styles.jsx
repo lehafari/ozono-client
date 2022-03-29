@@ -82,7 +82,12 @@ export const SignupButton = styled(NavButton)`
   border-radius: 45px;
   padding: 0.7rem 2rem;
   box-shadow: 3px 6px 16px 4px rgb(0 0 0 / 25%);
+  transition: all 0.3s ease-in-out;
   &:hover {
     background: ${(props) => props.theme.colors.navBlueHover};
+  }
+  &:active {
+    background: ${(props) => props.theme.colors.navBlueHover};
+    transform: translate(2px, 2px);
   }
 `;
