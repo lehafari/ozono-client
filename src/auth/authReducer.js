@@ -8,7 +8,6 @@ export const authReducer = (state = {}, action) => {
   console.log(action);
   switch (action.type) {
     case types.login:
-      console.log("OLA ENTRE AL CASO LOGIN");
       return {
         ...action.payload,
         logged: true,
