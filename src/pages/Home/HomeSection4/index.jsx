@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React from 'react';
+import { NewsItem } from '../../../components/layout/NewsItem';
 import { NewsNavbar, NewsTitle } from './styles';
 
 export const HomeSection4 = () => {
@@ -13,6 +14,7 @@ export const HomeSection4 = () => {
         <Button>Descuentos</Button>
         <Button>Extras</Button>
       </NewsNavbar>
+      <NewsItem />
     </>
   );
 };
