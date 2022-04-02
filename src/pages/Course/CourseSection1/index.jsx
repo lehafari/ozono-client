@@ -4,23 +4,28 @@ import {
   CourseName,
   LineUp,
   Student,
-  TitleContainer,
+  SectionContainer,
+  TextContainer,
 } from "./styles";
 
 const CourseSection1 = () => {
   return (
-    <TitleContainer>
-      <Student>
-        <h5>Alumno</h5>
-        <LineUp></LineUp>
-      </Student>
-      <CourseName>
-        <h2>Titulo del curso</h2>
-        <CourseDetails>
-          <p>Detalles del curso</p>
-        </CourseDetails>
-      </CourseName>
-    </TitleContainer>
+    <SectionContainer>
+      <TextContainer>
+        <Student>
+          <h6>Alumno</h6>
+          <LineUp></LineUp>
+        </Student>
+        <CourseName>
+          <h1>
+            Curso <br /> Ozonoterapeuta Clinico
+          </h1>
+          <CourseDetails>
+            <p>Curso de ampliación (Fellowship)</p>
+          </CourseDetails>
+        </CourseName>
+      </TextContainer>
+    </SectionContainer>
   );
 };
 

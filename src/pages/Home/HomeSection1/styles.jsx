@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
@@ -51,7 +51,7 @@ export const HeroSeparator = styled.div`
 export const HeroTitle = styled.div`
   & h1 {
     font-size: 5rem;
-    font-family: 'PlantagenetCherokee';
+    font-family: "PlantagenetCherokee";
     font-weight: unset;
     margin: 0;
     line-height: 1em;
