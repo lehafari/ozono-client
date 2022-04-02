@@ -1,14 +1,16 @@
-import { ThemeProvider } from "styled-components";
-import AppRouter from "./routes/AppRouter";
-import colors from "./const/colors";
-import StyledGlobal from "./globalStyles";
-import { AuthContext } from "./auth/authContext";
-import { useEffect, useReducer } from "react";
-import { authReducer } from "./auth/authReducer";
-import { userInit } from "./const/userInit";
+import { ThemeProvider } from 'styled-components';
+import AppRouter from './routes/AppRouter';
+import colors from './const/colors';
+import gradient from './const/gradient';
+import StyledGlobal from './globalStyles';
+import { AuthContext } from './auth/authContext';
+import { useEffect, useReducer } from 'react';
+import { authReducer } from './auth/authReducer';
+import { userInit } from './const/userInit';
 
 const theme = {
   colors,
+  gradient,
 };
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
 
   useEffect(() => {
     if (!user) return;
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
   }, [user]);
 
   return (
