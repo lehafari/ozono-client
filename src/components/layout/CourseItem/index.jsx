@@ -38,10 +38,13 @@ export const CourseItem = () => {
             />
             50
           </p>
-          <p>20$</p>
+          <p>20.00$</p>
         </CoursePrice>
-        <CourseInstructor>CourseInstructor</CourseInstructor>
-        <CourseButton></CourseButton>
+        <CourseInstructor>
+          <h3>Prf. Alberto gonzalez</h3>
+          <p>Licenciado en Desarrollo web</p>
+        </CourseInstructor>
+        <CourseButton>Ver Curso</CourseButton>
       </CourseContend>
     </CourseContainer>
   );
