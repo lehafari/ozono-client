@@ -10,6 +10,7 @@ const colors = {
   titleBlue: '#5373b2',
   transparent: 'transparent',
   lightBlue: '#3daecc',
+  lightBlueBackground: '#f7fbfe',
 };
 
 export default colors;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const NewsContainer = styled.div`
   display: flex;
+  margin-bottom: 5rem;
 `;
 
 export const NewsProfileImage = styled.div`
@@ -9,7 +10,6 @@ export const NewsProfileImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   & > img {
     width: 60%;
   }
