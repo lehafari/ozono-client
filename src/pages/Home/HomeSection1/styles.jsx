@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
   height: 700px;
-  width: 100vw;
+  width: 100%;
 `;
 
 export const HeroContainer = styled.div`

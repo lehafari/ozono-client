@@ -53,6 +53,9 @@ export const CoursePrice = styled.div`
     display: flex;
     align-items: center;
   }
+
+  & p:first-child {
+  }
 `;
 
 export const CourseInstructor = styled.div``;
