@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
-  height: 70vh;
+  height: 750px;
   width: 100vw;
 `;
 
