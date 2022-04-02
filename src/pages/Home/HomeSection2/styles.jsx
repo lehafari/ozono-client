@@ -16,6 +16,12 @@ export const HomeCourseTitle = styled.div`
   }
 `;
 
-export const HomeCourseList = styled.div``;
+export const HomeCourseList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 78vw;
+  height: 330px;
+`;
 
 export const HomeCourseItem = styled.div``;

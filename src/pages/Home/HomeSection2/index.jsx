@@ -1,9 +1,5 @@
-import {
-  HomeCourseContainer,
-  HomeCourseItem,
-  HomeCourseList,
-  HomeCourseTitle,
-} from './styles';
+import { CourseItem } from '../../../components/layout/CourseItem';
+import { HomeCourseContainer, HomeCourseList, HomeCourseTitle } from './styles';
 
 export const HomeSection2 = () => {
   return (
@@ -12,7 +8,7 @@ export const HomeSection2 = () => {
         <h1>Curso</h1>
       </HomeCourseTitle>
       <HomeCourseList>
-        <HomeCourseItem />
+        <CourseItem />
       </HomeCourseList>
     </HomeCourseContainer>
   );

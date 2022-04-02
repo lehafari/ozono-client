@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
-  height: 750px;
-  width: 100vw;
+  height: 700px;
+  width: 100%;
 `;
 
 export const HeroContainer = styled.div`
@@ -15,7 +15,7 @@ export const HeroTextContainer = styled.div`
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 100px 8% 0 8%;
+  padding: 85px 8% 0 8%;
   justify-content: center;
   background: rgb(88, 102, 173);
   background: -moz-linear-gradient(
@@ -124,5 +124,6 @@ export const HeroImage = styled.div`
   & > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 `;
