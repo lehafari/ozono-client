@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { Button } from "../../../common/Buttons/MainButton";
 import { NavbarMenu, NavButton } from "../../../common/Navbar/styles";
 import {
   CourseContainer,
@@ -11,8 +12,10 @@ import {
 const CourseNavbar = () => {
   return (
     <CourseContainer>
+      <ImgContainer>
+        <Button text="Entrar a clase" width="20%" />
+      </ImgContainer>
       <NavbarContenedor>
-        <ImgContainer />
         <MenuContainer>
           <NavButton>
             <Link to="/course/description">Descripcion</Link>
