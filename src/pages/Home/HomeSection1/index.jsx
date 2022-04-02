@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   HeroContainer,
   HeroForm,
@@ -7,14 +6,14 @@ import {
   HeroText,
   HeroTextContainer,
   HeroTitle,
-  HomeContainer,
+  HomeHeroContainer,
 } from './styles';
 import heroImage from '../../../assets/images/hero-image.png';
 import SearchIcon from '@mui/icons-material/Search';
 
 export const HomeSection1 = () => {
   return (
-    <HomeContainer>
+    <HomeHeroContainer>
       <HeroContainer>
         <HeroTextContainer>
           <HeroSeparator></HeroSeparator>
@@ -40,6 +39,7 @@ export const HomeSection1 = () => {
                 sx={{
                   color: '#fff',
                 }}
+                fontSize="large"
               />
             </button>
           </HeroForm>
@@ -48,6 +48,6 @@ export const HomeSection1 = () => {
           <img src={heroImage} alt="cenaoz" />
         </HeroImage>
       </HeroContainer>
-    </HomeContainer>
+    </HomeHeroContainer>
   );
 };

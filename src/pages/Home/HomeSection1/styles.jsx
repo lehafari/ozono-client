@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeContainer = styled.section`
+export const HomeHeroContainer = styled.section`
   margin-top: -2px;
   height: 70vh;
   width: 100vw;
@@ -50,7 +50,7 @@ export const HeroSeparator = styled.div`
 
 export const HeroTitle = styled.div`
   & h1 {
-    font-size: 6rem;
+    font-size: 5rem;
     font-family: 'PlantagenetCherokee';
     font-weight: unset;
     margin: 0;
@@ -70,11 +70,14 @@ export const HeroForm = styled.div`
   display: flex;
   justify-content: space-around;
   & div {
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.3em;
     background-color: #fff;
-    padding: 13px 3rem;
+    padding: 10px 3rem;
     border-radius: 35px;
     background: ${(props) => props.theme.colors.navBlueHover};
   }
@@ -86,8 +89,11 @@ export const HeroForm = styled.div`
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.3em;
-    padding: 13px 3rem;
+    padding: 10px 3rem;
     border-radius: 35px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: -12%;
     background: ${(props) => props.theme.colors.white};
     &::placeholder {
       color: #b8b5b5;
@@ -95,17 +101,11 @@ export const HeroForm = styled.div`
     &:focus {
       outline: none;
     }
-    &::before {
-      content: 'Buscar';
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.3em;
-      padding: 10px 3rem;
-      border-radius: 35px;
-      background: ${(props) => props.theme.colors.headerBlue};
-    }
   }
   & button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 10%;
     border: none;
     background: none;
@@ -113,12 +113,13 @@ export const HeroForm = styled.div`
     font-weight: 300;
     line-height: 1.3em;
     border-radius: 35px;
+    padding: 13px 3rem;
     background: ${(props) => props.theme.colors.headerBlue};
   }
 `;
 
 export const HeroImage = styled.div`
-  width: 40%;
+  width: 45%;
   height: 100%;
   & > img {
     width: 100%;
