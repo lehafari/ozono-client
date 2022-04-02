@@ -17,26 +17,25 @@ export const HeroTextContainer = styled.div`
   flex-direction: column;
   padding: 85px 8% 0 8%;
   justify-content: center;
-  background: rgb(88, 102, 173);
+  background: ${(props) => props.theme.gradient.blueGradientMain};
   background: -moz-linear-gradient(
     90deg,
-    rgba(88, 102, 173, 1) 0%,
-    rgba(83, 137, 184, 1) 55%,
-    rgba(55, 176, 207, 1) 100%
+    ${(props) => props.theme.gradient.blueGradient[0]},
+    ${(props) => props.theme.gradient.blueGradient[1]},
+    ${(props) => props.theme.gradient.blueGradient[2]}
   );
   background: -webkit-linear-gradient(
     90deg,
-    rgba(88, 102, 173, 1) 0%,
-    rgba(83, 137, 184, 1) 55%,
-    rgba(55, 176, 207, 1) 100%
+    ${(props) => props.theme.gradient.blueGradient[0]},
+    ${(props) => props.theme.gradient.blueGradient[1]},
+    ${(props) => props.theme.gradient.blueGradient[2]}
   );
   background: linear-gradient(
     90deg,
-    rgba(88, 102, 173, 1) 0%,
-    rgba(83, 137, 184, 1) 55%,
-    rgba(55, 176, 207, 1) 100%
+    ${(props) => props.theme.gradient.blueGradient[0]},
+    ${(props) => props.theme.gradient.blueGradient[1]},
+    ${(props) => props.theme.gradient.blueGradient[2]}
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5866ad",endColorstr="#37b0cf",GradientType=1);
   width: 55%;
 `;
 

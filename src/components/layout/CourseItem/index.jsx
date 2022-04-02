@@ -11,6 +11,7 @@ import {
 
 import courseImage from '../../../assets/images/hero-image.png';
 import PersonIcon from '@mui/icons-material/Person';
+import { Button } from '../../common/Buttons/MainButton';
 
 export const CourseItem = () => {
   return (
@@ -38,10 +39,13 @@ export const CourseItem = () => {
             />
             50
           </p>
-          <p>20$</p>
+          <p>20.00$</p>
         </CoursePrice>
-        <CourseInstructor>CourseInstructor</CourseInstructor>
-        <CourseButton></CourseButton>
+        <CourseInstructor>
+          <h3>Prf. Alberto gonzalez</h3>
+          <p>Licenciado en Desarrollo web</p>
+        </CourseInstructor>
+        <Button text="Ver Curso" />
       </CourseContend>
     </CourseContainer>
   );

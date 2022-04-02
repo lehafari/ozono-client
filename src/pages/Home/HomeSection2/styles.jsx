@@ -11,6 +11,7 @@ export const HomeCourseContainer = styled.div`
 export const HomeCourseTitle = styled.div`
   & h1 {
     font-size: 1.8rem;
+    margin-bottom: 5rem;
     text-transform: uppercase;
     color: ${(props) => props.theme.colors.titleBlue};
   }
@@ -21,7 +22,5 @@ export const HomeCourseList = styled.div`
   justify-content: center;
   align-items: center;
   width: 78vw;
-  height: 330px;
+  height: fit-content;
 `;
-
-export const HomeCourseItem = styled.div``;
