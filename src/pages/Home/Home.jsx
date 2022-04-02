@@ -1,18 +1,7 @@
-import React from 'react';
-import { HeroContainer, HeroImage, HeroText, HomeContainer } from './styles';
-import heroImage from '../../assets/images/hero-image.png';
+import { HomeSection1 } from './HomeSection1';
 
 const Home = () => {
-  return (
-    <HomeContainer>
-      <HeroContainer>
-        <HeroText></HeroText>
-        <HeroImage>
-          <img src={heroImage} alt="cenaoz" />
-        </HeroImage>
-      </HeroContainer>
-    </HomeContainer>
-  );
+  return <HomeSection1 />;
 };
 
 export default Home;
