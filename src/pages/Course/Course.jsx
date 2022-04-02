@@ -1,12 +1,8 @@
 import React from "react";
+import CourseSection1 from "./CourseSection1";
 
 const Course = () => {
-  return (
-    <div>
-      <h1>Cursos</h1>
-      <hr />
-    </div>
-  );
+  return <CourseSection1 />;
 };
 
 export default Course;
