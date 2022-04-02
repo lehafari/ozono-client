@@ -1,11 +1,13 @@
 import React from "react";
+import CourseSection1 from "./CourseSection1";
+import CourseSection2 from "./CourseSection2";
 
 const Course = () => {
   return (
-    <div>
-      <h1>Cursos</h1>
-      <hr />
-    </div>
+    <>
+      <CourseSection1 />
+      <CourseSection2 />
+    </>
   );
 };
 
