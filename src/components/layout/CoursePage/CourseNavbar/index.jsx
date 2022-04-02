@@ -1,16 +1,18 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { NavbarMenu, NavButton } from "../../../common/Navbar/styles";
 import {
+  CourseContainer,
+  ImgContainer,
+  NavbarContenedor,
   MenuContainer,
-  NavbarContainer,
-  NavbarMenu,
-  NavButton,
-} from "../../../common/Navbar/styles";
+} from "./styles";
 
 const CourseNavbar = () => {
   return (
-    <NavbarContainer>
-      <NavbarMenu>
+    <CourseContainer>
+      <NavbarContenedor>
+        <ImgContainer />
         <MenuContainer>
           <NavButton>
             <Link to="/course/description">Descripcion</Link>
@@ -28,9 +30,9 @@ const CourseNavbar = () => {
             <Link to="/course/comments">Comentarios</Link>
           </NavButton>
         </MenuContainer>
-      </NavbarMenu>
+      </NavbarContenedor>
       <Outlet />
-    </NavbarContainer>
+    </CourseContainer>
   );
 };
 
