@@ -13,7 +13,7 @@ const CourseNavbar = () => {
   return (
     <CourseContainer>
       <ImgContainer>
-        <Button text="Entrar a clase" width="20%" />
+        <Button text="Entrar a clase" padding="1.1rem 4rem" />
       </ImgContainer>
       <NavbarContenedor>
         <MenuContainer>

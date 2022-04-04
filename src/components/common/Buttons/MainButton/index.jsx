@@ -1,6 +1,16 @@
-import React from 'react';
-import { MainButton } from './styles';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { MainButton } from "./styles";
 
 export const Button = (props) => {
-  return <MainButton width={props.width}>{props.text}</MainButton>;
+  const navigate = useNavigate();
+  return (
+    <MainButton
+      onClick={() => navigate(props.path)}
+      width={props.width}
+      padding={props.padding}
+    >
+      {props.text}
+    </MainButton>
+  );
 };

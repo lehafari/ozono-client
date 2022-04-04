@@ -8,14 +8,18 @@ export const CourseContainer = styled.div`
 
 export const ImgContainer = styled.div`
   background-image: url(${img});
-  background-size: 80% 100%;
+  background-size: 100% 100%;
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 400px;
-  width: 100%;
+  width: 87%;
   margin: 0 auto;
   transform: translateY(-15%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const NavbarContenedor = styled(NavbarContainer)`
