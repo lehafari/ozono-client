@@ -1,8 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import AppRouter from './routes/AppRouter';
-import colors from './const/colors';
-import gradient from './const/gradient';
 import StyledGlobal from './globalStyles';
+import { colors, breakpoints, gradient } from './const';
 import { AuthContext } from './auth/authContext';
 import { useEffect, useReducer } from 'react';
 import { authReducer } from './auth/authReducer';
@@ -11,6 +10,7 @@ import { userInit } from './const/userInit';
 const theme = {
   colors,
   gradient,
+  breakpoints,
 };
 
 function App() {

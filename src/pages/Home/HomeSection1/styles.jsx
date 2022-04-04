@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
@@ -37,6 +37,11 @@ export const HeroTextContainer = styled.div`
     ${(props) => props.theme.gradient.blueGradient[2]}
   );
   width: 55%;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 export const HeroSeparator = styled.div`
@@ -50,7 +55,7 @@ export const HeroSeparator = styled.div`
 export const HeroTitle = styled.div`
   & h1 {
     font-size: 5rem;
-    font-family: "PlantagenetCherokee";
+    font-family: 'PlantagenetCherokee';
     font-weight: unset;
     margin: 0;
     line-height: 1em;
@@ -76,7 +81,7 @@ export const HeroForm = styled.div`
     font-weight: 300;
     line-height: 1.3em;
     background-color: #fff;
-    padding: 10px 3rem;
+    padding: 5px 2.3rem;
     border-radius: 35px;
     background: ${(props) => props.theme.colors.navBlueHover};
   }
@@ -88,11 +93,11 @@ export const HeroForm = styled.div`
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.3em;
-    padding: 10px 3rem;
+    padding: 5px 2rem;
     border-radius: 35px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    margin-right: -12%;
+    margin-right: -15%;
     background: ${(props) => props.theme.colors.white};
     &::placeholder {
       color: #b8b5b5;
