@@ -4,6 +4,7 @@ import img from "../../../../assets/images/course-image.png";
 
 export const CourseContainer = styled.div`
   background-color: #ffffff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const ImgContainer = styled.div`

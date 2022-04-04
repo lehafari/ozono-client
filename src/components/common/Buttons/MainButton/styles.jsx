@@ -13,6 +13,6 @@ export const MainButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: ${(props) => props.theme.colors.darkBlue};
+    background-color: ${(props) => props.theme.colors.navBlueHover};
   }
 `;
