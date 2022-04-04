@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { NavbarContainer } from "../../../common/Navbar/styles";
 import img from "../../../../assets/images/course-image.png";
 
 export const CourseContainer = styled.div`
@@ -9,7 +8,7 @@ export const CourseContainer = styled.div`
 
 export const ImgContainer = styled.div`
   background-image: url(${img});
-  background-size: 100% 100%;
+  background-size: 99% 150%;
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -21,6 +20,7 @@ export const ImgContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 50px 50px 0px 0px;
 `;
 
 export const NavbarContenedor = styled.div`
