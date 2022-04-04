@@ -20,19 +20,19 @@ const CourseNavbar = () => {
         />
         <NavbarContenedor>
           <MenuContainer>
-            <NavButton>
+            <NavButton color="#797979" fontSize="1.2rem" fontWeight="400">
               <Link to="/course/description">Descripcion</Link>
             </NavButton>
-            <NavButton>
+            <NavButton color="#797979" fontSize="1.2rem" fontWeight="400">
               <Link to="/course/teachers">Profesores</Link>
             </NavButton>
-            <NavButton>
+            <NavButton color="#797979" fontSize="1.2rem" fontWeight="400">
               <Link to="/course/Curriculum">Curriculum</Link>
             </NavButton>
-            <NavButton>
+            <NavButton color="#797979" fontSize="1.2rem" fontWeight="400">
               <Link to="/course/certificates">Certificados</Link>
             </NavButton>
-            <NavButton>
+            <NavButton color="#797979" fontSize="1.2rem" fontWeight="400">
               <Link to="/course/comments">Comentarios</Link>
             </NavButton>
           </MenuContainer>

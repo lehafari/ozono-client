@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
   background-color: #ffffff9d;
@@ -44,16 +44,20 @@ export const LoginContainer = styled.div``;
 export const NavButton = styled.button`
   background: ${(props) => props.theme.colors.transparent};
   border: none;
-  color: ${(props) => props.theme.colors.textBlue};
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
+  color: ${(props) => props.color || props.theme.colors.textBlue};
+  font-family: "Lato", sans-serif;
+  font-size: ${(props) => props.fontSize || "1rem"};
+  font-weight: ${(props) => props.fontWeight || "600"};
+  padding: ${(props) => props.padding || "0.5rem 1rem"};
   border-radius: 0.5rem;
   cursor: pointer;
 
   & > a {
-    color: ${(props) => props.theme.colors.textBlue};
+    color: ${(props) => props.color || props.theme.colors.textBlue};
     text-decoration: none;
+  }
+  &:hover {
+    color: ${(props) => props.theme.colors.textBlue};
   }
 `;
 

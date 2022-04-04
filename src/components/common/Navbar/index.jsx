@@ -7,13 +7,13 @@ import {
   NavbarMenu,
   NavButton,
   SignupButton,
-} from './styles';
-import cenaozLogo from '../../../assets/images/cenaoz-logo.webp';
+} from "./styles";
+import cenaozLogo from "../../../assets/images/cenaoz-logo.webp";
 
-import { useContext } from 'react';
-import { AuthContext } from '../../../auth/authContext';
-import { types } from '../../../types/types';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../../auth/authContext";
+import { types } from "../../../types/types";
+import { Link, useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,11 +21,11 @@ export const Navbar = () => {
   const handleLogin = () => {
     const action = {
       type: types.login,
-      payload: { name: 'Jorgito Candelero' },
+      payload: { name: "Jorgito Candelero" },
     };
     dispatch(action);
     // console.log("FUNCIONA");
-    navigate('/profile');
+    navigate("/profile");
   };
 
   return (
@@ -35,13 +35,13 @@ export const Navbar = () => {
       </LogoContainer>
       <NavbarMenu>
         <MenuContainer>
-          <NavButton color="inherit">
+          <NavButton>
             <Link to="/">Home</Link>
           </NavButton>
-          <NavButton color="inherit">
+          <NavButton>
             <Link to="/classroom">Classroom</Link>
           </NavButton>
-          <NavButton color="inherit">
+          <NavButton>
             <Link to="/contact">Contacto</Link>
           </NavButton>
         </MenuContainer>
