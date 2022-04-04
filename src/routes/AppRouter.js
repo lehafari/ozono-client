@@ -16,6 +16,7 @@ import Comments from "../components/layout/CoursePage/Comments";
 import Curriculum from "../components/layout/CoursePage/Curriculum";
 import Description from "../components/layout/CoursePage/Description";
 import Teachers from "../components/layout/CoursePage/Teachers";
+import NotFound from "../pages/NotFound";
 
 const AppRouter = () => {
   return (
@@ -32,12 +33,14 @@ const AppRouter = () => {
         <Route path="/contact" element={<Contac />} />
 
         <Route path="/course" element={<Course />}>
-          <Route path="/course/description" element={<Description />} />
-          <Route path="/course/teachers" element={<Teachers />} />
-          <Route path="/course/Curriculum" element={<Curriculum />} />
-          <Route path="/course/certificates" element={<Certificates />} />
-          <Route path="/course/comments" element={<Comments />} />
+          <Route path="description" element={<Description />} />
+          <Route path="teachers" element={<Teachers />} />
+          <Route path="Curriculum" element={<Curriculum />} />
+          <Route path="certificates" element={<Certificates />} />
+          <Route path="comments" element={<Comments />} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
