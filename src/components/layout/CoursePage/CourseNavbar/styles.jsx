@@ -22,14 +22,17 @@ export const ImgContainer = styled.div`
   align-items: center;
 `;
 
-export const NavbarContenedor = styled(NavbarContainer)`
+export const NavbarContenedor = styled.div`
   background-color: #ffffff9d;
-  padding: 60px 0px 150px 0px;
-  margin-top: -185px;
+  padding: 60px 0px 60px 0px;
+  width: 100%;
+  height: 0px;
+  display: flex;
+  align-items: center;
 `;
 
 export const MenuContainer = styled.div`
-  width: 55%;
-  justify-content: space-between;
-  padding-left: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 `;

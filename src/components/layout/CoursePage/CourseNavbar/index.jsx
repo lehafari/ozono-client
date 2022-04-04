@@ -13,27 +13,31 @@ const CourseNavbar = () => {
   return (
     <CourseContainer>
       <ImgContainer>
-        <Button text="Entrar a clase" padding="1.1rem 4rem" />
+        <Button
+          text="Entrar a clase"
+          padding="1.1rem 4rem"
+          margin=" 7rem 0rem "
+        />
+        <NavbarContenedor>
+          <MenuContainer>
+            <NavButton>
+              <Link to="/course/description">Descripcion</Link>
+            </NavButton>
+            <NavButton>
+              <Link to="/course/teachers">Profesores</Link>
+            </NavButton>
+            <NavButton>
+              <Link to="/course/Curriculum">Curriculum</Link>
+            </NavButton>
+            <NavButton>
+              <Link to="/course/certificates">Certificados</Link>
+            </NavButton>
+            <NavButton>
+              <Link to="/course/comments">Comentarios</Link>
+            </NavButton>
+          </MenuContainer>
+        </NavbarContenedor>
       </ImgContainer>
-      <NavbarContenedor>
-        <MenuContainer>
-          <NavButton>
-            <Link to="/course/description">Descripcion</Link>
-          </NavButton>
-          <NavButton>
-            <Link to="/course/teachers">Profesores</Link>
-          </NavButton>
-          <NavButton>
-            <Link to="/course/Curriculum">Curriculum</Link>
-          </NavButton>
-          <NavButton>
-            <Link to="/course/certificates">Certificados</Link>
-          </NavButton>
-          <NavButton>
-            <Link to="/course/comments">Comentarios</Link>
-          </NavButton>
-        </MenuContainer>
-      </NavbarContenedor>
       <Outlet />
     </CourseContainer>
   );
