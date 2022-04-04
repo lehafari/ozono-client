@@ -7,11 +7,11 @@ import {
   CourseInstructor,
   CoursePrice,
   CourseTitle,
-} from "./styles";
+} from './styles';
 
-import courseImage from "../../../assets/images/hero-image.png";
-import PersonIcon from "@mui/icons-material/Person";
-import { Button } from "../../common/Buttons/MainButton";
+import courseImage from '../../../assets/images/hero-image.png';
+import PersonIcon from '@mui/icons-material/Person';
+import { Button } from '../../common/Buttons/MainButton';
 
 export const CourseItem = () => {
   return (
@@ -33,7 +33,7 @@ export const CourseItem = () => {
           <p>
             <PersonIcon
               sx={{
-                color: "#898989",
+                color: '#898989',
               }}
               fontSize="large"
             />

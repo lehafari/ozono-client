@@ -9,6 +9,10 @@ export const HomeHeroContainer = styled.section`
 export const HeroContainer = styled.div`
   height: 100%;
   display: flex;
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}){
+    flex-direction: column;
+  } {
 `;
 
 export const HeroTextContainer = styled.div`
@@ -38,9 +42,13 @@ export const HeroTextContainer = styled.div`
   );
   width: 55%;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    padding: 85px 5% 0 5%;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     width: 100%;
-    padding: 0;
+    padding: 7rem 3rem 3rem 3rem;
   }
 `;
 
@@ -59,6 +67,10 @@ export const HeroTitle = styled.div`
     font-weight: unset;
     margin: 0;
     line-height: 1em;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 4rem;
+    }
   }
 `;
 
@@ -84,6 +96,11 @@ export const HeroForm = styled.div`
     padding: 5px 2.3rem;
     border-radius: 35px;
     background: ${(props) => props.theme.colors.navBlueHover};
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      padding: 0 1.5rem;
+      font-size: 1rem;
+    }
   }
 
   & input {
@@ -104,6 +121,11 @@ export const HeroForm = styled.div`
     }
     &:focus {
       outline: none;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1rem;
+      padding: 0 1.5rem;
     }
   }
   & button {

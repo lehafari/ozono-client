@@ -10,12 +10,12 @@ export const CourseContainer = styled.div`
 
 export const CourseImage = styled.div`
   width: 50%;
-  height: 100%;
+  height: auto;
   & img {
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     margin-right: -1rem;
   }
