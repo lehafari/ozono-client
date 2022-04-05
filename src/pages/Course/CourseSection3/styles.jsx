@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #f8f8f8;
-  margin: 0;
+  /* background-color: #f8f8f8; */
+  margin: 10px 0px;
 `;
 
 export const Content = styled.div`
