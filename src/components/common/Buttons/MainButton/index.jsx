@@ -9,6 +9,7 @@ export const Button = (props) => {
       onClick={() => navigate(props.path)}
       width={props.width}
       padding={props.padding}
+      margin={props.margin}
     >
       {props.text}
     </MainButton>
