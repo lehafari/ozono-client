@@ -2,13 +2,12 @@ import styled from "styled-components";
 import img from "../../../../assets/images/course-image.png";
 
 export const CourseContainer = styled.div`
-  background-color: #ffffff;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  background-color: #eeeeee;
 `;
 
 export const ImgContainer = styled.div`
   background-image: url(${img});
-  background-size: 99% 150%;
+  background-size: 100% 150%;
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -21,6 +20,7 @@ export const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50px 50px 0px 0px;
+  box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5);
 `;
 
 export const NavbarContenedor = styled.div`
