@@ -2,7 +2,7 @@ export const colors = {
   white: '#ffffff',
   black: '#25283b',
   gray: '#b8b8b8',
-  darkGray: '#5d616b',
+  darkGray: '#767676',
   headerBlue: '#5e82be',
   navBlue: '#5e82be',
   navBlueHover: '#a3bee9',

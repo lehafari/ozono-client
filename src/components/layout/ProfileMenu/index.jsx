@@ -65,7 +65,7 @@ export default function ProfileMenu() {
           sx={{
             justifyContent: 'end',
             fontSize: '1rem',
-            color: '#a8a8a8',
+            color: '#767676',
             padding: '0.5rem 3rem 0.5rem 1rem ',
             fontWeight: '500',
             fontFamily: 'helvetica',
@@ -80,7 +80,7 @@ export default function ProfileMenu() {
           sx={{
             justifyContent: 'end',
             fontSize: '1rem',
-            color: '#a8a8a8',
+            color: '#767676',
             padding: '0.5rem 3rem 0.5rem 1rem ',
             fontWeight: '500',
             fontFamily: 'helvetica',
@@ -91,7 +91,13 @@ export default function ProfileMenu() {
         >
           Pagos
         </MenuItem>
-        <Divider />
+        <Divider
+          sx={{
+            backgroundColor: '#5e82be',
+            width: '70%',
+            margin: '0.5rem auto',
+          }}
+        />
         <MenuItem>
           <ListItemIcon>
             <PersonAdd fontSize="small" />

@@ -56,13 +56,13 @@ export const ProfileContainer = styled.div``;
 
 export const ProfileInfo = styled.div`
   display: flex;
-  height: 100px;
-  padding: 0 5rem;
-  align-items: center;
 
+  height: 100px;
+  align-items: center;
+  padding: 0 7rem;
   & > img {
     width: 170px;
-    margin-bottom: 2rem;
+
     z-index: 9;
   }
 `;
@@ -84,7 +84,7 @@ export const ProfileInfoText = styled.div`
   & > p {
     margin: 0;
     family-font: 'helvetica';
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 200;
     color: ${(props) => props.theme.colors.gray};
   }
@@ -93,8 +93,15 @@ export const ProfileInfoText = styled.div`
 export const ProfileDashboard = styled.div`
   background: ${(props) => props.theme.colors.lightGrayBackground};
   height: 500px;
+  padding: 0 7rem;
 `;
 
 export const MyCourses = styled.div`
   width: 500px;
+  padding-top: 3rem;
+  & > h1 {
+    font-size: 2.2rem;
+    color: ${(props) => props.theme.colors.darkGray};
+    font-weight: 500;
+  }
 `;

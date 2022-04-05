@@ -31,7 +31,9 @@ export const ProfileSection1 = () => {
           </ProfileInfoText>
         </ProfileInfo>
         <ProfileDashboard>
-          <MyCourses>{/* <CourseItem /> */}</MyCourses>
+          <MyCourses>
+            <h1>Cursos adquiridos</h1>
+          </MyCourses>
         </ProfileDashboard>
       </ProfileContainer>
     </>
