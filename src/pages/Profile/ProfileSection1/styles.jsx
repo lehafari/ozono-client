@@ -92,12 +92,22 @@ export const ProfileInfoText = styled.div`
 
 export const ProfileDashboard = styled.div`
   background: ${(props) => props.theme.colors.lightGrayBackground};
-  height: 500px;
+  height: 600px;
   padding: 0 7rem;
 `;
 
+export const ProfileCourseList = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 4rem;
+  flex-wrap: wrap;
+  margin: 0 -10%;
+  align-items: center;
+  height: fit-content;
+`;
+
 export const MyCourses = styled.div`
-  width: 500px;
+  width: 100%;
   padding-top: 3rem;
   & > h1 {
     font-size: 2.2rem;

@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const CourseContainer = styled.div`
   border-radius: 35px;
-  background-color: #f8f8f8;
-  width: 100%;
+  background-color: ${(props) => props.theme.colors.white};
+  width: 45%;
   height: 100%;
   display: flex;
+  margin-bottom: 3rem;
 `;
 
 export const CourseImage = styled.div`
@@ -32,7 +33,7 @@ export const CourseContend = styled.div`
 
 export const CourseTitle = styled.div`
   & h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: capitalize;
     color: ${(props) => props.theme.colors.black};
     font-weight: 400;
@@ -42,47 +43,23 @@ export const CourseTitle = styled.div`
 
 export const CoruseDescription = styled.div`
   & p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: ${(props) => props.theme.colors.gray};
     font-weight: 300;
     margin: 0;
   }
 `;
 
-export const CoursePrice = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  border-bottom: 1px solid ${(props) => props.theme.colors.lightBlue};
-
-  & p {
-    display: flex;
-    align-items: center;
-    margin: 1rem 0 0.5rem 0;
-  }
-
-  & p:first-child {
-    color: ${(props) => props.theme.colors.gray};
-  }
-
-  & p:last-child {
-    color: ${(props) => props.theme.colors.lightBlue};
-    margin-left: 2rem;
-    font-weight: 700;
-    font-size: 1.3rem;
-  }
-`;
-
 export const CourseInstructor = styled.div`
   & h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: ${(props) => props.theme.colors.darkGray};
     font-weight: 400;
-    margin: 1rem 0 0 0;
+    margin: 0;
   }
 
   & p {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: ${(props) => props.theme.colors.darkGray};
     margin: 0;
   }

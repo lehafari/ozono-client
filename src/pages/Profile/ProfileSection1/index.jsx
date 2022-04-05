@@ -1,10 +1,10 @@
 import React from 'react';
-import { CourseItem } from '../../../components/layout/CourseItem';
 import ProfileMenu from '../../../components/layout/ProfileMenu';
 import {
   MenuBar,
   MyCourses,
   ProfileContainer,
+  ProfileCourseList,
   ProfileDashboard,
   ProfileInfo,
   ProfileInfoText,
@@ -12,6 +12,7 @@ import {
 } from './styles';
 import profileMenu from '../../../assets/images/profile-menu.svg';
 import profileImage from '../../../assets/images/profile-image.svg';
+import { MyCourseItem } from '../../../components/layout/MyCourseItem';
 
 export const ProfileSection1 = () => {
   return (
@@ -19,7 +20,6 @@ export const ProfileSection1 = () => {
       <SpaceContainer></SpaceContainer>
       <MenuBar>
         <ProfileMenu />
-        <img src={profileMenu} alt="menu icon" />
       </MenuBar>
       <ProfileContainer>
         <ProfileInfo>
@@ -33,6 +33,12 @@ export const ProfileSection1 = () => {
         <ProfileDashboard>
           <MyCourses>
             <h1>Cursos adquiridos</h1>
+            <ProfileCourseList>
+              <MyCourseItem />
+              <MyCourseItem />
+              <MyCourseItem />
+              <MyCourseItem />
+            </ProfileCourseList>
           </MyCourses>
         </ProfileDashboard>
       </ProfileContainer>
