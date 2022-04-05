@@ -2,7 +2,7 @@ import styled from "styled-components";
 import img from "../../../../assets/images/course-image.png";
 
 export const CourseContainer = styled.div`
-  background-color: #eeeeee;
+  background-color: #f8f8f8;
 `;
 
 export const ImgContainer = styled.div`

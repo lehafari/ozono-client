@@ -9,10 +9,10 @@ export const TextContainer = styled.div`
 
 export const Descripcion = styled.div`
   background-color: #ffff;
-  padding: 40px 80px 60px 80px;
+  padding: 40px 80px 40px 80px;
   font-family: "Lato", sans-serif;
   font-size: 18px;
   font-weight: 300;
   font-stretch: expanded;
-  box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 99px rgba(4, 39, 195, 0.09);
 `;
