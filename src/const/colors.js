@@ -11,4 +11,5 @@ export const colors = {
   transparent: 'transparent',
   lightBlue: '#3daecc',
   lightBlueBackground: '#f7fbfe',
+  lightGrayBackground: '#f8f8f8',
 };

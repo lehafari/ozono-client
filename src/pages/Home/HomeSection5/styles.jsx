@@ -10,12 +10,11 @@ export const BlogTitle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   width: 50%;
   & h1 {
     font-size: 5.8rem;
     color: ${(props) => props.theme.colors.black};
-    font-family: 'PlantagenetCherokee', cursive;
+    font-family: 'PlantagenetCherokee';
     padding-left: 20%;
     font-weight: 500;
     line-height: 5.5rem;

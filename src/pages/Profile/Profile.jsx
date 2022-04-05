@@ -1,12 +1,8 @@
-import React from "react";
+import React from 'react';
+import { ProfileSection1 } from './ProfileSection1';
 
 const Profile = () => {
-  return (
-    <div>
-      <h1>Profile</h1>
-      <hr />
-    </div>
-  );
+  return <ProfileSection1 />;
 };
 
 export default Profile;
