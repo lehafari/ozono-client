@@ -6,7 +6,7 @@ const Certificates = () => {
     <Container>
       <TextContainer>
         <Descripcion>
-          <h3>Curriculum</h3>
+          <h3>Certificado</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem porro
             eos laborum. Aut consequatur neque corrupti iusto id alias ad atque

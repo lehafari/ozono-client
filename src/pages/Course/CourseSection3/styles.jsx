@@ -38,7 +38,7 @@ export const VerticalLine = styled.div`
 
 export const LogosContainer = styled.div`
   width: 70%;
-  & > h6 {
+  & > h5 {
     text-align: center;
   }
 `;

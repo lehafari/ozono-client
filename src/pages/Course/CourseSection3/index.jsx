@@ -17,15 +17,13 @@ const CourseSection3 = () => {
       <Content>
         <TextContainer>
           <Details>
-            <span>
-              Horas de video: <p>1h 30min</p>
-            </span>
+            <h4>Horas de video:</h4>
+            <p>1h 30min</p>
           </Details>
 
           <Details>
-            <span>
-              Nivel: <p>Principiante</p>
-            </span>
+            <h4>Nivel: </h4>
+            <p>Principiante</p>
           </Details>
 
           <Details>
@@ -53,7 +51,7 @@ const CourseSection3 = () => {
           <Logos>
             <img src={logo} alt="Cenaoz" />
           </Logos>
-          <h6>patrocinantes</h6>
+          <h5>patrocinantes</h5>
           <Logos>
             <img src={logo} alt="Cenaoz" />
             <img src={logo} alt="Cenaoz" />
