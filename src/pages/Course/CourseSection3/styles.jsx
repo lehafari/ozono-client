@@ -30,17 +30,27 @@ export const Details = styled.div`
 `;
 
 export const VerticalLine = styled.div`
-  background-color: lightblue;
+  background-color: #7090be;
   width: 1px;
-  height: 300px;
+  height: 350px;
   margin-right: 50px;
 `;
 
 export const LogosContainer = styled.div`
   width: 70%;
-  & > h3 {
-    padding-inline: auto;
+  & > h6 {
+    text-align: center;
   }
 `;
 
-export const Logos = styled.div``;
+export const Logos = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & > img {
+    margin: 0;
+    width: 200px;
+    height: 80px;
+  }
+`;

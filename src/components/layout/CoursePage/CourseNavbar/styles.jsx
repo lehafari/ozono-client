@@ -45,4 +45,5 @@ export const MenuContainer = styled.div`
 export const OutletContainer = styled.div`
   margin-top: -69px;
   box-shadow: 0px 3px 99px rgba(4, 39, 195, 0.09);
+  border-radius: 0px 0px 50px 50px;
 `;

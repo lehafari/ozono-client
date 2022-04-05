@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const TextContainer = styled.div`
-  border-radius: 0px 0px 50px 50px;
-`;
+export const TextContainer = styled.div``;
 
 export const Descripcion = styled.div`
   background-color: #ffff;

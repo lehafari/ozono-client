@@ -9,19 +9,23 @@ import {
   VerticalLine,
 } from "./styles";
 
+import logo from "../../../assets/images/cenaoz-logo.svg";
+
 const CourseSection3 = () => {
   return (
     <Container>
       <Content>
         <TextContainer>
           <Details>
-            <h4>Horas de video:</h4>
-            <p>1h 30min</p>
+            <span>
+              Horas de video: <p>1h 30min</p>
+            </span>
           </Details>
 
           <Details>
-            <h4>Nivel:</h4>
-            <p>Principiante</p>
+            <span>
+              Nivel: <p>Principiante</p>
+            </span>
           </Details>
 
           <Details>
@@ -46,20 +50,19 @@ const CourseSection3 = () => {
         </TextContainer>
         <VerticalLine />
         <LogosContainer>
-          <h3>patrocinantes</h3>
           <Logos>
-            <img src="" alt="" />
+            <img src={logo} alt="Cenaoz" />
           </Logos>
           <h6>patrocinantes</h6>
           <Logos>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
           </Logos>
           <Logos>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
           </Logos>
         </LogosContainer>
       </Content>
