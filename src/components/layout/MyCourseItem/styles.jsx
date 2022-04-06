@@ -7,6 +7,7 @@ export const CourseContainer = styled.div`
   height: 100%;
   display: flex;
   margin-bottom: 3rem;
+  box-shadow: 0px 3px 99px rgba(4, 40, 195, 0.04);
 `;
 
 export const CourseImage = styled.div`
