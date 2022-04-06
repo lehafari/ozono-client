@@ -9,6 +9,8 @@ import {
   VerticalLine,
 } from "./styles";
 
+import logo from "../../../assets/images/cenaoz-logo.svg";
+
 const CourseSection3 = () => {
   return (
     <Container>
@@ -20,7 +22,7 @@ const CourseSection3 = () => {
           </Details>
 
           <Details>
-            <h4>Nivel:</h4>
+            <h4>Nivel: </h4>
             <p>Principiante</p>
           </Details>
 
@@ -46,20 +48,19 @@ const CourseSection3 = () => {
         </TextContainer>
         <VerticalLine />
         <LogosContainer>
-          <h3>patrocinantes</h3>
           <Logos>
-            <img src="" alt="" />
+            <img src={logo} alt="Cenaoz" />
           </Logos>
-          <h6>patrocinantes</h6>
+          <h5>patrocinantes</h5>
           <Logos>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
           </Logos>
           <Logos>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
+            <img src={logo} alt="Cenaoz" />
           </Logos>
         </LogosContainer>
       </Content>

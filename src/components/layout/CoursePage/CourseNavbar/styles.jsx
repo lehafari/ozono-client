@@ -5,6 +5,10 @@ export const CourseContainer = styled.div`
   background-color: #f8f8f8;
 `;
 
+export const ShadowContainer = styled.div`
+  padding: 0px 92px 0px 92px;
+`;
+
 export const ImgContainer = styled.div`
   background-image: url(${img});
   background-size: 100% 150%;
@@ -12,7 +16,7 @@ export const ImgContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   height: 400px;
-  width: 87%;
+  width: 100%;
   margin: 0 auto;
   transform: translateY(-15%);
   display: flex;
@@ -36,4 +40,10 @@ export const MenuContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+`;
+
+export const OutletContainer = styled.div`
+  margin-top: -69px;
+  box-shadow: 0px 3px 99px rgba(4, 39, 195, 0.09);
+  border-radius: 0px 0px 50px 50px;
 `;
