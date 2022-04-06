@@ -7,8 +7,7 @@ const Curriculum = () => {
     <Container>
       <TextContainer>
         <Descripcion>
-          <h3>Curriculum</h3>
-          <SimpleAccordion text1="Modulo 1" text2="Modulo 2" />
+          <SimpleAccordion text1="Modulo 1" text2="Modulo 2" text3="Modulo 3" />
         </Descripcion>
       </TextContainer>
     </Container>

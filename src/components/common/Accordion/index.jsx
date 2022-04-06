@@ -19,7 +19,7 @@ export default function SimpleAccordion(props) {
             sx={{
               color: " #5279b6",
               fontFamily: "Lato",
-              fontSize: "1.5rem",
+              fontSize: "1.3rem",
               fontWeight: "600",
             }}
           >
@@ -38,6 +38,17 @@ export default function SimpleAccordion(props) {
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
           />
+          <AccordionContent
+            titulo="Clase Numero 2"
+            texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
+            boton="Entrar a clase"
+            backg="#d8d8d8"
+          />
+          <AccordionContent
+            titulo="Quiz 2"
+            texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
+            boton="Hacer el Quiz"
+          />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -50,7 +61,7 @@ export default function SimpleAccordion(props) {
             sx={{
               color: " #5279b6",
               fontFamily: "Lato",
-              fontSize: "1.5rem",
+              fontSize: "1.3rem",
               fontWeight: "600",
             }}
           >
@@ -59,7 +70,24 @@ export default function SimpleAccordion(props) {
         </AccordionSummary>
         <AccordionDetails>
           <AccordionContent
+            titulo="Clase Numero 1"
+            texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
+            boton="Entrar a clase"
+            backg="#d8d8d8"
+          />
+          <AccordionContent
             titulo="Quiz 1"
+            texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
+            boton="Hacer el Quiz"
+          />
+          <AccordionContent
+            titulo="Clase Numero 2"
+            texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
+            boton="Entrar a clase"
+            backg="#d8d8d8"
+          />
+          <AccordionContent
+            titulo="Quiz 2"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
           />
@@ -75,7 +103,7 @@ export default function SimpleAccordion(props) {
             sx={{
               color: " #5279b6",
               fontFamily: "Lato",
-              fontSize: "1.5rem",
+              fontSize: "1.3rem",
               fontWeight: "600",
             }}
           >
