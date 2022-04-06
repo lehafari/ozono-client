@@ -10,6 +10,12 @@ export const Button = (props) => {
       width={props.width}
       padding={props.padding}
       margin={props.margin}
+      color={props.color}
+      fontSize={props.fontSize}
+      fontWeight={props.fontWeight}
+      backg={props.backg}
+      border={props.border}
+      shadow={props.shadow}
     >
       {props.text}
     </MainButton>

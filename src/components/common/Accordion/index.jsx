@@ -21,6 +21,7 @@ export default function SimpleAccordion(props) {
               fontFamily: "Lato",
               fontSize: "1.3rem",
               fontWeight: "600",
+              backgroundColor: "white",
             }}
           >
             {props.text1}
@@ -31,23 +32,29 @@ export default function SimpleAccordion(props) {
             titulo="Clase Numero 1"
             texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
             boton="Entrar a clase"
-            backg="#d8d8d8"
+            backg="#f0f0f0"
+            shadow="0px 13px 46px  rgba(82, 121, 182, 0.51)"
           />
           <AccordionContent
             titulo="Quiz 1"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
+            backgBoton="white"
+            color="#5279b6"
           />
           <AccordionContent
             titulo="Clase Numero 2"
             texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
             boton="Entrar a clase"
-            backg="#d8d8d8"
+            backg="#f0f0f0"
+            shadow="0px 13px 46px  rgba(82, 121, 182, 0.51)"
           />
           <AccordionContent
             titulo="Quiz 2"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
+            backgBoton="white"
+            color="#5279b6"
           />
         </AccordionDetails>
       </Accordion>
@@ -73,23 +80,29 @@ export default function SimpleAccordion(props) {
             titulo="Clase Numero 1"
             texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
             boton="Entrar a clase"
-            backg="#d8d8d8"
+            backg="##f0f0f0"
+            shadow="0px 13px 46px  rgba(82, 121, 182, 0.51)"
           />
           <AccordionContent
             titulo="Quiz 1"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
+            backgBoton="white"
+            color="#5279b6"
           />
           <AccordionContent
             titulo="Clase Numero 2"
             texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
             boton="Entrar a clase"
-            backg="#d8d8d8"
+            backg="##f0f0f0"
+            shadow="0px 13px 46px  rgba(82, 121, 182, 0.51)"
           />
           <AccordionContent
             titulo="Quiz 2"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
+            backgBoton="white"
+            color="#5279b6"
           />
         </AccordionDetails>
       </Accordion>

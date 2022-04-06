@@ -5,6 +5,7 @@ export const ContentArea = styled.div`
   background-color: ${(props) => props.backg};
   display: flex;
   justify-content: space-between;
+  padding: 0rem 1.5rem 0rem 1.5rem;
 `;
 
 export const TextArea = styled.div`
