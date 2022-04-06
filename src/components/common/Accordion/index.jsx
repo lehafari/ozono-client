@@ -15,10 +15,29 @@ export default function SimpleAccordion(props) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>{props.text1}</Typography>
+          <Typography
+            sx={{
+              color: " #5279b6",
+              fontFamily: "Lato",
+              fontSize: "1.5rem",
+              fontWeight: "600",
+            }}
+          >
+            {props.text1}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <AccordionContent />
+          <AccordionContent
+            titulo="Clase Numero 1"
+            texto="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat esse at reprehenderit minima impedit voluptatum quia omnis a voluptates consequuntur? Possimus placeat dignissimos ut, laborum esse quo aperiam vero necessitatibus."
+            boton="Entrar a clase"
+            backg="#d8d8d8"
+          />
+          <AccordionContent
+            titulo="Quiz 1"
+            texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
+            boton="Hacer el Quiz"
+          />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -27,13 +46,23 @@ export default function SimpleAccordion(props) {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>{props.text2}</Typography>
+          <Typography
+            sx={{
+              color: " #5279b6",
+              fontFamily: "Lato",
+              fontSize: "1.5rem",
+              fontWeight: "600",
+            }}
+          >
+            {props.text2}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+          <AccordionContent
+            titulo="Quiz 1"
+            texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
+            boton="Hacer el Quiz"
+          />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -42,8 +71,20 @@ export default function SimpleAccordion(props) {
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
-          <Typography>Modulo 3</Typography>
+          <Typography
+            sx={{
+              color: " #5279b6",
+              fontFamily: "Lato",
+              fontSize: "1.5rem",
+              fontWeight: "600",
+            }}
+          >
+            {props.text3}
+          </Typography>
         </AccordionSummary>
+        <AccordionDetails>
+          <AccordionContent />
+        </AccordionDetails>
       </Accordion>
     </div>
   );

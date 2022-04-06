@@ -2,19 +2,15 @@ import React from "react";
 import { Button } from "../../Buttons/MainButton";
 import { ButtonArea, ContentArea, TextArea } from "./styles";
 
-const AccordionContent = () => {
+const AccordionContent = (props) => {
   return (
-    <ContentArea>
+    <ContentArea backg={props.backg}>
       <TextArea>
-        <h3>Texto</h3>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry Lorem Ipsum has been the ndustry’s standard dummy text ever
-          since the 1500s.
-        </p>
+        <h3>{props.titulo}</h3>
+        <p>{props.texto}</p>
       </TextArea>
       <ButtonArea>
-        <Button text="Entrar a clase" />
+        <Button text={props.boton} />
       </ButtonArea>
     </ContentArea>
   );
