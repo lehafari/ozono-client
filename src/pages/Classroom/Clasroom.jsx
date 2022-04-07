@@ -16,6 +16,8 @@ import {
   VideoTitle,
 } from "./styles";
 
+import imgvideo from "../../assets/images/classroom-main.svg";
+
 const Classroom = () => {
   return (
     <>
@@ -24,7 +26,7 @@ const Classroom = () => {
       <SectionContainer>
         <ImgContainer>
           <Image>
-            <img src="" alt="" />
+            <img src={imgvideo} alt="Video play" />
           </Image>
           <VideoTitle>
             <h2>OLA SOY UN TITULO</h2>
