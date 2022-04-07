@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -11,6 +10,8 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import menuLogo from '../../../assets/images/profile-menu.svg';
+import menuLogoBlue from '../../../assets/images/profile-menu-blue.svg';
 
 export default function ProfileMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,12 +29,12 @@ export default function ProfileMenu() {
           <IconButton
             onClick={handleClick}
             size="large"
-            sx={{ ml: 2 }}
+            sx={{ ml: 2, transition: 'all 0.3s ease-in-out' }}
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 45, height: 45 }}>M</Avatar>
+            <img src={menuLogo} alt="Menu" />
           </IconButton>
         </Tooltip>
       </Box>
@@ -47,9 +48,9 @@ export default function ProfileMenu() {
           elevation: 0,
           sx: {
             overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            filter: 'drop-shadow(0px 13px 36px rgba(23, 10, 162, 0.1))',
             borderRadius: '10px',
-            mt: 1.5,
+            mt: 0,
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
@@ -59,14 +60,25 @@ export default function ProfileMenu() {
           },
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
         <MenuItem
           sx={{
             justifyContent: 'end',
+            marginBottom: '1.2rem',
+            '&:hover': {
+              backgroundColor: '#fff',
+            },
+          }}
+        >
+          <img src={menuLogoBlue} alt="logo" />
+        </MenuItem>
+        <MenuItem
+          sx={{
+            justifyContent: 'end',
             fontSize: '1rem',
-            color: '#a8a8a8',
-            padding: '0.5rem 3rem 0.5rem 1rem ',
+            color: '#767676',
+            padding: '0.5rem 3rem 0.5rem 3rem ',
             fontWeight: '500',
             fontFamily: 'helvetica',
             '&:hover': {
@@ -80,8 +92,8 @@ export default function ProfileMenu() {
           sx={{
             justifyContent: 'end',
             fontSize: '1rem',
-            color: '#a8a8a8',
-            padding: '0.5rem 3rem 0.5rem 1rem ',
+            color: '#767676',
+            padding: '0.5rem 3rem 0.5rem 3rem ',
             fontWeight: '500',
             fontFamily: 'helvetica',
             '&:hover': {
@@ -91,23 +103,58 @@ export default function ProfileMenu() {
         >
           Pagos
         </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Mis Calificaciones
+        <Divider
+          sx={{
+            backgroundColor: '#5e82be',
+            width: '70%',
+            margin: '0.5rem auto',
+          }}
+        />
+        <MenuItem
+          sx={{
+            paddingLeft: '1rem',
+            justifyContent: 'end',
+            fontSize: '1rem',
+            color: '#767676',
+            padding: '0.5rem 3rem 0.5rem 3rem ',
+            fontWeight: '500',
+            fontFamily: 'helvetica',
+            '&:hover': {
+              color: '#5e82be',
+            },
+          }}
+        >
+          Mis calificaciones
         </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Editar Perfil
+        <MenuItem
+          sx={{
+            justifyContent: 'end',
+            fontSize: '1rem',
+            color: '#767676',
+            padding: '0.5rem 3rem 0.5rem 3rem ',
+            fontWeight: '500',
+            fontFamily: 'helvetica',
+            '&:hover': {
+              color: '#5e82be',
+            },
+          }}
+        >
+          Editar perfil
         </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
+        <MenuItem
+          sx={{
+            justifyContent: 'end',
+            marginBottom: '1.2rem',
+            fontSize: '1rem',
+            color: '#767676',
+            padding: '0.5rem 3rem 0.5rem 3rem ',
+            fontWeight: '500',
+            fontFamily: 'helvetica',
+            '&:hover': {
+              color: '#5e82be',
+            },
+          }}
+        >
           Logout
         </MenuItem>
       </Menu>
