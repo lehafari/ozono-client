@@ -7,6 +7,7 @@ import {
   InputTextAreaField,
   InputTextField,
   LabelText,
+  FormContainer,
 } from './styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -14,15 +15,15 @@ import { Button } from '../../common/Buttons/MainButton';
 
 export const ContactForm = () => {
   const validationSchema = yup.object({
-    name: yup.string('Enter your name').required('Name is required'),
+    name: yup.string('Ingrese su nombre').required('El nombre es requerido'),
     email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Email is required'),
+      .string('Ingrese su email')
+      .email('Igrese un email válido')
+      .required('El email es requerido'),
     message: yup
-      .string('Enter your message')
-      .min(8, 'Message should be of minimum 8 characters length')
-      .required('Message is required'),
+      .string('Ingrese su mensaje')
+      .min(8, 'Mensaje debe tener al menos 8 caracteres')
+      .required('El mensaje es requerido'),
   });
 
   const { handleSubmit, values, handleChange, touched, errors } = useFormik({
@@ -43,7 +44,7 @@ export const ContactForm = () => {
           <h1>Contacto</h1>
         </ContactFormTitle>
         <ContactFormInput>
-          <formContainer onSubmit={handleSubmit}>
+          <FormContainer onSubmit={handleSubmit}>
             <LabelText>Name</LabelText>
             <InputTextField
               id="name"
@@ -52,7 +53,7 @@ export const ContactForm = () => {
               onChange={handleChange}
             />
             <ErrorMessage>{touched.name && errors.name}</ErrorMessage>
-            <LabelText>Correo</LabelText>
+            <LabelText>Email</LabelText>
             <InputTextField
               id="email"
               name="email"
@@ -78,7 +79,7 @@ export const ContactForm = () => {
               margin="1rem auto"
               alignSelf="center"
             />
-          </formContainer>
+          </FormContainer>
         </ContactFormInput>
       </ContactFormContainer>
     </>
