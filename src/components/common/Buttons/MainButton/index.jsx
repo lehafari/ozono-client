@@ -13,9 +13,10 @@ export const Button = (props) => {
       color={props.color}
       fontSize={props.fontSize}
       fontWeight={props.fontWeight}
-      backg={props.backg}
       border={props.border}
       shadow={props.shadow}
+      backgroundColor={props.backgroundColor}
+      alignSelf={props.alignSelf}
     >
       {props.text}
     </MainButton>

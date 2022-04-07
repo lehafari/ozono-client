@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const MainButton = styled.button`
-  background-color: ${(props) => props.backg || props.theme.colors.headerBlue};
+  background-color: ${(props) =>
+    props.backgroundColor || props.theme.colors.headerBlue};
   border: ${(props) => props.border || "none"};
   border-radius: 35px;
   color: ${(props) => props.color || props.theme.colors.white};
@@ -15,6 +16,7 @@ export const MainButton = styled.button`
   box-shadow: ${(props) =>
     props.shadow || "0px 13px 99px  rgba(4, 12, 105, 0.01)"};
   transition: all 0.3s ease-in-out;
+  align-self: ${(props) => props.alignSelf || "flex-start"};
   &:hover {
     background-color: ${(props) => props.theme.colors.navBlueHover};
   }

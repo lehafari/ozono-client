@@ -3,16 +3,22 @@ import {
   ContactFormContainer,
   ContactFormInput,
   ContactFormTitle,
+  ErrorMessage,
+  InputTextAreaField,
   InputTextField,
+  LabelText,
 } from './styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Button } from '@mui/material';
+import { Button } from '../../common/Buttons/MainButton';
 
 export const ContactForm = () => {
   const validationSchema = yup.object({
     name: yup.string('Enter your name').required('Name is required'),
-    email: yup.string('Enter your email').required('Email is required'),
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
     message: yup
       .string('Enter your message')
       .min(8, 'Message should be of minimum 8 characters length')
@@ -30,7 +36,6 @@ export const ContactForm = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
-  console.log(values);
   return (
     <>
       <ContactFormContainer>
@@ -38,38 +43,42 @@ export const ContactForm = () => {
           <h1>Contacto</h1>
         </ContactFormTitle>
         <ContactFormInput>
-          <form onSubmit={handleSubmit}>
+          <formContainer onSubmit={handleSubmit}>
+            <LabelText>Name</LabelText>
             <InputTextField
               id="name"
               name="name"
-              label="Nombre"
               value={values.name}
               onChange={handleChange}
-              error={touched.name && Boolean(errors.name)}
-              helperText={touched.name && errors.name}
             />
+            <ErrorMessage>{touched.name && errors.name}</ErrorMessage>
+            <LabelText>Correo</LabelText>
             <InputTextField
               id="email"
               name="email"
-              label="Email"
               value={values.email}
               onChange={handleChange}
-              error={touched.email && Boolean(errors.email)}
-              helperText={touched.email && errors.email}
             />
-            <InputTextField
+            <ErrorMessage>{touched.email && errors.email}</ErrorMessage>
+            <LabelText>Mensaje</LabelText>
+            <InputTextAreaField
               id="message"
               name="message"
-              label="Mensaje"
+              type="textarea"
               value={values.message}
               onChange={handleChange}
-              error={touched.message && Boolean(errors.message)}
-              helperText={touched.message && errors.message}
             />
-            <Button color="primary" variant="contained" type="submit">
-              Submit
-            </Button>
-          </form>
+            <ErrorMessage>{touched.message && errors.message}</ErrorMessage>
+            <Button
+              backgroundColor="#4B9CC2"
+              text="Enviar"
+              width="80%"
+              padding="1rem 1rem"
+              type="submit"
+              margin="1rem auto"
+              alignSelf="center"
+            />
+          </formContainer>
         </ContactFormInput>
       </ContactFormContainer>
     </>
