@@ -4,12 +4,13 @@ import {
   ContactFormInput,
   ContactFormTitle,
   ErrorMessage,
+  InputTextAreaField,
   InputTextField,
   LabelText,
 } from './styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Button } from '@mui/material';
+import { Button } from '../../common/Buttons/MainButton';
 
 export const ContactForm = () => {
   const validationSchema = yup.object({
@@ -42,7 +43,7 @@ export const ContactForm = () => {
           <h1>Contacto</h1>
         </ContactFormTitle>
         <ContactFormInput>
-          <form onSubmit={handleSubmit}>
+          <formContainer onSubmit={handleSubmit}>
             <LabelText>Name</LabelText>
             <InputTextField
               id="name"
@@ -60,7 +61,7 @@ export const ContactForm = () => {
             />
             <ErrorMessage>{touched.email && errors.email}</ErrorMessage>
             <LabelText>Mensaje</LabelText>
-            <InputTextField
+            <InputTextAreaField
               id="message"
               name="message"
               type="textarea"
@@ -68,10 +69,16 @@ export const ContactForm = () => {
               onChange={handleChange}
             />
             <ErrorMessage>{touched.message && errors.message}</ErrorMessage>
-            <Button color="primary" variant="contained" type="submit">
-              Submit
-            </Button>
-          </form>
+            <Button
+              backgroundColor="#4B9CC2"
+              text="Enviar"
+              width="80%"
+              padding="1rem 1rem"
+              type="submit"
+              margin="1rem auto"
+              alignSelf="center"
+            />
+          </formContainer>
         </ContactFormInput>
       </ContactFormContainer>
     </>
