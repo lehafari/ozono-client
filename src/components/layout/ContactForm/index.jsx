@@ -30,6 +30,7 @@ export const ContactForm = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+  console.log(values);
   return (
     <>
       <ContactFormContainer>
@@ -39,7 +40,6 @@ export const ContactForm = () => {
         <ContactFormInput>
           <form onSubmit={handleSubmit}>
             <InputTextField
-              fullWidth
               id="name"
               name="name"
               label="Nombre"
@@ -49,7 +49,6 @@ export const ContactForm = () => {
               helperText={touched.name && errors.name}
             />
             <InputTextField
-              fullWidth
               id="email"
               name="email"
               label="Email"
@@ -59,7 +58,6 @@ export const ContactForm = () => {
               helperText={touched.email && errors.email}
             />
             <InputTextField
-              fullWidth
               id="message"
               name="message"
               label="Mensaje"
@@ -68,7 +66,7 @@ export const ContactForm = () => {
               error={touched.message && Boolean(errors.message)}
               helperText={touched.message && errors.message}
             />
-            <Button color="primary" variant="contained" fullWidth type="submit">
+            <Button color="primary" variant="contained" type="submit">
               Submit
             </Button>
           </form>
