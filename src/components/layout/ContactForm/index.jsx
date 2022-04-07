@@ -3,13 +3,33 @@ import {
   ContactFormContainer,
   ContactFormInput,
   ContactFormTitle,
+  InputTextField,
 } from './styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import { Button } from '@mui/material';
 
 export const ContactForm = () => {
+  const validationSchema = yup.object({
+    name: yup.string('Enter your name').required('Name is required'),
+    email: yup.string('Enter your email').required('Email is required'),
+    message: yup
+      .string('Enter your message')
+      .min(8, 'Message should be of minimum 8 characters length')
+      .required('Message is required'),
+  });
+
+  const { handleSubmit, values, handleChange, touched, errors } = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <>
       <ContactFormContainer>
@@ -17,67 +37,41 @@ export const ContactForm = () => {
           <h1>Contacto</h1>
         </ContactFormTitle>
         <ContactFormInput>
-          <Formik
-            initialValues={INITIAL_VALUES}
-            validate={validarRegistro}
-            onSubmit={handleSubmit}
-          >
-            <Form>
-              <Grid container columnSpacing={2}>
-                <Grid xs={12} item lg={6}>
-                  <Input
-                    label={'Nombre de usuario'}
-                    name={'username'}
-                    placeholder={'Ingrese el nombre de usuario'}
-                  />
-                </Grid>
-
-                <Grid xs={12} item lg={6}>
-                  <Input
-                    label={'Nombres'}
-                    name={'nombres'}
-                    placeholder={'Ingrese su nombre'}
-                  />
-                </Grid>
-
-                <Grid xs={12} item lg={6}>
-                  <Input
-                    label={'Apellidos'}
-                    name={'apellidos'}
-                    placeholder={'Ingrese sus apellidos'}
-                  />
-                </Grid>
-
-                <Grid xs={12} item lg={6}>
-                  <Input
-                    label={'Correo'}
-                    name={'email_user'}
-                    placeholder={'Ingrese su correo'}
-                  />
-                </Grid>
-
-                <Grid xs={12} item>
-                  <Input
-                    label={'Contraseña'}
-                    type={'password'}
-                    name={'password'}
-                  />
-                </Grid>
-
-                <Grid xs={12} item>
-                  <Input
-                    label={'Confirmar Contraseña'}
-                    type={'password'}
-                    name={'passwordConfirm'}
-                  />
-                </Grid>
-              </Grid>
-
-              <ButtonSubmit>
-                Registrarse <CgLogIn />
-              </ButtonSubmit>
-            </Form>
-          </Formik>
+          <form onSubmit={handleSubmit}>
+            <InputTextField
+              fullWidth
+              id="name"
+              name="name"
+              label="Nombre"
+              value={values.name}
+              onChange={handleChange}
+              error={touched.name && Boolean(errors.name)}
+              helperText={touched.name && errors.name}
+            />
+            <InputTextField
+              fullWidth
+              id="email"
+              name="email"
+              label="Email"
+              value={values.email}
+              onChange={handleChange}
+              error={touched.email && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
+            />
+            <InputTextField
+              fullWidth
+              id="message"
+              name="message"
+              label="Mensaje"
+              value={values.message}
+              onChange={handleChange}
+              error={touched.message && Boolean(errors.message)}
+              helperText={touched.message && errors.message}
+            />
+            <Button color="primary" variant="contained" fullWidth type="submit">
+              Submit
+            </Button>
+          </form>
         </ContactFormInput>
       </ContactFormContainer>
     </>
