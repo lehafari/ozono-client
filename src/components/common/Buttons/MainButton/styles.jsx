@@ -16,7 +16,7 @@ export const MainButton = styled.button`
   box-shadow: ${(props) =>
     props.shadow || "0px 13px 99px  rgba(4, 12, 105, 0.01)"};
   transition: all 0.3s ease-in-out;
-  align-self: ${(props) => props.alignSelf || "flex-start"};
+  align-self: ${(props) => props.alignSelf || ""};
   &:hover {
     background-color: ${(props) => props.theme.colors.navBlueHover};
   }
