@@ -34,7 +34,9 @@ const Classroom = () => {
         </ImgContainer>
         <VideoList>
           <HeaderList>
-            <Title>Titulo del curso</Title>
+            <Title>
+              <h1>Ozonoterapeuta Clinico</h1>
+            </Title>
             <Text>
               <div>
                 <h5>Video</h5>
@@ -46,7 +48,9 @@ const Classroom = () => {
           </HeaderList>
           <List>
             <ItemList>
-              <ImgItem>Miniatura</ImgItem>
+              <ImgItem>
+                <img src="" alt="" />
+              </ImgItem>
               <TextItem>Titulo de la miniatura</TextItem>
             </ItemList>
           </List>

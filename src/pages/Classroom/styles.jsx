@@ -40,7 +40,12 @@ export const HeaderList = styled.div`
 `;
 
 export const Title = styled.div`
-  padding: 20px 0 20px 20px;
+  padding: 25px 0 25px 25px;
+  & > h1 {
+    margin: 0;
+    color: #ffff;
+    font-size: 1.2rem;
+  }
 `;
 
 export const Text = styled.div`
@@ -50,6 +55,18 @@ export const Text = styled.div`
   & h5 {
     margin: 0px 0px 0px 0px;
     padding: 5px 0px 5px 0px;
+  }
+  & > div {
+    width: 50%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    color: #ffffff5e;
+    cursor: pointer;
+  }
+
+  & > div:hover {
+    background-color: #ffffff3e;
+    color: #fdfdfd;
   }
 `;
 
