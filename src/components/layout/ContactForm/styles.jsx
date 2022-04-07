@@ -15,7 +15,6 @@ export const ContactFormTitle = styled.div`
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
-    color: ${(props) => props.theme.colors.black};
   }
 `;
 
@@ -25,19 +24,10 @@ export const ContactFormInput = styled.div`
 
 export const formContainer = styled.form``;
 
-export const InputTextField = styled(TextField)`
-  width: 100% !important;
-  border: none !important;
-
-  margin-bottom: 1rem;
-
-  & fieldset {
-    border: none !important;
-    border-radius: 35px !important;
-    background-color: ${(props) => props.theme.colors.lightGrayBackground};
-  }
-
-  & div {
-    margin-bottom: 1rem !important;
-  }
+export const InputTextField = styled.input`
+  width: 100%;
+  border: none;
+  background-color: ${(props) => props.theme.colors.lightGrayBackground};
+  border-radius: 35px;
+  margin-bottom: 1rem !important;
 `;
