@@ -39,7 +39,7 @@ export default function SimpleAccordion(props) {
             titulo="Quiz 1"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
-            backgBoton="white"
+            backgroundColor="white"
             color="#5279b6"
           />
           <AccordionContent
@@ -53,7 +53,7 @@ export default function SimpleAccordion(props) {
             titulo="Quiz 2"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
-            backgBoton="white"
+            backgroundColor="white"
             color="#5279b6"
           />
         </AccordionDetails>
@@ -87,7 +87,7 @@ export default function SimpleAccordion(props) {
             titulo="Quiz 1"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
-            backgBoton="white"
+            backgroundColor="white"
             color="#5279b6"
           />
           <AccordionContent
@@ -101,7 +101,7 @@ export default function SimpleAccordion(props) {
             titulo="Quiz 2"
             texto="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s."
             boton="Hacer el Quiz"
-            backgBoton="white"
+            backgroundColor="white"
             color="#5279b6"
           />
         </AccordionDetails>

@@ -17,7 +17,7 @@ const AccordionContent = (props) => {
           color={props.color}
           fontSize="0.9rem"
           fontWeight="600"
-          backg={props.backgBoton}
+          backgroundColor={props.backgroundColor}
           border="2px solid #5279b6"
           shadow={props.shadow}
         />
