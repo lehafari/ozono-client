@@ -5,7 +5,6 @@ import {
   ButtonSection,
   Container2,
   HeaderList,
-  Image,
   ImgContainer,
   List,
   SectionContainer,
@@ -27,9 +26,7 @@ const Classroom = () => {
       <MenuBar />
       <SectionContainer>
         <ImgContainer>
-          <Image>
-            <img src={imgvideo} alt="Video play" />
-          </Image>
+          <img src={imgvideo} alt="Video play" />
         </ImgContainer>
         <VideoList>
           <HeaderList>

@@ -16,10 +16,6 @@ export const SectionContainer = styled.div`
 export const ImgContainer = styled.div`
   width: 65%;
   height: 100%;
-`;
-
-export const Image = styled.div`
-  width: 100%;
   & > img {
     width: 100%;
   }
