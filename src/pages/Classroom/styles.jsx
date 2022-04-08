@@ -18,15 +18,27 @@ export const Image = styled.div`
 `;
 
 export const VideoTitle = styled.div`
-  padding: 10px 0 0 0px;
+  padding: 20px 0 0 0px;
+
+  & > h1 {
+    margin: 0px;
+    color: #555555;
+    font-size: 1.9rem;
+    font-weight: lighter;
+  }
+  & > h2 {
+    margin: 0px;
+    color: #55555540;
+    font-size: 1.4rem;
+    font-weight: lighter;
+  }
 `;
 
 export const VideoList = styled.div`
-  width: 35%;
+  width: 30%;
   height: 422px;
-  background-color: coral;
   margin: 0px 0px 0px 40px;
-  border-radius: 25px;
+  border-radius: 15px;
 `;
 
 export const HeaderList = styled.div`
@@ -36,7 +48,7 @@ export const HeaderList = styled.div`
     rgba(81, 153, 187, 1) 22%,
     rgba(83, 103, 180, 1) 100%
   );
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
 `;
 
 export const Title = styled.div`
@@ -70,10 +82,14 @@ export const Text = styled.div`
   }
 `;
 
-export const List = styled.div``;
+export const List = styled.div`
+  height: 324px;
+  overflow-y: scroll;
+  border-radius: 25px;
+`;
 
-export const ItemList = styled.div``;
-
-export const ImgItem = styled.div``;
-
-export const TextItem = styled.div``;
+export const ButtonSection = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px 0px 0px;
+`;
