@@ -2,21 +2,22 @@ import React from "react";
 import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
 import { MenuBar } from "../../components/common/MenuBar";
 import {
+  ButtonSection,
   HeaderList,
   Image,
   ImgContainer,
-  ImgItem,
-  ItemList,
   List,
   SectionContainer,
   Text,
-  TextItem,
   Title,
   VideoList,
   VideoTitle,
 } from "./styles";
 
 import imgvideo from "../../assets/images/classroom-main.svg";
+import ClassRoomItems from "../../components/layout/ClassroomItems";
+import { Button } from "../../components/common/Buttons/MainButton";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Classroom = () => {
   return (
@@ -29,7 +30,8 @@ const Classroom = () => {
             <img src={imgvideo} alt="Video play" />
           </Image>
           <VideoTitle>
-            <h2>OLA SOY UN TITULO</h2>
+            <h1>Ozonoterapeuta Clinico video 1</h1>
+            <h2>13 feb 2022</h2>
           </VideoTitle>
         </ImgContainer>
         <VideoList>
@@ -47,13 +49,15 @@ const Classroom = () => {
             </Text>
           </HeaderList>
           <List>
-            <ItemList>
-              <ImgItem>
-                <img src="" alt="" />
-              </ImgItem>
-              <TextItem>Titulo de la miniatura</TextItem>
-            </ItemList>
+            <ClassRoomItems />
+            <ClassRoomItems />
+            <ClassRoomItems />
+            <ClassRoomItems />
           </List>
+          <ButtonSection>
+            <h2>Quiz</h2>
+            <Button text={<ArrowForwardIcon />} />
+          </ButtonSection>
         </VideoList>
       </SectionContainer>
     </>
