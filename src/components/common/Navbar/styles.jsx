@@ -52,14 +52,6 @@ export const LogoContainer = styled(Container)`
 export const NavbarMenu = styled(Container)`
   width: 65%;
   justify-content: space-evenly;
-
-  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
-    width: 80%;
-  }
-
-  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
-    width: 100%;
-  }
 `;
 
 export const MenuContainer = styled.div``;
@@ -106,4 +98,8 @@ export const SignupButton = styled(NavButton)`
     background: ${(props) => props.theme.colors.navBlueHover};
     transform: translate(2px, 2px);
   }
+`;
+
+export const MobileMenuContainer = styled.div`
+  width: 65%;
 `;
