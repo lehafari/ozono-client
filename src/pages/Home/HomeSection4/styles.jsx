@@ -21,5 +21,10 @@ export const NewsNavbar = styled.div`
     font-weight: 300;
     font-size: 1.5rem;
     text-transform: capitalize;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      margin: 1rem 1rem;
+      font-size: 1.2rem;
+    }
   }
 `;

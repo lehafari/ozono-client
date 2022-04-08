@@ -18,6 +18,10 @@ export const ContactSwitch = styled.div`
 export const ContactSwitchTextLeft = styled.div`
   font-size: 1.5rem;
   color: ${(props) => (props.status ? '#C6C6C6' : '#6385B8')};
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    text-align: end;
+  }
 `;
 
 export const ContactSwitchTextRight = styled.div`

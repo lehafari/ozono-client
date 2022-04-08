@@ -49,7 +49,7 @@ export const HeroTextContainer = styled.div`
   }
 
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
-    padding: 7rem 3rem 3rem 3rem;
+    padding: 7rem 1rem 3rem 1rem;
     width: fill-available;
     width: -webkit-fill-available;
   }
@@ -74,6 +74,10 @@ export const HeroTitle = styled.div`
     @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
       font-size: 4rem;
     }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 3.5rem;
+    }
   }
 `;
 
@@ -82,6 +86,15 @@ export const HeroText = styled.div`
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.3em;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
   }
 `;
 
@@ -103,6 +116,11 @@ export const HeroForm = styled.div`
     @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
       padding: 0 1.5rem;
       font-size: 1rem;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      padding: 0.6rem 1rem;
+      font-size: 0.7rem;
     }
   }
 
@@ -130,6 +148,11 @@ export const HeroForm = styled.div`
       font-size: 1rem;
       padding: 0 1.5rem;
     }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 0.9rem;
+      padding: 0.4rem 1rem;
+    }
   }
   & button {
     display: flex;
@@ -144,6 +167,14 @@ export const HeroForm = styled.div`
     border-radius: 35px;
     padding: 13px 3rem;
     background: ${(props) => props.theme.colors.headerBlue};
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1rem;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      padding: 0.6rem 2.5rem;
+    }
   }
 `;
 
@@ -159,5 +190,10 @@ export const HeroImage = styled.div`
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     width: fill-available;
     width: -webkit-fill-available;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: 100%;
+    height: 200px;
   }
 `;

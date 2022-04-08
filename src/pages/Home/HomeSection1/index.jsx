@@ -12,6 +12,10 @@ import heroImage from '../../../assets/images/hero-image.png';
 import SearchIcon from '@mui/icons-material/Search';
 
 export const HomeSection1 = () => {
+  const getWindowWidth = () => {
+    return window.innerWidth;
+  };
+
   return (
     <HomeHeroContainer>
       <HeroContainer>
@@ -39,7 +43,7 @@ export const HomeSection1 = () => {
                 sx={{
                   color: '#fff',
                 }}
-                fontSize="large"
+                fontSize={getWindowWidth() > 600 ? 'large' : 'medium'}
               />
             </button>
           </HeroForm>

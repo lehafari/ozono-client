@@ -5,7 +5,11 @@ export const HomeCourseContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3% 0;
+  padding: 5% 0;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    padding: 15% 0;
+  }
 `;
 
 export const HomeCourseTitle = styled.div`
@@ -23,4 +27,8 @@ export const HomeCourseList = styled.div`
   align-items: center;
   width: 78vw;
   height: fit-content;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: 85vw;
+  }
 `;

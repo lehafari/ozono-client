@@ -6,11 +6,19 @@ export const CourseContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `;
 
 export const CourseImage = styled.div`
   width: 50%;
   height: auto;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: 100%;
+  }
   & > img {
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
@@ -18,6 +26,11 @@ export const CourseImage = styled.div`
     height: 100%;
     object-fit: cover;
     margin-right: -1rem;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      border-top-right-radius: 35px;
+      border-bottom-left-radius: 0px;
+    }
   }
 `;
 
@@ -28,6 +41,11 @@ export const CourseContend = styled.div`
   justify-content: space-evenly;
   flex-direction: column;
   padding: 2rem 2.5rem 1rem 2.5rem;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: fit-content;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+  }
 `;
 
 export const CourseTitle = styled.div`
@@ -37,6 +55,10 @@ export const CourseTitle = styled.div`
     color: ${(props) => props.theme.colors.black};
     font-weight: 400;
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -46,6 +68,11 @@ export const CoruseDescription = styled.div`
     color: ${(props) => props.theme.colors.gray};
     font-weight: 300;
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
   }
 `;
 
@@ -55,6 +82,11 @@ export const CoursePrice = styled.div`
   font-size: 1rem;
   border-bottom: 1px solid ${(props) => props.theme.colors.lightBlue};
 
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    align-items: space-around;
+    justify-content: center;
+  }
+
   & p {
     display: flex;
     align-items: center;
@@ -63,6 +95,9 @@ export const CoursePrice = styled.div`
 
   & p:first-child {
     color: ${(props) => props.theme.colors.gray};
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    }
   }
 
   & p:last-child {
@@ -79,12 +114,20 @@ export const CourseInstructor = styled.div`
     color: ${(props) => props.theme.colors.darkGray};
     font-weight: 400;
     margin: 1rem 0 0 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1.2rem;
+    }
   }
 
   & p {
     font-size: 0.8rem;
     color: ${(props) => props.theme.colors.darkGray};
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 0.7rem;
+    }
   }
 `;
 

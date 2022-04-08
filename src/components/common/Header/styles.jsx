@@ -10,6 +10,16 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 0px 2rem;
   box-sizing: border-box;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    height: 80px;
+    padding: 0px 1rem;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    height: 70px;
+    padding: 0px 0.5rem;
+  }
 `;
 export const Container = styled.div`
   color: ${(props) => props.theme.colors.white};
@@ -24,6 +34,10 @@ export const Container = styled.div`
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     font-size: 11px;
   }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    font-size: 7px;
+  }
 `;
 
 export const Container1 = styled(Container)`
@@ -34,6 +48,12 @@ export const Container1 = styled(Container)`
 
     @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
       width: 8rem;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      width: 6rem;
+    }
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     }
   }
 `;
@@ -52,6 +72,10 @@ export const Container4 = styled(Container)`
 
     @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
       width: 5rem;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      width: 3rem;
     }
   }
 `;

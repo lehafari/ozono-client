@@ -3,10 +3,14 @@ import styled from 'styled-components';
 export const NewsContainer = styled.div`
   display: flex;
   margin-bottom: 5rem;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `;
 
 export const NewsProfileImage = styled.div`
-  width: 40%;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +22,13 @@ export const NewsProfileImage = styled.div`
 export const NewsContent = styled.div`
   width: 60%;
   padding-right: 10rem;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: fit-content;
+    padding: 0 1.5rem;
+    width: fill-available;
+    width: -webkit-fill-available;
+  }
 `;
 
 export const NewsTitle = styled.div`
@@ -27,6 +38,10 @@ export const NewsTitle = styled.div`
     margin-bottom: 0;
     font-family: 'PlantagenetCherokee';
     color: ${({ theme }) => theme.colors.black};
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -47,6 +62,10 @@ export const NewsText = styled.div`
     font-family: 'Roboto';
     margin: 0;
     color: ${({ theme }) => theme.colors.darkGray};
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1.2rem;
+    }
   }
 `;
 
