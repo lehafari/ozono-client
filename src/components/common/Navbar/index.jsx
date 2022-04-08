@@ -8,15 +8,16 @@ import {
   NavbarMenu,
   NavButton,
   SignupButton,
-} from './styles';
-import cenaozLogo from '../../../assets/images/cenaoz-logo.webp';
+} from "./styles";
+import cenaozLogo from "../../../assets/images/cenaoz-logo.webp";
 
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../auth/authContext';
-import { types } from '../../../types/types';
-import { Link, useNavigate } from 'react-router-dom';
-import { WindowSharp } from '@mui/icons-material';
-import MobileMenu from '../MobileMenu';
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../auth/authContext";
+import { types } from "../../../types/types";
+import { Link, useNavigate } from "react-router-dom";
+import { WindowSharp } from "@mui/icons-material";
+import MobileMenu from "../MobileMenu";
+import Resize from "../../../helpers/Resize";
 export const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -24,27 +25,14 @@ export const Navbar = () => {
   const handleLogin = () => {
     const action = {
       type: types.login,
-      payload: { name: 'Jorgito Candelero' },
+      payload: { name: "Jorgito Candelero" },
     };
     dispatch(action);
     // console.log("FUNCIONA");
-    navigate('/profile');
+    navigate("/profile");
   };
 
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const updateWidth = () => {
-      const width = document.body.clientWidth;
-      setWidth(width);
-    };
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-
-    return () => {
-      window.removeEventListener('resize', updateWidth);
-    };
-  }, []);
+  const width = Resize();
 
   return (
     <NavbarContainer>

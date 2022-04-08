@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import Resize from "../../../../helpers/Resize";
 import { Button } from "../../../common/Buttons/MainButton";
 import { NavButton } from "../../../common/Navbar/styles";
+import NavbarMobile from "../NavbarMobile";
 import {
   CourseContainer,
   ImgContainer,
@@ -12,6 +14,8 @@ import {
 } from "./styles";
 
 const CourseNavbar = () => {
+  const width = Resize();
+
   return (
     <CourseContainer>
       <ShadowContainer>
@@ -24,21 +28,27 @@ const CourseNavbar = () => {
           />
           <NavbarContenedor>
             <MenuContainer>
-              <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
-                <Link to="/course/description">Descripcion</Link>
-              </NavButton>
-              <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
-                <Link to="/course/teachers">Profesores</Link>
-              </NavButton>
-              <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
-                <Link to="/course/Curriculum">Curriculum</Link>
-              </NavButton>
-              <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
-                <Link to="/course/certificates">Certificados</Link>
-              </NavButton>
-              <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
-                <Link to="/course/comments">Comentarios</Link>
-              </NavButton>
+              {width > 920 ? (
+                <>
+                  <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                    <Link to="/course/description">Descripcion</Link>
+                  </NavButton>
+                  <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                    <Link to="/course/teachers">Profesores</Link>
+                  </NavButton>
+                  <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                    <Link to="/course/Curriculum">Curriculum</Link>
+                  </NavButton>
+                  <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                    <Link to="/course/certificates">Certificados</Link>
+                  </NavButton>
+                  <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                    <Link to="/course/comments">Comentarios</Link>
+                  </NavButton>
+                </>
+              ) : (
+                <NavbarMobile />
+              )}
             </MenuContainer>
           </NavbarContenedor>
         </ImgContainer>
