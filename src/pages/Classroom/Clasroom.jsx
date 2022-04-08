@@ -56,11 +56,12 @@ const Classroom = () => {
           <h2>13 feb 2022</h2>
         </VideoTitle>
         <ButtonSection>
-          <h2>Quiz</h2>
+          <h2>Quiz 1</h2>
           <Button
-            text={<ArrowForwardIcon />}
-            padding="13px 15px"
+            text={<ArrowForwardIcon fontSize="medium" />}
+            padding="9px 11px"
             borderRadius="50%"
+            shadow="0px 13px 56px  rgba(82, 124, 182, 0.71)"
           />
         </ButtonSection>
       </Container2>

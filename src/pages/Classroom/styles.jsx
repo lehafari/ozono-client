@@ -18,6 +18,8 @@ export const ImgContainer = styled.div`
   height: 100%;
   & > img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -98,6 +100,8 @@ export const ButtonSection = styled.div`
   align-items: center;
   padding: 10px 110px 0px 0px;
   & > h2 {
+    color: ${(props) => props.theme.colors.titleBlue};
     margin: 0px 10px 0px 0px;
+    font-size: 1.3rem;
   }
 `;
