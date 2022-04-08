@@ -56,7 +56,11 @@ const Classroom = () => {
           </List>
           <ButtonSection>
             <h2>Quiz</h2>
-            <Button text={<ArrowForwardIcon />} />
+            <Button
+              text={<ArrowForwardIcon />}
+              padding="13px 15px"
+              borderRadius="50%"
+            />
           </ButtonSection>
         </VideoList>
       </SectionContainer>
