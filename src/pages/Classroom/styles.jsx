@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
+export const Container2 = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const SectionContainer = styled.div`
-  padding: 40px 100px 40px 50px;
+  padding: 40px 100px 0px 50px;
   display: flex;
   justify-content: space-evenly;
+  height: 430px;
 `;
 
 export const ImgContainer = styled.div`
   width: 65%;
+  height: 100%;
 `;
 
 export const Image = styled.div`
@@ -18,7 +26,7 @@ export const Image = styled.div`
 `;
 
 export const VideoTitle = styled.div`
-  padding: 20px 0 0 0px;
+  padding: 20px 0px 0 60px;
 
   & > h1 {
     margin: 0px;
@@ -36,7 +44,7 @@ export const VideoTitle = styled.div`
 
 export const VideoList = styled.div`
   width: 30%;
-  height: 422px;
+  height: 100%;
   margin: 0px 0px 0px 40px;
   border-radius: 15px;
 `;
@@ -92,7 +100,7 @@ export const ButtonSection = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 10px 0px 0px 0px;
+  padding: 10px 110px 0px 0px;
   & > h2 {
     margin: 0px 10px 0px 0px;
   }
