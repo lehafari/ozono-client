@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   background: ${(props) => props.theme.colors.headerBlue};
-  width: 100%;
+  width: fill-available;
+  width: -webkit-fill-available;
   height: 85px;
   display: flex;
   justify-content: space-evenly;
@@ -19,6 +20,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 500;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    font-size: 11px;
+  }
 `;
 
 export const Container1 = styled(Container)`
@@ -26,6 +31,10 @@ export const Container1 = styled(Container)`
   & > img {
     width: 12rem;
     height: auto;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      width: 8rem;
+    }
   }
 `;
 
@@ -40,5 +49,9 @@ export const Container4 = styled(Container)`
   & > img {
     width: 7rem;
     height: auto;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      width: 5rem;
+    }
   }
 `;

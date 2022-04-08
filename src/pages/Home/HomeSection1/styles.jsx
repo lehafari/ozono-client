@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
   height: 700px;
-  width: 100%;
+  width: fill-available;
+  width: -webkit-fill-available;
 `;
 
 export const HeroContainer = styled.div`
@@ -44,11 +45,13 @@ export const HeroTextContainer = styled.div`
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     padding: 85px 5% 0 5%;
+    width: 100%;
   }
 
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
-    width: 100%;
     padding: 7rem 3rem 3rem 3rem;
+    width: fill-available;
+    width: -webkit-fill-available;
   }
 `;
 
@@ -151,5 +154,10 @@ export const HeroImage = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: fill-available;
+    width: -webkit-fill-available;
   }
 `;
