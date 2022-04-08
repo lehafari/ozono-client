@@ -91,5 +91,9 @@ export const List = styled.div`
 export const ButtonSection = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding: 10px 0px 0px 0px;
+  & > h2 {
+    margin: 0px 10px 0px 0px;
+  }
 `;

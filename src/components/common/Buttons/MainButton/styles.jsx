@@ -4,7 +4,7 @@ export const MainButton = styled.button`
   background-color: ${(props) =>
     props.backgroundColor || props.theme.colors.headerBlue};
   border: ${(props) => props.border || "none"};
-  border-radius: 35px;
+  border-radius: ${(props) => props.borderRadius || "35px"};
   color: ${(props) => props.color || props.theme.colors.white};
   font-family: "Lato", sans-serif;
   font-size: ${(props) => props.fontSize || "1.2rem"};
