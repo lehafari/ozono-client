@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
       }
       
       &-thumb {
-        background: #4B9CC2;
+        background: #5571B2;
         border-radius: 0.5rem;
             }
     }
