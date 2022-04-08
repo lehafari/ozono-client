@@ -7,8 +7,9 @@ export const ContactFormContainer = styled.div`
   overflow: hidden;
   height: max-content;
   border-radius: 45px;
-  padding-top: 1rem;
+  padding: 1rem 2rem;
   box-shadow: 0px 13px 99px rgba(4, 12, 105, 0.04);
+  margin: 3rem auto;
 `;
 
 export const ContactFormTitle = styled.div`
@@ -24,7 +25,7 @@ export const ContactFormInput = styled.div`
   padding: 1rem;
 `;
 
-export const formContainer = styled.form`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
 `;
@@ -64,6 +65,7 @@ export const InputTextAreaField = styled.textarea`
   border-radius: 35px;
   margin: 0.5rem 0;
   padding: 1rem;
+  height: 4rem;
 
   &:focus {
     outline: none;

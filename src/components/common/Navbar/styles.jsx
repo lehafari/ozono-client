@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const NavbarContainer = styled.div`
   background-color: #ffffff9d;
-  width: 100%;
+  width: fill-available;
+  width: -webkit-fill-available;
   height: 85px;
   display: flex;
   justify-content: space-evenly;
@@ -45,10 +46,10 @@ export const NavButton = styled.button`
   background: ${(props) => props.theme.colors.transparent};
   border: none;
   color: ${(props) => props.color || props.theme.colors.textBlue};
-  font-family: "Lato", sans-serif;
-  font-size: ${(props) => props.fontSize || "1rem"};
-  font-weight: ${(props) => props.fontWeight || "600"};
-  padding: ${(props) => props.padding || "0.5rem 1rem"};
+  font-family: 'Lato', sans-serif;
+  font-size: ${(props) => props.fontSize || '1rem'};
+  font-weight: ${(props) => props.fontWeight || '600'};
+  padding: ${(props) => props.padding || '0.5rem 1rem'};
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s;
