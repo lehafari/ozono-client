@@ -10,7 +10,17 @@ const AccordionContent = (props) => {
         <p>{props.texto}</p>
       </TextArea>
       <ButtonArea>
-        <Button text={props.boton} />
+        <Button
+          text={props.boton}
+          width="60%"
+          padding="0.7rem 1rem"
+          color={props.color}
+          fontSize="0.9rem"
+          fontWeight="600"
+          backgroundColor={props.backgroundColor}
+          border="2px solid #5279b6"
+          shadow={props.shadow}
+        />
       </ButtonArea>
     </ContentArea>
   );
