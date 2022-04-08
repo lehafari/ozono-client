@@ -14,6 +14,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import { Button } from '../../common/Buttons/MainButton';
 
 export const CourseItem = () => {
+  const getWidth = () => {
+    return window.innerWidth;
+  };
+
   return (
     <CourseContainer>
       <CourseImage>
@@ -45,7 +49,13 @@ export const CourseItem = () => {
           <h3>Prf. Alberto gonzalez</h3>
           <p>Licenciado en Desarrollo web</p>
         </CourseInstructor>
-        <Button text="Ver Curso" path="/course/description" width="50%" />
+        <Button
+          text="Ver Curso"
+          path="/course/description"
+          width="50%"
+          alignSelf={getWidth() < 600 ? 'center' : ''}
+          fontSize={getWidth() < 600 ? '1rem' : ''}
+        />
       </CourseContend>
     </CourseContainer>
   );

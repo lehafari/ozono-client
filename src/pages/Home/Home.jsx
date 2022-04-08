@@ -1,3 +1,4 @@
+import { Footer } from '../../components/common/Footer';
 import { HomeSection1 } from './HomeSection1';
 import { HomeSection2 } from './HomeSection2';
 import { HomeSection3 } from './HomeSection3';
@@ -13,6 +14,7 @@ const Home = () => {
       <HomeSection3 />
       <HomeSection4 />
       <HomeSection5 />
+      <Footer />
     </HomeContainer>
   );
 };

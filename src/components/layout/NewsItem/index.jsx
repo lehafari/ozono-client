@@ -11,6 +11,9 @@ import {
 import newsImage from '../../../assets/images/news-image.png';
 
 export const NewsItem = () => {
+  const getWidth = () => {
+    return window.innerWidth;
+  };
   return (
     <NewsContainer>
       <NewsProfileImage>
@@ -34,7 +37,12 @@ export const NewsItem = () => {
             metus.
           </p>
         </NewsText>
-        <Button text="Ver Mas" width="30%" />
+        <Button
+          text="Ver Mas"
+          width="30%"
+          alignSelf={getWidth() < 600 ? 'center' : ''}
+          fontSize={getWidth() < 600 ? '1rem' : ''}
+        />
       </NewsContent>
     </NewsContainer>
   );

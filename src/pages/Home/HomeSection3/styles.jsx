@@ -24,4 +24,8 @@ export const TextCarousel = styled.div`
   width: 100%;
   height: 75px;
   margin: 4rem 0;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    margin: 2rem 0;
+  }
 `;

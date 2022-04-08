@@ -12,6 +12,14 @@ export const NavbarContainer = styled.div`
   margin: -2px;
   box-sizing: border-box;
   position: absolute;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    height: 80px;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    height: 70px;
+  }
 `;
 
 export const Container = styled.div`
@@ -30,12 +38,28 @@ export const LogoContainer = styled(Container)`
   & > img {
     width: 15rem;
     height: auto;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      width: 10rem;
+    }
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      width: 8rem;
+    }
   }
 `;
 
 export const NavbarMenu = styled(Container)`
   width: 65%;
   justify-content: space-evenly;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: 80%;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: 100%;
+  }
 `;
 
 export const MenuContainer = styled.div``;

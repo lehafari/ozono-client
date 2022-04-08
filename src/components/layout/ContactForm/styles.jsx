@@ -10,6 +10,15 @@ export const ContactFormContainer = styled.div`
   padding: 1rem 2rem;
   box-shadow: 0px 13px 99px rgba(4, 12, 105, 0.04);
   margin: 3rem auto;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    width: 50%;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: 70%;
+    padding: 1rem 30px;
+  }
 `;
 
 export const ContactFormTitle = styled.div`
