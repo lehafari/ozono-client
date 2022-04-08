@@ -26,4 +26,8 @@ export const MenuBarContainer = styled.div`
     ${(props) => props.theme.gradient.blueGradient[1]},
     ${(props) => props.theme.gradient.blueGradient[2]}
   );
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    height: 50px;
+  }
 `;

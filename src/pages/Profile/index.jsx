@@ -6,16 +6,16 @@ import {
   ProfileDashboard,
   ProfileInfo,
   ProfileInfoText,
-  SpaceContainer,
 } from './styles';
 import profileImage from '../../assets/images/profile-image.svg';
 import { MyCourseItem } from '../../components/layout/MyCourseItem';
 import { MenuBar } from '../../components/common/MenuBar';
+import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
 
 const Profile = () => {
   return (
     <>
-      <SpaceContainer></SpaceContainer>
+      <BackgroundNavbar />
       <MenuBar />
       <ProfileContainer>
         <ProfileInfo>
