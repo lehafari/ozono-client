@@ -17,6 +17,7 @@ const CourseNavbar = () => {
       <ShadowContainer>
         <ImgContainer>
           <Button
+            path="/course/classroom"
             text="Entrar a clase"
             padding="1.1rem 5rem"
             margin=" 7rem 0rem "

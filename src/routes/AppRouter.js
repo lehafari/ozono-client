@@ -29,7 +29,6 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
 
-        <Route path="/classroom" element={<Classroom />} />
         <Route path="/contact" element={<Contac />} />
 
         <Route path="/course" element={<Course />}>
@@ -39,6 +38,7 @@ const AppRouter = () => {
           <Route path="certificates" element={<Certificates />} />
           <Route path="comments" element={<Comments />} />
         </Route>
+        <Route path="/course/classroom" element={<Classroom />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,11 +1,11 @@
-import { ThemeProvider } from 'styled-components';
-import AppRouter from './routes/AppRouter';
-import StyledGlobal from './globalStyles';
-import { colors, breakpoints, gradient } from './const';
-import { AuthContext } from './auth/authContext';
-import { useEffect, useReducer } from 'react';
-import { authReducer } from './auth/authReducer';
-import { userInit } from './const/userInit';
+import { ThemeProvider } from "styled-components";
+import AppRouter from "./routes/AppRouter";
+import StyledGlobal from "./globalStyles";
+import { colors, breakpoints, gradient } from "./const";
+import { AuthContext } from "./auth/authContext";
+import { useEffect, useReducer } from "react";
+import { authReducer } from "./auth/authReducer";
+import { userInit } from "./const/userInit";
 
 const theme = {
   colors,
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     if (!user) return;
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
 
   return (
