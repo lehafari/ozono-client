@@ -3,6 +3,7 @@ import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
 import { MenuBar } from "../../components/common/MenuBar";
 import {
   ButtonSection,
+  Container2,
   HeaderList,
   Image,
   ImgContainer,
@@ -29,10 +30,6 @@ const Classroom = () => {
           <Image>
             <img src={imgvideo} alt="Video play" />
           </Image>
-          <VideoTitle>
-            <h1>Ozonoterapeuta Clinico video 1</h1>
-            <h2>13 feb 2022</h2>
-          </VideoTitle>
         </ImgContainer>
         <VideoList>
           <HeaderList>
@@ -54,16 +51,22 @@ const Classroom = () => {
             <ClassRoomItems />
             <ClassRoomItems />
           </List>
-          <ButtonSection>
-            <h2>Quiz</h2>
-            <Button
-              text={<ArrowForwardIcon />}
-              padding="13px 15px"
-              borderRadius="50%"
-            />
-          </ButtonSection>
         </VideoList>
       </SectionContainer>
+      <Container2>
+        <VideoTitle>
+          <h1>Ozonoterapeuta Clinico video 1</h1>
+          <h2>13 feb 2022</h2>
+        </VideoTitle>
+        <ButtonSection>
+          <h2>Quiz</h2>
+          <Button
+            text={<ArrowForwardIcon />}
+            padding="13px 15px"
+            borderRadius="50%"
+          />
+        </ButtonSection>
+      </Container2>
     </>
   );
 };
