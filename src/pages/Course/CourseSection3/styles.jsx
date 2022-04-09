@@ -17,7 +17,11 @@ export const Content = styled.div`
     justify-content: center;
     align-items: center;
     margin-inline: 0px;
-    padding: 10px 50px;
+    padding: 10px 10px;
+  }
+  @media only screen and (min-width: 850px) and (max-width: 1200px) {
+    padding: 50px 10px;
+    margin: 10px 10px;
   }
 `;
 
@@ -46,7 +50,7 @@ export const VerticalLine = styled.div`
   background-color: #7090be;
   width: 1px;
   height: 350px;
-  margin-right: 50px;
+  margin-right: 10px;
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     width: 95%;
     height: 1px;
@@ -77,5 +81,6 @@ export const Logos = styled.div`
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
   }
 `;

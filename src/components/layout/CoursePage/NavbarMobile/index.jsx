@@ -9,15 +9,18 @@ import { Description, Person } from "@material-ui/icons";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import CommentIcon from "@mui/icons-material/Comment";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import { useNavigate } from "react-router-dom";
 
 export default function NavbarMobile() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = (path) => {
     setAnchorEl(null);
+    navigate(path);
   };
 
   return (
@@ -47,23 +50,32 @@ export default function NavbarMobile() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem
+          onClick={() => handleClose("/course/description")}
+          disableRipple
+        >
           <Description />
           Descripcion
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={() => handleClose("/course/teachers")} disableRipple>
           <Person />
           Profesores
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem
+          onClick={() => handleClose("/course/curriculum")}
+          disableRipple
+        >
           <VideoLibraryIcon />
           Curriculum
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem
+          onClick={() => handleClose("/course/certificates")}
+          disableRipple
+        >
           <WorkspacePremiumIcon />
           Certificado
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={() => handleClose("/course/comments")} disableRipple>
           <CommentIcon />
           Comentarios
         </MenuItem>

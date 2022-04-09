@@ -11,4 +11,8 @@ export const Descripcion = styled.div`
   font-size: 18px;
   font-weight: 300;
   border-radius: 0px 0px 50px 50px;
+  @media screen and (${(props) => props.theme.breakpoints.s}) {
+    padding: 40px 10px 40px 10px;
+    text-align: center;
+  }
 `;

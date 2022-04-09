@@ -60,15 +60,13 @@ export const CourseName = styled.div`
     margin: 0;
     line-height: 1em;
   }
-  @media only screen and (${(props) => props.theme.breakpoints.xs}) {
+  @media only screen and (min-width: 571px) and (max-width: 1000px) {
     & h1 {
-      font-family: "PlantagenetCherokee";
-      font-size: 3.7rem;
-      margin: 0;
-      line-height: 1em;
+      font-size: 4rem;
     }
   }
-  @media screen and (${(props) => props.theme.breakpoints.s}) {
+
+  @media only screen and (${(props) => props.theme.breakpoints.s}) {
     & h1 {
       font-size: 2.8rem;
     }
