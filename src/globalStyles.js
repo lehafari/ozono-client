@@ -3,6 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 const StyledGlobal = () => <GlobalStyle />;
 
 const GlobalStyle = createGlobalStyle`
+
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('./assets/fonts/Helvetica.ttc') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'PlantagenetCherokee';
+    src: url('./assets/fonts/plantc.ttf') format('truetype');
+  }
+
   body {
     width: 100%;
     margin: 0;
