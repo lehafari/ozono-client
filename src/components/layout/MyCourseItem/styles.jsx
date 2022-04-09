@@ -8,11 +8,23 @@ export const CourseContainer = styled.div`
   display: flex;
   margin-bottom: 3rem;
   box-shadow: 0px 3px 99px rgba(4, 40, 195, 0.04);
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: fill-available;
+    width: webkit-fill-available;
+    flex-direction: column;
+  }
 `;
 
 export const CourseImage = styled.div`
   width: 50%;
   height: auto;
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   & > img {
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
@@ -20,6 +32,13 @@ export const CourseImage = styled.div`
     height: 100%;
     object-fit: cover;
     margin-right: -1rem;
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      margin-right: 0;
+      border-radius: 35px;
+      margin-top: 1rem;
+      width: 90%;
+    }
   }
 `;
 
@@ -30,6 +49,15 @@ export const CourseContend = styled.div`
   justify-content: space-evenly;
   flex-direction: column;
   padding: 2rem 2.5rem 1rem 2.5rem;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    padding: 2rem 1.5rem 1rem 1rem;
+  }
+
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: fill-available;
+    width: webkit-fill-available;
+  }
 `;
 
 export const CourseTitle = styled.div`
@@ -39,6 +67,10 @@ export const CourseTitle = styled.div`
     color: ${(props) => props.theme.colors.black};
     font-weight: 400;
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 1.5rem;
+    }
   }
 `;
 
@@ -48,6 +80,10 @@ export const CoruseDescription = styled.div`
     color: ${(props) => props.theme.colors.gray};
     font-weight: 300;
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -57,12 +93,20 @@ export const CourseInstructor = styled.div`
     color: ${(props) => props.theme.colors.darkGray};
     font-weight: 400;
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 0.8rem;
+    }
   }
 
   & p {
     font-size: 0.6rem;
     color: ${(props) => props.theme.colors.darkGray};
     margin: 0;
+
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      font-size: 0.6rem;
+    }
   }
 `;
 

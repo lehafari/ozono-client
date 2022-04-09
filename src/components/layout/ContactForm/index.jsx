@@ -45,7 +45,7 @@ export const ContactForm = () => {
         </ContactFormTitle>
         <ContactFormInput>
           <FormContainer onSubmit={handleSubmit}>
-            <LabelText>Name</LabelText>
+            <LabelText>Nombre</LabelText>
             <InputTextField
               id="name"
               name="name"
