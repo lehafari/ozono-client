@@ -7,6 +7,10 @@ export const CourseContainer = styled.div`
 
 export const ShadowContainer = styled.div`
   padding: 0px 92px 0px 92px;
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+  }
 `;
 
 export const ImgContainer = styled.div`

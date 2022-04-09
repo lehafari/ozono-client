@@ -28,6 +28,9 @@ export const SectionContainer = styled.section`
 `;
 export const TextContainer = styled.div`
   padding-left: 180px;
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+    padding: 0px 10px 0px 10px;
+  }
 `;
 
 export const Student = styled.div`
@@ -56,6 +59,19 @@ export const CourseName = styled.div`
     font-size: 5rem;
     margin: 0;
     line-height: 1em;
+  }
+  @media only screen and (${(props) => props.theme.breakpoints.xs}) {
+    & h1 {
+      font-family: "PlantagenetCherokee";
+      font-size: 3.7rem;
+      margin: 0;
+      line-height: 1em;
+    }
+  }
+  @media screen and (${(props) => props.theme.breakpoints.s}) {
+    & h1 {
+      font-size: 2.8rem;
+    }
   }
 `;
 
