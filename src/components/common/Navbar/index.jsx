@@ -11,28 +11,28 @@ import {
 } from "./styles";
 import cenaozLogo from "../../../assets/images/cenaoz-logo.webp";
 
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../auth/authContext";
-import { types } from "../../../types/types";
+// import { useContext, useEffect, useState } from "react";
+// import { AuthContext } from "../../../auth/authContext";
+// import { types } from "../../../types/types";
 import { Link, useNavigate } from "react-router-dom";
-import { WindowSharp } from "@mui/icons-material";
 import MobileMenu from "../MobileMenu";
 import Resize from "../../../helpers/Resize";
 export const Navbar = () => {
-  const { user, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const { user, dispatch } = useContext(AuthContext);
+  // const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const action = {
-      type: types.login,
-      payload: { name: "Jorgito Candelero" },
-    };
-    dispatch(action);
-    // console.log("FUNCIONA");
-    navigate("/profile");
-  };
+  // const handleLogin = () => {
+  //   const action = {
+  //     type: types.login,
+  //     payload: { name: "Jorgito Candelero" },
+  //   };
+  //   dispatch(action);
+  //   // console.log("FUNCIONA");
+  //   navigate("/profile");
+  // };
 
   const width = Resize();
+  const navigate = useNavigate();
 
   return (
     <NavbarContainer>
@@ -53,8 +53,12 @@ export const Navbar = () => {
             </NavButton>
           </MenuContainer>
           <LoginContainer>
-            <LoginButton onClick={handleLogin}>Iniciar Sesion </LoginButton>
-            <SignupButton>Registrarse</SignupButton>
+            <LoginButton onClick={() => navigate("/access/login")}>
+              Iniciar Sesion
+            </LoginButton>
+            <SignupButton onClick={() => navigate("/access/register")}>
+              Registrarse
+            </SignupButton>
           </LoginContainer>
         </NavbarMenu>
       ) : (

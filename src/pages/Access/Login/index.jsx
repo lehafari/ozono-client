@@ -1,11 +1,12 @@
 import React from "react";
+import { Container } from "./style";
 
 const Login = () => {
   return (
-    <div>
+    <Container>
       <h1>Login</h1>
       <hr />
-    </div>
+    </Container>
   );
 };
 
