@@ -14,7 +14,6 @@ const Input = ({
 }) => {
   const { values, setFieldValue } = useFormikContext();
   const value = values[name] ? values[name] : "";
-  console.log(value);
   return (
     <InputContainer>
       <InputItem

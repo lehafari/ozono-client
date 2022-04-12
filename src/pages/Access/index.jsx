@@ -16,7 +16,7 @@ const Access = () => {
       <BannerContainer>
         <Card>
           <h5>"Al pan pan, al vino vino, y en tu culo mi caballito blanco."</h5>
-          <h6>-Simon Bolivar</h6>
+          <h6>-El nieto de pompeyo valera</h6>
         </Card>
       </BannerContainer>
     </SectionContainer>

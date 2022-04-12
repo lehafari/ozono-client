@@ -1,10 +1,10 @@
 import { Formik, useFormik } from "formik";
-import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/common/Buttons/MainButton";
 import Input from "../../../components/common/Inputs";
 import { NavButton } from "../../../components/common/Navbar/styles";
 import { Container, Form, Box, Divider, BoxButton, BoxOptions } from "./style";
+import { CgLogIn } from "react-icons/cg";
 
 const Login = () => {
   const formik = useFormik({
@@ -12,15 +12,16 @@ const Login = () => {
       userorEmail: "",
       password: "",
     },
+
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
-  const handlesubmit = (data) => {
-    console.log(data);
-  };
 
   return (
     <Container>
       <h1>Iniciar sesión</h1>
-      <Formik initialValues={formik.initialValues} onSubmit={handlesubmit}>
+      <Formik initialValues={formik.initialValues} onSubmit={formik.onSubmit}>
         <Form>
           <Input
             id="userorEmail"
@@ -37,7 +38,9 @@ const Login = () => {
 
           <Box>
             <BoxButton>
-              <Button text="Iniciar Sesión" width="70%" />
+              <Button text="Iniciar Sesión" width="70%">
+                Iniciar Sesión <CgLogIn />
+              </Button>
             </BoxButton>
             <BoxOptions>
               <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">

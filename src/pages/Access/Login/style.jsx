@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 40px 0 0 0px;
   border-radius: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   & h1 {
     padding: 0px 0 0 60px;
     font-size: 3rem;
