@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HomeHeroContainer = styled.section`
   margin-top: -2px;
@@ -11,9 +11,9 @@ export const HeroContainer = styled.div`
   height: 100%;
   display: flex;
 
-  @media only screen and (${(props) => props.theme.breakpoints.mobile}){
+  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     flex-direction: column;
-  } {
+  }
 `;
 
 export const HeroTextContainer = styled.div`
@@ -66,7 +66,7 @@ export const HeroSeparator = styled.div`
 export const HeroTitle = styled.div`
   & h1 {
     font-size: 5rem;
-    font-family: 'PlantagenetCherokee';
+    font-family: "PlantagenetCherokee";
     font-weight: unset;
     margin: 0;
     line-height: 1em;

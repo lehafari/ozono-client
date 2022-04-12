@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ContactFormContainer,
   ContactFormInput,
@@ -8,29 +8,29 @@ import {
   InputTextField,
   LabelText,
   FormContainer,
-} from './styles';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import { Button } from '../../common/Buttons/MainButton';
+} from "./styles";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { Button } from "../../common/Buttons/MainButton";
 
 export const ContactForm = () => {
   const validationSchema = yup.object({
-    name: yup.string('Ingrese su nombre').required('El nombre es requerido'),
+    name: yup.string("Ingrese su nombre").required("El nombre es requerido"),
     email: yup
-      .string('Ingrese su email')
-      .email('Igrese un email válido')
-      .required('El email es requerido'),
+      .string("Ingrese su email")
+      .email("Igrese un email válido")
+      .required("El email es requerido"),
     message: yup
-      .string('Ingrese su mensaje')
-      .min(8, 'Mensaje debe tener al menos 8 caracteres')
-      .required('El mensaje es requerido'),
+      .string("Ingrese su mensaje")
+      .min(8, "Mensaje debe tener al menos 8 caracteres")
+      .required("El mensaje es requerido"),
   });
 
   const { handleSubmit, values, handleChange, touched, errors } = useFormik({
     initialValues: {
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -75,7 +75,6 @@ export const ContactForm = () => {
               text="Enviar"
               width="80%"
               padding="1rem 1rem"
-              type="submit"
               margin="1rem auto"
               alignSelf="center"
             />
