@@ -12,6 +12,7 @@ import {
 } from "./style";
 import InputButton from "../../../components/common/Buttons/FormButton";
 import * as Yup from "yup";
+import { endPoints } from "../../../const/endPoints";
 
 const Login = () => {
   // const { user, dispatch } = useContext(AuthContext);
@@ -27,12 +28,12 @@ const Login = () => {
   //   navigate("/profile");
   // };
   const initialValues = {
-    useroremail: "",
+    userOrEmail: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
-    useroremail: Yup.string()
+    userOrEmail: Yup.string()
       .required("El usuario o Email es obligatorio")
       .min(4, "El usuario o Email debe tener al menos 4 caracteres")
       .max(50, "El usuario o Email debe tener máximo 50 caracteres"),
@@ -42,8 +43,20 @@ const Login = () => {
       .required("La contraseña es obligatoria"),
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     console.log(values);
+    try {
+      const res = await fetch(endPoints.signin, {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+
     alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
   };
@@ -59,8 +72,8 @@ const Login = () => {
         <Form>
           <Formulario>
             <Input
-              id="useroremail"
-              name="useroremail"
+              id="userOrEmail"
+              name="userOrEmail"
               type="text"
               placeholder="Usuario o Email"
               margin="5px 0"

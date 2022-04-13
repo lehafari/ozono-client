@@ -1,29 +1,53 @@
 import { Formik, useFormik, Form } from "formik";
 import * as Yup from "yup";
-import { Button } from "../../../components/common/Buttons/MainButton";
 import Input from "../../../components/common/Inputs";
 import { Box, BoxButton, Formulario } from "../Login/style";
 import { ContainerRegistro } from "./styles";
+import { endPoints } from "../../../const/endPoints";
+import InputButton from "../../../components/common/Buttons/FormButton";
 
 const Register = () => {
   const initialValues = {
-    firstname: "",
-    lastname: "",
-    username: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
     password: "",
-    confirmpassword: "",
+    confirmPassword: "",
   };
 
-  validationSchema = Yup.object({
-    firstname: Yup.string()
-      .required("El nombre es obligatorio")
-      .min(4, "El nombre debe tener al menos 4 caracteres")
-      .max(50, "El nombre debe tener máximo 50 caracteres"),
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required("El nombre es obligatorio"),
+    lastName: Yup.string().required("El apellido es obligatorio"),
+    userName: Yup.string()
+      .required("El usuario es obligatorio")
+      .min(4, "El usuario debe tener al menos 4 caracteres")
+      .max(20, "El usuario debe tener máximo 50 caracteres"),
+    password: Yup.string()
+      .min(6, "la contraseña debe tener al menos 6 caracteres")
+      .max(20, "la contraseña debe tener máximo 20 caracteres")
+      .required("La contraseña es obligatoria"),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref("password")],
+      "Las contraseñas no coinciden"
+    ),
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    alert(JSON.stringify(values, null, 2));
+  const handleSubmit = async (values, { setSubmitting }) => {
+    console.log(JSON.stringify(values));
+    console.log(endPoints.signup);
+    try {
+      const res = await fetch(endPoints.signup, {
+        method: "PUT",
+        body: JSON.stringify(values),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+      console.log("Status de la peticion: ", res.status);
+    } catch (error) {
+      console.log(error);
+    }
     setSubmitting(false);
   };
 
@@ -38,8 +62,8 @@ const Register = () => {
         <Form>
           <Formulario>
             <Input
-              id="firstname"
-              name="firstname"
+              id="firstName"
+              name="firstName"
               type="text"
               placeholder="Nombre"
               width={"50%"}
@@ -47,8 +71,8 @@ const Register = () => {
               margin={"10px 0px"}
             />
             <Input
-              id="lastname"
-              name="lastname"
+              id="lastName"
+              name="lastName"
               type="text"
               placeholder="Apellido"
               width={"50%"}
@@ -57,8 +81,8 @@ const Register = () => {
             ></Input>
 
             <Input
-              id="username"
-              name="username"
+              id="userName"
+              name="userName"
               type="text"
               placeholder="Usuario"
               width={"50%"}
@@ -86,8 +110,8 @@ const Register = () => {
             ></Input>
 
             <Input
-              id="confirmpassword"
-              name="confirmpassword"
+              id="confirmPassword"
+              name="confirmPassword"
               type="password"
               placeholder="Confirmar Contraseña"
               width={"50%"}
@@ -97,7 +121,7 @@ const Register = () => {
 
             <Box>
               <BoxButton>
-                <Button text="Registrarse aqui" width="70%" />
+                <InputButton text="Registrarse" width="70%" />
               </BoxButton>
             </Box>
           </Formulario>
