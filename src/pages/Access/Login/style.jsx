@@ -16,9 +16,9 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Formulario = styled.div`
   width: 100%;
-  padding: 40px 0 0 60px;
+  padding: 20px 0 0 60px;
 `;
 
 export const Box = styled.div`

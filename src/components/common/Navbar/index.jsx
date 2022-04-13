@@ -18,19 +18,6 @@ import { Link, useNavigate } from "react-router-dom";
 import MobileMenu from "../MobileMenu";
 import Resize from "../../../helpers/Resize";
 export const Navbar = () => {
-  // const { user, dispatch } = useContext(AuthContext);
-  // const navigate = useNavigate();
-
-  // const handleLogin = () => {
-  //   const action = {
-  //     type: types.login,
-  //     payload: { name: "Jorgito Candelero" },
-  //   };
-  //   dispatch(action);
-  //   // console.log("FUNCIONA");
-  //   navigate("/profile");
-  // };
-
   const width = Resize();
   const navigate = useNavigate();
 

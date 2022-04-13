@@ -1,13 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { MainButton } from "./styles";
+import { useFormikContext } from "formik";
+import { CgSpinnerTwoAlt } from "react-icons/cg";
+import { MainButton } from "../MainButton/styles";
 
-export const Button = (props, { children }) => {
-  const navigate = useNavigate();
+const InputButton = (props) => {
+  const { errors, isSubmitting } = useFormikContext();
   return (
     <MainButton
       // Atributos input
+      type="submit"
       //Acciones/Funciones
-      onClick={() => navigate(props.path)}
       // Estilos
       width={props.width}
       padding={props.padding}
@@ -22,6 +23,9 @@ export const Button = (props, { children }) => {
       alignSelf={props.alignSelf}
     >
       {props.text}
+      {/* {isSubmitting ? <CgSpinnerTwoAlt className="spin" size={20} /> : children} */}
     </MainButton>
   );
 };
+
+export default InputButton;

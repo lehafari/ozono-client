@@ -12,8 +12,11 @@ const Input = ({
   heigth,
   margin,
 }) => {
-  const { values, setFieldValue } = useFormikContext();
+  const { values, errors, touched, setTouched, handleChange, handleBlur } =
+    useFormikContext();
   const value = values[name] ? values[name] : "";
+  const error = errors[name] ? errors[name] : "";
+  const touchedInput = touched[name] ? touched[name] : "";
   return (
     <InputContainer>
       <InputItem
@@ -22,15 +25,19 @@ const Input = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        onChange={(e) => setFieldValue(name, e.target.value)}
+        onChange={handleChange}
         value={value}
+        onBlur={handleBlur}
         autoComplete="off"
+        onClick={() => setTouched({ ...touched, [name]: true })}
+        onTouchStart={() => setTouched({ ...touched, [name]: true })}
         // Props de estilos
         padding={padding}
         width={width}
         heigth={heigth}
         margin={margin}
       />
+      {error && touchedInput && <span className="error">{error}</span>}
     </InputContainer>
   );
 };

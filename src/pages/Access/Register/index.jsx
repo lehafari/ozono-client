@@ -2,7 +2,7 @@ import { Formik, useFormik } from "formik";
 import React from "react";
 import { Button } from "../../../components/common/Buttons/MainButton";
 import Input from "../../../components/common/Inputs";
-import { Box, BoxButton, Form } from "../Login/style";
+import { Box, BoxButton, Formulario } from "../Login/style";
 import { ContainerRegistro } from "./styles";
 
 const Register = () => {
@@ -23,7 +23,7 @@ const Register = () => {
     <ContainerRegistro>
       <h1>Registrate </h1>
       <Formik initialValues={formik.initialValues} onSubmit={handlesubmit}>
-        <Form>
+        <Formulario>
           <Input
             id="firstname"
             name="firstname"
@@ -87,7 +87,7 @@ const Register = () => {
               <Button text="Registrarse aqui" width="70%" />
             </BoxButton>
           </Box>
-        </Form>
+        </Formulario>
       </Formik>
     </ContainerRegistro>
   );
