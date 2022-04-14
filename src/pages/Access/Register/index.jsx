@@ -5,8 +5,26 @@ import { Box, BoxButton, Formulario } from "../Login/style";
 import { ContainerRegistro } from "./styles";
 import { endPoints } from "../../../const/endPoints";
 import InputButton from "../../../components/common/Buttons/FormButton";
+import { GetUser } from "../../../helpers/GetUser";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/auth/authContext";
+import { types } from "../../../context/types/types";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  // const handleLogin = () => {
+  //   const action = {
+  //     type: types.login,
+  //     payload: { name: "Jorgito Candelero" },
+  //   };
+  //   dispatch(action);
+  //   // console.log("FUNCIONA");
+  //   navigate("/profile");
+  // };
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -34,8 +52,6 @@ const Register = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log(JSON.stringify(values));
-    console.log(endPoints.signup);
     try {
       const res = await fetch(endPoints.signup, {
         method: "PUT",
@@ -43,11 +59,35 @@ const Register = () => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
-      console.log(data);
-      console.log("Status de la peticion: ", res.status);
+      if (res.status === 200) {
+        console.log("Seteando tokens");
+        localStorage.setItem("at", data.access_token);
+        localStorage.setItem("rt", data.refresh_token);
+
+        const userData = await GetUser();
+        console.log(userData);
+        const action = {
+          type: types.login,
+          payload: {
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            username: userData.username,
+            email: userData.email,
+            gender: userData.gender,
+            country: userData.country,
+            image: userData.image,
+            ci: userData.ci,
+            phone: userData.phone,
+            role: userData.role,
+          },
+        };
+        dispatch(action);
+        navigate("/profile");
+      }
     } catch (error) {
       console.log(error);
     }
+
     setSubmitting(false);
   };
 

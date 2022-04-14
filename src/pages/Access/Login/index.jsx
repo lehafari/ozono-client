@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../../components/common/Inputs";
 import { NavButton } from "../../../components/common/Navbar/styles";
 import {
@@ -13,20 +13,14 @@ import {
 import InputButton from "../../../components/common/Buttons/FormButton";
 import * as Yup from "yup";
 import { endPoints } from "../../../const/endPoints";
+import { GetUser } from "../../../helpers/GetUser";
+import { types } from "../../../context/types/types";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/auth/authContext";
 
 const Login = () => {
-  // const { user, dispatch } = useContext(AuthContext);
-  // const navigate = useNavigate();
-
-  // const handleLogin = () => {
-  //   const action = {
-  //     type: types.login,
-  //     payload: { name: "Jorgito Candelero" },
-  //   };
-  //   dispatch(action);
-  //   // console.log("FUNCIONA");
-  //   navigate("/profile");
-  // };
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const initialValues = {
     userOrEmail: "",
     password: "",
@@ -52,7 +46,30 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
-      console.log(data);
+      if (res.status === 201) {
+        localStorage.setItem("at", data.access_token);
+        localStorage.setItem("rt", data.refresh_token);
+
+        const userData = await GetUser();
+        console.log(userData);
+        const action = {
+          type: types.login,
+          payload: {
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            username: userData.username,
+            email: userData.email,
+            gender: userData.gender,
+            country: userData.country,
+            image: userData.image,
+            ci: userData.ci,
+            phone: userData.phone,
+            role: userData.role,
+          },
+        };
+        dispatch(action);
+        navigate("/profile");
+      }
     } catch (error) {
       console.log(error);
     }

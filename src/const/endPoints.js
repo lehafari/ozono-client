@@ -4,4 +4,5 @@ export const endPoints = {
   signin: `${base_url}/auth/signin`,
   logout: `${base_url}/auth/logout`,
   refresh_token: `${base_url}/auth/refresh`,
+  get_user: `${base_url}/users/me`,
 };

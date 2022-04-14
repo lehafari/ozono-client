@@ -1,4 +1,4 @@
-import ProfileMenu from '../../components/layout/ProfileMenu';
+import ProfileMenu from "../../components/layout/ProfileMenu";
 import {
   MyCourses,
   ProfileContainer,
@@ -6,13 +6,16 @@ import {
   ProfileDashboard,
   ProfileInfo,
   ProfileInfoText,
-} from './styles';
-import profileImage from '../../assets/images/profile-image.svg';
-import { MyCourseItem } from '../../components/layout/MyCourseItem';
-import { MenuBar } from '../../components/common/MenuBar';
-import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
+} from "./styles";
+import profileImage from "../../assets/images/profile-image.svg";
+import { MyCourseItem } from "../../components/layout/MyCourseItem";
+import { MenuBar } from "../../components/common/MenuBar";
+import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
+import { AuthContext } from "../../context/auth/authContext";
+import { useContext } from "react";
 
 const Profile = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <BackgroundNavbar />
@@ -21,9 +24,9 @@ const Profile = () => {
         <ProfileInfo>
           <img src={profileImage} alt="profile image" />
           <ProfileInfoText>
-            <h2>Alejandra Rodriguez</h2>
-            <p>Profesora en tal cosa</p>
-            <p>Se unit en 2022</p>
+            <h2>{`${user.firstName} ${user.lastName}`}</h2>
+            {/* <p>Profesora en tal cosa</p>
+            <p>Se unit en 2022</p> */}
           </ProfileInfoText>
         </ProfileInfo>
         <ProfileDashboard>
