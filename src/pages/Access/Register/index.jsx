@@ -10,7 +10,7 @@ const Register = () => {
   const initialValues = {
     firstName: "",
     lastName: "",
-    userName: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -19,7 +19,7 @@ const Register = () => {
   const validationSchema = Yup.object({
     firstName: Yup.string().required("El nombre es obligatorio"),
     lastName: Yup.string().required("El apellido es obligatorio"),
-    userName: Yup.string()
+    username: Yup.string()
       .required("El usuario es obligatorio")
       .min(4, "El usuario debe tener al menos 4 caracteres")
       .max(20, "El usuario debe tener máximo 50 caracteres"),
@@ -81,8 +81,8 @@ const Register = () => {
             ></Input>
 
             <Input
-              id="userName"
-              name="userName"
+              id="username"
+              name="username"
               type="text"
               placeholder="Usuario"
               width={"50%"}
