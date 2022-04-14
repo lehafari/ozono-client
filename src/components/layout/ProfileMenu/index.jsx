@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
+import { useContext } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
@@ -12,8 +13,13 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import menuLogo from '../../../assets/images/profile-menu.svg';
 import menuLogoBlue from '../../../assets/images/profile-menu-blue.svg';
+import { AuthContext } from '../../../context/auth/authContext';
+import { types } from '../../../context/types/types';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProfileMenu() {
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,6 +27,13 @@ export default function ProfileMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    dispatch({ type: types.logout });
+    navigate('/');
+    console.log('logout');
+    handleClose();
   };
   return (
     <React.Fragment>
@@ -154,6 +167,7 @@ export default function ProfileMenu() {
               color: '#5e82be',
             },
           }}
+          onClick={handleLogout}
         >
           Logout
         </MenuItem>
