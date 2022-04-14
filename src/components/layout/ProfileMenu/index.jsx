@@ -31,6 +31,8 @@ export default function ProfileMenu() {
 
   const handleLogout = () => {
     dispatch({ type: types.logout });
+    localStorage.removeItem('rt');
+    localStorage.removeItem('at');
     navigate('/');
     console.log('logout');
     handleClose();
