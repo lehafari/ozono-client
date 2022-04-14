@@ -5,7 +5,6 @@ import { types } from "../types/types";
 // }
 
 export const authReducer = (state = {}, action) => {
-  console.log(action);
   switch (action.type) {
     case types.login:
       console.log("OLA ENTRE AL CASO LOGIN");
