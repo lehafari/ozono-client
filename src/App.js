@@ -2,10 +2,10 @@ import { ThemeProvider } from "styled-components";
 import AppRouter from "./routes/AppRouter";
 import StyledGlobal from "./globalStyles";
 import { colors, breakpoints, gradient } from "./const";
-import { AuthContext } from "./auth/authContext";
 import { useEffect, useReducer } from "react";
-import { authReducer } from "./auth/authReducer";
 import { userInit } from "./const/userInit";
+import { AuthContext } from "./context/auth/authContext";
+import { authReducer } from "./context/auth/authReducer";
 
 const theme = {
   colors,
