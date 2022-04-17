@@ -12,16 +12,27 @@ import { MyCourseItem } from '../../components/layout/MyCourseItem';
 import { MenuBar } from '../../components/common/MenuBar';
 import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
 import { useSelector } from 'react-redux';
+import Spinner from '../../components/common/Spinner';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
+  console.log(user);
+  if (!user) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <BackgroundNavbar />
       <MenuBar />
       <ProfileContainer>
         <ProfileInfo>
-          <img src={profileImage} alt="profile image" />
+          {user.image === false ? (
+            <img src={user.image} alt="profile" />
+          ) : (
+            <img src={profileImage} alt="profile image" />
+          )}
+
           <ProfileInfoText>
             <h2>{`${user.firstName} ${user.lastName}`}</h2>
             {/* <p>Profesora en tal cosa</p>
