@@ -13,7 +13,7 @@ export default function Spinner() {
         height: '100vh',
       }}
     >
-      <CircularProgress />
+      <CircularProgress size={60} />
     </Box>
   );
 }

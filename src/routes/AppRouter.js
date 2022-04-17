@@ -28,10 +28,8 @@ const AppRouter = () => {
     dispatch(startChecking());
   }, [dispatch]);
 
-  console.log('checking', checking);
-  console.log('user', user);
   if (checking) {
-    return <h5>Espere...</h5>;
+    return <Spinner />;
   }
 
   return (

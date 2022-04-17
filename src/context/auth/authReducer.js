@@ -7,7 +7,6 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.authLogin:
-      console.log('desdel el reducer', action.payload);
       return {
         ...state,
         ...action.payload,

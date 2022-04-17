@@ -7,7 +7,6 @@ import {
 } from '../helpers/fetch';
 
 export const startLogin = (userOrEmail, password) => {
-  console.log(userOrEmail, password);
   return async (dispatch) => {
     const resp = await fetchWithoutToken(
       endPoints.signin,
@@ -15,8 +14,6 @@ export const startLogin = (userOrEmail, password) => {
       'POST'
     );
     const body = await resp.json();
-    console.log(body);
-    console.log(`este es el status ${resp.status}`);
     if (resp.status === 200) {
       localStorage.setItem('at', body.access_token);
       localStorage.setItem('rt', body.refresh_token);
@@ -29,6 +26,25 @@ export const startLogin = (userOrEmail, password) => {
     } else {
       console.log(body.error);
     }
+  };
+};
+
+export const startRegister = (value) => {
+  return async (dispatch) => {
+    const resp = await fetchWithoutToken(endPoints.signup, value, 'PUT');
+    const body = await resp.json();
+    console.log(`este es el status ${resp.status}`);
+    if (!resp.status === 201) {
+      return console.log(body.error);
+    }
+    localStorage.setItem('at', body.access_token);
+    localStorage.setItem('rt', body.refresh_token);
+    const user = await getUser();
+    dispatch(
+      login({
+        user,
+      })
+    );
   };
 };
 
@@ -56,12 +72,21 @@ export const startChecking = () => {
   };
 };
 
-const checkingFinish = () => ({ type: types.authCheckingFinish });
+const checkingFinish = () => ({ type: types.authCheckingFinish, payload: {} });
 
 const login = (user) => ({
   type: types.authLogin,
   payload: user,
 });
+
+export const startLogout = () => {
+  return (dispatch) => {
+    localStorage.clear();
+    dispatch(logout());
+  };
+};
+
+const logout = () => ({ type: types.authLogout, payload: {} });
 
 const getUser = async () => {
   const resp = await fetchWithToken(endPoints.get_user);

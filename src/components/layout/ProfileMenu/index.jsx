@@ -17,9 +17,11 @@ import { AuthContext } from '../../../context/auth/authContext';
 import { types } from '../../../context/types/types';
 import { useNavigate } from 'react-router-dom';
 import { endPoints } from '../../../const/endPoints';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../../actions/auth';
 
 export default function ProfileMenu() {
-  const { dispatch } = useContext(AuthContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -31,17 +33,7 @@ export default function ProfileMenu() {
   };
 
   const handleLogout = async () => {
-    dispatch({ type: types.logout });
-    const logout = await fetch(endPoints.logout, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('at')}`,
-      },
-    });
-    console.log(logout);
-    localStorage.removeItem('rt');
-    localStorage.removeItem('at');
+    dispatch(startLogout());
     navigate('/');
     console.log('logout');
     handleClose();

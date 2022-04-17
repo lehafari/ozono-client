@@ -13,11 +13,7 @@ import {
 } from './style';
 import InputButton from '../../../components/common/Buttons/FormButton';
 import * as Yup from 'yup';
-import { endPoints } from '../../../const/endPoints';
-import { GetUser } from '../../../helpers/GetUser';
-import { types } from '../../../context/types/types';
-import { useContext } from 'react';
-import { AuthContext } from '../../../context/auth/authContext';
+
 import { startLogin } from '../../../actions/auth';
 
 const Login = () => {
@@ -41,8 +37,8 @@ const Login = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log(values);
     dispatch(startLogin(values.userOrEmail, values.password));
+    navigate('/profile');
   };
 
   return (

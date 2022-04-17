@@ -1,4 +1,4 @@
-import ProfileMenu from "../../components/layout/ProfileMenu";
+import ProfileMenu from '../../components/layout/ProfileMenu';
 import {
   MyCourses,
   ProfileContainer,
@@ -6,16 +6,15 @@ import {
   ProfileDashboard,
   ProfileInfo,
   ProfileInfoText,
-} from "./styles";
-import profileImage from "../../assets/images/profile-image.svg";
-import { MyCourseItem } from "../../components/layout/MyCourseItem";
-import { MenuBar } from "../../components/common/MenuBar";
-import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
-import { AuthContext } from "../../context/auth/authContext";
-import { useContext } from "react";
+} from './styles';
+import profileImage from '../../assets/images/profile-image.svg';
+import { MyCourseItem } from '../../components/layout/MyCourseItem';
+import { MenuBar } from '../../components/common/MenuBar';
+import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useSelector((state) => state.auth);
   return (
     <>
       <BackgroundNavbar />
