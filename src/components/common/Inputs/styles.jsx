@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
+  align-items: center;
   margin: 10px 0;
-  padding: 0px 0px 0px 0px;
+
   & label {
     font-size: 1rem;
     color: #b8b8b8;
