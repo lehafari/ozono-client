@@ -18,7 +18,8 @@ export const Container = styled.div`
 
 export const Formulario = styled.div`
   width: 100%;
-  padding: 20px 0 0 60px;
+  padding: 20px 0 0 0px;
+  margin: auto;
 `;
 
 export const Box = styled.div`
@@ -26,6 +27,7 @@ export const Box = styled.div`
   padding: 0px 0 0 0px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Divider = styled.div`
@@ -35,9 +37,17 @@ export const Divider = styled.div`
   background-color: #3daecc;
 `;
 
-export const BoxButton = styled.div``;
+export const BoxButton = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 export const BoxOptions = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & > button {
     text-align: center;
     margin: 10px 0px;

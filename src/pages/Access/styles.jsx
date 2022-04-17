@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const SectionContainer = styled.section`
-  padding: 85px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   display: flex;
   background-color: ${(props) => props.theme.colors.lightGrayBackground};
 `;
 
 export const AccesContainer = styled.div`
   width: 41%;
-  padding: 15px 50px 0px 50px;
+  padding: 45px 50px 0px 50px;
 `;
 
 export const BannerContainer = styled.div`
