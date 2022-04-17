@@ -1,20 +1,28 @@
-import { types } from "../types/types";
-// const state = {
-//     name: 'jorge',
-//     logged: true
-// }
+import { types } from '../types/types';
 
-export const authReducer = (state = {}, action) => {
+const initialState = {
+  checking: true,
+};
+
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.login:
-      console.log("OLA ENTRE AL CASO LOGIN");
+    case types.authLogin:
+      console.log('desdel el reducer', action.payload);
       return {
+        ...state,
         ...action.payload,
-        logged: true,
+        checking: false,
       };
-    case types.logout:
+
+    case types.authCheckingFinish:
       return {
-        logged: false,
+        ...state,
+        checking: false,
+      };
+
+    case types.authLogout:
+      return {
+        checking: false,
       };
 
     default:

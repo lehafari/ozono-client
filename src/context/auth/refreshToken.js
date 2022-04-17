@@ -1,21 +1,16 @@
-import { endPoints } from "../../const/endPoints";
+import { endPoints } from '../../const/endPoints';
+import { fetchWithToken } from '../../helpers/fetch';
 
 export const refreshToken = async () => {
-  const rt = localStorage.getItem("rt");
+  const rt = localStorage.getItem('rt');
   if (!rt) return false;
 
-  const res = await fetch(endPoints.refresh_token, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${rt}`,
-    },
-  });
+  const res = await fetchWithToken(endPoints.refresh_token);
 
   if (res.status === 200) {
     const data = await res.json();
-    localStorage.setItem("at", data.access_token);
-    localStorage.setItem("rt", data.refresh_token);
+    localStorage.setItem('at', data.access_token);
+    localStorage.setItem('rt', data.refresh_token);
     return true;
   }
 

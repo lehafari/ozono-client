@@ -16,6 +16,7 @@ import menuLogoBlue from '../../../assets/images/profile-menu-blue.svg';
 import { AuthContext } from '../../../context/auth/authContext';
 import { types } from '../../../context/types/types';
 import { useNavigate } from 'react-router-dom';
+import { endPoints } from '../../../const/endPoints';
 
 export default function ProfileMenu() {
   const { dispatch } = useContext(AuthContext);
@@ -29,8 +30,16 @@ export default function ProfileMenu() {
     setAnchorEl(null);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     dispatch({ type: types.logout });
+    const logout = await fetch(endPoints.logout, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('at')}`,
+      },
+    });
+    console.log(logout);
     localStorage.removeItem('rt');
     localStorage.removeItem('at');
     navigate('/');
