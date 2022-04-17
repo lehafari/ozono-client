@@ -80,7 +80,9 @@ const login = (user) => ({
 });
 
 export const startLogout = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const resp = await fetchWithToken(endPoints.logout, {}, 'PUT');
+    const body = await resp.json();
     localStorage.clear();
     dispatch(logout());
   };
