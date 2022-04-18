@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { endPoints } from "../const/endPoints";
 import { types } from "../context/types/types";
 import {
@@ -25,6 +26,12 @@ export const startLogin = (userOrEmail, password) => {
       );
     } else {
       console.log(body.message);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: body.message,
+        confirmButtonText: "Ok",
+      });
     }
   };
 };
