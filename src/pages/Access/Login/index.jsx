@@ -1,8 +1,8 @@
-import { Formik, Form } from "formik";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import Input from "../../../components/common/Inputs";
-import { NavButton } from "../../../components/common/Navbar/styles";
+import { Formik, Form } from 'formik';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Input from '../../../components/common/Inputs';
+import { NavButton } from '../../../components/common/Navbar/styles';
 import {
   Container,
   Formulario,
@@ -10,35 +10,34 @@ import {
   Divider,
   BoxButton,
   BoxOptions,
-} from "./style";
-import InputButton from "../../../components/common/Buttons/FormButton";
-import * as Yup from "yup";
+} from './style';
+import InputButton from '../../../components/common/Buttons/FormButton';
+import * as Yup from 'yup';
 
-import { startLogin } from "../../../actions/auth";
+import { startLogin } from '../../../actions/auth';
 
 const Login = () => {
   const dispatch = useDispatch();
-  // const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   const initialValues = {
-    userOrEmail: "",
-    password: "",
+    userOrEmail: '',
+    password: '',
   };
 
   const validationSchema = Yup.object({
     userOrEmail: Yup.string()
-      .required("El usuario o Email es obligatorio")
-      .min(4, "El usuario o Email debe tener al menos 4 caracteres")
-      .max(50, "El usuario o Email debe tener máximo 50 caracteres"),
+      .required('El usuario o Email es obligatorio')
+      .min(4, 'El usuario o Email debe tener al menos 4 caracteres')
+      .max(50, 'El usuario o Email debe tener máximo 50 caracteres'),
     password: Yup.string()
-      .min(6, "la contraseña debe tener al menos 6 caracteres")
-      .max(20, "la contraseña debe tener máximo 20 caracteres")
-      .required("La contraseña es obligatoria"),
+      .min(6, 'la contraseña debe tener al menos 6 caracteres')
+      .max(20, 'la contraseña debe tener máximo 20 caracteres')
+      .required('La contraseña es obligatoria'),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
     dispatch(startLogin(values.userOrEmail, values.password));
-    navigate("/profile");
+    navigate('/profile');
   };
 
   return (
