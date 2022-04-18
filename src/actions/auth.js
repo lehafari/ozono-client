@@ -1,22 +1,22 @@
-import { endPoints } from '../const/endPoints';
-import { types } from '../context/types/types';
+import { endPoints } from "../const/endPoints";
+import { types } from "../context/types/types";
 import {
   fetchWithoutToken,
   fetchWithRefreshToken,
   fetchWithToken,
-} from '../helpers/fetch';
+} from "../helpers/fetch";
 
 export const startLogin = (userOrEmail, password) => {
   return async (dispatch) => {
     const resp = await fetchWithoutToken(
       endPoints.signin,
       { userOrEmail, password },
-      'POST'
+      "POST"
     );
     const body = await resp.json();
     if (resp.status === 200) {
-      localStorage.setItem('at', body.access_token);
-      localStorage.setItem('rt', body.refresh_token);
+      localStorage.setItem("at", body.access_token);
+      localStorage.setItem("rt", body.refresh_token);
       const user = await getUser();
       dispatch(
         login({
@@ -24,21 +24,22 @@ export const startLogin = (userOrEmail, password) => {
         })
       );
     } else {
-      console.log(body.error);
+      console.log("status: ", resp.status);
+      console.log("Soy el else: ", body);
     }
   };
 };
 
 export const startRegister = (value) => {
   return async (dispatch) => {
-    const resp = await fetchWithoutToken(endPoints.signup, value, 'PUT');
+    const resp = await fetchWithoutToken(endPoints.signup, value, "PUT");
     const body = await resp.json();
     console.log(`este es el status ${resp.status}`);
     if (!resp.status === 201) {
       return console.log(body.error);
     }
-    localStorage.setItem('at', body.access_token);
-    localStorage.setItem('rt', body.refresh_token);
+    localStorage.setItem("at", body.access_token);
+    localStorage.setItem("rt", body.refresh_token);
     const user = await getUser();
     dispatch(
       login({
@@ -50,7 +51,7 @@ export const startRegister = (value) => {
 
 export const startChecking = () => {
   return async (dispatch) => {
-    if (!localStorage.getItem('at') && !localStorage.getItem('rt')) {
+    if (!localStorage.getItem("at") && !localStorage.getItem("rt")) {
       return dispatch(checkingFinish());
     }
     const user = await getUser();
@@ -60,8 +61,8 @@ export const startChecking = () => {
       if (!refresh.status === 200) {
         return dispatch(checkingFinish());
       }
-      localStorage.setItem('at', body.access_token);
-      localStorage.setItem('rt', body.refresh_token);
+      localStorage.setItem("at", body.access_token);
+      localStorage.setItem("rt", body.refresh_token);
       const user = await getUser();
       if (user.statusCode === 401) {
         return dispatch(checkingFinish());
@@ -81,7 +82,7 @@ const login = (user) => ({
 
 export const startLogout = () => {
   return async (dispatch) => {
-    const resp = await fetchWithToken(endPoints.logout, {}, 'PUT');
+    const resp = await fetchWithToken(endPoints.logout, {}, "PUT");
     const body = await resp.json();
     localStorage.clear();
     dispatch(logout());

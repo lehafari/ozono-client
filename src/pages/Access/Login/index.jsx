@@ -2,7 +2,8 @@ import { Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Input from "../../../components/common/Inputs";
-import { NavButton } from "../../../components/common/Navbar/styles";
+import * as Yup from "yup";
+
 import {
   Container,
   Formulario,
@@ -10,9 +11,9 @@ import {
   Divider,
   BoxButton,
   BoxOptions,
+  NavButtonContainer,
 } from "./style";
 import InputButton from "../../../components/common/Buttons/FormButton";
-import * as Yup from "yup";
 
 import { startLogin } from "../../../actions/auth";
 
@@ -70,13 +71,21 @@ const Login = () => {
                 <InputButton text="Iniciar Sesión" width="70%" />
               </BoxButton>
               <BoxOptions>
-                <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                <NavButtonContainer
+                  color="#797979"
+                  fontSize="1.2rem"
+                  fontWeight="300"
+                >
                   <Link to="/access/register">Registrate</Link>
-                </NavButton>
+                </NavButtonContainer>
                 <Divider />
-                <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                <NavButtonContainer
+                  color="#797979"
+                  fontSize="1.2rem"
+                  fontWeight="300"
+                >
                   <Link to="*">Olvidé mi contraseña</Link>
-                </NavButton>
+                </NavButtonContainer>
               </BoxOptions>
             </Box>
           </Formulario>
