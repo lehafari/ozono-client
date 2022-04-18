@@ -1,17 +1,9 @@
-import { Formik, useFormik, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Input from '../../../components/common/Inputs';
-import {
-  Box,
-  BoxButton,
-  BoxOptions,
-  Divider,
-  Formulario,
-} from '../Login/style';
+import { Box, BoxButton, BoxOptions, Formulario } from '../Login/style';
 import { ContainerRegistro } from './styles';
-import { endPoints } from '../../../const/endPoints';
 import InputButton from '../../../components/common/Buttons/FormButton';
-import { types } from '../../../context/types/types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startRegister } from '../../../actions/auth';
@@ -51,12 +43,17 @@ const Register = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    try {
-      dispatch(startRegister(values));
-      navigate('/profile');
-    } catch (error) {
-      console.log(error);
-    }
+    const { firstName, lastName, username, email, password } = values;
+    const user = {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      username: username.trim(),
+      email: email.trim(),
+      password,
+    };
+
+    dispatch(startRegister(user));
+    navigate('/profile');
     setSubmitting(false);
   };
 

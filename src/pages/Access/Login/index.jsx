@@ -2,6 +2,8 @@ import { Formik, Form } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Input from '../../../components/common/Inputs';
+import * as Yup from 'yup';
+
 import {
   Container,
   Formulario,
@@ -12,7 +14,6 @@ import {
   NavButtonContainer,
 } from './style';
 import InputButton from '../../../components/common/Buttons/FormButton';
-import * as Yup from 'yup';
 
 import { startLogin } from '../../../actions/auth';
 
@@ -36,7 +37,6 @@ const Login = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    //trim para quitar espacios en blanco
     const { userOrEmail, password } = values;
     const user = {
       userOrEmail: userOrEmail.trim(),
@@ -44,6 +44,7 @@ const Login = () => {
     };
     dispatch(startLogin(user.userOrEmail, user.password));
     navigate('/profile');
+    setSubmitting(false);
   };
 
   return (
