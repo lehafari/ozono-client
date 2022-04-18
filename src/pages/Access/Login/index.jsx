@@ -1,6 +1,6 @@
 import { Formik, Form } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Input from '../../../components/common/Inputs';
 import * as Yup from 'yup';
 
@@ -18,6 +18,7 @@ import InputButton from '../../../components/common/Buttons/FormButton';
 import { startLogin } from '../../../actions/auth';
 
 const Login = () => {
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialValues = {
@@ -36,15 +37,15 @@ const Login = () => {
       .required('La contraseña es obligatoria'),
   });
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const { userOrEmail, password } = values;
     const user = {
       userOrEmail: userOrEmail.trim(),
       password,
     };
     dispatch(startLogin(user.userOrEmail, user.password));
-    navigate('/profile');
-    setSubmitting(false);
+    !!user ? navigate('/profile') : navigate('/access/login');
+    resetForm();
   };
 
   return (

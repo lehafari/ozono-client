@@ -43,16 +43,7 @@ const Register = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    const { firstName, lastName, username, email, password } = values;
-    const user = {
-      firstName: firstName.trim(),
-      lastName: lastName.trim(),
-      username: username.trim(),
-      email: email.trim(),
-      password,
-    };
-
-    dispatch(startRegister(user));
+    dispatch(startRegister(values));
     navigate('/profile');
     setSubmitting(false);
   };
