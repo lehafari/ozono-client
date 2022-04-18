@@ -15,7 +15,7 @@ const Register = lazy(() => import("../pages/Access/Register"));
 
 const AppRouter = () => {
   const dispatch = useDispatch();
-  const { checking, user } = useSelector((state) => state.auth);
+  const { checking } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(startChecking());
@@ -43,7 +43,6 @@ const AppRouter = () => {
             <Route path="register" element={<Register />} />
           </Route>
           <Route path="/*" element={<DashboardRoutes />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
