@@ -15,7 +15,7 @@ import { types } from '../../../context/types/types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startRegister } from '../../../actions/auth';
-import { NavButton } from '../../../components/common/Navbar/styles';
+import { NavButtonContainer } from '../Login/style';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -133,9 +133,13 @@ const Register = () => {
                 <InputButton text="Registrarse" width="70%" />
               </BoxButton>
               <BoxOptions>
-                <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                <NavButtonContainer
+                  color="#797979"
+                  fontSize="1.2rem"
+                  fontWeight="300"
+                >
                   <Link to="/access/login">Iniciar sesion</Link>
-                </NavButton>
+                </NavButtonContainer>
               </BoxOptions>
             </Box>
           </Formulario>

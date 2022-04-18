@@ -69,13 +69,21 @@ const Login = () => {
                 <InputButton text="Iniciar Sesión" width="70%" />
               </BoxButton>
               <BoxOptions>
-                <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                <NavButtonContainer
+                  color="#797979"
+                  fontSize="1.2rem"
+                  fontWeight="300"
+                >
                   <Link to="/access/register">Registrate</Link>
-                </NavButton>
+                </NavButtonContainer>
                 <Divider />
-                <NavButton color="#797979" fontSize="1.2rem" fontWeight="300">
+                <NavButtonContainer
+                  color="#797979"
+                  fontSize="1.2rem"
+                  fontWeight="300"
+                >
                   <Link to="*">Olvidé mi contraseña</Link>
-                </NavButton>
+                </NavButtonContainer>
               </BoxOptions>
             </Box>
           </Formulario>
