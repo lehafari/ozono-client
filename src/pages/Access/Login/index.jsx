@@ -39,6 +39,7 @@ const Login = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     dispatch(startLogin(values.userOrEmail, values.password));
     navigate("/profile");
+    setSubmitting(false);
   };
 
   return (

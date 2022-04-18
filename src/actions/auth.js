@@ -41,8 +41,14 @@ export const startRegister = (value) => {
     const resp = await fetchWithoutToken(endPoints.signup, value, "PUT");
     const body = await resp.json();
     console.log(`este es el status ${resp.status}`);
-    if (!resp.status === 201) {
-      return console.log(body.error);
+    if (resp.status !== 201) {
+      console.log("entre al if", body.message);
+      return Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: body.message,
+        confirmButtonText: "Ok",
+      });
     }
     localStorage.setItem("at", body.access_token);
     localStorage.setItem("rt", body.refresh_token);

@@ -1,6 +1,6 @@
-import { useFormikContext } from 'formik';
-import React from 'react';
-import { ErrorMessage, InputContainer, InputItem } from './styles';
+import { useFormikContext } from "formik";
+import React from "react";
+import { ErrorMessage, InputContainer, InputItem } from "./styles";
 
 const Input = ({
   id,
@@ -14,9 +14,9 @@ const Input = ({
 }) => {
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
-  const value = values[name] ? values[name] : '';
-  const error = errors[name] ? errors[name] : '';
-  const touchedInput = touched[name] ? touched[name] : '';
+  const value = values[name] ? values[name] : "";
+  const error = errors[name] ? errors[name] : "";
+  const touchedInput = touched[name] ? touched[name] : "";
   return (
     <InputContainer>
       <InputItem

@@ -43,12 +43,8 @@ const Register = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    try {
-      dispatch(startRegister(values));
-      navigate("/profile");
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(startRegister(values));
+    navigate("/profile");
     setSubmitting(false);
   };
 
