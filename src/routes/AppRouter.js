@@ -8,6 +8,7 @@ import Access from "../pages/Access";
 import { startChecking } from "../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import DashboardRoutes from "./DashboardRoutes";
+import { PublicRoute } from "./PublicRoute";
 
 const Login = lazy(() => import("../pages/Access/Login"));
 const Register = lazy(() => import("../pages/Access/Register"));
@@ -30,11 +31,18 @@ const AppRouter = () => {
 
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path="/*" element={<DashboardRoutes />} />
-          <Route path="/access" element={<Access />}>
+          <Route
+            path="/access"
+            element={
+              <PublicRoute>
+                <Access />
+              </PublicRoute>
+            }
+          >
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Route>
+          <Route path="/*" element={<DashboardRoutes />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
