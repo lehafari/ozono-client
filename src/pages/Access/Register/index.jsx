@@ -5,11 +5,12 @@ import { Box, BoxButton, BoxOptions, Formulario } from "../Login/style";
 import { ContainerRegistro } from "./styles";
 import InputButton from "../../../components/common/Buttons/FormButton";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startRegister } from "../../../actions/auth";
 import { NavButtonContainer } from "../Login/style";
 
 const Register = () => {
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,16 +37,15 @@ const Register = () => {
       .min(6, "la contraseña debe tener al menos 6 caracteres")
       .max(20, "la contraseña debe tener máximo 20 caracteres")
       .required("La contraseña es obligatoria"),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref("password")],
-      "Las contraseñas no coinciden"
-    ),
+    confirmPassword: Yup.string()
+      .required("Confirmar la contraseña es obligatorio")
+      .oneOf([Yup.ref("password")], "Las contraseñas no coinciden"),
   });
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     dispatch(startRegister(values));
-    navigate("/profile");
-    setSubmitting(false);
+    !!user ? navigate("/profile") : navigate("/access/register");
+    resetForm();
   };
 
   return (
