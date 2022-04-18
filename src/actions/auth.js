@@ -1,4 +1,6 @@
 import Swal from "sweetalert2";
+import PopupError from "../components/common/Popup/PopupError";
+import PopupOk from "../components/common/Popup/PopupOk";
 import { endPoints } from "../const/endPoints";
 import { types } from "../context/types/types";
 import {
@@ -19,19 +21,20 @@ export const startLogin = (userOrEmail, password) => {
       localStorage.setItem("at", body.access_token);
       localStorage.setItem("rt", body.refresh_token);
       const user = await getUser();
-      dispatch(
-        login({
-          user,
-        })
-      );
+      //ejecutamos el dispatch 1.5s despues de que salga el popup
+      setTimeout(() => {
+        dispatch(
+          login({
+            user,
+          })
+        );
+      }, 1500);
+      // Popup de inicio exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
+      PopupOk("22rem", "success", "Inicio de sesion exitoso");
     } else {
       console.log(body.message);
-      Swal.fire({
-        icon: "error",
-        title: "Error!",
-        text: body.message,
-        confirmButtonText: "Ok",
-      });
+
+      PopupError(body.message);
     }
   };
 };
@@ -40,24 +43,24 @@ export const startRegister = (value) => {
   return async (dispatch) => {
     const resp = await fetchWithoutToken(endPoints.signup, value, "PUT");
     const body = await resp.json();
-    console.log(`este es el status ${resp.status}`);
+    console.log("Este es el status: ", resp.status);
     if (resp.status !== 201) {
       console.log("entre al if", body.message);
-      return Swal.fire({
-        icon: "error",
-        title: "Error!",
-        text: body.message,
-        confirmButtonText: "Ok",
-      });
+      return PopupError(body.message);
     }
     localStorage.setItem("at", body.access_token);
     localStorage.setItem("rt", body.refresh_token);
     const user = await getUser();
-    dispatch(
-      login({
-        user,
-      })
-    );
+    //ejecutamos el dispatch 1.5s despues de que salga el popup
+    setTimeout(() => {
+      dispatch(
+        login({
+          user,
+        })
+      );
+    }, 1500);
+    // Popup de registro exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
+    PopupOk("28rem", "success", "Se registro con exito");
   };
 };
 
@@ -97,7 +100,12 @@ export const startLogout = () => {
     const resp = await fetchWithToken(endPoints.logout, {}, "PUT");
     const body = await resp.json();
     localStorage.clear();
-    dispatch(logout());
+    //Ejecutamo el dispatch 1.5s despues de que salga el popup
+    setTimeout(() => {
+      dispatch(logout());
+    }, 1500);
+    // Popup de cierre de sesion exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
+    PopupOk("28rem", "info", "Sesion cerrada con exito");
   };
 };
 
