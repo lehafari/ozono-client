@@ -24,8 +24,7 @@ export const startLogin = (userOrEmail, password) => {
         })
       );
     } else {
-      console.log("status: ", resp.status);
-      console.log("Soy el else: ", body);
+      console.log(body.message);
     }
   };
 };
