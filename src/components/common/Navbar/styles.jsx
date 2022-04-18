@@ -103,4 +103,16 @@ export const MobileMenuContainer = styled.div`
   width: 65%;
 `;
 
-export const AvatarContainer = styled.div``;
+export const AvatarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 0.8rem;
+    font-family: 'Lato', sans-serif;
+    color: ${(props) => props.theme.colors.textBlue};
+  }
+`;
