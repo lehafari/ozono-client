@@ -60,7 +60,7 @@ export const startRegister = (value) => {
       );
     }, 1500);
     // Popup de registro exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
-    PopupOk("28rem", "success", "Se registro con exito");
+    PopupOk("28rem", "success", "Se registró con exito");
   };
 };
 
