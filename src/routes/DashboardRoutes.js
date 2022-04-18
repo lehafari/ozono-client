@@ -18,6 +18,7 @@ const DashboardRoutes = () => {
     <>
       <Navbar />
       <Routes>
+        <Route path="   "></Route>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contac />} />

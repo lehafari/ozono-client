@@ -43,7 +43,6 @@ const AppRouter = () => {
             <Route path="register" element={<Register />} />
           </Route>
           <Route path="/*" element={<DashboardRoutes />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
