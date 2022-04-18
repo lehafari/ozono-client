@@ -12,9 +12,6 @@ import {
 } from './styles';
 import cenaozLogo from '../../../assets/images/cenaoz-logo.webp';
 import profileImage from '../../../assets/images/profile-image.svg';
-// import { useContext, useEffect, useState } from "react";
-// import { AuthContext } from "../../../auth/authContext";
-// import { types } from "../../../types/types";
 import { Link, useNavigate } from 'react-router-dom';
 import MobileMenu from '../MobileMenu';
 import Resize from '../../../helpers/Resize';
