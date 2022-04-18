@@ -1,17 +1,9 @@
-import { Formik, useFormik, Form } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Input from "../../../components/common/Inputs";
-import {
-  Box,
-  BoxButton,
-  BoxOptions,
-  Divider,
-  Formulario,
-} from "../Login/style";
+import { Box, BoxButton, BoxOptions, Formulario } from "../Login/style";
 import { ContainerRegistro } from "./styles";
-import { endPoints } from "../../../const/endPoints";
 import InputButton from "../../../components/common/Buttons/FormButton";
-import { types } from "../../../context/types/types";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { startRegister } from "../../../actions/auth";
