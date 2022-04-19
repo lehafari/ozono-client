@@ -42,7 +42,6 @@ export const startRegister = (value) => {
     const body = await resp.json();
     console.log(`este es el status ${resp.status}`);
     if (resp.status !== 201) {
-      console.log('entre al if', body.message);
       return Swal.fire({
         icon: 'error',
         title: 'Error!',

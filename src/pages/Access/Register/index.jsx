@@ -43,6 +43,12 @@ const Register = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
+    values.firstName = values.firstName.trim();
+    values.lastName = values.lastName.trim();
+    values.username = values.username.trim();
+    values.email = values.email.trim();
+    values.password = values.password.trim();
+    values.confirmPassword = values.confirmPassword.trim();
     dispatch(startRegister(values));
     navigate('/profile');
     setSubmitting(false);
