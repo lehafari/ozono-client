@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import PopupError from '../components/common/Popup/PopupError';
 import PopupOk from '../components/common/Popup/PopupOk';
 import { endPoints } from '../const/endPoints';
@@ -21,7 +21,6 @@ export const startLogin = (userOrEmail, password) => {
       localStorage.setItem('at', body.access_token);
       localStorage.setItem('rt', body.refresh_token);
       const user = await getUser();
-      //ejecutamos el dispatch 1.5s despues de que salga el popup
       setTimeout(() => {
         dispatch(
           login({
@@ -35,23 +34,29 @@ export const startLogin = (userOrEmail, password) => {
       console.log(body.message);
       PopupError(body.message);
     }
+  };
+};
+
+export const startRegister = (value) => {
+  return async (dispatch) => {
+    const resp = await fetchWithoutToken(endPoints.signup, value, 'PUT');
+    const body = await resp.json();
+    console.log(`este es el status ${resp.status}`);
     if (resp.status !== 201) {
-      console.log('entre al if', body.message);
       return PopupError(body.message);
     }
     localStorage.setItem('at', body.access_token);
     localStorage.setItem('rt', body.refresh_token);
     const user = await getUser();
-    //ejecutamos el dispatch 1.5s despues de que salga el popup
+    PopupOk('28rem', 'success', 'Se registró con exito');
     setTimeout(() => {
       dispatch(
         login({
           user,
         })
       );
+      useNavigate().push('/profile');
     }, 1500);
-    // Popup de registro exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
-    PopupOk('28rem', 'success', 'Se registró con exito');
   };
 };
 
@@ -88,15 +93,13 @@ const login = (user) => ({
 
 export const startLogout = () => {
   return async (dispatch) => {
-    const resp = await fetchWithToken(endPoints.logout, {}, 'PUT');
-    const body = await resp.json();
+    await fetchWithToken(endPoints.logout, {}, 'PUT');
     localStorage.clear();
     //Ejecutamo el dispatch 1.5s despues de que salga el popup
-    setTimeout(() => {
-      dispatch(logout());
-    }, 1500);
+
     // Popup de cierre de sesion exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
     PopupOk('28rem', 'info', 'Sesion cerrada con exito');
+    setTimeout(() => dispatch(logout()), 1500);
   };
 };
 

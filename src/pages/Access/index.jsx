@@ -1,11 +1,11 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import {
   AccesContainer,
   BannerContainer,
   Card,
   SectionContainer,
-} from "./styles";
+} from './styles';
 
 const Access = () => {
   return (
@@ -15,8 +15,8 @@ const Access = () => {
       </AccesContainer>
       <BannerContainer>
         <Card>
-          <h5>"Al pan pan, al vino vino, y en tu culo mi caballito blanco."</h5>
-          <h6>-El nieto de pompeyo valera</h6>
+          <h5>"Moral y luces son nuestras primeras necesidades"</h5>
+          <h6>-Tu padre</h6>
         </Card>
       </BannerContainer>
     </SectionContainer>

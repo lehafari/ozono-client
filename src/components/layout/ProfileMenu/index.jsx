@@ -1,22 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
-import { useContext } from 'react';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
 import menuLogo from '../../../assets/images/profile-menu.svg';
 import menuLogoBlue from '../../../assets/images/profile-menu-blue.svg';
-import { AuthContext } from '../../../context/auth/authContext';
-import { types } from '../../../context/types/types';
 import { useNavigate } from 'react-router-dom';
-import { endPoints } from '../../../const/endPoints';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../../actions/auth';
 
@@ -34,8 +25,9 @@ export default function ProfileMenu() {
 
   const handleLogout = async () => {
     dispatch(startLogout());
-    navigate('/');
-    console.log('logout');
+    setTimeout(() => {
+      navigate('/');
+    }, 2100);
     handleClose();
   };
   return (

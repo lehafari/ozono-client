@@ -10,7 +10,6 @@ import {
 } from './styles';
 
 import courseImage from '../../../assets/images/course-image.png';
-import PersonIcon from '@mui/icons-material/Person';
 import { Button } from '../../common/Buttons/MainButton';
 import { Divider } from '@mui/material';
 

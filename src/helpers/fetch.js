@@ -1,3 +1,4 @@
+// const base_url = 'https://sleepy-island-77044.herokuapp.com';
 const base_url = 'http://localhost:3333';
 
 export const fetchWithoutToken = (endpoint, body = {}, method = 'GET') => {

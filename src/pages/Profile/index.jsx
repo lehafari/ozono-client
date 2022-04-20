@@ -1,4 +1,4 @@
-import ProfileMenu from "../../components/layout/ProfileMenu";
+import ProfileMenu from '../../components/layout/ProfileMenu';
 import {
   MyCourses,
   ProfileContainer,
@@ -6,17 +6,18 @@ import {
   ProfileDashboard,
   ProfileInfo,
   ProfileInfoText,
-} from "./styles";
-import profileImage from "../../assets/images/profile-image.svg";
-import { MyCourseItem } from "../../components/layout/MyCourseItem";
-import { MenuBar } from "../../components/common/MenuBar";
-import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
-import { useSelector } from "react-redux";
-import Spinner from "../../components/common/Spinner";
+} from './styles';
+import profileImage from '../../assets/images/profile-image.svg';
+import { MyCourseItem } from '../../components/layout/MyCourseItem';
+import { MenuBar } from '../../components/common/MenuBar';
+import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
+import { useSelector } from 'react-redux';
+import Spinner from '../../components/common/Spinner';
+import Resize from '../../helpers/Resize';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-
+  const width = Resize();
   if (!user) {
     return <Spinner />;
   }

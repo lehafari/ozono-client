@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SpaceContainer = styled.div`
-  height: 87px;
+  height: 85px;
   margin-top: -2px;
   background: ${(props) => props.theme.gradient.blueGradientMain};
   background: -moz-linear-gradient(
@@ -22,4 +22,8 @@ export const SpaceContainer = styled.div`
     ${(props) => props.theme.gradient.blueGradient[1]},
     ${(props) => props.theme.gradient.blueGradient[2]}
   );
+
+  @media only screen and (max-width: 920px) {
+    height: 80px;
+  }
 `;

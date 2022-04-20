@@ -9,10 +9,7 @@ const GlobalStyle = createGlobalStyle`
     src: url('./assets/fonts/Helvetica.ttc') format('truetype');
   }
 
-  @font-face {
-    font-family: 'PlantagenetCherokee';
-    src: url('./assets/fonts/plantc.ttf') format('truetype');
-  }
+  
 
   body {
     width: 100%;
@@ -35,5 +32,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `;
+
+// @font-face {
+//   font-family: 'PlantagenetCherokee';
+//   src: url('./assets/fonts/plantc.ttf') format('truetype');
+// }
 
 export default StyledGlobal;

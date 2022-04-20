@@ -7,7 +7,7 @@ import {
   HeaderContainer,
 } from './styles';
 import logo from '../../../assets/images/gobierno-bolivariano-logo.webp';
-import logo2 from '../../../assets/images/200años.webp';
+import logo2 from '../../../assets/images/200anos.webp';
 
 export const Header = () => {
   return (

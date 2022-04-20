@@ -50,8 +50,6 @@ const Register = () => {
     values.password = values.password.trim();
     values.confirmPassword = values.confirmPassword.trim();
     dispatch(startRegister(values));
-    navigate('/profile');
-    setSubmitting(false);
   };
 
   return (
@@ -70,7 +68,7 @@ const Register = () => {
               type="text"
               placeholder="Nombre"
               width={'65%'}
-              heigth={'40px'}
+              heigth={'50px'}
               margin={'10px 0px'}
             />
             <Input
@@ -79,7 +77,7 @@ const Register = () => {
               type="text"
               placeholder="Apellido"
               width={'65%'}
-              heigth={'40px'}
+              heigth={'50px'}
               margin={'10px 0px'}
             ></Input>
 
@@ -89,16 +87,16 @@ const Register = () => {
               type="text"
               placeholder="Usuario"
               width={'65%'}
-              heigth={'40px'}
+              heigth={'50px'}
               margin={'10px 0px'}
             />
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="email"
+              placeholder="Email"
               width={'65%'}
-              heigth={'40px'}
+              heigth={'50px'}
               margin={'10px 0px'}
             ></Input>
 
@@ -108,7 +106,7 @@ const Register = () => {
               type="password"
               placeholder="Contraseña"
               width={'65%'}
-              heigth={'40px'}
+              heigth={'50px'}
               margin={'10px 0px'}
             ></Input>
 
@@ -118,7 +116,7 @@ const Register = () => {
               type="password"
               placeholder="Confirmar Contraseña"
               width={'65%'}
-              heigth={'40px'}
+              heigth={'50px'}
               margin={'10px 0px'}
             ></Input>
 

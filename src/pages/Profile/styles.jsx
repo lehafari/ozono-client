@@ -78,6 +78,11 @@ export const ProfileCourseList = styled.div`
   align-items: center;
   height: fit-content;
 
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    margin: 0;
+    padding: 0;
+  }
+
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     padding: 0;
     flex-direction: column;

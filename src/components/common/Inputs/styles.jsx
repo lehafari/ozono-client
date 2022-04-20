@@ -16,7 +16,7 @@ export const InputContainer = styled.div`
 export const InputItem = styled.input`
   padding: ${(props) => props.padding || '0px 25px'};
   border: none;
-  border-radius: 20px;
+  border-radius: 45px;
   width: ${(props) => props.width || '60%'};
   height: ${(props) => props.heigth || '50px'};
   margin: ${(props) => props.margin || '40px 0px 5px 0px'};
