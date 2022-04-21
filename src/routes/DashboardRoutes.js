@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { Navbar } from "../components/common/Navbar";
 import CourseRoutes from "./CourseRoutes";
+import Admin from "../pages/Admin";
 
 const Contac = lazy(() => import("../pages/Contac/Contac"));
 

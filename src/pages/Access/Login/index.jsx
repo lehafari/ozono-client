@@ -1,8 +1,8 @@
-import { Formik, Form } from 'formik';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Input from '../../../components/common/Inputs';
-import * as Yup from 'yup';
+import { Formik, Form } from "formik";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Input from "../../../components/common/Inputs";
+import * as Yup from "yup";
 
 import {
   Container,
@@ -12,39 +12,39 @@ import {
   BoxButton,
   BoxOptions,
   NavButtonContainer,
-} from './style';
-import InputButton from '../../../components/common/Buttons/FormButton';
+} from "./style";
+import InputButton from "../../../components/common/Buttons/FormButton";
 
-import { startLogin } from '../../../actions/auth';
+import { startLogin } from "../../../actions/auth";
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialValues = {
-    userOrEmail: '',
-    password: '',
+    userOrEmail: "",
+    password: "",
   };
 
   const validationSchema = Yup.object({
     userOrEmail: Yup.string()
-      .required('El usuario o Email es obligatorio')
-      .min(4, 'El usuario o Email debe tener al menos 4 caracteres')
-      .max(50, 'El usuario o Email debe tener máximo 50 caracteres'),
+      .required("El usuario o Email es obligatorio")
+      .min(4, "El usuario o Email debe tener al menos 4 caracteres")
+      .max(50, "El usuario o Email debe tener máximo 50 caracteres"),
     password: Yup.string()
-      .min(6, 'la contraseña debe tener al menos 6 caracteres')
-      .max(20, 'la contraseña debe tener máximo 20 caracteres')
-      .required('La contraseña es obligatoria'),
+      .min(6, "la contraseña debe tener al menos 6 caracteres")
+      .max(20, "la contraseña debe tener máximo 20 caracteres")
+      .required("La contraseña es obligatoria"),
   });
 
   const handleSubmit = async (values, { resetForm }) => {
     const { userOrEmail, password } = values;
-    const user = {
+    const userData = {
       userOrEmail: userOrEmail.trim(),
       password,
     };
-    dispatch(startLogin(user.userOrEmail, user.password));
-    !!user ? navigate('/profile') : navigate('/access/login');
+    dispatch(startLogin(userData.userOrEmail, userData.password));
+    !!user ? navigate("/profile") : navigate("/access/login");
     resetForm();
   };
 

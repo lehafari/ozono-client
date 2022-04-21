@@ -1,13 +1,13 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const StyledGlobal = () => <GlobalStyle />;
 
 const GlobalStyle = createGlobalStyle`
 
-  @font-face {
+  /* @font-face {
     font-family: 'Helvetica';
     src: url('./assets/fonts/Helvetica.ttc') format('truetype');
-  }
+  } */
 
   
 
