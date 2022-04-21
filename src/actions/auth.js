@@ -78,9 +78,12 @@ export const startChecking = () => {
       if (user.statusCode === 401) {
         return dispatch(checkingFinish());
       }
-      dispatch(login({ user }));
+      if (!user.statusCode) {
+        console.log('entro');
+        return dispatch(login({ user }));
+      }
     }
-    dispatch(login({ user }));
+    return dispatch(login({ user }));
   };
 };
 
