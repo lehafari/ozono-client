@@ -1,7 +1,7 @@
 import { Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Input from "../../../components/common/Inputs";
+import Input from "../../../components/common/Forms/Inputs";
 import * as Yup from "yup";
 
 import {

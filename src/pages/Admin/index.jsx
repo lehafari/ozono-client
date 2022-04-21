@@ -221,11 +221,9 @@ export default function Admin() {
           )}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, background: "#f8f8f8" }}>
         <DrawerHeader />
-        <OutletBox>
-          <Outlet />
-        </OutletBox>
+        <Outlet />
       </Box>
     </Box>
   );

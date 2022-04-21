@@ -1,6 +1,6 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import Input from "../../../components/common/Inputs";
+import Input from "../../../components/common/Forms/Inputs";
 import { Box, BoxButton, BoxOptions, Formulario } from "../Login/style";
 import { ContainerRegistro } from "./styles";
 import InputButton from "../../../components/common/Buttons/FormButton";

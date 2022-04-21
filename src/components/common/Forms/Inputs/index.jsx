@@ -1,5 +1,4 @@
 import { useFormikContext } from "formik";
-import React from "react";
 import { ErrorMessage, InputContainer, InputItem } from "./styles";
 
 const Input = ({

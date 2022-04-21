@@ -4,6 +4,7 @@ import Admin from "../pages/Admin";
 import Advertisements from "../pages/Admin/advertisements";
 import Blogs from "../pages/Admin/Blogs";
 import Courses from "../pages/Admin/Courses";
+import CreateCourse from "../pages/Admin/Courses/CreateCourse";
 import Emails from "../pages/Admin/Emails";
 import Media from "../pages/Admin/Media";
 import News from "../pages/Admin/News";
@@ -24,7 +25,8 @@ const AdminRoutes = () => {
             </PrivateRoute>
           }
         >
-          <Route path="course" element={<Courses />} />
+          <Route path="course" element={<Courses />}></Route>
+          <Route path="create-course" element={<CreateCourse />} />
           <Route path="users" element={<Users />} />
           <Route path="payments" element={<Payments />} />
           <Route path="stats" element={<Stats />} />
