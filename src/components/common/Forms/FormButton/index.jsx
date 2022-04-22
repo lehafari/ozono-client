@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import { CgSpinnerTwoAlt } from "react-icons/cg";
-import { MainButton } from "../MainButton/styles";
+import { MainButton } from "../../Buttons/MainButton/styles";
 
 const InputButton = (props) => {
   const { errors, isSubmitting } = useFormikContext();

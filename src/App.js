@@ -1,9 +1,13 @@
-import { ThemeProvider } from 'styled-components';
-import AppRouter from './routes/AppRouter';
-import StyledGlobal from './globalStyles';
-import { colors, breakpoints, gradient } from './const';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { ThemeProvider } from "styled-components";
+import AppRouter from "./routes/AppRouter";
+import StyledGlobal from "./globalStyles";
+import { colors, breakpoints, gradient } from "./const";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css"; //icons
 
 const theme = {
   colors,

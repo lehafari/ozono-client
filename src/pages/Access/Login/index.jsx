@@ -1,7 +1,6 @@
 import { Formik, Form } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Input from "../../../components/common/Forms/Inputs";
 import * as Yup from "yup";
 
 import {
@@ -13,8 +12,9 @@ import {
   BoxOptions,
   NavButtonContainer,
 } from "./style";
-import InputButton from "../../../components/common/Buttons/FormButton";
 
+import Input from "../../../components/common/Forms/Inputs";
+import InputButton from "../../../components/common/Forms/FormButton";
 import { startLogin } from "../../../actions/auth";
 
 const Login = () => {
