@@ -136,3 +136,13 @@ export const CourseButton = styled.button`
     background-color: ${(props) => props.theme.colors.darkBlue};
   }
 `;
+
+export const Formulario = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & input {
+    margin-top: 0.5rem;
+  }
+`;

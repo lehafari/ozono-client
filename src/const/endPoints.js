@@ -9,6 +9,12 @@ export const endPoints = {
   get_user: `/users/me`,
 
   //courses
+  create_course: `/courses/create`,
+
   get_all_courses: `/courses/all`,
+  get_courses_by_status: `/courses/status`,
   get_students: `/courses/users`,
+  get_number_of_students: `/courses/users/count`,
+
+  delete_course: `/courses/delete`,
 };

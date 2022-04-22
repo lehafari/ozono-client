@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { MainButton } from "./styles";
+import { useNavigate } from 'react-router-dom';
+import { MainButton } from './styles';
 
 export const Button = (props, { children }) => {
   const navigate = useNavigate();

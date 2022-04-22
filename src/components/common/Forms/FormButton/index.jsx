@@ -1,6 +1,6 @@
 // import { useFormikContext } from "formik";
 
-import { MainButton } from "../../Buttons/MainButton/styles";
+import { MainButton } from '../../Buttons/MainButton/styles';
 
 const InputButton = (props) => {
   // const { errors, isSubmitting } = useFormikContext();
@@ -10,6 +10,7 @@ const InputButton = (props) => {
       // Atributos input
       type="submit"
       //Acciones/Funciones
+      onClick={props.onClick}
       // Estilos
       width={props.width}
       padding={props.padding}
@@ -23,7 +24,7 @@ const InputButton = (props) => {
       backgroundColor={props.backgroundColor}
       alignSelf={props.alignSelf}
     >
-      {props.text}
+      {props.text} {props.icon}
     </MainButton>
   );
 };

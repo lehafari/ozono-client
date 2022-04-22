@@ -11,18 +11,11 @@ import { useEffect, useState } from 'react';
 import { endPoints } from '../../../const/endPoints';
 import { fetchWithToken } from '../../../helpers/fetch';
 import { AdminCourseItem } from './CourseItem';
+import { useSelector } from 'react-redux';
+import Spinner from '../../../components/common/Spinner';
 
 const Courses = () => {
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    const getCourses = async () => {
-      const req = await fetchWithToken(endPoints.get_all_courses);
-      const body = await req.json();
-      setCourses(body);
-    };
-    getCourses();
-  }, []);
+  const { courses, loading } = useSelector((state) => state.courses);
 
   return (
     <Container>
@@ -33,19 +26,23 @@ const Courses = () => {
         </ButtonContainer>
       </ButtonsContainer>
 
-      <CardContainer>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-evenly',
-            flexWrap: 'wrap',
-          }}
-        >
-          {courses.map((data) => (
-            <AdminCourseItem key={data.id} {...data} />
-          ))}
-        </Box>
-      </CardContainer>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <CardContainer>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              flexWrap: 'wrap',
+            }}
+          >
+            {courses.map((data) => (
+              <AdminCourseItem key={data.id} {...data} />
+            ))}
+          </Box>
+        </CardContainer>
+      )}
     </Container>
   );
 };
