@@ -1,11 +1,11 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Editor } from "primereact/editor";
 import { Container, Formulario, LeftSide, RightSide } from "./styled";
 import Input from "../../../../components/common/Forms/Inputs";
-import Textarea from "../../../../components/common/Forms/TextArea";
 import Textarea2 from "../../../../components/common/Forms/TextArea2";
-
+import Select from "../../../../components/common/Forms/Selects";
+import { BoxButton } from "../../../Access/Login/style";
+import InputButton from "../../../../components/common/Forms/FormButton";
 const CreateCourse = () => {
   const INITIAL_VALUES = {
     title: "",
@@ -19,81 +19,98 @@ const CreateCourse = () => {
     premiumPrice: 0, //tipo number
     own: "", //select -true/false
   };
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    // resetForm();
+  };
 
   return (
     <Container>
       <h1>CREAR CURSO</h1>
-      <Formik initialValues={INITIAL_VALUES}>
+      <Formik initialValues={INITIAL_VALUES} onSubmit={handleSubmit}>
         <Form>
           <Formulario>
             <LeftSide>
-              <h1>izquierda</h1>
               <Input
                 id="title"
                 name="title"
                 type="text"
                 placeholder="Titulo"
                 margin="5px 0"
+                alignItems="flex-end"
               />
               <Input
-                id="title"
-                name="title"
-                type="text"
-                placeholder="Titulo"
+                id="duration"
+                name="duration"
+                type="number"
+                placeholder="Duracion del curso"
+                margin="5px 0"
+                alignItems="flex-end"
+              />
+
+              <Select
+                name="level"
+                text="Nivel"
+                options={["PRINCIPIANTE", "INTERMEDIO", "AVANZADO"]}
+                alignItems="flex-end"
                 margin="5px 0"
               />
-              <Input
-                id="title"
-                name="title"
-                type="text"
-                placeholder="Titulo"
-                margin="5px 0"
-              />
-              <Input
-                id="title"
-                name="title"
-                type="text"
-                placeholder="Titulo"
+              <Select
+                name="premium"
+                text="Premium"
+                options={["Si", "No"]}
+                alignItems="flex-end"
                 margin="5px 0"
               />
             </LeftSide>
             <RightSide>
-              <h1>derecha</h1>
               <Input
                 id="price"
                 name="price"
                 type="number"
                 placeholder="Precio"
+                margin="5px 0"
+                alignItems="flex-start"
+              />
+              <Select
+                name="category"
+                text="Categoria"
+                options={["TECNOLOGIA", "SALUD", "AMBIENTE"]}
+                alignItems="flex-start"
+                margin="5px 0"
+              />
+              <Select
+                name="status"
+                text="Estado del curso"
+                options={["ACTIVO", "INACTIVO", "BORRADOR"]}
+                alignItems="flex-start"
                 margin="5px 0"
               />
               <Input
-                id="price"
-                name="price"
+                id="premiumPrice"
+                name="premiumPrice"
                 type="number"
-                placeholder="Precio"
+                placeholder="Precio Premium"
                 margin="5px 0"
-              />
-              <Input
-                id="price"
-                name="price"
-                type="number"
-                placeholder="Precio"
-                margin="5px 0"
-              />
-              <Input
-                id="price"
-                name="price"
-                type="number"
-                placeholder="Precio"
-                margin="5px 0"
+                alignItems="flex-start"
               />
             </RightSide>
           </Formulario>
+          <Select
+            name="own"
+            text="¿Es propio?"
+            options={["yes", "no"]}
+            alignItems="center"
+            margin="5px 0"
+          />
           <Textarea2
             id="description"
             name="description"
             placeholder="Descripcion del curso "
           />
+          <BoxButton>
+            <InputButton text="Crear Curso" width="50%" />
+          </BoxButton>
         </Form>
       </Formik>
     </Container>

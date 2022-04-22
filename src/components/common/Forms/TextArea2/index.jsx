@@ -1,6 +1,7 @@
 import { useFormikContext } from "formik";
 import { Editor } from "primereact/editor";
-import { ErrorMessage, TextAreaContainer, TextAreaItem } from "./styles";
+import { useState } from "react";
+import { ErrorMessage, TextAreaContainer } from "./styles";
 
 const Textarea2 = ({
   id,
@@ -11,21 +12,22 @@ const Textarea2 = ({
   heigth,
   margin,
 }) => {
-  const { values, errors, touched, setTouched, handleChange, handleBlur } =
-    useFormikContext();
-  const value = values[name] ? values[name] : "";
+  const { values, errors, touched, setTouched } = useFormikContext();
+  // const value = values[name] ? values[name] : "";
+  const [text, setText] = useState("");
+  values[name] = text;
   const error = errors[name] ? errors[name] : "";
   const touchedInput = touched[name] ? touched[name] : "";
   return (
     <TextAreaContainer>
       <Editor
+        type="text"
         id={id}
         name={name}
         placeholder={placeholder}
-        value={value}
-        onTextChange={handleChange}
+        value={text}
+        onTextChange={(e) => setText(e.htmlValue)}
         style={{ height: "250px" }}
-        onBlur={handleBlur}
         onClick={() => setTouched({ ...touched, [name]: true })}
         onTouchStart={() => setTouched({ ...touched, [name]: true })}
       />

@@ -5,6 +5,11 @@ export const TextAreaContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 10px 0;
+  & .p-editor-container {
+    width: 750px;
+  }
+  & .p-editor-content {
+  }
 `;
 
 export const TextAreaItem = styled.textarea`

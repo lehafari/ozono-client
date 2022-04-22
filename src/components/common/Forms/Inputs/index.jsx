@@ -10,6 +10,8 @@ const Input = ({
   width,
   heigth,
   margin,
+  backgroundColor,
+  alignItems,
 }) => {
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
@@ -17,7 +19,10 @@ const Input = ({
   const error = errors[name] ? errors[name] : "";
   const touchedInput = touched[name] ? touched[name] : "";
   return (
-    <InputContainer>
+    <InputContainer
+      // Atributos input
+      alignItems={alignItems}
+    >
       <InputItem
         // Atributos input
         id={id}
@@ -35,6 +40,7 @@ const Input = ({
         width={width}
         heigth={heigth}
         margin={margin}
+        backgroundColor={backgroundColor}
       />
       {error && touchedInput && <ErrorMessage>{error}</ErrorMessage>}
     </InputContainer>
