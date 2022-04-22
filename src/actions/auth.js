@@ -79,7 +79,6 @@ export const startChecking = () => {
         return dispatch(checkingFinish());
       }
       if (!user.statusCode) {
-        console.log('entro');
         return dispatch(login({ user }));
       }
     }

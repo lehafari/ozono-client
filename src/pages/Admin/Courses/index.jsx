@@ -1,14 +1,29 @@
-import { Box } from "@mui/material";
-import { Outlet } from "react-router-dom";
-import { Button } from "../../../components/common/Buttons/MainButton";
+import { Box } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+import { Button } from '../../../components/common/Buttons/MainButton';
 import {
   ButtonContainer,
   ButtonsContainer,
   CardContainer,
   Container,
-} from "./style";
+} from './style';
+import { useEffect, useState } from 'react';
+import { endPoints } from '../../../const/endPoints';
+import { fetchWithToken } from '../../../helpers/fetch';
+import { AdminCourseItem } from './CourseItem';
 
 const Courses = () => {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const getCourses = async () => {
+      const req = await fetchWithToken(endPoints.get_all_courses);
+      const body = await req.json();
+      setCourses(body);
+    };
+    getCourses();
+  }, []);
+
   return (
     <Container>
       <Outlet />
@@ -21,12 +36,15 @@ const Courses = () => {
       <CardContainer>
         <Box
           sx={{
-            width: "400px",
-            height: "200px",
-            background: "green",
-            margin: "10px 0px",
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
           }}
-        />
+        >
+          {courses.map((data) => (
+            <AdminCourseItem key={data.id} {...data} />
+          ))}
+        </Box>
       </CardContainer>
     </Container>
   );

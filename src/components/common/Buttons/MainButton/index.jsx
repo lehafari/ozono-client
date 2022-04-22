@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { MainButton } from "./styles";
+import { useNavigate } from 'react-router-dom';
+import { MainButton } from './styles';
 
 export const Button = (props, { children }) => {
   const navigate = useNavigate();
@@ -20,6 +20,9 @@ export const Button = (props, { children }) => {
       shadow={props.shadow}
       backgroundColor={props.backgroundColor}
       alignSelf={props.alignSelf}
+      display={props.display}
+      justifyContent={props.justifyContent}
+      alignItems={props.alignItems}
     >
       {props.text}
     </MainButton>
