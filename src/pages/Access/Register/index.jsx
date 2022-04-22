@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import Input from '../../../components/common/Forms/Inputs';
-import { Box, BoxButton, BoxOptions, Formulario } from '../Login/style';
-import { ContainerRegistro } from './styles';
-// import InputButton from '../../../components/common/Forms/FormButton';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { startRegister } from '../../../actions/auth';
-import { NavButtonContainer } from '../Login/style';
-import { Button } from '../../../components/common/Buttons/MainButton';
-=======
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Input from "../../../components/common/Forms/Inputs";
@@ -21,37 +8,36 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { startRegister } from "../../../actions/auth";
 import { NavButtonContainer } from "../Login/style";
->>>>>>> Stashed changes
 
 const Register = () => {
   const dispatch = useDispatch();
 
   const initialValues = {
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required('El nombre es obligatorio'),
-    lastName: Yup.string().required('El apellido es obligatorio'),
+    firstName: Yup.string().required("El nombre es obligatorio"),
+    lastName: Yup.string().required("El apellido es obligatorio"),
     username: Yup.string()
-      .required('El usuario es obligatorio')
-      .min(4, 'El usuario debe tener al menos 4 caracteres')
-      .max(20, 'El usuario debe tener máximo 50 caracteres'),
+      .required("El usuario es obligatorio")
+      .min(4, "El usuario debe tener al menos 4 caracteres")
+      .max(20, "El usuario debe tener máximo 50 caracteres"),
     email: Yup.string()
-      .required('El email es obligatorio')
-      .email('El email es inválido'),
+      .required("El email es obligatorio")
+      .email("El email es inválido"),
     password: Yup.string()
-      .min(6, 'la contraseña debe tener al menos 6 caracteres')
-      .max(20, 'la contraseña debe tener máximo 20 caracteres')
-      .required('La contraseña es obligatoria'),
+      .min(6, "la contraseña debe tener al menos 6 caracteres")
+      .max(20, "la contraseña debe tener máximo 20 caracteres")
+      .required("La contraseña es obligatoria"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'Las contraseñas no coinciden')
-      .required('La confirmación de la contraseña es obligatoria'),
+      .oneOf([Yup.ref("password")], "Las contraseñas no coinciden")
+      .required("La confirmación de la contraseña es obligatoria"),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -79,18 +65,18 @@ const Register = () => {
               name="firstName"
               type="text"
               placeholder="Nombre"
-              width={'65%'}
-              heigth={'50px'}
-              margin={'10px 0px'}
+              width={"65%"}
+              heigth={"50px"}
+              margin={"10px 0px"}
             />
             <Input
               id="lastName"
               name="lastName"
               type="text"
               placeholder="Apellido"
-              width={'65%'}
-              heigth={'50px'}
-              margin={'10px 0px'}
+              width={"65%"}
+              heigth={"50px"}
+              margin={"10px 0px"}
             ></Input>
 
             <Input
@@ -98,18 +84,18 @@ const Register = () => {
               name="username"
               type="text"
               placeholder="Usuario"
-              width={'65%'}
-              heigth={'50px'}
-              margin={'10px 0px'}
+              width={"65%"}
+              heigth={"50px"}
+              margin={"10px 0px"}
             />
             <Input
               id="email"
               name="email"
               type="email"
               placeholder="Email"
-              width={'65%'}
-              heigth={'50px'}
-              margin={'10px 0px'}
+              width={"65%"}
+              heigth={"50px"}
+              margin={"10px 0px"}
             ></Input>
 
             <Input
@@ -117,9 +103,9 @@ const Register = () => {
               name="password"
               type="password"
               placeholder="Contraseña"
-              width={'65%'}
-              heigth={'50px'}
-              margin={'10px 0px'}
+              width={"65%"}
+              heigth={"50px"}
+              margin={"10px 0px"}
             ></Input>
 
             <Input
@@ -127,14 +113,14 @@ const Register = () => {
               name="confirmPassword"
               type="password"
               placeholder="Confirmar Contraseña"
-              width={'65%'}
-              heigth={'50px'}
-              margin={'10px 0px'}
+              width={"65%"}
+              heigth={"50px"}
+              margin={"10px 0px"}
             ></Input>
 
             <Box>
               <BoxButton>
-                <Button text="Registrarse" width="70%" />
+                <InputButton text="Registrarse" width="70%" />
               </BoxButton>
               <BoxOptions>
                 <NavButtonContainer
