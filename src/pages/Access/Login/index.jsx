@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 import { Formik, Form } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from '../../../components/common/Forms/Inputs';
 import * as Yup from 'yup';
+=======
+import { Formik, Form } from "formik";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import * as Yup from "yup";
+>>>>>>> Stashed changes
 
 import {
   Container,
@@ -12,11 +19,19 @@ import {
   BoxButton,
   BoxOptions,
   NavButtonContainer,
+<<<<<<< Updated upstream
 } from './style';
 import InputButton from '../../../components/common/Forms/FormButton';
 
 import { startLogin } from '../../../actions/auth';
 import { Button } from '../../../components/common/Buttons/MainButton';
+=======
+} from "./style";
+
+import Input from "../../../components/common/Forms/Inputs";
+import InputButton from "../../../components/common/Forms/FormButton";
+import { startLogin } from "../../../actions/auth";
+>>>>>>> Stashed changes
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);

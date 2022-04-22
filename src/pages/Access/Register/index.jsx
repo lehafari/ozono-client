@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Input from '../../../components/common/Forms/Inputs';
@@ -9,6 +10,18 @@ import { useDispatch } from 'react-redux';
 import { startRegister } from '../../../actions/auth';
 import { NavButtonContainer } from '../Login/style';
 import { Button } from '../../../components/common/Buttons/MainButton';
+=======
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import Input from "../../../components/common/Forms/Inputs";
+import { Box, BoxButton, BoxOptions, Formulario } from "../Login/style";
+import { ContainerRegistro } from "./styles";
+import InputButton from "../../../components/common/Forms/FormButton";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { startRegister } from "../../../actions/auth";
+import { NavButtonContainer } from "../Login/style";
+>>>>>>> Stashed changes
 
 const Register = () => {
   const dispatch = useDispatch();

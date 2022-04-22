@@ -1,7 +1,13 @@
+<<<<<<< Updated upstream
 import { useFormikContext } from 'formik';
 import { useEffect } from 'react';
 import { CgSpinnerTwoAlt } from 'react-icons/cg';
 import { Button } from '../../Buttons/MainButton';
+=======
+import { useFormikContext } from "formik";
+import { CgSpinnerTwoAlt } from "react-icons/cg";
+import { MainButton } from "../../Buttons/MainButton/styles";
+>>>>>>> Stashed changes
 
 const InputButton = (props) => {
   const { errors, isSubmitting } = useFormikContext();
