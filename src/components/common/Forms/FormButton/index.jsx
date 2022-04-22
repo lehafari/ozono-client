@@ -1,11 +1,15 @@
-import { useFormikContext } from "formik";
-import { CgSpinnerTwoAlt } from "react-icons/cg";
-import { MainButton } from "../MainButton/styles";
+import { useFormikContext } from 'formik';
+import { useEffect } from 'react';
+import { CgSpinnerTwoAlt } from 'react-icons/cg';
+import { Button } from '../../Buttons/MainButton';
 
 const InputButton = (props) => {
   const { errors, isSubmitting } = useFormikContext();
+  useEffect(() => {
+    console.log(props.text);
+  }, []);
   return (
-    <MainButton
+    <Button
       // Atributos input
       type="submit"
       //Acciones/Funciones
@@ -22,10 +26,12 @@ const InputButton = (props) => {
       backgroundColor={props.backgroundColor}
       alignSelf={props.alignSelf}
     >
-      {props.text}
-      {/* {isSubmitting ? <CgSpinnerTwoAlt className="spin" size={20} /> : children} */}
-    </MainButton>
+      {props.text} sd
+    </Button>
   );
 };
 
 export default InputButton;
+{
+  /* {isSubmitting ? <CgSpinnerTwoAlt className="spin" size={20} /> : children} */
+}

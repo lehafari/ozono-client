@@ -1,3 +1,8 @@
+import { Divider } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
 import {
   ButtonsContainer,
   CoruseDescription,
@@ -9,11 +14,8 @@ import {
   CoursePrice,
   CourseTitle,
 } from './styles';
-
 import courseImage from '../../../../assets/images/course-image.png';
 import { Button } from '../../../../components/common/Buttons/MainButton';
-import { Divider } from '@mui/material';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useEffect, useState } from 'react';
 import { fetchWithToken } from '../../../../helpers/fetch';
 import { endPoints } from '../../../../const/endPoints';
@@ -62,12 +64,20 @@ export const AdminCourseItem = ({
         </CourseInstructor>
         <ButtonsContainer>
           <Button
+            text={<EditIcon />}
+            fontSize="1rem"
+            width="30%"
             display="flex"
             justifyContent="center"
             alignItems="center"
-            text="Editar curso"
-            fontSize="0.9rem"
-            width="60%"
+          />
+          <Button
+            text={<VisibilityIcon />}
+            fontSize="1rem"
+            width="30%"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
           />
           <Button
             text={<HighlightOffIcon />}

@@ -8,12 +8,13 @@ import Tooltip from '@mui/material/Tooltip';
 import menuLogo from '../../../assets/images/profile-menu.svg';
 import menuLogoBlue from '../../../assets/images/profile-menu-blue.svg';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../../actions/auth';
 
 export default function ProfileMenu() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -81,6 +82,24 @@ export default function ProfileMenu() {
         >
           <img src={menuLogoBlue} alt="logo" />
         </MenuItem>
+        {user.role === 'admin' && (
+          <MenuItem
+            sx={{
+              justifyContent: 'end',
+              fontSize: '1rem',
+              color: '#767676',
+              padding: '0.5rem 3rem 0.5rem 3rem ',
+              fontWeight: '500',
+              fontFamily: 'helvetica',
+              '&:hover': {
+                color: '#5e82be',
+              },
+            }}
+            onClick={() => navigate('/admin')}
+          >
+            Administrador
+          </MenuItem>
+        )}
         <MenuItem
           sx={{
             justifyContent: 'end',
