@@ -7,4 +7,8 @@ export const endPoints = {
 
   //user
   get_user: `/users/me`,
+
+  //courses
+  get_all_courses: `/courses/all`,
+  get_students: `/courses/users`,
 };
