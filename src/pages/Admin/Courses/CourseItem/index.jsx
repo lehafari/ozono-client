@@ -1,4 +1,4 @@
-import { Divider } from '@mui/material';
+import { Divider, Snackbar } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -37,9 +37,7 @@ export const AdminCourseItem = ({
 }) => {
   const dispatch = useDispatch();
   const { error } = useSelector((state) => state.courses);
-  if (error) {
-    console.log(error);
-  }
+
   //** MODAL */
   const [displayBasic, setDisplayBasic] = useState(false);
   const [position, setPosition] = useState('center');
@@ -59,6 +57,19 @@ export const AdminCourseItem = ({
   //***** Formik */
   const INITIAL_VALUES = {
     password: '',
+  };
+
+  //***** Snackbar MUI */
+  const [open, setOpen] = useState(false);
+  const [transition, setTransition] = useState(undefined);
+
+  const handleClick = (Transition) => () => {
+    setTransition(() => Transition);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -150,6 +161,13 @@ export const AdminCourseItem = ({
           </Dialog>
         </ButtonsContainer>
       </CourseContend>
+      {error && (
+        <Snackbar
+          open={true}
+          message={error}
+          autoHideDuration={1000}
+        ></Snackbar>
+      )}
     </CourseContainer>
   );
 };
