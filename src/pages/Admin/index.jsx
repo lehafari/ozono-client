@@ -109,7 +109,18 @@ export default function Admin() {
   };
 
   return (
-    <Box sx={{ display: 'flex', backgroundColor: '#f8f8f8' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        backgroundColor: '#f8f8f8',
+        height: '100vh',
+        overflowY: 'scroll',
+        // scroll bar custom
+        '::-webkit-scrollbar': {
+          width: '0.4em',
+        },
+      }}
+    >
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -221,7 +232,7 @@ export default function Admin() {
           )}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, background: "#f8f8f8" }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f8f8f8' }}>
         <DrawerHeader />
         <Outlet />
       </Box>

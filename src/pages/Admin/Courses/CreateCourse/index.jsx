@@ -1,28 +1,28 @@
-import React from "react";
-import { Formik, Form } from "formik";
-import { Container, Formulario, LeftSide, RightSide } from "./styled";
-import Input from "../../../../components/common/Forms/Inputs";
-import Textarea2 from "../../../../components/common/Forms/TextArea2";
-import Select from "../../../../components/common/Forms/Selects";
-import { BoxButton } from "../../../Access/Login/style";
-import InputButton from "../../../../components/common/Forms/FormButton";
+import React from 'react';
+import { Formik, Form } from 'formik';
+import { Container, Formulario, LeftSide, RightSide } from './styled';
+import Input from '../../../../components/common/Forms/Inputs';
+import Textarea2 from '../../../../components/common/Forms/TextArea2';
+import Select from '../../../../components/common/Forms/Selects';
+import { BoxButton } from '../../../Access/Login/style';
+import InputButton from '../../../../components/common/Forms/FormButton';
+import { useDispatch } from 'react-redux';
 const CreateCourse = () => {
   const INITIAL_VALUES = {
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     price: 0, //tipo number
     duration: 0, //tipo number
-    category: "", //select
-    level: "", //select - PRINCIPIANTE/INTERMEDIO/AVANZADO
-    status: "", //select - ACTIVO/INACTIVO/BORRADOR
-    premium: "", //select- yes/no - hace referencia de un booleano
+    category: '', //select
+    level: '', //select - PRINCIPIANTE/INTERMEDIO/AVANZADO
+    status: '', //select - ACTIVO/INACTIVO/BORRADOR
+    premium: '', //select- yes/no - hace referencia de un booleano
     premiumPrice: 0, //tipo number
-    own: "", //select -true/false
+    own: '', //select -true/false
   };
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    // resetForm();
-  };
+
+  const dispatch = useDispatch();
+  const handleSubmit = (values, { resetForm }) => {};
 
   return (
     <Container>
@@ -51,14 +51,14 @@ const CreateCourse = () => {
               <Select
                 name="level"
                 text="Nivel"
-                options={["PRINCIPIANTE", "INTERMEDIO", "AVANZADO"]}
+                options={['PRINCIPIANTE', 'INTERMEDIO', 'AVANZADO']}
                 alignItems="flex-end"
                 margin="5px 0"
               />
               <Select
                 name="premium"
                 text="Premium"
-                options={["Si", "No"]}
+                options={['Si', 'No']}
                 alignItems="flex-end"
                 margin="5px 0"
               />
@@ -75,14 +75,14 @@ const CreateCourse = () => {
               <Select
                 name="category"
                 text="Categoria"
-                options={["TECNOLOGIA", "SALUD", "AMBIENTE"]}
+                options={['TECNOLOGIA', 'SALUD', 'AMBIENTE']}
                 alignItems="flex-start"
                 margin="5px 0"
               />
               <Select
                 name="status"
                 text="Estado del curso"
-                options={["ACTIVO", "INACTIVO", "BORRADOR"]}
+                options={['ACTIVO', 'INACTIVO', 'BORRADOR']}
                 alignItems="flex-start"
                 margin="5px 0"
               />
@@ -99,7 +99,7 @@ const CreateCourse = () => {
           <Select
             name="own"
             text="¿Es propio?"
-            options={["yes", "no"]}
+            options={['yes', 'no']}
             alignItems="center"
             margin="5px 0"
           />

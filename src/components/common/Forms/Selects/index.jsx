@@ -1,7 +1,7 @@
-import { useFormikContext } from "formik";
-import React from "react";
-import { ErrorMessage } from "../Inputs/styles";
-import { SelectContainer, SelectInput } from "./styles";
+import { useFormikContext } from 'formik';
+import React from 'react';
+import { ErrorMessage } from '../Inputs/styles';
+import { SelectContainer, SelectInput } from './styles';
 
 const Select = ({
   text,
@@ -16,9 +16,9 @@ const Select = ({
 }) => {
   const { values, errors, touched, setTouched, handleChange } =
     useFormikContext();
-  const value = values[name] ? values[name] : "";
-  const error = errors[name] ? errors[name] : "";
-  const touchedInput = touched[name] ? touched[name] : "";
+  const value = values[name] ? values[name] : '';
+  const error = errors[name] ? errors[name] : '';
+  const touchedInput = touched[name] ? touched[name] : '';
   return (
     <SelectContainer alignItems={alignItems}>
       <SelectInput

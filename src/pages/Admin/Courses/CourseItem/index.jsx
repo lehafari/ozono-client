@@ -26,6 +26,7 @@ import { Form, Formik } from 'formik';
 import Input from '../../../../components/common/Forms/Inputs';
 import { startDelete } from '../../../../actions/courses';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 export const AdminCourseItem = ({
   image,
@@ -36,20 +37,14 @@ export const AdminCourseItem = ({
   id,
 }) => {
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.courses);
 
   //** MODAL */
   const [displayBasic, setDisplayBasic] = useState(false);
-  const [position, setPosition] = useState('center');
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
   };
-  const onClick = (name, position) => {
+  const onClick = (name) => {
     dialogFuncMap[`${name}`](true);
-
-    if (position) {
-      setPosition(position);
-    }
   };
   const onHide = (name) => {
     dialogFuncMap[`${name}`](false);
@@ -58,22 +53,24 @@ export const AdminCourseItem = ({
   const INITIAL_VALUES = {
     password: '',
   };
-
-  //***** Snackbar MUI */
-  const [open, setOpen] = useState(false);
-  const [transition, setTransition] = useState(undefined);
-
-  const handleClick = (Transition) => () => {
-    setTransition(() => Transition);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleSubmit = (values, { setSubmitting }) => {
-    dispatch(startDelete(id, values.password));
+  const handleSubmit = async (values, { setSubmitting }) => {
+    const resp = await dispatch(startDelete(id, values.password));
+    if (resp.type === '[courses] Delete')
+      Swal.fire({
+        icon: 'success',
+        title: 'Curso eliminado correctamente',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al eliminar el curso',
+        text: resp.payload,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     onHide('displayBasic');
   };
 
@@ -161,13 +158,6 @@ export const AdminCourseItem = ({
           </Dialog>
         </ButtonsContainer>
       </CourseContend>
-      {error && (
-        <Snackbar
-          open={true}
-          message={error}
-          autoHideDuration={1000}
-        ></Snackbar>
-      )}
     </CourseContainer>
   );
 };
