@@ -1,12 +1,13 @@
-import { useFormikContext } from 'formik';
-import React from 'react';
-import { ErrorMessage } from '../Inputs/styles';
-import { SelectContainer, SelectInput } from './styles';
+import { useFormikContext } from "formik";
+import React from "react";
+import { ErrorMessage } from "../Inputs/styles";
+import { SelectContainer, SelectInput } from "./styles";
 
 const Select = ({
   text,
   name,
   options,
+  label,
   alignItems,
   padding,
   width,
@@ -16,9 +17,16 @@ const Select = ({
 }) => {
   const { values, errors, touched, setTouched, handleChange } =
     useFormikContext();
-  const value = values[name] ? values[name] : '';
-  const error = errors[name] ? errors[name] : '';
-  const touchedInput = touched[name] ? touched[name] : '';
+  const value = values[name] ? values[name] : "";
+  const error = errors[name] ? errors[name] : "";
+  const touchedInput = touched[name] ? touched[name] : "";
+
+  if (options.length === 2) {
+    options[0] === "Si" && (options[0] = true);
+    options[1] === "No" && (options[1] = false);
+  } else {
+    label = options;
+  }
   return (
     <SelectContainer alignItems={alignItems}>
       <SelectInput
@@ -36,9 +44,10 @@ const Select = ({
         backgroundColor={backgroundColor}
       >
         <option value="">{text}</option>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+
+        {options.map((option, i) => (
+          <option key={label[i]} value={option}>
+            {label[i]}
           </option>
         ))}
         {error && touchedInput && <ErrorMessage>{error}</ErrorMessage>}
