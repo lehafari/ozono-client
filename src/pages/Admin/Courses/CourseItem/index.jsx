@@ -27,6 +27,8 @@ import Input from '../../../../components/common/Forms/Inputs';
 import { startDelete } from '../../../../actions/courses';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { types } from '../../../../context/types/types';
+import { startChecking } from '../../../../actions/auth';
 
 export const AdminCourseItem = ({
   image,
@@ -54,8 +56,9 @@ export const AdminCourseItem = ({
     password: '',
   };
   const handleSubmit = async (values, { setSubmitting }) => {
+    await dispatch(startChecking());
     const resp = await dispatch(startDelete(id, values.password));
-    if (resp.type === '[courses] Delete')
+    if (resp.type === types.coursesDelete)
       Swal.fire({
         icon: 'success',
         title: 'Curso eliminado correctamente',
