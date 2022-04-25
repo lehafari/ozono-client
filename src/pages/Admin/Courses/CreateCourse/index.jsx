@@ -14,6 +14,7 @@ import PopupError from "../../../../components/common/Popup/PopupError";
 import PopupOk from "../../../../components/common/Popup/PopupOk";
 import { useNavigate } from "react-router-dom";
 import { types } from "../../../../context/types/types";
+import { startChecking } from "../../../../actions/auth";
 
 const CreateCourse = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const CreateCourse = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = async (values, { resetForm }) => {
+    await dispatch(startChecking());
     const res = await dispatch(startCreate(values));
     console.log("Datos formulario", values);
     console.log("res: ", res);
