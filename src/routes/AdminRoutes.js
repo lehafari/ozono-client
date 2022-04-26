@@ -5,6 +5,7 @@ import Advertisements from "../pages/Admin/advertisements";
 import Blogs from "../pages/Admin/Blogs";
 import Courses from "../pages/Admin/Courses";
 import CreateCourse from "../pages/Admin/Courses/CreateCourse";
+import EditCourse from "../pages/Admin/Courses/EditCourse";
 import Emails from "../pages/Admin/Emails";
 import Media from "../pages/Admin/Media";
 import News from "../pages/Admin/News";
@@ -25,10 +26,16 @@ const AdminRoutes = () => {
             </PrivateRoute>
           }
         >
-          <Route path="course" element={<Courses />}></Route>
-          <Route path="create-course" element={<CreateCourse />} />
+          {/* //* Seccion de Cursos */}
+          <Route path="courses" element={<Courses />}></Route>
+          <Route path="courses/create" element={<CreateCourse />} />
+          <Route path="courses/edit" element={<EditCourse />}></Route>
+
+          {/* //* Seccion de usuarios */}
           <Route path="users" element={<Users />} />
+          {/* //* Seccion de pagos */}
           <Route path="payments" element={<Payments />} />
+          {/* //* Seccion de estadisticas */}
           <Route path="stats" element={<Stats />} />
           <Route path="emails" element={<Emails />} />
           <Route path="media" element={<Media />} />

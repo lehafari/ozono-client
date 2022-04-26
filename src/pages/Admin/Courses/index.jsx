@@ -1,16 +1,16 @@
-import { Box } from '@mui/material';
-import { Outlet } from 'react-router-dom';
-import { Button } from '../../../components/common/Buttons/MainButton';
+import { Box } from "@mui/material";
+import { Outlet } from "react-router-dom";
+import { Button } from "../../../components/common/Buttons/MainButton";
 import {
   ButtonContainer,
   ButtonsContainer,
   CardContainer,
   Container,
-} from './style';
+} from "./style";
 
-import { AdminCourseItem } from './CourseItem';
-import { useSelector } from 'react-redux';
-import Spinner from '../../../components/common/Spinner';
+import { AdminCourseItem } from "./CourseItem";
+import { useSelector } from "react-redux";
+import Spinner from "../../../components/common/Spinner";
 
 const Courses = () => {
   const { courses, loading } = useSelector((state) => state.courses);
@@ -27,16 +27,16 @@ const Courses = () => {
       <Outlet />
       <ButtonsContainer>
         <ButtonContainer>
-          <Button path="/admin/create-course" text="Crear Curso" />
+          <Button path="/admin/courses/create" text="Crear Curso" />
         </ButtonContainer>
       </ButtonsContainer>
       {courses.length === 0 && !loading ? (
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#a0a0a0',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "#a0a0a0",
           }}
         >
           <h1>No hay cursos registrados</h1>
@@ -48,9 +48,9 @@ const Courses = () => {
         <CardContainer>
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-evenly',
-              flexWrap: 'wrap',
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap",
             }}
           >
             {sortedCourses.map((data) => (
