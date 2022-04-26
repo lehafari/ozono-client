@@ -12,6 +12,7 @@ const Input = ({
   margin,
   backgroundColor,
   alignItems,
+  errorPadding,
 }) => {
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
@@ -42,7 +43,9 @@ const Input = ({
         margin={margin}
         backgroundColor={backgroundColor}
       />
-      {error && touchedInput && <ErrorMessage>{error}</ErrorMessage>}
+      {error && touchedInput && (
+        <ErrorMessage errorPadding={errorPadding}>{error}</ErrorMessage>
+      )}
     </InputContainer>
   );
 };

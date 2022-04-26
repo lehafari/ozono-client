@@ -37,9 +37,16 @@ export const AdminCourseItem = ({
   level,
   status,
   id,
+  numberOfStudents,
 }) => {
   const dispatch = useDispatch();
 
+  // convert timestamp to date array
+  const date = new Date(createdAt);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  console.log(date);
   //** MODAL */
   const [displayBasic, setDisplayBasic] = useState(false);
   const dialogFuncMap = {
@@ -87,7 +94,8 @@ export const AdminCourseItem = ({
           <h1>{title}</h1>
         </CourseTitle>
         <CoruseDescription>
-          <p>{createdAt}</p>
+          <p>{`Creado el: ${day}/${month}/${year}`}</p>
+          <p>{`Alumnos: ${numberOfStudents}`}</p>
         </CoruseDescription>
         <Divider
           sx={{

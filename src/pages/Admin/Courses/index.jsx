@@ -7,9 +7,7 @@ import {
   CardContainer,
   Container,
 } from './style';
-import { useEffect, useState } from 'react';
-import { endPoints } from '../../../const/endPoints';
-import { fetchWithToken } from '../../../helpers/fetch';
+
 import { AdminCourseItem } from './CourseItem';
 import { useSelector } from 'react-redux';
 import Spinner from '../../../components/common/Spinner';
@@ -25,7 +23,18 @@ const Courses = () => {
           <Button path="/admin/create-course" text="Crear Curso" />
         </ButtonContainer>
       </ButtonsContainer>
-
+      {courses.length === 0 && !loading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: '#a0a0a0',
+          }}
+        >
+          <h1>No hay cursos registrados</h1>
+        </Box>
+      ) : null}
       {loading ? (
         <Spinner />
       ) : (

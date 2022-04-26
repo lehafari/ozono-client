@@ -1,8 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+export const CreateCourseTitle = styled.h1`
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.titleBlue};
+`;
 
 export const Container = styled.div`
   padding: 0 50px 0 50px;
-
   & > h1 {
     text-align: center;
   }

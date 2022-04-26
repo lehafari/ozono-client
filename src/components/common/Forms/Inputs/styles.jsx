@@ -34,5 +34,5 @@ export const ErrorMessage = styled.div`
   font-size: 0.8rem;
   margin: 0.2rem 0 0.5rem 1rem;
   align-self: flex-start;
-  padding-left: 15%;
+  padding: ${(props) => props.errorPadding || '0'};
 `;
