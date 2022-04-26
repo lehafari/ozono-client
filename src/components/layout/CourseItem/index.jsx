@@ -13,10 +13,21 @@ import courseImage from '../../../assets/images/hero-image.png';
 import PersonIcon from '@mui/icons-material/Person';
 import { Button } from '../../common/Buttons/MainButton';
 
-export const CourseItem = () => {
+export const CourseItem = ({
+  price,
+  numberOfStudents,
+  duration,
+  title,
+  level,
+  id,
+  description,
+}) => {
   const getWidth = () => {
     return window.innerWidth;
   };
+
+  // texto enriquecido a texto plano
+  const text = description.replace(/<[^>]*>?/gm, '');
 
   return (
     <CourseContainer>
@@ -25,13 +36,12 @@ export const CourseItem = () => {
       </CourseImage>
       <CourseContend>
         <CourseTitle>
-          <h1>Pellentesque in libero ﬁnibus</h1>
+          <h1>{title}</h1>
         </CourseTitle>
         <CoruseDescription>
-          <p>
-            obortis metus eget, congue ante. Fusce id ante quis nulla venenatis
-            condiment id nec diam
-          </p>
+          <p>Duracion del curso: {duration}</p>
+          <p>Nivel: {level}</p>
+          {text}
         </CoruseDescription>
         <CoursePrice>
           <p>
@@ -41,9 +51,9 @@ export const CourseItem = () => {
               }}
               fontSize="large"
             />
-            50
+            {numberOfStudents}
           </p>
-          <p>20.00$</p>
+          <p>{price}$</p>
         </CoursePrice>
         <CourseInstructor>
           <h3>Prf. Alberto gonzalez</h3>
@@ -51,7 +61,7 @@ export const CourseItem = () => {
         </CourseInstructor>
         <Button
           text="Ver Curso"
-          path="/course/description"
+          path={`/course/${id}`}
           width="50%"
           alignSelf={getWidth() < 600 ? 'center' : ''}
           fontSize={getWidth() < 600 ? '1rem' : ''}

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CourseContainer = styled.div`
+  position: relative;
   border-radius: 35px;
   background-color: ${(props) => props.theme.colors.white};
   width: 45%;
@@ -14,6 +15,12 @@ export const CourseContainer = styled.div`
     width: webkit-fill-available;
     flex-direction: column;
   }
+`;
+
+export const FeaturedCourseIcon = styled.div`
+  position: absolute;
+  top: 7%;
+  right: 7%;
 `;
 
 export const CourseImage = styled.div`

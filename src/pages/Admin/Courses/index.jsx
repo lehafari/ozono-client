@@ -15,6 +15,13 @@ import Spinner from '../../../components/common/Spinner';
 const Courses = () => {
   const { courses, loading } = useSelector((state) => state.courses);
 
+  // sort courses by date
+  const sortedCourses = courses
+    .sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    })
+    .reverse();
+
   return (
     <Container>
       <Outlet />
@@ -46,7 +53,7 @@ const Courses = () => {
               flexWrap: 'wrap',
             }}
           >
-            {courses.map((data) => (
+            {sortedCourses.map((data) => (
               <AdminCourseItem key={data.id} {...data} />
             ))}
           </Box>

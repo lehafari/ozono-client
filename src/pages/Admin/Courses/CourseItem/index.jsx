@@ -3,6 +3,8 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Dialog } from 'primereact/dialog';
+import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
 import {
   ButtonsContainer,
@@ -14,6 +16,7 @@ import {
   CourseInstructor,
   CoursePrice,
   CourseTitle,
+  FeaturedCourseIcon,
   Formulario,
 } from './styles';
 import courseImage from '../../../../assets/images/course-image.png';
@@ -38,15 +41,43 @@ export const AdminCourseItem = ({
   status,
   id,
   numberOfStudents,
+  featured,
 }) => {
   const dispatch = useDispatch();
 
-  // convert timestamp to date array
+  //** Set feature course */
+  const setFeatured = async (id) => {
+    const resp = await fetchWithToken(
+      `${endPoints.set_feature_course}/${id}`,
+      {},
+      'PUT'
+    );
+    const body = await resp.json();
+    if (resp.status === 200) {
+      Swal.fire({
+        title: body.message,
+        text: 'Los cursos destacados aparecerán en la página principal',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    } else {
+      Swal.fire({
+        text: body.message,
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+    dispatch(startChecking());
+  };
+
+  //** Convert timestamp to date array */
   const date = new Date(createdAt);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  console.log(date);
+
   //** MODAL */
   const [displayBasic, setDisplayBasic] = useState(false);
   const dialogFuncMap = {
@@ -86,6 +117,21 @@ export const AdminCourseItem = ({
 
   return (
     <CourseContainer>
+      <FeaturedCourseIcon onClick={() => setFeatured(id)}>
+        {featured ? (
+          <StarRoundedIcon
+            sx={{
+              color: '#ffc107',
+            }}
+          />
+        ) : (
+          <StarOutlineRoundedIcon
+            sx={{
+              color: '#ffc107',
+            }}
+          />
+        )}
+      </FeaturedCourseIcon>
       <CourseImage>
         <img src={image || courseImage} alt="course" />
       </CourseImage>
@@ -119,6 +165,7 @@ export const AdminCourseItem = ({
           />
           <Button
             text={<VisibilityIcon />}
+            path={`/course/${id}`}
             fontSize="1rem"
             width="30%"
             display="flex"

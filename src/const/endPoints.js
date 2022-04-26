@@ -17,4 +17,6 @@ export const endPoints = {
   get_number_of_students: `/courses/users/count`,
 
   delete_course: `/courses/delete`,
+
+  set_feature_course: `/courses/featured`,
 };

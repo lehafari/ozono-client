@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   CourseDetails,
   CourseName,
@@ -6,9 +6,12 @@ import {
   Student,
   SectionContainer,
   TextContainer,
-} from "./styles";
+} from './styles';
 
-const CourseSection1 = () => {
+const CourseSection1 = ({ title }) => {
+  //title to capitalize
+  const titleCapitalized = title.charAt(0).toUpperCase() + title.slice(1);
+
   return (
     <SectionContainer>
       <TextContainer>
@@ -18,7 +21,7 @@ const CourseSection1 = () => {
         </Student>
         <CourseName>
           <h1>
-            Curso <br /> Ozonoterapeuta Clinico
+            Curso <br /> {titleCapitalized}
           </h1>
           <CourseDetails>
             <p>Curso de ampliación (Fellowship)</p>
