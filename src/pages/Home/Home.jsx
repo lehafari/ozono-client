@@ -14,6 +14,16 @@ const Home = () => {
       <HomeSection3 />
       <HomeSection4 />
       <HomeSection5 />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(e);
+        }}
+      >
+        // form to upload files
+        <input type="file" />
+        <button type="submit"></button>
+      </form>
       <Footer />
     </HomeContainer>
   );
