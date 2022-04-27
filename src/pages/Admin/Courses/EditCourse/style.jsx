@@ -4,10 +4,14 @@ export const Container = styled.div`
   width: 100%;
   height: calc(100vh - 113px);
   padding: 0 50px 0 50px;
+
   /* background-color: pink; */
   & > h1 {
     text-align: center;
   }
+`;
+export const ShadowContainer = styled.div`
+  /* box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5); */
 `;
 
 export const ImgContainer = styled.div`
@@ -15,6 +19,7 @@ export const ImgContainer = styled.div`
   height: 400px;
   border-radius: 20px 20px 0px 0px;
   position: relative;
+  box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5);
   & > img {
     width: 100%;
     height: 100%;
@@ -40,10 +45,14 @@ export const TileContainer = styled.div`
 `;
 
 export const NavbarContainer = styled.div`
-  transform: translateY(-40%);
+  transform: translateY(-70px);
+  box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5);
 `;
 
 export const MenuContainer = styled.div`
+  /* & > .p-tabview {
+  } */
+
   & .p-tabview-nav {
     background-color: #ffffff9d;
     display: flex;
@@ -68,6 +77,6 @@ export const MenuContainer = styled.div`
     background-color: ${(props) => props.theme.colors.titleBlue} !important;
   }
   & .p-tabview-panel {
-    background-color: #9911119d;
+    /* background-color: #9911119d; */
   }
 `;

@@ -157,8 +157,8 @@ export const AdminCourseItem = ({
         <ButtonsContainer>
           <Button
             text={<EditIcon />}
-            // path={`/admin/courses/edit/${id}`}
-            path={`/admin/courses/edit`}
+            // path={`/admin/courses/edit`}
+            path={`/admin/courses/edit/${id}`}
             fontSize="1rem"
             width="30%"
             display="flex"

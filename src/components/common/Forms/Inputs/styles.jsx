@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const InputContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: ${(props) => props.alignItems || 'center'};
+  align-items: ${(props) => props.alignItems || "center"};
 
   margin: 10px 0;
 
@@ -16,13 +16,13 @@ export const InputContainer = styled.div`
 `;
 
 export const InputItem = styled.input`
-  padding: ${(props) => props.padding || '0px 25px'};
+  padding: ${(props) => props.padding || "0px 25px"};
   border: none;
   border-radius: 45px;
-  width: ${(props) => props.width || '75%'};
-  height: ${(props) => props.heigth || '50px'};
-  margin: ${(props) => props.margin || '40px 0px 5px 0px'};
-  background-color: ${(props) => props.backgroundColor || '#f5f5f5'};
+  width: ${(props) => props.width || "75%"};
+  height: ${(props) => props.heigth || "50px"};
+  margin: ${(props) => props.margin || "40px 0px 5px 0px"};
+  background-color: ${(props) => props.backgroundColor || "#f5f5f5"};
 
   &:focus {
     outline: none;
@@ -32,7 +32,7 @@ export const InputItem = styled.input`
 export const ErrorMessage = styled.div`
   color: ${(props) => props.theme.colors.red};
   font-size: 0.8rem;
-  margin: 0.2rem 0 0.5rem 1rem;
+  margin: 0rem 0 0.1rem 1rem;
   align-self: flex-start;
-  padding: ${(props) => props.errorPadding || '0'};
+  padding: ${(props) => props.errorPadding || "0"};
 `;
