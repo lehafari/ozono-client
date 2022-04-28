@@ -1,6 +1,7 @@
 import { Form, Formik } from "formik";
-import React from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import parse from "html-react-parser";
 import InputButton from "../../../../../components/common/Forms/FormButton";
 import Input from "../../../../../components/common/Forms/Inputs";
 import Select from "../../../../../components/common/Forms/Selects";
@@ -10,22 +11,34 @@ import { Formulario, LeftSide, RightSide } from "../../CreateCourse/styled";
 import { Container, OneLine } from "./styles";
 
 const General = () => {
+  const courseID = useParams().courseId;
   const { courses } = useSelector((state) => state.courses);
-  //agarrar el ID del curso en el buscador para compararlo con el ID del curso que se está editando y poder sacar la informacion
+  const {
+    title,
+    description,
+    price,
+    duration,
+    category,
+    level,
+    status,
+    premium,
+    premiumPrice,
+    own,
+  } = courses.find((course) => course.id === courseID);
 
   const INITIAL_VALUES = {
-    title: "",
-    description: "",
-    price: 0, //tipo number
-    duration: 0, //tipo number
-    category: "", //select
-    level: "", //select - PRINCIPIANTE/INTERMEDIO/AVANZADO
-    status: "", //select - ACTIVO/INACTIVO/BORRADOR
-    premium: "", //select- yes/no - hace referencia de un booleano
-    premiumPrice: 0, //tipo number
-    own: "", //select -true/false
+    title: title,
+    description: parse(description),
+    price: price, //tipo number
+    duration: duration, //tipo number
+    category: category, //select
+    level: level, //select - PRINCIPIANTE/INTERMEDIO/AVANZADO
+    status: status, //select - ACTIVO/INACTIVO/BORRADOR
+    premium: premium, //select- yes/no - hace referencia de un booleano
+    premiumPrice: premiumPrice, //tipo number
+    own: own, //select -true/false
   };
-  console.log("Aqui el useSelector: ", courses);
+
   return (
     <Container>
       <Formik initialValues={INITIAL_VALUES}>
@@ -125,6 +138,7 @@ const General = () => {
               width="50%"
               shadow="1px 1px 10px 0px rgb(0, 0, 0, 0.5)"
             />
+            <div>{description}</div>
           </BoxButton>
         </Form>
       </Formik>

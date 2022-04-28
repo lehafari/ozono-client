@@ -46,6 +46,7 @@ export const TileContainer = styled.div`
 
 export const NavbarContainer = styled.div`
   transform: translateY(-70px);
+  border-radius: 0 0 45px 45px;
   box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5);
 `;
 
@@ -76,7 +77,8 @@ export const MenuContainer = styled.div`
   & .p-tabview .p-tabview-nav .p-tabview-ink-bar {
     background-color: ${(props) => props.theme.colors.titleBlue} !important;
   }
-  & .p-tabview-panel {
-    /* background-color: #9911119d; */
+
+  & .p-tabview-panels {
+    border-radius: 0 0 45px 45px;
   }
 `;
