@@ -1,5 +1,5 @@
-import { useFormikContext } from 'formik';
-import { ErrorMessage, InputContainer, InputItem } from './styles';
+import { useFormikContext } from "formik";
+import { ErrorMessage, InputContainer, InputItem } from "./styles";
 
 const Input = ({
   id,
@@ -10,15 +10,16 @@ const Input = ({
   width,
   heigth,
   margin,
+  color,
   backgroundColor,
   alignItems,
   errorPadding,
 }) => {
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
-  const value = values[name] ? values[name] : '';
-  const error = errors[name] ? errors[name] : '';
-  const touchedInput = touched[name] ? touched[name] : '';
+  const value = values[name] ? values[name] : "";
+  const error = errors[name] ? errors[name] : "";
+  const touchedInput = touched[name] ? touched[name] : "";
   return (
     <InputContainer
       // Atributos input
@@ -41,6 +42,7 @@ const Input = ({
         width={width}
         heigth={heigth}
         margin={margin}
+        color={color}
         backgroundColor={backgroundColor}
       />
       {error && touchedInput && (
