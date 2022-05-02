@@ -11,6 +11,7 @@ import {
 import { AdminCourseItem } from "./CourseItem";
 import { useSelector } from "react-redux";
 import Spinner from "../../../components/common/Spinner";
+import CreateCategory from "./CreateCategory";
 
 const Courses = () => {
   const { courses, loading } = useSelector((state) => state.courses);
@@ -27,8 +28,9 @@ const Courses = () => {
       <Outlet />
       <ButtonsContainer>
         <ButtonContainer>
-          <Button path="/admin/courses/create" text="Crear Curso" />
+          <Button path="/admin/courses/create" text="Crear curso" />
         </ButtonContainer>
+        <CreateCategory />
       </ButtonsContainer>
       {courses.length === 0 && !loading ? (
         <Box
