@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import { Editor } from "primereact/editor";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ErrorMessage, TextAreaContainer } from "./styles";
 
 const Textarea2 = ({
@@ -11,13 +11,15 @@ const Textarea2 = ({
   width,
   heigth,
   margin,
+  editValue,
 }) => {
   const { values, errors, touched, setTouched } = useFormikContext();
   // const value = values[name] ? values[name] : "";
-  const [text, setText] = useState("");
+  const [text, setText] = useState(editValue ? editValue : "");
   values[name] = text;
   const error = errors[name] ? errors[name] : "";
   const touchedInput = touched[name] ? touched[name] : "";
+
   return (
     <TextAreaContainer>
       <Editor

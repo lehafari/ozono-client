@@ -69,6 +69,37 @@ const createError = (error) => ({
 });
 
 //***** Update courses ******//
+export const startUpdate = (id, value) => {
+  return async (dispatch) => {
+    dispatch(updateStart());
+    const resp = await fetchWithToken(
+      `${endPoints.update_course}/${id}`,
+      value,
+      "PUT"
+    );
+    const body = await resp.json();
+    if (resp.status !== 200) {
+      return dispatch(updateError(body.message));
+    }
+    console.log("soy el body: ", body);
+    return dispatch(updateSuccess(body));
+  };
+};
+
+const updateStart = () => ({
+  type: types.coursesStartUpdate,
+  payload: {},
+});
+
+const updateError = (error) => ({
+  type: types.coursesUpdateError,
+  payload: error,
+});
+
+const updateSuccess = (course) => ({
+  type: types.coursesUpdate,
+  payload: course,
+});
 
 //***** Delete courses ******//
 export const startDelete = (id, confirmPassword) => {
