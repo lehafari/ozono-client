@@ -10,7 +10,6 @@ import { useState } from 'react';
 
 export const EditProfile = () => {
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
   const { firstName, lastName, username, email, country, gender, phone, ci } =
     user;
 
@@ -28,16 +27,16 @@ export const EditProfile = () => {
   //*** Select values */
   const [selectedCountry, setSelectedCountry] = useState(null);
   const countries = [
-    { name: 'Australia', code: 'AU' },
-    { name: 'Brazil', code: 'BR' },
-    { name: 'China', code: 'CN' },
-    { name: 'Egypt', code: 'EG' },
-    { name: 'France', code: 'FR' },
-    { name: 'Germany', code: 'DE' },
-    { name: 'India', code: 'IN' },
-    { name: 'Japan', code: 'JP' },
-    { name: 'Spain', code: 'ES' },
-    { name: 'United States', code: 'US' },
+    { name: 'Australia' },
+    { name: 'Brazil' },
+    { name: 'China' },
+    { name: 'Egypt' },
+    { name: 'France' },
+    { name: 'Germany' },
+    { name: 'India' },
+    { name: 'Japan' },
+    { name: 'Spain' },
+    { name: 'United States' },
   ];
   const onCountryChange = (e) => {
     setSelectedCountry(e.value);
@@ -60,13 +59,18 @@ export const EditProfile = () => {
       </div>
     );
   };
+
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
+
   return (
     <>
       <h1>Edita tu perfil </h1>
       <Formik
         initialValues={initialValues}
         // validationSchema={validationSchema}
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <Form>
           <Formulario>
@@ -139,6 +143,12 @@ export const EditProfile = () => {
                   boxShadow: 'none',
                 }}
               />
+              <Input
+                id="country"
+                name="country"
+                type="hidden"
+                inheritValue={selectedCountry}
+              ></Input>
               <Input
                 id="gender"
                 name="gender"

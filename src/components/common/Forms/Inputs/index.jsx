@@ -13,9 +13,13 @@ const Input = ({
   backgroundColor,
   alignItems,
   errorPadding,
+  inheritValue,
 }) => {
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
+  if (inheritValue) {
+    values[name] = inheritValue.name;
+  }
   const value = values[name] ? values[name] : '';
   const error = errors[name] ? errors[name] : '';
   const touchedInput = touched[name] ? touched[name] : '';
