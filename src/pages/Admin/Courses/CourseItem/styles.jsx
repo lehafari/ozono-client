@@ -19,8 +19,8 @@ export const CourseContainer = styled.div`
 
 export const FeaturedCourseIcon = styled.div`
   position: absolute;
-  top: 7%;
-  right: 7%;
+  top: 5%;
+  right: 5%;
 `;
 
 export const CourseImage = styled.div`
@@ -69,7 +69,7 @@ export const CourseContend = styled.div`
 
 export const CourseTitle = styled.div`
   & h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: capitalize;
     color: ${(props) => props.theme.colors.black};
     font-weight: 400;

@@ -1,10 +1,10 @@
-import { Divider, Snackbar } from "@mui/material";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import EditIcon from "@mui/icons-material/Edit";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import { Dialog } from "primereact/dialog";
-import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
-import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import { Divider, Snackbar } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Dialog } from 'primereact/dialog';
+import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
 import {
   ButtonsContainer,
@@ -18,20 +18,20 @@ import {
   CourseTitle,
   FeaturedCourseIcon,
   Formulario,
-} from "./styles";
-import courseImage from "../../../../assets/images/course-image.png";
-import { Button } from "../../../../components/common/Buttons/MainButton";
-import { useEffect, useState } from "react";
-import { fetchWithToken } from "../../../../helpers/fetch";
-import { endPoints } from "../../../../const/endPoints";
-import InputButton from "../../../../components/common/Forms/FormButton";
-import { Form, Formik } from "formik";
-import Input from "../../../../components/common/Forms/Inputs";
-import { startDelete } from "../../../../actions/courses";
-import { useDispatch, useSelector } from "react-redux";
-import Swal from "sweetalert2";
-import { types } from "../../../../context/types/types";
-import { startChecking } from "../../../../actions/auth";
+} from './styles';
+import courseImage from '../../../../assets/images/course-image.png';
+import { Button } from '../../../../components/common/Buttons/MainButton';
+import { useEffect, useState } from 'react';
+import { fetchWithToken } from '../../../../helpers/fetch';
+import { endPoints } from '../../../../const/endPoints';
+import InputButton from '../../../../components/common/Forms/FormButton';
+import { Form, Formik } from 'formik';
+import Input from '../../../../components/common/Forms/Inputs';
+import { startDelete } from '../../../../actions/courses';
+import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import { types } from '../../../../context/types/types';
+import { startChecking } from '../../../../actions/auth';
 
 export const AdminCourseItem = ({
   image,
@@ -50,21 +50,21 @@ export const AdminCourseItem = ({
     const resp = await fetchWithToken(
       `${endPoints.set_feature_course}/${id}`,
       {},
-      "PUT"
+      'PUT'
     );
     const body = await resp.json();
     if (resp.status === 200) {
       Swal.fire({
         title: body.message,
-        text: "Los cursos destacados aparecerán en la página principal",
-        icon: "success",
+        text: 'Los cursos destacados aparecerán en la página principal',
+        icon: 'success',
         showConfirmButton: false,
         timer: 2500,
       });
     } else {
       Swal.fire({
         text: body.message,
-        icon: "error",
+        icon: 'error',
         showConfirmButton: false,
         timer: 2000,
       });
@@ -91,28 +91,28 @@ export const AdminCourseItem = ({
   };
   //***** Formik */
   const INITIAL_VALUES = {
-    password: "",
+    password: '',
   };
   const handleSubmit = async (values, { setSubmitting }) => {
     await dispatch(startChecking());
     const resp = await dispatch(startDelete(id, values.password));
     if (resp.type === types.coursesDelete)
       Swal.fire({
-        icon: "success",
-        title: "Curso eliminado correctamente",
+        icon: 'success',
+        title: 'Curso eliminado correctamente',
         showConfirmButton: false,
         timer: 2000,
       });
     else {
       Swal.fire({
-        icon: "error",
-        title: "Error al eliminar el curso",
+        icon: 'error',
+        title: 'Error al eliminar el curso',
         text: resp.payload,
         showConfirmButton: false,
         timer: 1500,
       });
     }
-    onHide("displayBasic");
+    onHide('displayBasic');
   };
 
   return (
@@ -121,13 +121,13 @@ export const AdminCourseItem = ({
         {featured ? (
           <StarRoundedIcon
             sx={{
-              color: "#ffc107",
+              color: '#ffc107',
             }}
           />
         ) : (
           <StarOutlineRoundedIcon
             sx={{
-              color: "#ffc107",
+              color: '#ffc107',
             }}
           />
         )}
@@ -145,8 +145,8 @@ export const AdminCourseItem = ({
         </CoruseDescription>
         <Divider
           sx={{
-            margin: "2rem 0 0.5rem 0",
-            backgroundColor: "#6385B8",
+            margin: '2rem 0 0.5rem 0',
+            backgroundColor: '#6385B8',
           }}
         />
         <CourseInstructor>
@@ -183,13 +183,13 @@ export const AdminCourseItem = ({
             display="flex"
             justifyContent="center"
             alignItems="center"
-            onClick={() => onClick("displayBasic")}
+            onClick={() => onClick('displayBasic')}
           />
           <Dialog
             header="Confirma tu contraseña"
             visible={displayBasic}
-            style={{ width: "50vw" }}
-            onHide={() => onHide("displayBasic")}
+            style={{ width: '50vw' }}
+            onHide={() => onHide('displayBasic')}
           >
             <p>Si estas seguro de eliminar el curso, confirma tu contraseña:</p>
             <Formik initialValues={INITIAL_VALUES} onSubmit={handleSubmit}>
