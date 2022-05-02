@@ -1,5 +1,6 @@
 import ProfileMenu from '../../components/layout/ProfileMenu';
 import {
+  DashboardContainer,
   MyCourses,
   ProfileContainer,
   ProfileCourseList,
@@ -14,10 +15,12 @@ import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
 import { useSelector } from 'react-redux';
 import Spinner from '../../components/common/Spinner';
 import Resize from '../../helpers/Resize';
+import { Outlet } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const width = Resize();
+
   if (!user) {
     return <Spinner />;
   }
@@ -41,15 +44,9 @@ const Profile = () => {
           </ProfileInfoText>
         </ProfileInfo>
         <ProfileDashboard>
-          <MyCourses>
-            <h1>Cursos adquiridos</h1>
-            <ProfileCourseList>
-              <MyCourseItem />
-              <MyCourseItem />
-              <MyCourseItem />
-              <MyCourseItem />
-            </ProfileCourseList>
-          </MyCourses>
+          <DashboardContainer>
+            <Outlet />
+          </DashboardContainer>
         </ProfileDashboard>
       </ProfileContainer>
     </>

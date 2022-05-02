@@ -165,6 +165,7 @@ export default function ProfileMenu() {
               color: '#5e82be',
             },
           }}
+          onClick={() => navigate('/profile/edit')}
         >
           Editar perfil
         </MenuItem>

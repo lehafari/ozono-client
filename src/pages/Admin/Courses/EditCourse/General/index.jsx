@@ -1,14 +1,14 @@
-import { Form, Formik } from "formik";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import parse from "html-react-parser";
-import InputButton from "../../../../../components/common/Forms/FormButton";
-import Input from "../../../../../components/common/Forms/Inputs";
-import Select from "../../../../../components/common/Forms/Selects";
-import Textarea2 from "../../../../../components/common/Forms/TextArea2";
-import { BoxButton } from "../../../../Access/Login/style";
-import { Formulario, LeftSide, RightSide } from "../../CreateCourse/styled";
-import { Container, OneLine } from "./styles";
+import { Form, Formik } from 'formik';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import parse from 'html-react-parser';
+import InputButton from '../../../../../components/common/Forms/FormButton';
+import Input from '../../../../../components/common/Forms/Inputs';
+import Select from '../../../../../components/common/Forms/Selects';
+import Textarea2 from '../../../../../components/common/Forms/TextArea2';
+import { BoxButton } from '../../../../Access/Login/style';
+import { Formulario, LeftSide, RightSide } from '../../CreateCourse/styled';
+import { Container, OneLine } from './styles';
 
 const General = () => {
   const courseID = useParams().courseId;
@@ -58,7 +58,7 @@ const General = () => {
               <Select
                 name="level"
                 text="Nivel"
-                options={["PRINCIPIANTE", "INTERMEDIO", "AVANZADO"]}
+                options={['PRINCIPIANTE', 'INTERMEDIO', 'AVANZADO']}
                 alignItems="flex-end"
                 margin="5px 0"
                 errorPadding="0 0 0 calc(100% - 75%)"
@@ -66,8 +66,8 @@ const General = () => {
               <Select
                 name="premium"
                 text="Premium"
-                options={["Si", "No"]}
-                label={["Si", "No"]}
+                options={['Si', 'No']}
+                label={['Si', 'No']}
                 alignItems="flex-end"
                 margin="5px 0"
                 errorPadding="0 0 0 calc(100% - 75%)"
@@ -75,7 +75,7 @@ const General = () => {
               <Select
                 name="status"
                 text="Estado del curso"
-                options={["ACTIVO", "INACTIVO", "BORRADOR"]}
+                options={['ACTIVO', 'INACTIVO', 'BORRADOR']}
                 alignItems="flex-end"
                 margin="5px 0"
                 errorPadding="0 0 0 calc(100% - 75%)"
@@ -105,7 +105,7 @@ const General = () => {
               <Select
                 name="category"
                 text="Categoria"
-                options={["TECNOLOGIA", "SALUD", "AMBIENTE"]}
+                options={['TECNOLOGIA', 'SALUD', 'AMBIENTE']}
                 alignItems="flex-start"
                 margin="5px 0"
               />
@@ -120,8 +120,8 @@ const General = () => {
               <Select
                 name="own"
                 text="¿Es propio?"
-                options={["Si", "No"]}
-                label={["Si", "No"]}
+                options={['Si', 'No']}
+                label={['Si', 'No']}
                 alignItems="flex-start"
                 margin="5px 0"
               />

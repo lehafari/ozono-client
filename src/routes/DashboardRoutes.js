@@ -1,14 +1,14 @@
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
-import { PrivateRoute } from "./PrivateRoute";
-import { Navbar } from "../components/common/Navbar";
-import CourseRoutes from "./CourseRoutes";
-import Admin from "../pages/Admin";
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { PrivateRoute } from './PrivateRoute';
+import { Navbar } from '../components/common/Navbar';
+import CourseRoutes from './CourseRoutes';
+import { MyCourses } from '../pages/Profile/MyCourses';
+import { EditProfile } from '../pages/Profile/EditProfile';
+const Contac = lazy(() => import('../pages/Contac/Contac'));
 
-const Contac = lazy(() => import("../pages/Contac/Contac"));
-
-const Home = lazy(() => import("../pages/Home/Home"));
-const Profile = lazy(() => import("../pages/Profile"));
+const Home = lazy(() => import('../pages/Home/Home'));
+const Profile = lazy(() => import('../pages/Profile'));
 
 const DashboardRoutes = () => {
   return (
@@ -26,7 +26,10 @@ const DashboardRoutes = () => {
               <Profile />
             </PrivateRoute>
           }
-        />
+        >
+          <Route path="courses" element={<MyCourses />} />
+          <Route path="edit" element={<EditProfile />} />
+        </Route>
       </Routes>
     </>
   );
