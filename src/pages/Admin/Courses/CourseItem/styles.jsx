@@ -5,7 +5,6 @@ export const CourseContainer = styled.div`
   border-radius: 35px;
   background-color: ${(props) => props.theme.colors.white};
   width: 45%;
-  height: 100%;
   display: flex;
   margin-bottom: 3rem;
   box-shadow: 1px 4px 99px rgba(4, 40, 195, 0.08);
@@ -73,7 +72,7 @@ export const CourseTitle = styled.div`
     text-transform: capitalize;
     color: ${(props) => props.theme.colors.black};
     font-weight: 400;
-    margin: 0;
+    margin: 0 0 5px 0;
     line-height: 1;
 
     @media only screen and (${(props) => props.theme.breakpoints.tablet}) {

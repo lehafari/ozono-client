@@ -14,7 +14,7 @@ const CourseRoutes = () => {
   return (
     <>
       <Routes>
-        <Route path="/course/:courseId" element={<Course />}>
+        <Route path="/course/:courseTitle" element={<Course />}>
           <Route path="description" element={<Description />} />
           <Route path="teachers" element={<Teachers />} />
           <Route path="Curriculum" element={<Curriculum />} />

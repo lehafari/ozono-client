@@ -9,14 +9,15 @@ import FooterCourse from './FooterCourse';
 import { Back } from './styles';
 
 const Course = () => {
-  const courseId = useParams().courseId;
+  const courseTitle = useParams().courseTitle;
+  console.log(courseTitle);
   const { courses } = useSelector((state) => state.courses);
-
+  console.log(courses);
   if (courses.length === 0) {
     return <Spinner />;
   }
-  const course = courses.find((course) => course.id === courseId);
-
+  const course = courses.find((course) => course.title === courseTitle);
+  console.log(course);
   return (
     <Back>
       <CourseSection1 {...course} />
