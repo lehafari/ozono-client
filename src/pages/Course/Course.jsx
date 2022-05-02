@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Spinner from '../../components/common/Spinner';
 import CourseSection1 from './CourseSection1';
 import CourseSection2 from './CourseSection2';
 import CourseSection3 from './CourseSection3';
@@ -10,6 +11,10 @@ import { Back } from './styles';
 const Course = () => {
   const courseId = useParams().courseId;
   const { courses } = useSelector((state) => state.courses);
+
+  if (courses.length === 0) {
+    return <Spinner />;
+  }
   const course = courses.find((course) => course.id === courseId);
 
   return (

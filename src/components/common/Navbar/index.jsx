@@ -59,7 +59,7 @@ export const Navbar = () => {
                   height: '50px',
                   cursor: 'pointer',
                 }}
-                onClick={() => navigate('/profile')}
+                onClick={() => navigate('/profile/courses')}
               />
               <h1>{user.username}</h1>
             </AvatarContainer>
