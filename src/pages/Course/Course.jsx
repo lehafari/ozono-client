@@ -10,14 +10,14 @@ import { Back } from './styles';
 
 const Course = () => {
   const courseTitle = useParams().courseTitle;
-  console.log(courseTitle);
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
   const { courses } = useSelector((state) => state.courses);
-  console.log(courses);
   if (courses.length === 0) {
     return <Spinner />;
   }
-  const course = courses.find((course) => course.title === courseTitle);
-  console.log(course);
+  const course = courses.find(
+    (course) => course.title.toLowerCase() === cleanCourseTitle
+  );
   return (
     <Back>
       <CourseSection1 {...course} />

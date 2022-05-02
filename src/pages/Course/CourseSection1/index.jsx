@@ -10,7 +10,8 @@ import {
 
 const CourseSection1 = ({ title }) => {
   //title to capitalize
-  // const titleCapitalized = title.charAt(0).toUpperCase() + title.slice(1);
+  const titleCapitalized =
+    title && title.charAt(0).toUpperCase() + title.slice(1);
 
   return (
     <SectionContainer>
@@ -21,7 +22,7 @@ const CourseSection1 = ({ title }) => {
         </Student>
         <CourseName>
           <h1>
-            Curso <br /> {title}
+            Curso <br /> {titleCapitalized}
           </h1>
           <CourseDetails>
             <p>Curso de ampliación (Fellowship)</p>

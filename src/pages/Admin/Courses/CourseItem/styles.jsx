@@ -9,6 +9,11 @@ export const CourseContainer = styled.div`
   margin-bottom: 3rem;
   box-shadow: 1px 4px 99px rgba(4, 40, 195, 0.08);
 
+  & > .p-dialog .p-dialog-content {
+    display: flex !important;
+    flex-direction: column !important;
+    bcakground-color: red !important;
+  }
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     width: fill-available;
     width: webkit-fill-available;
@@ -151,4 +156,9 @@ export const Formulario = styled.div`
   & input {
     margin-top: 0.5rem;
   }
+`;
+
+export const ConfirmFeaturedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

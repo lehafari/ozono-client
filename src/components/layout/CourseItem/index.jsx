@@ -7,11 +7,11 @@ import {
   CourseInstructor,
   CoursePrice,
   CourseTitle,
-} from "./styles";
+} from './styles';
 
-import courseImage from "../../../assets/images/hero-image.png";
-import PersonIcon from "@mui/icons-material/Person";
-import { Button } from "../../common/Buttons/MainButton";
+import courseImage from '../../../assets/images/hero-image.png';
+import PersonIcon from '@mui/icons-material/Person';
+import { Button } from '../../common/Buttons/MainButton';
 
 export const CourseItem = ({
   price,
@@ -25,10 +25,10 @@ export const CourseItem = ({
   const getWidth = () => {
     return window.innerWidth;
   };
-  console.log(id);
-  // texto enriquecido a texto plano
-  // const text = description.replace(/<[^>]*>?/gm, '');
-
+  //title to url friendly
+  const titleToUrl = (title) => {
+    return title.toLowerCase().split(' ').join('-');
+  };
   return (
     <CourseContainer>
       <CourseImage>
@@ -47,7 +47,7 @@ export const CourseItem = ({
           <p>
             <PersonIcon
               sx={{
-                color: "#898989",
+                color: '#898989',
               }}
               fontSize="large"
             />
@@ -61,10 +61,10 @@ export const CourseItem = ({
         </CourseInstructor>
         <Button
           text="Ver Curso"
-          path={`/course/${id}`}
+          path={`/course/${titleToUrl(title)}`}
           width="50%"
-          alignSelf={getWidth() < 600 ? "center" : ""}
-          fontSize={getWidth() < 600 ? "1rem" : ""}
+          alignSelf={getWidth() < 600 ? 'center' : ''}
+          fontSize={getWidth() < 600 ? '1rem' : ''}
         />
       </CourseContend>
     </CourseContainer>

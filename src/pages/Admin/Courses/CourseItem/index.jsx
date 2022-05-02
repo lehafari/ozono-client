@@ -8,6 +8,7 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
 import {
   ButtonsContainer,
+  ConfirmFeaturedContainer,
   CoruseDescription,
   CourseButton,
   CourseContainer,
@@ -80,8 +81,10 @@ export const AdminCourseItem = ({
 
   //** MODAL */
   const [displayBasic, setDisplayBasic] = useState(false);
+  const [displayBasic2, setDisplayBasic2] = useState(false);
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
+    displayBasic2: setDisplayBasic2,
   };
   const onClick = (name) => {
     dialogFuncMap[`${name}`](true);
@@ -89,6 +92,11 @@ export const AdminCourseItem = ({
   const onHide = (name) => {
     dialogFuncMap[`${name}`](false);
   };
+  //***** Title to url friendly */
+  const titleToUrl = (title) => {
+    return title.toLowerCase().split(' ').join('-');
+  };
+
   //***** Formik */
   const INITIAL_VALUES = {
     password: '',
@@ -117,7 +125,7 @@ export const AdminCourseItem = ({
 
   return (
     <CourseContainer>
-      <FeaturedCourseIcon onClick={() => setFeatured(id)}>
+      <FeaturedCourseIcon onClick={() => onClick('displayBasic2')}>
         {featured ? (
           <StarRoundedIcon
             sx={{
@@ -132,6 +140,37 @@ export const AdminCourseItem = ({
           />
         )}
       </FeaturedCourseIcon>
+      <Dialog
+        header="Confirmar"
+        visible={displayBasic2}
+        style={{
+          width: '50vw',
+        }}
+        onHide={() => onHide('displayBasic2')}
+      >
+        <ConfirmFeaturedContainer>
+          {featured ? (
+            <p> ¿Esta seguro que desea eliminar este curso de descatados?</p>
+          ) : (
+            <p> ¿Esta seguro que desea destacar este curso?</p>
+          )}
+
+          <InputButton
+            text="OK"
+            backgroundColor="#5e82be"
+            backgroundColorHover="#5e82be"
+            fontSize="1rem"
+            width="30%"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            alignSelf="center"
+            onClick={() => {
+              setFeatured(id);
+            }}
+          />
+        </ConfirmFeaturedContainer>
+      </Dialog>
       <CourseImage>
         <img src={image || courseImage} alt="course" />
       </CourseImage>
@@ -167,7 +206,7 @@ export const AdminCourseItem = ({
           />
           <Button
             text={<VisibilityIcon />}
-            path={`/course/${id}`}
+            path={`/course/${titleToUrl(title)}`}
             fontSize="1rem"
             width="30%"
             display="flex"
