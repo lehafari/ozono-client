@@ -1,56 +1,70 @@
 import React, { useState } from "react";
 import { Dialog } from "primereact/dialog";
-import { ButtonContainer } from "../style";
-// import { Button } from "primereact/button";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
 
-import { Button } from "../../../../components/common/Buttons/MainButton";
+import { ButtonContainer } from "../style";
 import { MainButton } from "../../../../components/common/Buttons/MainButton/styles";
+import Input from "../../../../components/common/Forms/Inputs";
+import InputButton from "../../../../components/common/Forms/FormButton";
+import { Container } from "./styles";
 
 const CreateCategory = () => {
-  const [displayBasic, setDisplayBasic] = useState(false);
+  //**** Modal ****/
+  const [visible, setVisible] = useState(false);
 
   const click = () => {
-    setDisplayBasic(true);
-    console.log("funciona");
+    setVisible(true);
   };
   const onHide = () => {
-    setDisplayBasic(false);
+    setVisible(false);
+  };
+  //**** Formik ****/
+  const INITIAL_VALUES = {
+    title: "",
+  };
+  const VALIDATION_SCHEMA = yup.object({ title: yup.string().required() });
+
+  const onSubmit = (values, { resetForm }) => {
+    console.log(values);
+    resetForm();
   };
   return (
     <>
-      {/* <Button
-        label="Crear categoria"
-        className="p-button-rounded"
-        style={{
-          padding: "0.5rem 1rem",
-          height: "2.5rem",
-          fontSize: "1.2rem",
-          fontWeight: "400",
-          fontFamily: "Lato, sans-serif",
-          margin: "1rem 0",
-          backgroundColor: "#00A8E8",
-        }}
-        onClick={() => onClick()}
-      /> */}
       <ButtonContainer>
         <MainButton onClick={() => click()}>Categorias</MainButton>
       </ButtonContainer>
       <Dialog
-        header="Categorias"
-        visible={displayBasic}
+        header="CATEGORIAS"
+        visible={visible}
         style={{ width: "50vw" }}
         draggable={false}
         onHide={() => onHide()}
       >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <Formik
+          initialValues={INITIAL_VALUES}
+          validationSchema={VALIDATION_SCHEMA}
+          onSubmit={onSubmit}
+        >
+          <Form>
+            <Container>
+              <Input
+                id={"title"}
+                name={"title"}
+                type={"text"}
+                placeholder={"Nombre de la categoria"}
+                color="#1a1a1a"
+                errorPadding="0 0 0 calc(100% - 87%)"
+              />
+              <InputButton
+                text={"Agregar categoria"}
+                width="30%"
+                fontSize="0.9rem"
+                margin="2rem 0 0 0 "
+              />
+            </Container>
+          </Form>
+        </Formik>
       </Dialog>
     </>
   );
