@@ -66,6 +66,6 @@ export const categoriesReducer = (state = initialState, action) => {
         loading: false,
       };
     default:
-      break;
+      return state;
   }
 };

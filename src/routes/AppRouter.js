@@ -7,6 +7,7 @@ import AdminRoutes from "./AdminRoutes";
 import NotFound from "../pages/NotFound";
 import ClientRoutes from "./ClientRoutes";
 import { startFetch } from "../actions/courses";
+import { startFetchCategories } from "actions/categories";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ const AppRouter = () => {
   useEffect(() => {
     dispatch(startFetch());
   }, [user, dispatch]);
+
+  useEffect(() => {
+    dispatch(startFetchCategories());
+  }, [dispatch]);
 
   if (checking) {
     return <Spinner />;

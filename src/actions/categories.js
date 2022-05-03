@@ -33,7 +33,7 @@ const createError = (error) => ({
 
 //**** Fetch Categories ****/
 
-export const startFetch = () => {
+export const startFetchCategories = () => {
   return async (dispatch) => {
     dispatch(fetchStart());
     const resp = await fetchWithToken(endPoints.get_all_categories);

@@ -10,6 +10,7 @@ import InputButton from "../../../../components/common/Forms/FormButton";
 import { Container } from "./styles";
 import { startCreate } from "actions/categories";
 import { useDispatch } from "react-redux";
+import { startChecking } from "actions/auth";
 
 const CreateCategory = () => {
   //**** Modal ****/
@@ -29,6 +30,7 @@ const CreateCategory = () => {
 
   const dispatch = useDispatch();
   const onSubmit = async (values, { resetForm }) => {
+    await dispatch(startChecking());
     const res = await dispatch(startCreate(values));
     console.log(res);
     resetForm();
