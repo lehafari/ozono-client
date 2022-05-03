@@ -104,6 +104,18 @@ export default function Admin() {
     setOpen(true);
   };
 
+  const routes = {
+    Cursos: () => navigate("/admin/courses"),
+    Usuarios: () => navigate("/admin/users"),
+    Pagos: () => navigate("/admin/payments"),
+    Estadísticas: () => navigate("/admin/stats"),
+    Emails: () => navigate("/admin/Emails"),
+    Multimedia: () => navigate("/admin/media"),
+    Anuncios: () => navigate("/admin/advertisements"),
+    Blogs: () => navigate("/admin/blogs"),
+    Noticias: () => navigate("/admin/news"),
+  };
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -170,12 +182,13 @@ export default function Admin() {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={() => {
-                  text === "Cursos" && navigate("/admin/courses");
-                  text === "Usuarios" && navigate("/admin/users");
-                  text === "Pagos" && navigate("/admin/payments");
-                  text === "Estadisticas" && navigate("/admin/stats");
-                }}
+                onClick={routes[text]}
+                // onClick={() => {
+                //   text === "Cursos" && navigate("/admin/courses");
+                //   text === "Usuarios" && navigate("/admin/users");
+                //   text === "Pagos" && navigate("/admin/payments");
+                //   text === "Estadisticas" && navigate("/admin/stats");
+                // }}
               >
                 <ListItemIcon
                   sx={{
@@ -205,13 +218,14 @@ export default function Admin() {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={() => {
-                  text === "Emails" && navigate("/admin/emails");
-                  text === "Multimedia" && navigate("/admin/media");
-                  text === "Anuncios" && navigate("/admin/advertisements");
-                  text === "Blogs" && navigate("/admin/blogs");
-                  text === "Noticias" && navigate("/admin/news");
-                }}
+                onClick={routes[text]}
+                // onClick={() => {
+                //   text === "Emails" && navigate("/admin/emails");
+                //   text === "Multimedia" && navigate("/admin/media");
+                //   text === "Anuncios" && navigate("/admin/advertisements");
+                //   text === "Blogs" && navigate("/admin/blogs");
+                //   text === "Noticias" && navigate("/admin/news");
+                // }}
               >
                 <ListItemIcon
                   sx={{

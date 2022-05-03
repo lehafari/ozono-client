@@ -6,7 +6,7 @@ export const HomeSection2 = () => {
   const { courses } = useSelector((state) => state.courses);
 
   const featuredCourses = courses.filter((course) => course.featured);
-  console.log(featuredCourses);
+  // console.log(featuredCourses);
 
   return (
     <HomeCourseContainer>

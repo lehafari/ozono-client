@@ -1,12 +1,11 @@
-import { Box } from '@material-ui/core';
-import { Formik, Form } from 'formik';
-import { Dropdown } from 'primereact/dropdown';
+import { Formik, Form } from "formik";
+import { Dropdown } from "primereact/dropdown";
 
-import { BoxButton, Formulario, LeftSide, RightSide } from './styles';
-import Input from '../../../components/common/Forms/Inputs/';
-import { useSelector } from 'react-redux';
-import InputButton from '../../../components/common/Forms/FormButton';
-import { useState } from 'react';
+import { BoxButton, Formulario, LeftSide, RightSide } from "./styles";
+import Input from "../../../components/common/Forms/Inputs/";
+import { useSelector } from "react-redux";
+import InputButton from "../../../components/common/Forms/FormButton";
+import { useState } from "react";
 
 export const EditProfile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -27,16 +26,16 @@ export const EditProfile = () => {
   //*** Select values */
   const [selectedCountry, setSelectedCountry] = useState(null);
   const countries = [
-    { name: 'Australia' },
-    { name: 'Brazil' },
-    { name: 'China' },
-    { name: 'Egypt' },
-    { name: 'France' },
-    { name: 'Germany' },
-    { name: 'India' },
-    { name: 'Japan' },
-    { name: 'Spain' },
-    { name: 'United States' },
+    { name: "Australia" },
+    { name: "Brazil" },
+    { name: "China" },
+    { name: "Egypt" },
+    { name: "France" },
+    { name: "Germany" },
+    { name: "India" },
+    { name: "Japan" },
+    { name: "Spain" },
+    { name: "United States" },
   ];
   const onCountryChange = (e) => {
     setSelectedCountry(e.value);
@@ -80,44 +79,44 @@ export const EditProfile = () => {
                 name="firstName"
                 type="text"
                 placeholder="Primer nombre"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               />
               <Input
                 id="lastName"
                 name="lastName"
                 type="text"
                 placeholder="Segundo nombre"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               />
               <Input
                 id="username"
                 name="username"
                 type="text"
                 placeholder="Usuario"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               />
               <Input
                 id="email"
                 name="email"
                 type="email"
                 placeholder="Email"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               />
             </LeftSide>
             <RightSide>
@@ -132,15 +131,15 @@ export const EditProfile = () => {
                 valueTemplate={selectedCountryTemplate}
                 itemTemplate={countryOptionTemplate}
                 style={{
-                  width: '75%',
-                  heigth: '50px',
-                  margin: '10px 0px',
-                  backgroundColor: '#fff',
-                  border: 'none',
-                  borderRadius: '45px',
-                  alignSelf: 'center',
-                  padding: '0px 15px',
-                  boxShadow: 'none',
+                  width: "75%",
+                  heigth: "50px",
+                  margin: "10px 0px",
+                  backgroundColor: "#fff",
+                  border: "none",
+                  borderRadius: "45px",
+                  alignSelf: "center",
+                  padding: "0px 15px",
+                  boxShadow: "none",
                 }}
               />
               <Input
@@ -154,11 +153,11 @@ export const EditProfile = () => {
                 name="gender"
                 type="text"
                 placeholder="Contraseña"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               ></Input>
 
               <Input
@@ -166,22 +165,22 @@ export const EditProfile = () => {
                 name="confirmPassword"
                 type="password"
                 placeholder="Confirmar Contraseña"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               ></Input>
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
                 placeholder="Confirmar Contraseña"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
+                width={"75%"}
+                heigth={"50px"}
+                margin={"10px 0px"}
                 errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
+                backgroundColor={"#fff"}
               ></Input>
             </RightSide>
             <BoxButton>

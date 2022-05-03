@@ -11,11 +11,11 @@ const Textarea2 = ({
   width,
   heigth,
   margin,
-  editValue,
+  editValue = "",
 }) => {
   const { values, errors, touched, setTouched } = useFormikContext();
-  // const value = values[name] ? values[name] : "";
-  const [text, setText] = useState(editValue ? editValue : "");
+  // const [text, setText] = useState(editValue ? editValue : "");
+  const [text, setText] = useState(editValue);
   values[name] = text;
   const error = errors[name] ? errors[name] : "";
   const touchedInput = touched[name] ? touched[name] : "";
