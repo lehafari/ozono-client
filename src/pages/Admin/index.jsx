@@ -183,12 +183,6 @@ export default function Admin() {
                   px: 2.5,
                 }}
                 onClick={routes[text]}
-                // onClick={() => {
-                //   text === "Cursos" && navigate("/admin/courses");
-                //   text === "Usuarios" && navigate("/admin/users");
-                //   text === "Pagos" && navigate("/admin/payments");
-                //   text === "Estadisticas" && navigate("/admin/stats");
-                // }}
               >
                 <ListItemIcon
                   sx={{
@@ -219,13 +213,6 @@ export default function Admin() {
                   px: 2.5,
                 }}
                 onClick={routes[text]}
-                // onClick={() => {
-                //   text === "Emails" && navigate("/admin/emails");
-                //   text === "Multimedia" && navigate("/admin/media");
-                //   text === "Anuncios" && navigate("/admin/advertisements");
-                //   text === "Blogs" && navigate("/admin/blogs");
-                //   text === "Noticias" && navigate("/admin/news");
-                // }}
               >
                 <ListItemIcon
                   sx={{

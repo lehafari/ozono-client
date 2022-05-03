@@ -8,6 +8,8 @@ import { MainButton } from "../../../../components/common/Buttons/MainButton/sty
 import Input from "../../../../components/common/Forms/Inputs";
 import InputButton from "../../../../components/common/Forms/FormButton";
 import { Container } from "./styles";
+import { startCreate } from "actions/categories";
+import { useDispatch } from "react-redux";
 
 const CreateCategory = () => {
   //**** Modal ****/
@@ -25,8 +27,10 @@ const CreateCategory = () => {
   };
   const VALIDATION_SCHEMA = yup.object({ title: yup.string().required() });
 
-  const onSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const onSubmit = async (values, { resetForm }) => {
+    const res = await dispatch(startCreate(values));
+    console.log(res);
     resetForm();
   };
   return (
