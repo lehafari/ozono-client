@@ -7,6 +7,10 @@ export const endPoints = {
 
   //user
   get_user: `/users/me`,
+  get_profile_image: `/users/profileImage`,
+
+  update_user: `/users/update`,
+  upload_profile_image: `/users/profileImage/upload`,
 
   //courses
   create_course: `/courses/create`,

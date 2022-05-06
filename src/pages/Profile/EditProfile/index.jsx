@@ -4,11 +4,18 @@ import { Dropdown } from 'primereact/dropdown';
 
 import { BoxButton, Formulario, LeftSide, RightSide } from './styles';
 import Input from '../../../components/common/Forms/Inputs/';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import InputButton from '../../../components/common/Forms/FormButton';
 import { useState } from 'react';
+import { countries } from '../../../const/countries';
+import { fetchWithToken } from '../../../helpers/fetch';
+import { endPoints } from '../../../const/endPoints';
+import { startChecking } from '../../../actions/auth';
+import PopupOk from '../../../components/common/Popup/PopupOk';
+import PopupError from '../../../components/common/Popup/PopupError';
 
 export const EditProfile = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { firstName, lastName, username, email, country, gender, phone, ci } =
     user;
@@ -26,18 +33,7 @@ export const EditProfile = () => {
 
   //*** Select values */
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const countries = [
-    { name: 'Australia' },
-    { name: 'Brazil' },
-    { name: 'China' },
-    { name: 'Egypt' },
-    { name: 'France' },
-    { name: 'Germany' },
-    { name: 'India' },
-    { name: 'Japan' },
-    { name: 'Spain' },
-    { name: 'United States' },
-  ];
+
   const onCountryChange = (e) => {
     setSelectedCountry(e.value);
   };
@@ -60,9 +56,31 @@ export const EditProfile = () => {
     );
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    dispatch(startChecking());
+    const updatedUser = await fetchWithToken(
+      endPoints.update_user,
+      values,
+      'PUT'
+    );
+    const data = await updatedUser.json();
+    if (updatedUser.status === 200) {
+      PopupOk('22rem', 'success', 'Perfil actualizado');
+      dispatch(startChecking());
+    } else {
+      PopupError(data.message);
+    }
   };
+
+  //  ** "firstName": "string22",
+  //   **"lastName": "string",
+  //   **"username": "strin2g",
+  //   **"email": "user2@example.com",
+  //   **"country": "string",
+  //   **"gender": "string",
+  //   **"phone": null,
+  //   **"ci": null
+  //   "image": "false",
 
   return (
     <>
@@ -128,7 +146,7 @@ export const EditProfile = () => {
                 optionLabel="name"
                 showClear
                 filterBy="name"
-                placeholder="Select a Country"
+                placeholder={country ? country : 'Selecciona un pais'}
                 valueTemplate={selectedCountryTemplate}
                 itemTemplate={countryOptionTemplate}
                 style={{
@@ -149,23 +167,46 @@ export const EditProfile = () => {
                 type="hidden"
                 inheritValue={selectedCountry}
               ></Input>
+
+              {/***** GENERO  ******/}
+              {/* <Dropdown
+                value={selectedCountry}
+                options={[
+                  { name: 'Hombre' },
+                  { name: 'Mujer' },
+                  { name: 'Otro' },
+                ]}
+                onChange={onCountryChange}
+                optionLabel="name"
+                showClear
+                filterBy="name"
+                placeholder="Selecciona tu genero"
+                valueTemplate={selectedCountryTemplate}
+                itemTemplate={countryOptionTemplate}
+                style={{
+                  width: '75%',
+                  heigth: '50px',
+                  margin: '10px 0px',
+                  backgroundColor: '#fff',
+                  border: 'none',
+                  borderRadius: '45px',
+                  alignSelf: 'center',
+                  padding: '0px 15px',
+                  boxShadow: 'none',
+                }}
+              />
               <Input
                 id="gender"
                 name="gender"
-                type="text"
-                placeholder="Contraseña"
-                width={'75%'}
-                heigth={'50px'}
-                margin={'10px 0px'}
-                errorPadding="0 0 0 15%"
-                backgroundColor={'#fff'}
-              ></Input>
+                type="hidden"
+                inheritValue={selectedCountry}
+              ></Input> */}
 
               <Input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                placeholder="Confirmar Contraseña"
+                id="phone"
+                name="phone"
+                type="text"
+                placeholder="Número de teléfono"
                 width={'75%'}
                 heigth={'50px'}
                 margin={'10px 0px'}
@@ -173,10 +214,10 @@ export const EditProfile = () => {
                 backgroundColor={'#fff'}
               ></Input>
               <Input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                placeholder="Confirmar Contraseña"
+                id="ci"
+                name="ci"
+                type="string"
+                placeholder="Cédula de identidad"
                 width={'75%'}
                 heigth={'50px'}
                 margin={'10px 0px'}

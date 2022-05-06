@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import ProfileMenu from '../../components/layout/ProfileMenu';
 import {
   DashboardContainer,
@@ -8,35 +10,63 @@ import {
   ProfileInfo,
   ProfileInfoText,
 } from './styles';
-import profileImage from '../../assets/images/profile-image.svg';
+import profileImage from '../../assets/images/default-user.png';
 import { MyCourseItem } from '../../components/layout/MyCourseItem';
 import { MenuBar } from '../../components/common/MenuBar';
 import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
 import { useSelector } from 'react-redux';
 import Spinner from '../../components/common/Spinner';
 import Resize from '../../helpers/Resize';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
+
+import { FileUpload } from 'primereact/fileupload';
+import { UploadImage } from './UploadImage';
+import { fetchWithToken } from '../../helpers/fetch';
+import { endPoints } from '../../const/endPoints';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
+  const [profileImageUrl, setProfileImageUrl] = useState('');
+
+  //async fetch to get the user profile image
+  const fetchProfileImage = async () => {
+    const res = await fetchWithToken(
+      `${endPoints.get_profile_image}/${user.image}`,
+      {},
+      'GET'
+    );
+    if (res.status === 200) {
+      setProfileImageUrl(res.url);
+    } else {
+      setProfileImageUrl('false');
+    }
+  };
+
+  useEffect(() => {
+    fetchProfileImage();
+  }, []);
+
+  const param = useParams();
+  const path = param['*'];
+
   const width = Resize();
 
   if (!user) {
     return <Spinner />;
   }
-
   return (
     <>
       <BackgroundNavbar />
       <MenuBar />
       <ProfileContainer>
         <ProfileInfo>
-          {user.image === false ? (
-            <img src={user.image} alt="profile" />
+          {path === 'profile/edit' ? (
+            <UploadImage />
+          ) : user.image !== 'false' ? (
+            <img src={profileImageUrl} alt="profile" />
           ) : (
             <img src={profileImage} alt="profile image" />
           )}
-
           <ProfileInfoText>
             <h2>{`${user.firstName} ${user.lastName}`}</h2>
             {/* <p>Profesora en tal cosa</p>

@@ -11,7 +11,7 @@ import {
   SignupButton,
 } from './styles';
 import cenaozLogo from '../../../assets/images/cenaoz-logo.webp';
-import profileImage from '../../../assets/images/profile-image.svg';
+import profileImage from '../../../assets/images/default-user.png';
 import { Link, useNavigate } from 'react-router-dom';
 import MobileMenu from '../MobileMenu';
 import Resize from '../../../helpers/Resize';
@@ -51,16 +51,29 @@ export const Navbar = () => {
             </LoginContainer>
           ) : (
             <AvatarContainer>
-              <Avatar
-                alt="Remy Sharp"
-                src={profileImage}
-                sx={{
-                  width: '50px',
-                  height: '50px',
-                  cursor: 'pointer',
-                }}
-                onClick={() => navigate('/profile/courses')}
-              />
+              {user.image !== 'false' ? (
+                <Avatar
+                  alt="Remy Sharp"
+                  src={user.profileImageUrl}
+                  sx={{
+                    width: '50px',
+                    height: '50px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => navigate('/profile/courses')}
+                />
+              ) : (
+                <Avatar
+                  alt="Remy Sharp"
+                  src={profileImage}
+                  sx={{
+                    width: '50px',
+                    height: '50px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => navigate('/profile/courses')}
+                />
+              )}
               <h1>{user.username}</h1>
             </AvatarContainer>
           )}

@@ -50,3 +50,23 @@ export const fetchWithRefreshToken = (endpoint, body = {}, method = 'GET') => {
 
   return fetch(url, options);
 };
+
+export const fetchWithTokenToUploadImage = (
+  endpoint,
+  body = {},
+  method = 'GET'
+) => {
+  const url = `${base_url}${endpoint}`;
+  const options = {
+    method,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('at')}`,
+    },
+  };
+
+  if (method !== 'GET') {
+    options.body = body;
+  }
+
+  return fetch(url, options);
+};

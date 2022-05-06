@@ -25,9 +25,9 @@ export const CourseItem = ({
   const getWidth = () => {
     return window.innerWidth;
   };
-  //title to url friendly
+
   const titleToUrl = (title) => {
-    return title.toLowerCase().split(' ').join('-');
+    return title && title.toLowerCase().split(' ').join('-');
   };
   return (
     <CourseContainer>

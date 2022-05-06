@@ -1,14 +1,14 @@
-import React, { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import { Header } from "../components/common/Header";
+import React, { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Header } from '../components/common/Header';
 
-import Spinner from "../components/common/Spinner";
-import Access from "../pages/Access";
-import DashboardRoutes from "./DashboardRoutes";
-import { PublicRoute } from "./PublicRoute";
+import Spinner from '../components/common/Spinner';
+import Access from '../pages/Access';
+import DashboardRoutes from './DashboardRoutes';
+import { PublicRoute } from './PublicRoute';
 
-const Login = lazy(() => import("../pages/Access/Login"));
-const Register = lazy(() => import("../pages/Access/Register"));
+const Login = lazy(() => import('../pages/Access/Login'));
+const Register = lazy(() => import('../pages/Access/Register'));
 
 const ClientRoutes = () => {
   return (
