@@ -1,4 +1,3 @@
-import { Box } from '@material-ui/core';
 import { Formik, Form } from 'formik';
 import { Dropdown } from 'primereact/dropdown';
 
@@ -33,7 +32,6 @@ export const EditProfile = () => {
 
   //*** Select values */
   const [selectedCountry, setSelectedCountry] = useState(null);
-
   const onCountryChange = (e) => {
     setSelectedCountry(e.value);
   };

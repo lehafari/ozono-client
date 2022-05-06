@@ -1,12 +1,13 @@
 // import { useFormikContext } from "formik";
 
-import { MainButton } from '../../Buttons/MainButton/styles';
+import { MainButton } from "../../Buttons/MainButton/styles";
 
 const InputButton = (props) => {
   // const { errors, isSubmitting } = useFormikContext();
 
   return (
     <MainButton
+      {...props}
       // Atributos input
       type="submit"
       //Acciones/Funciones

@@ -6,11 +6,13 @@ export const ButtonsContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding: 1.5rem;
 `;
 
 export const ButtonContainer = styled.div`
-  margin: 0 5px 0 5px;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const CardContainer = styled.div``;

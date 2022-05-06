@@ -25,4 +25,12 @@ export const endPoints = {
   delete_course: `/courses/delete`,
 
   set_feature_course: `/courses/featured`,
+
+  //Categories
+  create_category: `/categories/create`,
+
+  get_all_categories: `/categories/all`,
+
+  delete_category: `/categories/delete`,
+  delete_categories: `/categories/delete-categories`,
 };

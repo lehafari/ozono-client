@@ -22,11 +22,9 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import EmailIcon from "@mui/icons-material/Email";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
-import AddCommentIcon from "@mui/icons-material/AddComment";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 import { Outlet } from "react-router-dom";
-import { OutletBox } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaBlog } from "react-icons/fa";
 
 const drawerWidth = 240;
@@ -104,10 +102,23 @@ export default function Admin() {
     setOpen(true);
   };
 
+  const routes = {
+    Cursos: () => navigate("/admin/courses"),
+    Usuarios: () => navigate("/admin/users"),
+    Pagos: () => navigate("/admin/payments"),
+    Estadísticas: () => navigate("/admin/stats"),
+    Emails: () => navigate("/admin/Emails"),
+    Multimedia: () => navigate("/admin/media"),
+    Anuncios: () => navigate("/admin/advertisements"),
+    Blogs: () => navigate("/admin/blogs"),
+    Noticias: () => navigate("/admin/news"),
+  };
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  //* obtener ruta actual
+  const path = useParams();
   return (
     <Box
       sx={{
@@ -170,12 +181,7 @@ export default function Admin() {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={() => {
-                  text === "Cursos" && navigate("/admin/courses");
-                  text === "Usuarios" && navigate("/admin/users");
-                  text === "Pagos" && navigate("/admin/payments");
-                  text === "Estadisticas" && navigate("/admin/stats");
-                }}
+                onClick={routes[text]}
               >
                 <ListItemIcon
                   sx={{
@@ -205,13 +211,7 @@ export default function Admin() {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={() => {
-                  text === "Emails" && navigate("/admin/emails");
-                  text === "Multimedia" && navigate("/admin/media");
-                  text === "Anuncios" && navigate("/admin/advertisements");
-                  text === "Blogs" && navigate("/admin/blogs");
-                  text === "Noticias" && navigate("/admin/news");
-                }}
+                onClick={routes[text]}
               >
                 <ListItemIcon
                   sx={{
@@ -234,6 +234,7 @@ export default function Admin() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, background: "#f8f8f8" }}>
         <DrawerHeader />
+        {path["*"] === "" && <span>ola</span>}
         <Outlet />
       </Box>
     </Box>

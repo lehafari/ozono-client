@@ -14,7 +14,7 @@ import Textarea2 from "../../../../components/common/Forms/TextArea2";
 import Select from "../../../../components/common/Forms/Selects";
 import { BoxButton } from "../../../Access/Login/style";
 import InputButton from "../../../../components/common/Forms/FormButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startCreate } from "../../../../actions/courses";
 import PopupError from "../../../../components/common/Popup/PopupError";
 import PopupOk from "../../../../components/common/Popup/PopupOk";
@@ -25,6 +25,9 @@ import { OneLine } from "../EditCourse/General/styles";
 
 const CreateCourse = () => {
   const navigate = useNavigate();
+  const { categories } = useSelector((state) => state.categories);
+  const categoriesOptions = categories.map((category) => category.title);
+
   const INITIAL_VALUES = {
     title: "",
     description: "",
@@ -146,7 +149,7 @@ const CreateCourse = () => {
               <Select
                 name="category"
                 text="Categoria"
-                options={["TECNOLOGIA", "SALUD", "AMBIENTE"]}
+                options={categoriesOptions}
                 alignItems="flex-start"
                 margin="5px 0"
               />

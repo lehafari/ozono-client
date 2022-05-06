@@ -10,19 +10,27 @@ import {
 } from "./style";
 import img from "../../../../assets/images/course-image.png";
 import General from "./General";
+import { useParams } from "react-router-dom";
 
 const EditCourse = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const courseTitle = useParams().courseTitle;
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
+  const cleanTitle = cleanCourseTitle
+    .trim()
+    .toLowerCase()
+    .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
+
   return (
     <Container>
-      <h1>Edicion del curso:"nombre del curso"</h1>
+      <h1>Edicion de: {cleanTitle}</h1>
       <ShadowContainer>
         <ImgContainer>
           <img src={img} alt="imagen del curso" />
           <TileContainer>
             <h1>
-              Curso <br /> Ozonoterapeuta Clinico
+              Curso <br /> {cleanTitle}
             </h1>
           </TileContainer>
         </ImgContainer>
