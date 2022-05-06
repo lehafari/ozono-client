@@ -65,7 +65,11 @@ const fetchError = (error) => ({
 export const startDelete = (id) => {
   return async (dispatch) => {
     dispatch(deleteStart());
-    const resp = await fetchWithToken(endPoints.delete_category, id, "DELETE");
+    const resp = await fetchWithToken(
+      endPoints.delete_categories,
+      id,
+      "DELETE"
+    );
     const body = await resp.json();
     if (resp.status !== 200) {
       return dispatch(deleteError(body.message));

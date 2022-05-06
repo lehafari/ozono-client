@@ -19,15 +19,23 @@ import PopupOk from "../../../../../components/common/Popup/PopupOk";
 const General = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   //****** Obtenemos el id del curso y el curso en cuestion ******
-  const courseID = useParams().courseId;
+  const courseTitle = useParams().courseTitle;
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
   const { courses } = useSelector((state) => state.courses);
+
+  //****** Obtenemos las categorias ******
+  const { categories } = useSelector((state) => state.categories);
+  const categoriesOptions = categories.map((category) => category.title);
 
   if (courses.length === 0) {
     return <Spinner />;
   }
   //****** obtenemos los datos del curso *****
-  const course = courses.find((course) => course.id === courseID);
+  const course = courses.find(
+    (course) => course.title.toLowerCase() === cleanCourseTitle
+  );
 
   const {
     title,
@@ -157,7 +165,7 @@ const General = () => {
               <Select
                 name="category"
                 text="Categoria"
-                options={["TECNOLOGIA", "SALUD", "AMBIENTE"]}
+                options={categoriesOptions}
                 alignItems="flex-start"
                 margin="5px 0"
               />

@@ -29,7 +29,10 @@ const AdminRoutes = () => {
           {/* //* Seccion de Cursos */}
           <Route path="courses" element={<Courses />}></Route>
           <Route path="courses/create" element={<CreateCourse />} />
-          <Route path="courses/edit/:courseId" element={<EditCourse />}></Route>
+          <Route
+            path="courses/edit/:courseTitle"
+            element={<EditCourse />}
+          ></Route>
 
           {/* //* Seccion de usuarios */}
           <Route path="users" element={<Users />} />

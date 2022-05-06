@@ -27,5 +27,6 @@ export const endPoints = {
 
   get_all_categories: `/categories/all`,
 
-  delete_category: `categories/delete`,
+  delete_category: `/categories/delete`,
+  delete_categories: `/categories/delete-categories`,
 };

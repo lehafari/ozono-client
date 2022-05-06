@@ -22,11 +22,9 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import EmailIcon from "@mui/icons-material/Email";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
-import AddCommentIcon from "@mui/icons-material/AddComment";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 import { Outlet } from "react-router-dom";
-import { OutletBox } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaBlog } from "react-icons/fa";
 
 const drawerWidth = 240;
@@ -119,7 +117,8 @@ export default function Admin() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  //* obtener ruta actual
+  const path = useParams();
   return (
     <Box
       sx={{
@@ -235,6 +234,7 @@ export default function Admin() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, background: "#f8f8f8" }}>
         <DrawerHeader />
+        {path["*"] === "" && <span>ola</span>}
         <Outlet />
       </Box>
     </Box>

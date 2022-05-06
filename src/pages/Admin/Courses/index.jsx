@@ -25,7 +25,6 @@ const Courses = () => {
 
   return (
     <Container>
-      <Outlet />
       <ButtonsContainer>
         <ButtonContainer>
           <Button path="/admin/courses/create" text="Crear curso" />

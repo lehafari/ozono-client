@@ -1,10 +1,13 @@
 import { Box } from "@mui/material";
-import React from "react";
+import { TitleContainer, UserTable } from "./styles";
 
 const Users = () => {
   return (
     <Box sx={{ background: "red" }}>
-      <div>Users</div>
+      <TitleContainer>
+        <span>USUARIOS</span>
+        <UserTable></UserTable>
+      </TitleContainer>
     </Box>
   );
 };

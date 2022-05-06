@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Modal = styled.div`
+  & > .p-dialog-content {
+    overflow-y: hidden !important;
+  }
+`;
+
 export const Title = styled.span`
   display: flex;
   justify-content: center;
@@ -19,4 +25,7 @@ export const Container = styled.div`
 export const TableContainer = styled.div`
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

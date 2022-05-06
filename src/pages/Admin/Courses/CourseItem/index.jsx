@@ -31,6 +31,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { types } from "../../../../context/types/types";
 import { startChecking } from "../../../../actions/auth";
+import { titleToUrl } from "helpers/titleToUrl";
 
 export const AdminCourseItem = ({
   image,
@@ -89,10 +90,6 @@ export const AdminCourseItem = ({
   };
   const onHide = (name) => {
     dialogFuncMap[`${name}`](false);
-  };
-  //***** Title to url friendly */
-  const titleToUrl = (title) => {
-    return title.toLowerCase().split(" ").join("-");
   };
 
   //***** Formik */
@@ -194,7 +191,7 @@ export const AdminCourseItem = ({
           <Button
             text={<EditIcon />}
             // path={`/admin/courses/edit`}
-            path={`/admin/courses/edit/${id}`}
+            path={`/admin/courses/edit/${titleToUrl(title)}`}
             fontSize="1rem"
             width="30%"
             display="flex"
