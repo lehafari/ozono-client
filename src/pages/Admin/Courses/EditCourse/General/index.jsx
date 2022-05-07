@@ -32,6 +32,7 @@ const General = () => {
   if (courses.length === 0) {
     return <Spinner />;
   }
+
   //****** obtenemos los datos del curso *****
   const course = courses.find(
     (course) => course.title.toLowerCase() === cleanCourseTitle
