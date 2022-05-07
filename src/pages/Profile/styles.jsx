@@ -15,6 +15,7 @@ export const ProfileInfo = styled.div`
   & > img {
     width: 170px;
     z-index: 9;
+    border-radius: 50%;
 
     @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
       width: 100px;

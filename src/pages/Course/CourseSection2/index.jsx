@@ -1,10 +1,11 @@
-import React from "react";
-import CourseNavbar from "../../../components/layout/CoursePage/CourseNavbar";
+import { CourseTab } from 'components/layout/CourseTab';
+import React from 'react';
+import CourseNavbar from '../../../components/layout/CoursePage/CourseNavbar';
 
 const CourseSection2 = () => {
   return (
     <div>
-      <CourseNavbar />
+      <CourseTab />
     </div>
   );
 };

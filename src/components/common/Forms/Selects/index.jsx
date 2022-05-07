@@ -27,6 +27,10 @@ const Select = ({
   } else {
     label = options;
   }
+  if (options === undefined) {
+    return <p>loading...</p>;
+  }
+
   return (
     <SelectContainer alignItems={alignItems}>
       <SelectInput
@@ -44,7 +48,7 @@ const Select = ({
         backgroundColor={backgroundColor}
       >
         <option value="">{text}</option>
-
+        {console.log('entre', options)}
         {options.map((option, i) => (
           <option key={label[i]} value={option}>
             {label[i]}

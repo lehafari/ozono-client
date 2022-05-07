@@ -1,9 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SectionContainer = styled.section`
   padding-top: 85px;
+  padding-bottom: 100px;
   width: 100%;
-  height: 400px;
+  height: 500px;
+  margin-bottom: -85px;
   background: rgb(88, 102, 173);
   background: -moz-linear-gradient(
     90deg,
@@ -24,7 +26,6 @@ export const SectionContainer = styled.section`
     rgba(55, 176, 207, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5866ad",endColorstr="#37b0cf",GradientType=1);
-  width: 100%;
 `;
 export const TextContainer = styled.div`
   padding-left: 180px;
@@ -55,7 +56,7 @@ export const LineUp = styled.div`
 export const CourseName = styled.div`
   color: white;
   & h1 {
-    font-family: "PlantagenetCherokee";
+    font-family: 'PlantagenetCherokee';
     font-size: 5rem;
     margin: 0;
     line-height: 1em;

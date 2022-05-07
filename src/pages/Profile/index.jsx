@@ -23,6 +23,7 @@ import { FileUpload } from 'primereact/fileupload';
 import { UploadImage } from './UploadImage';
 import { fetchWithToken } from '../../helpers/fetch';
 import { endPoints } from '../../const/endPoints';
+import { toCapitalize } from '../../helpers/toCapitalize';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -51,6 +52,9 @@ const Profile = () => {
 
   const width = Resize();
 
+  const name = user.firstName + ' ' + user.lastName;
+  const capitalizeName = toCapitalize(name);
+
   if (!user) {
     return <Spinner />;
   }
@@ -68,7 +72,7 @@ const Profile = () => {
             <img src={profileImage} alt="profile image" />
           )}
           <ProfileInfoText>
-            <h2>{`${user.firstName} ${user.lastName}`}</h2>
+            <h2>{capitalizeName}</h2>
             {/* <p>Profesora en tal cosa</p>
             <p>Se unit en 2022</p> */}
           </ProfileInfoText>
