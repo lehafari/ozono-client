@@ -12,6 +12,9 @@ export const endPoints = {
   update_user: `/users/update`,
   upload_profile_image: `/users/profileImage/upload`,
 
+  //All users
+  get_all_users: `/users/all`,
+
   //courses
   create_course: `/courses/create`,
 

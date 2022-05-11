@@ -23,7 +23,7 @@ const AppRouter = () => {
       dispatch(startChecking());
     }, halfHour);
     return () => clearInterval(interval);
-  });
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(startFetch());
