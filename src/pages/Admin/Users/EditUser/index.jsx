@@ -19,6 +19,7 @@ import {
 } from "pages/Profile/EditProfile/styles";
 import { fetchWithToken } from "helpers/fetch";
 import { endPoints } from "const/endPoints";
+import Toast from "components/common/Popup/Toast";
 
 const EditUser = ({ user }) => {
   //!! Modal ****/
@@ -53,10 +54,15 @@ const EditUser = ({ user }) => {
   });
 
   const onSubmit = async (values) => {
-    const resp = await fetchWithToken(endPoints.update_user, values, "PUT");
+    const resp = await fetchWithToken(
+      `${endPoints.update_any_user}/${user.id}`,
+      values,
+      "PUT"
+    );
     const data = await resp.json();
-    console.log(values);
-    console.log(data);
+    data === 200
+      ? Toast("success", "Usuario actualizado correctamente")
+      : Toast("error", data.message);
   };
 
   return (

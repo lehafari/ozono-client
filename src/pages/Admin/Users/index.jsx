@@ -13,8 +13,13 @@ import {
 } from "./styles";
 import Spinner from "components/common/Spinner";
 import EditUser from "./EditUser";
+import DeleteUser from "./DeleteUser";
 
 const Users = () => {
+  //*Guardamos la lista de usuarios de la base de datos
+  const [users, setUsers] = useState([]);
+  const [flag, setFlag] = useState(false);
+
   //*fetch para obtener usuarios
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,9 +28,9 @@ const Users = () => {
       setUsers(data);
     };
     fetchUsers();
-  }, []);
-  //*Guardamos la lista de usuarios de la base de datos
-  const [users, setUsers] = useState([]);
+    //para que se repita cada vez que borre un usuario
+    setFlag(false);
+  }, [flag]);
 
   //*Paginacion
   const [page, setPage] = useState(1); //pagina actual
@@ -61,8 +66,11 @@ const Users = () => {
             <Grid item xs={1}>
               <span>ID</span>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <span>NOMBRE</span>
+            </Grid>
+            <Grid item xs={2}>
+              <span>Usuario</span>
             </Grid>
             <Grid item xs={4} columnSpacing={10}>
               <span>EMAIL</span>
@@ -79,8 +87,11 @@ const Users = () => {
                 <Grid item xs={1}>
                   <span>{i + 1}</span>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                   <span>{`${user.firstName} ${user.lastName}`}</span>
+                </Grid>
+                <Grid item xs={2}>
+                  <span>{user.username}</span>
                 </Grid>
                 <Grid item xs={4}>
                   <span>{user.email}</span>
@@ -90,18 +101,7 @@ const Users = () => {
                 </Grid>
                 <Grid item xs={1} sx={{ display: "flex" }}>
                   <EditUser user={user} />
-                  <button
-                    onClick={() => console.log("ola")}
-                    style={{
-                      margin: "0px",
-                      padding: "0px",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <DeleteForeverIcon color="error" />
-                  </button>
+                  <DeleteUser id={user.id} flag={setFlag} />
                 </Grid>
               </Grid>
             );

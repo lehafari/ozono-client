@@ -14,6 +14,8 @@ export const endPoints = {
 
   //All users
   get_all_users: `/users/all`,
+  update_any_user: `/users/updateUser`,
+  delete_any_user: `/users/deleteUser`,
 
   //courses
   create_course: `/courses/create`,
