@@ -1,28 +1,28 @@
-import { useNavigate } from 'react-router-dom';
-import PopupError from '../components/common/Popup/PopupError';
-import PopupOk from '../components/common/Popup/PopupOk';
-import { endPoints } from '../const/endPoints';
-import { types } from '../context/types/types';
+import { useNavigate } from "react-router-dom";
+import PopupError from "../components/common/Popup/PopupError";
+import PopupOk from "../components/common/Popup/PopupOk";
+import { endPoints } from "../const/endPoints";
+import { types } from "../context/types/types";
 import {
   fetchWithoutToken,
   fetchWithRefreshToken,
   fetchWithToken,
-} from '../helpers/fetch';
+} from "../helpers/fetch";
 
 export const startLogin = (userOrEmail, password) => {
   return async (dispatch) => {
     const resp = await fetchWithoutToken(
       endPoints.signin,
       { userOrEmail, password },
-      'POST'
+      "POST"
     );
     const body = await resp.json();
     if (resp.status === 200) {
-      localStorage.setItem('at', body.access_token);
-      localStorage.setItem('rt', body.refresh_token);
+      localStorage.setItem("at", body.access_token);
+      localStorage.setItem("rt", body.refresh_token);
       const user = await getUser();
       const profileImageUrl = await getProfileImageUrl(user.image);
-      user['profileImageUrl'] = profileImageUrl;
+      user["profileImageUrl"] = profileImageUrl;
       setTimeout(() => {
         dispatch(
           login({
@@ -31,7 +31,7 @@ export const startLogin = (userOrEmail, password) => {
         );
       }, 1500);
       // Popup de inicio exitoso. Se ejecuta 1.5s antes del dispatch para que el usuario vea el popup.
-      PopupOk('22rem', 'success', 'Inicio de sesion exitoso');
+      PopupOk("22rem", "success", "Inicio de sesion exitoso");
     } else {
       console.log(body.message);
       PopupError(body.message);
@@ -41,30 +41,30 @@ export const startLogin = (userOrEmail, password) => {
 
 export const startRegister = (value) => {
   return async (dispatch) => {
-    const resp = await fetchWithoutToken(endPoints.signup, value, 'PUT');
+    const resp = await fetchWithoutToken(endPoints.signup, value, "PUT");
     const body = await resp.json();
     console.log(`este es el status ${resp.status}`);
     if (resp.status !== 201) {
       return PopupError(body.message);
     }
-    localStorage.setItem('at', body.access_token);
-    localStorage.setItem('rt', body.refresh_token);
+    localStorage.setItem("at", body.access_token);
+    localStorage.setItem("rt", body.refresh_token);
     const user = await getUser();
-    PopupOk('28rem', 'success', 'Se registró con exito');
+    PopupOk("28rem", "success", "Se registró con exito");
     setTimeout(() => {
       dispatch(
         login({
           user,
         })
       );
-      useNavigate().push('/profile');
+      useNavigate().push("/profile");
     }, 1500);
   };
 };
 
 export const startChecking = () => {
   return async (dispatch) => {
-    if (!localStorage.getItem('at') && !localStorage.getItem('rt')) {
+    if (!localStorage.getItem("at") && !localStorage.getItem("rt")) {
       return dispatch(checkingFinish());
     }
     const user = await getUser();
@@ -74,20 +74,20 @@ export const startChecking = () => {
       if (!refresh.status === 200) {
         return dispatch(checkingFinish());
       }
-      localStorage.setItem('at', body.access_token);
-      localStorage.setItem('rt', body.refresh_token);
+      localStorage.setItem("at", body.access_token);
+      localStorage.setItem("rt", body.refresh_token);
       const user = await getUser();
       if (user.statusCode === 401) {
         return dispatch(checkingFinish());
       }
       if (!user.statusCode) {
         const profileImageUrl = await getProfileImageUrl(user.image);
-        user['profileImageUrl'] = profileImageUrl;
+        user["profileImageUrl"] = profileImageUrl;
         return dispatch(login({ user }));
       }
     }
     const profileImageUrl = await getProfileImageUrl(user.image);
-    user['profileImageUrl'] = profileImageUrl;
+    user["profileImageUrl"] = profileImageUrl;
     return dispatch(login({ user }));
   };
 };
@@ -104,9 +104,9 @@ const login = (user) => ({
 
 export const startLogout = () => {
   return async (dispatch) => {
-    await fetchWithToken(endPoints.logout, {}, 'PUT');
+    await fetchWithToken(endPoints.logout, {}, "PUT");
     localStorage.clear();
-    PopupOk('28rem', 'info', 'Sesion cerrada con exito');
+    PopupOk("28rem", "info", "Sesion cerrada con exito");
     setTimeout(() => dispatch(logout()), 1500);
   };
 };
@@ -122,6 +122,5 @@ const getUser = async () => {
 const getProfileImageUrl = async (image) => {
   const res = await fetchWithToken(`${endPoints.get_profile_image}/${image}`);
   const url = res.url;
-  console.log('url', url);
   return url;
 };

@@ -70,31 +70,30 @@ const General = () => {
   };
   const VALIDATION_SCHEMA = Yup.object({
     title: Yup.string()
-      .required("El titulo es obligatorio")
       .min(4, "El titulo debe tener al menos 4 caracteres")
       .max(50, "El titulo debe tener máximo 50 caracteres"),
-    description: Yup.string().required("La descripción es obligatoria"),
-    price: Yup.number().required("El precio es obligatorio"),
+    description: Yup.string(),
+    price: Yup.number(),
     // duration en formato de horas y minutos
-    duration: Yup.string()
-      .required("La duración es obligatoria")
-      .matches(/^([0-9]{1,2})h ([0-9]{1,2})min$/, "Ejemplo: 1h 30min"),
-    category: Yup.string().required("La categoria es obligatoria"),
-    level: Yup.string().required("El nivel es obligatorio"),
-    status: Yup.string().required("El estado es obligatorio"),
-    premium: Yup.string().required("El premium es obligatorio"),
+    duration: Yup.string().matches(
+      /^([0-9]{1,2})h ([0-9]{1,2})min$/,
+      "Ejemplo: 1h 30min"
+    ),
+    category: Yup.string(),
+    level: Yup.string(),
+    status: Yup.string(),
+    premium: Yup.string(),
     premiumPrice: Yup.number().when("premium", {
       is: (val) => val === "true",
-      then: Yup.number().required("El precio premium es obligatorio"),
+      then: Yup.number(),
     }),
-    own: Yup.string().required("El propio es obligatorio"),
+    own: Yup.string(),
   });
   const handleSubmit = async (values) => {
     await dispatch(startChecking());
     const res = await dispatch(startUpdate(id, values));
     if (res.type === types.coursesUpdateError) {
       PopupError(res.payload);
-      console.log(res.payload);
     } else {
       PopupOk("22rem", "success", "Informacion actualizada correctamente");
       navigate("/admin/courses");
@@ -222,14 +221,6 @@ const General = () => {
                 alignSelf="flex-start"
                 width="74%"
               />
-
-              {/* <Select
-                name="category"
-                text="Categoria"
-                options={categoriesOptions}
-                alignItems="flex-start"
-                margin="5px 0"
-              /> */}
               <Input
                 id="premiumPrice"
                 name="premiumPrice"
@@ -238,11 +229,10 @@ const General = () => {
                 margin="5px 0"
                 alignItems="flex-start"
               />
-
               <Selects2
                 id="own"
                 name="own"
-                text="Propio ?"
+                text="¿Es Propio?"
                 options={[{ name: "Si" }, { name: "No" }]}
                 previousValue={own}
                 backgroundColor="#f5f5f5"

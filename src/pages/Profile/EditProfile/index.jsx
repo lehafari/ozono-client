@@ -1,11 +1,10 @@
 import { Formik, Form } from "formik";
-import { Dropdown } from "primereact/dropdown";
 
 import { BoxButton, Formulario, LeftSide, RightSide } from "./styles";
 import Input from "../../../components/common/Forms/Inputs/";
 import { useDispatch, useSelector } from "react-redux";
 import InputButton from "../../../components/common/Forms/FormButton";
-import { useState } from "react";
+
 import { countries } from "../../../const/countries";
 import { fetchWithToken } from "../../../helpers/fetch";
 import { endPoints } from "../../../const/endPoints";
@@ -29,30 +28,6 @@ export const EditProfile = () => {
     gender,
     phone,
     ci,
-  };
-
-  //*** Select values */
-  const [selectedOption, setSelectedCountry] = useState(null);
-  const onOptionChange = (e) => {
-    setSelectedCountry(e.value);
-  };
-  const selectedOptionTemplate = (option, props) => {
-    if (option) {
-      return (
-        <div className="country-item country-item-value">
-          <div>{option.name}</div>
-        </div>
-      );
-    }
-
-    return <span>{props.placeholder}</span>;
-  };
-  const optionTemplate = (option) => {
-    return (
-      <div className="country-item">
-        <div>{option.name}</div>
-      </div>
-    );
   };
 
   const handleSubmit = async (values) => {
@@ -158,38 +133,6 @@ export const EditProfile = () => {
                 ]}
                 text="Sexo"
               />
-              {/* <Dropdown
-                value={selectedOption}
-                options={[
-                  { name: "Hombre" },
-                  { name: "Mujer" },
-                  { name: "Otro" },
-                ]}
-                onChange={onOptionChange}
-                optionLabel="name"
-                showClear
-                filterBy="name"
-                placeholder="Selecciona tu genero"
-                valueTemplate={selectedOptionTemplate}
-                itemTemplate={optionTemplate}
-                style={{
-                  width: "75%",
-                  heigth: "50px",
-                  margin: "10px 0px",
-                  backgroundColor: "#fff",
-                  border: "none",
-                  borderRadius: "45px",
-                  alignSelf: "center",
-                  padding: "0px 15px",
-                  boxShadow: "none",
-                }}
-              />
-              <Input
-                id="gender"
-                name="gender"
-                type="hidden"
-                inheritValue={selectedOption}
-              ></Input> */}
 
               <Input
                 id="phone"

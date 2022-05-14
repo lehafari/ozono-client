@@ -99,7 +99,6 @@ const CreateCategory = () => {
     if (categoriesToDelete.length !== 0) {
       await dispatch(startChecking());
       const res = await dispatch(startDelete(categoriesToDelete));
-      console.log(res);
       if (res.type === types.categoriesDeleteError) {
         Toast("error", res.payload);
       } else {

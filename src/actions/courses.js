@@ -1,6 +1,6 @@
-import { endPoints } from '../const/endPoints';
-import { types } from '../context/types/types';
-import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
+import { endPoints } from "../const/endPoints";
+import { types } from "../context/types/types";
+import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
 
 //***** Fetch courses ******//
 export const startFetch = () => {
@@ -44,7 +44,7 @@ const fetchError = (error) => ({
 export const startCreate = (value) => {
   return async (dispatch) => {
     dispatch(createStart());
-    const resp = await fetchWithToken(endPoints.create_course, value, 'PUT');
+    const resp = await fetchWithToken(endPoints.create_course, value, "PUT");
     const body = await resp.json();
     if (resp.status !== 201) {
       return dispatch(createError(body.message));
@@ -81,7 +81,6 @@ export const startUpdate = (id, value) => {
     if (resp.status !== 200) {
       return dispatch(updateError(body.message));
     }
-    console.log("soy el body: ", body);
     return dispatch(updateSuccess(body));
   };
 };
@@ -108,7 +107,7 @@ export const startDelete = (id, confirmPassword) => {
     const resp = await fetchWithToken(
       `${endPoints.delete_course}/${id}`,
       { password: confirmPassword },
-      'DELETE'
+      "DELETE"
     );
     const body = await resp.json();
     if (resp.status !== 200) {

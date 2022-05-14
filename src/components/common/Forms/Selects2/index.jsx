@@ -12,10 +12,15 @@ const Selects2 = (props) => {
   //?  id, name, type, padding, width, heigth, margin, color, backgroundColor, alignItems,errorPadding, inheritValue,
 
   //*** Select values ***/
-  const [selectedOption, setSelectedCountry] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(previousValue);
   const onOptionChange = (e) => {
-    setSelectedCountry(e.value);
+    setSelectedOption(e.value);
   };
+
+  // if (previousValue) {
+  //   setSelectedOption(previousValue);
+  // }
+
   const selectedOptionTemplate = (option, props) => {
     if (option) {
       return (
@@ -38,9 +43,6 @@ const Selects2 = (props) => {
   //*** Input escondido ***/
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
-  if (props.inheritValue) {
-    values[props.name] = props.inheritValue.name;
-  }
 
   selectedOption
     ? (values[props.name] = selectedOption.name)
