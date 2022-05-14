@@ -1,8 +1,6 @@
 import { Box, Grid, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-
 import { fetchWithToken } from "helpers/fetch";
 import { endPoints } from "const/endPoints";
 import {
@@ -14,6 +12,9 @@ import {
 import Spinner from "components/common/Spinner";
 import EditUser from "./EditUser";
 import DeleteUser from "./DeleteUser";
+
+import CreateUser from "./CreateUser";
+import { ButtonsContainer } from "../Courses/style";
 
 const Users = () => {
   //*Guardamos la lista de usuarios de la base de datos
@@ -60,6 +61,9 @@ const Users = () => {
       <TitleContainer>
         <span>USUARIOS</span>
       </TitleContainer>
+      <ButtonsContainer>
+        <CreateUser flag={setFlag} />
+      </ButtonsContainer>
       <UserTable>
         <HeaderTable>
           <Grid container columnSpacing={1}>

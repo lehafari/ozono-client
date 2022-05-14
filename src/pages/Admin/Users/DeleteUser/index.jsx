@@ -33,9 +33,9 @@ const DeleteUser = ({ id, flag }) => {
     if (data === 200) {
       onHide("displayBasic");
       flag(true);
-      Toast("success", "Usuario eliminado correctamente");
+      Toast("success", "eliminado correctamente");
     } else {
-      Toast("error", "Error al eliminar el usuario");
+      Toast("error", "Error al eliminar usuario");
       onHide("displayBasic");
     }
   };
@@ -76,7 +76,7 @@ const DeleteUser = ({ id, flag }) => {
           <InputButton
             text="Si"
             backgroundColor="#ff555b"
-            backgroundColorHover="#ff555b"
+            backgroundColorHover="#ff555b63"
             fontSize="1.2rem"
             width="50px"
             height="50px"
@@ -90,7 +90,7 @@ const DeleteUser = ({ id, flag }) => {
           <InputButton
             text="No"
             backgroundColor="#ff555b"
-            backgroundColorHover="#ff555b"
+            backgroundColorHover="#ff555b63"
             fontSize="1.2rem"
             width="50px"
             height="50px"

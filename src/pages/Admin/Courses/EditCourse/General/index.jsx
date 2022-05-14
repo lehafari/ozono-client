@@ -15,6 +15,7 @@ import { startUpdate } from "../../../../../actions/courses";
 import { types } from "../../../../../context/types/types";
 import PopupError from "../../../../../components/common/Popup/PopupError";
 import PopupOk from "../../../../../components/common/Popup/PopupOk";
+import Selects2 from "components/common/Forms/Selects2";
 
 const General = () => {
   const dispatch = useDispatch();
@@ -27,12 +28,15 @@ const General = () => {
 
   //****** Obtenemos las categorias ******
   const { categories } = useSelector((state) => state.categories);
-  const categoriesOptions = categories.map((category) => category.title);
+  const categoriesOptions = categories.map((category) => {
+    return {
+      name: category.title,
+    };
+  });
 
   if (courses.length === 0) {
     return <Spinner />;
   }
-
   //****** obtenemos los datos del curso *****
   const course = courses.find(
     (course) => course.title.toLowerCase() === cleanCourseTitle
@@ -90,6 +94,7 @@ const General = () => {
     const res = await dispatch(startUpdate(id, values));
     if (res.type === types.coursesUpdateError) {
       PopupError(res.payload);
+      console.log(res.payload);
     } else {
       PopupOk("22rem", "success", "Informacion actualizada correctamente");
       navigate("/admin/courses");
@@ -116,15 +121,42 @@ const General = () => {
                 errorPadding="0 0 0 calc(100% - 75%)"
               />
 
-              <Select
+              <Selects2
+                id="level"
+                name="level"
+                options={[
+                  { name: "PRINCIPIANTE" },
+                  { name: "INTERMEDIO" },
+                  { name: "AVANZADO" },
+                ]}
+                previousValue={level}
+                text="Nivel"
+                backgroundColor="#f5f5f5"
+                alignSelf="flex-end"
+                width="74%"
+              />
+
+              {/* <Select
                 name="level"
                 text="Nivel"
                 options={["PRINCIPIANTE", "INTERMEDIO", "AVANZADO"]}
                 alignItems="flex-end"
                 margin="5px 0"
                 errorPadding="0 0 0 calc(100% - 75%)"
+              /> */}
+
+              <Selects2
+                id="premium"
+                name="premium"
+                options={[{ name: "Si" }, { name: "No" }]}
+                previousValue={premium}
+                text="Premium"
+                backgroundColor="#f5f5f5"
+                alignSelf="flex-end"
+                width="74%"
               />
-              <Select
+
+              {/* <Select
                 name="premium"
                 text="Premium"
                 options={["Si", "No"]}
@@ -132,15 +164,31 @@ const General = () => {
                 alignItems="flex-end"
                 margin="5px 0"
                 errorPadding="0 0 0 calc(100% - 75%)"
+              /> */}
+
+              <Selects2
+                id="status"
+                name="status"
+                options={[
+                  { name: "ACTIVO" },
+                  { name: "INACTIVO" },
+                  { name: "BORRADOR" },
+                ]}
+                previousValue={status}
+                text="Estado del curso"
+                backgroundColor="#f5f5f5"
+                alignSelf="flex-end"
+                width="74%"
               />
-              <Select
+
+              {/* <Select
                 name="status"
                 text="Estado del curso"
                 options={["ACTIVO", "INACTIVO", "BORRADOR"]}
                 alignItems="flex-end"
                 margin="5px 0"
                 errorPadding="0 0 0 calc(100% - 75%)"
-              />
+              /> */}
             </LeftSide>
             <RightSide>
               <OneLine>
@@ -163,13 +211,25 @@ const General = () => {
                   alignItems="flex-end"
                 />
               </OneLine>
-              <Select
+
+              <Selects2
+                id="category"
+                name="category"
+                text="Categoria"
+                options={categoriesOptions}
+                previousValue={category}
+                backgroundColor="#f5f5f5"
+                alignSelf="flex-start"
+                width="74%"
+              />
+
+              {/* <Select
                 name="category"
                 text="Categoria"
                 options={categoriesOptions}
                 alignItems="flex-start"
                 margin="5px 0"
-              />
+              /> */}
               <Input
                 id="premiumPrice"
                 name="premiumPrice"
@@ -178,14 +238,26 @@ const General = () => {
                 margin="5px 0"
                 alignItems="flex-start"
               />
-              <Select
+
+              <Selects2
+                id="own"
+                name="own"
+                text="Propio ?"
+                options={[{ name: "Si" }, { name: "No" }]}
+                previousValue={own}
+                backgroundColor="#f5f5f5"
+                alignSelf="flex-start"
+                width="74%"
+              />
+
+              {/* <Select
                 name="own"
                 text="¿Es propio?"
                 options={["Si", "No"]}
                 label={["Si", "No"]}
                 alignItems="flex-start"
                 margin="5px 0"
-              />
+              /> */}
             </RightSide>
           </Formulario>
           <Textarea2

@@ -12,6 +12,7 @@ import { endPoints } from "../../../const/endPoints";
 import { startChecking } from "../../../actions/auth";
 import PopupOk from "../../../components/common/Popup/PopupOk";
 import PopupError from "../../../components/common/Popup/PopupError";
+import Selects2 from "components/common/Forms/Selects2";
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
@@ -31,11 +32,11 @@ export const EditProfile = () => {
   };
 
   //*** Select values */
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const onCountryChange = (e) => {
+  const [selectedOption, setSelectedCountry] = useState(null);
+  const onOptionChange = (e) => {
     setSelectedCountry(e.value);
   };
-  const selectedCountryTemplate = (option, props) => {
+  const selectedOptionTemplate = (option, props) => {
     if (option) {
       return (
         <div className="country-item country-item-value">
@@ -46,7 +47,7 @@ export const EditProfile = () => {
 
     return <span>{props.placeholder}</span>;
   };
-  const countryOptionTemplate = (option) => {
+  const optionTemplate = (option) => {
     return (
       <div className="country-item">
         <div>{option.name}</div>
@@ -137,16 +138,40 @@ export const EditProfile = () => {
               />
             </LeftSide>
             <RightSide>
-              <Dropdown
-                value={selectedCountry}
+              {/* Estados */}
+              <Selects2
+                id="country"
+                name="country"
                 options={countries}
-                onChange={onCountryChange}
+                previousValue={country}
+                text="Estado"
+              />
+              {/***** GENERO  ******/}
+
+              <Selects2
+                id="gender"
+                name="gender"
+                options={[
+                  { name: "Hombre" },
+                  { name: "Mujer" },
+                  { name: "Otro" },
+                ]}
+                text="Sexo"
+              />
+              {/* <Dropdown
+                value={selectedOption}
+                options={[
+                  { name: "Hombre" },
+                  { name: "Mujer" },
+                  { name: "Otro" },
+                ]}
+                onChange={onOptionChange}
                 optionLabel="name"
                 showClear
                 filterBy="name"
-                placeholder={country ? country : "Selecciona un pais"}
-                valueTemplate={selectedCountryTemplate}
-                itemTemplate={countryOptionTemplate}
+                placeholder="Selecciona tu genero"
+                valueTemplate={selectedOptionTemplate}
+                itemTemplate={optionTemplate}
                 style={{
                   width: "75%",
                   heigth: "50px",
@@ -160,44 +185,10 @@ export const EditProfile = () => {
                 }}
               />
               <Input
-                id="country"
-                name="country"
-                type="hidden"
-                inheritValue={selectedCountry}
-              ></Input>
-
-              {/***** GENERO  ******/}
-              {/* <Dropdown
-                value={selectedCountry}
-                options={[
-                  { name: 'Hombre' },
-                  { name: 'Mujer' },
-                  { name: 'Otro' },
-                ]}
-                onChange={onCountryChange}
-                optionLabel="name"
-                showClear
-                filterBy="name"
-                placeholder="Selecciona tu genero"
-                valueTemplate={selectedCountryTemplate}
-                itemTemplate={countryOptionTemplate}
-                style={{
-                  width: '75%',
-                  heigth: '50px',
-                  margin: '10px 0px',
-                  backgroundColor: '#fff',
-                  border: 'none',
-                  borderRadius: '45px',
-                  alignSelf: 'center',
-                  padding: '0px 15px',
-                  boxShadow: 'none',
-                }}
-              />
-              <Input
                 id="gender"
                 name="gender"
                 type="hidden"
-                inheritValue={selectedCountry}
+                inheritValue={selectedOption}
               ></Input> */}
 
               <Input
