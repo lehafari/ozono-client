@@ -40,4 +40,21 @@ export const types = {
   categoriesStartDelete: "[categories] Start delete",
   categoriesDelete: "[categories] Delete",
   categoriesDeleteError: "[categories] Delete error",
+
+  // courseSections
+  sectionStartCreate: "[section] Start create",
+  sectionCreate: "[section] Create",
+  sectionCreateError: "[section] Create error",
+
+  sectionStartFetch: "[section] Start fetch",
+  sectionFetch: "[section] Fetch",
+  sectionFetchError: "[section] Fetch error",
+
+  sectionStartUpdate: "[section] Start update",
+  sectionUpdate: "[section] Update",
+  sectionUpdateError: "[section] Update error",
+
+  sectionStartDelete: "[section] Start delete",
+  sectionDelete: "[section] Delete",
+  sectionDeleteError: "[section] Delete error",
 };

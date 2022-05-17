@@ -104,7 +104,7 @@ const Users = () => {
                   <span>{user.role}</span>
                 </Grid>
                 <Grid item xs={1} sx={{ display: "flex" }}>
-                  <EditUser user={user} />
+                  <EditUser user={user} flag={setFlag} />
                   <DeleteUser id={user.id} flag={setFlag} />
                 </Grid>
               </Grid>

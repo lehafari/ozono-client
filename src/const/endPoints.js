@@ -38,4 +38,13 @@ export const endPoints = {
 
   delete_category: `/categories/delete`,
   delete_categories: `/categories/delete-categories`,
+
+  //Sections
+  create_section: `/sections/create`,
+
+  get_all_sections_by_course: `/sections`,
+
+  update_section: `/sections/update`,
+
+  delete_section: `/sections/delete`,
 };

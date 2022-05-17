@@ -20,8 +20,10 @@ import {
 import { fetchWithToken } from "helpers/fetch";
 import { endPoints } from "const/endPoints";
 import Toast from "components/common/Popup/Toast";
+import Selects2 from "components/common/Forms/Selects2";
+import { countries } from "const/countries";
 
-const EditUser = ({ user }) => {
+const EditUser = ({ user, flag }) => {
   //!! Modal ****/
   const [visible, setVisible] = useState(false);
 
@@ -42,7 +44,11 @@ const EditUser = ({ user }) => {
     lastName: user.lastName,
     username: user.username,
     email: user.email,
+    phone: user.phone,
     ci: user.ci,
+    country: user.country,
+    gender: user.gender,
+    role: user.role,
   };
   //**** VALIDATION SCHEMA ****/
   const VALIDATION_SCHEMA = Yup.object().shape({
@@ -60,9 +66,13 @@ const EditUser = ({ user }) => {
       "PUT"
     );
     const data = await resp.json();
-    data === 200
-      ? Toast("success", "Usuario actualizado correctamente")
-      : Toast("error", data.message);
+
+    if (data === 200) {
+      Toast("success", "Usuario actualizado correctamente");
+      flag(true);
+    } else {
+      Toast("error", data.message);
+    }
   };
 
   return (
@@ -167,69 +177,24 @@ const EditUser = ({ user }) => {
                   />
                 </LeftSide>
                 <RightSide>
-                  {/* <Dropdown
-                value={selectedCountry}
-                options={countries}
-                onChange={onCountryChange}
-                optionLabel="name"
-                showClear
-                filterBy="name"
-                placeholder={country ? country : 'Selecciona un pais'}
-                valueTemplate={selectedCountryTemplate}
-                itemTemplate={countryOptionTemplate}
-                style={{
-                  width: '75%',
-                  heigth: '50px',
-                  margin: '10px 0px',
-                  backgroundColor: '#fff',
-                  border: 'none',
-                  borderRadius: '45px',
-                  alignSelf: 'center',
-                  padding: '0px 15px',
-                  boxShadow: 'none',
-                }}
-              />
-              <Input
-                id="country"
-                name="country"
-                type="hidden"
-                inheritValue={selectedCountry}
-              ></Input> */}
-
-                  {/***** GENERO  ******/}
-                  {/* <Dropdown
-                value={selectedCountry}
-                options={[
-                  { name: 'Hombre' },
-                  { name: 'Mujer' },
-                  { name: 'Otro' },
-                ]}
-                onChange={onCountryChange}
-                optionLabel="name"
-                showClear
-                filterBy="name"
-                placeholder="Selecciona tu genero"
-                valueTemplate={selectedCountryTemplate}
-                itemTemplate={countryOptionTemplate}
-                style={{
-                  width: '75%',
-                  heigth: '50px',
-                  margin: '10px 0px',
-                  backgroundColor: '#fff',
-                  border: 'none',
-                  borderRadius: '45px',
-                  alignSelf: 'center',
-                  padding: '0px 15px',
-                  boxShadow: 'none',
-                }}
-              />
-              <Input
-                id="gender"
-                name="gender"
-                type="hidden"
-                inheritValue={selectedCountry}
-              // ></Input> */}
-
+                  <Selects2
+                    id="country"
+                    name="country"
+                    options={countries}
+                    previousValue={user.country}
+                    text="Estado"
+                  />
+                  <Selects2
+                    id="gender"
+                    name="gender"
+                    options={[
+                      { name: "Hombre" },
+                      { name: "Mujer" },
+                      { name: "Otro" },
+                    ]}
+                    previousValue={user.gender}
+                    text="Sexo"
+                  />
                   <Input
                     id="phone"
                     name="phone"
@@ -253,6 +218,16 @@ const EditUser = ({ user }) => {
                     backgroundColor={"#fff"}
                   ></Input>
                 </RightSide>
+                <Selects2
+                  id="role"
+                  name="role"
+                  options={[
+                    { name: "estudiante" },
+                    { name: "profesor" },
+                    { name: "admin" },
+                  ]}
+                  text="Tipo de usuario"
+                />
                 <BoxButton>
                   <InputButton
                     text="Actualizar información"

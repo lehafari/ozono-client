@@ -11,6 +11,8 @@ import {
 import img from "../../../../assets/images/course-image.png";
 import General from "./General";
 import { useParams } from "react-router-dom";
+import Teachers from "./Teachers";
+import Lessons from "./Lessons";
 
 const EditCourse = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -24,7 +26,7 @@ const EditCourse = () => {
 
   return (
     <Container>
-      <h1>Edicion de: {cleanTitle}</h1>
+      <h1>Edicion de curso</h1>
       <ShadowContainer>
         <ImgContainer>
           <img src={img} alt="imagen del curso" />
@@ -44,16 +46,10 @@ const EditCourse = () => {
                 <General />
               </TabPanel>
               <TabPanel header="profesores">
-                Content II Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
+                <Teachers />
               </TabPanel>
               <TabPanel header="Clases">
-                Content III Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
+                <Lessons />
               </TabPanel>
               <TabPanel header="FAQS">
                 Content IV Lorem ipsum dolor sit, amet consectetur adipisicing
