@@ -28,6 +28,7 @@ const Input = ({
     <InputContainer
       // Atributos input
       alignItems={alignItems}
+      width={width}
     >
       <InputItem
         // Atributos input

@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import { Editor } from "primereact/editor";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ErrorMessage, TextAreaContainer } from "./styles";
 
 const Textarea2 = ({
@@ -9,7 +9,7 @@ const Textarea2 = ({
   placeholder,
   padding,
   width,
-  heigth,
+  height,
   margin,
   editValue = "",
 }) => {
@@ -29,7 +29,10 @@ const Textarea2 = ({
         placeholder={placeholder}
         value={text}
         onTextChange={(e) => setText(e.htmlValue)}
-        style={{ height: "250px" }}
+        style={{
+          width: width ? width : "100%",
+          height: height ? height : "250px",
+        }}
         onClick={() => setTouched({ ...touched, [name]: true })}
         onTouchStart={() => setTouched({ ...touched, [name]: true })}
       />

@@ -90,6 +90,7 @@ const General = () => {
     own: Yup.string(),
   });
   const handleSubmit = async (values) => {
+    values.title = values.title.trim().toLowerCase();
     await dispatch(startChecking());
     const res = await dispatch(startUpdate(id, values));
     if (res.type === types.coursesUpdateError) {
@@ -135,15 +136,6 @@ const General = () => {
                 width="74%"
               />
 
-              {/* <Select
-                name="level"
-                text="Nivel"
-                options={["PRINCIPIANTE", "INTERMEDIO", "AVANZADO"]}
-                alignItems="flex-end"
-                margin="5px 0"
-                errorPadding="0 0 0 calc(100% - 75%)"
-              /> */}
-
               <Selects2
                 id="premium"
                 name="premium"
@@ -154,16 +146,6 @@ const General = () => {
                 alignSelf="flex-end"
                 width="74%"
               />
-
-              {/* <Select
-                name="premium"
-                text="Premium"
-                options={["Si", "No"]}
-                label={["Si", "No"]}
-                alignItems="flex-end"
-                margin="5px 0"
-                errorPadding="0 0 0 calc(100% - 75%)"
-              /> */}
 
               <Selects2
                 id="status"
@@ -179,15 +161,6 @@ const General = () => {
                 alignSelf="flex-end"
                 width="74%"
               />
-
-              {/* <Select
-                name="status"
-                text="Estado del curso"
-                options={["ACTIVO", "INACTIVO", "BORRADOR"]}
-                alignItems="flex-end"
-                margin="5px 0"
-                errorPadding="0 0 0 calc(100% - 75%)"
-              /> */}
             </LeftSide>
             <RightSide>
               <OneLine>
@@ -239,15 +212,6 @@ const General = () => {
                 alignSelf="flex-start"
                 width="74%"
               />
-
-              {/* <Select
-                name="own"
-                text="¿Es propio?"
-                options={["Si", "No"]}
-                label={["Si", "No"]}
-                alignItems="flex-start"
-                margin="5px 0"
-              /> */}
             </RightSide>
           </Formulario>
           <Textarea2

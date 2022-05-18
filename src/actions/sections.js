@@ -1,71 +1,29 @@
 import { endPoints } from "const/endPoints";
 import { fetchWithToken } from "helpers/fetch";
-import { types } from "../context/types";
+import { types } from "context/types/types";
 
 //**** Create Section ****/
+export const startCreate = async (value, courseId) => {
+  const resp = await fetchWithToken(
+    `${endPoints.create_section}/${courseId}`,
+    value,
+    "PUT"
+  );
+  const body = await resp.json();
 
-export const startCreate = (value, courseId) => {
-  return async (dispatch) => {
-    dispatch(createStart());
-    const resp = await fetchWithToken(
-      `${endPoints.create_section}/${courseId}`,
-      value,
-      "PUT"
-    );
-    const body = await resp.json();
-    if (resp.status !== 200) {
-      return dispatch(createError(body.message));
-    }
-    return dispatch(createSuccess(body));
-  };
+  return body;
 };
-
-const createStart = () => ({
-  type: types.sectionStartCreate,
-  payload: {},
-});
-
-const createSuccess = (section) => ({
-  type: types.sectionCreate,
-  payload: section,
-});
-
-const createError = (error) => ({
-  type: types.sectionCreateError,
-  payload: error,
-});
 
 //**** Fetch Sections ****/
 
-export const startFetchSections = () => {
-  return async (dispatch, courseId) => {
-    dispatch(fetchStart());
-    const resp = await fetchWithToken(
-      `${endPoints.get_all_sections_by_course}/${courseId}`,
-      {}
-    );
-    const body = await resp.json();
-    if (resp.status !== 200) {
-      return dispatch(fetchError(body.message));
-    }
-    return dispatch(fetchSuccess(body));
-  };
+export const startFetchSections = async (courseId) => {
+  const resp = await fetchWithToken(
+    `${endPoints.get_all_sections_by_course}/${courseId}`,
+    {}
+  );
+  const body = await resp.json();
+  return body;
 };
-
-const fetchStart = () => ({
-  type: types.sectionStartFetch,
-  payload: {},
-});
-
-const fetchSuccess = (sections) => ({
-  type: types.sectionFetch,
-  payload: sections,
-});
-
-const fetchError = (error) => ({
-  type: types.sectionFetchError,
-  payload: error,
-});
 
 //**** Update Section ****/
 

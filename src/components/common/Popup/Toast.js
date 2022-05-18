@@ -1,7 +1,5 @@
 import Swal from "sweetalert2";
 
-import React from "react";
-
 const Toast = (icon, text) => {
   const toast = Swal.mixin({
     toast: true,

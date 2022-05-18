@@ -1,12 +1,12 @@
-import { types } from "../types";
+import { types } from "../types/types";
 
-const initialState = {
+export const initialState = {
   sections: [],
   loading: false,
   error: null,
 };
 
-export const sectionReducer = (state = initialState, action) => {
+export const sectionReducer = (state, action) => {
   switch (action.type) {
     //******  Section Create******/
     case types.sectionStartCreate:

@@ -1,9 +1,39 @@
 import { Box } from "@mui/material";
-import { MainButton } from "components/common/Buttons/MainButton/styles";
-import React from "react";
-import ModalFormSection from "./ModalFormSection";
+import { startFetchSections } from "actions/sections";
+import Spinner from "components/common/Spinner";
 
-const Lessons = () => {
+import {
+  initialState,
+  sectionReducer,
+} from "context/courseSections/sectionsReducer";
+import { types } from "context/types/types";
+import React, { useEffect, useReducer } from "react";
+import ModalFormSection from "./ModalFormSection";
+import Sections from "./Sections";
+
+const Lessons = ({ courseId }) => {
+  const [sections, dispatch] = useReducer(sectionReducer, initialState);
+  console.log("secciones: ", sections);
+
+  useEffect(() => {
+    const fetchSections = async () => {
+      dispatch({ type: types.sectionStartFetch, payload: {} });
+      const body = await startFetchSections(courseId);
+      console.log("Body en el fetch get: ", body);
+      if (body.statusCode) {
+        dispatch({ type: types.sectionFetchError, payload: body.message });
+      } else {
+        dispatch({
+          type: types.sectionFetch,
+          payload: body,
+        });
+      }
+    };
+    fetchSections();
+  }, [courseId]);
+
+  if (sections.Loading) return <Spinner />;
+
   return (
     //Container de toda la seccion
     <Box
@@ -25,6 +55,7 @@ const Lessons = () => {
       >
         <span>Para agregar una seccion presione el boton</span>
       </Box>
+
       {/* contenedor para el boton de agregar seccion */}
       <Box
         sx={{
@@ -32,19 +63,28 @@ const Lessons = () => {
           justifyContent: "center",
         }}
       >
-        <ModalFormSection />
+        <ModalFormSection dispatch={dispatch} courseId={courseId} />
       </Box>
+
       {/* Contenedor de todas las secciones (acordeones) */}
       <Box
         sx={{
-          width: "100px",
-          height: "100px",
-          backgroundColor: "red",
-          textAlign: "center",
+          width: "90%",
+          height: "500px",
+          overflow: "auto",
+          marginTop: "1rem",
         }}
       >
-        {" "}
-        ola{" "}
+        {sections.sections.map((section, i) => {
+          return (
+            <Sections
+              key={section.id}
+              i={i + 1}
+              text={section.name}
+              id={section.id}
+            />
+          );
+        })}
       </Box>
     </Box>
   );

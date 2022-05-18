@@ -4,11 +4,16 @@ import { Box } from "@mui/system";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
+import { types } from "context/types/types";
 import { MainButton } from "components/common/Buttons/MainButton/styles";
 import Input from "components/common/Forms/Inputs/";
 import InputButton from "components/common/Forms/FormButton";
+import { startCreate } from "actions/sections";
+import { useDispatch } from "react-redux";
+import { startChecking } from "actions/auth";
+import Toast from "components/common/Popup/Toast";
 
-const ModalFormSection = () => {
+const ModalFormSection = ({ dispatch, courseId }) => {
   //*** Modal */
   const [display, setDisplay] = useState(false);
   const onClick = () => {
@@ -25,18 +30,46 @@ const ModalFormSection = () => {
   const VALIDATION_SCHEMA = Yup.object({
     name: Yup.string().required("El nombre de la seccion es obligatorio"),
   });
-  const handleSubmit = (values) => {
-    console.log(values);
+  //handleSubmit stuff
+  const authdispatch = useDispatch();
+  const handleSubmit = async (values) => {
+    // values.name = values.name.trim().toLowerCase();
+    await authdispatch(startChecking());
+    dispatch({
+      type: types.sectionStartCreate,
+      payload: {},
+    });
+    const body = await startCreate(values, courseId);
+    if (body.statusCode) {
+      dispatch({
+        type: types.sectionErrorCreate,
+        payload: body.message,
+      });
+      Toast("error", body.message);
+    } else {
+      dispatch({
+        type: types.sectionCreate,
+        payload: {
+          id: body.id,
+          name: body.name,
+        },
+      });
+      Toast("success", "Seccion creada con exito");
+      setDisplay(false);
+    }
+
+    // setDisplay(false);
   };
 
   return (
     <>
       <MainButton
+        shadow="1px 1px 10px 0px rgb(0, 0, 0, 0.5)"
         onClick={() => {
           onClick();
         }}
       >
-        Agregar seccion
+        Agregar Seccion
       </MainButton>
 
       <Dialog
@@ -76,6 +109,7 @@ const ModalFormSection = () => {
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
+                shadow="1px 1px 10px 0px rgb(0, 0, 0, 0.5)"
               />
             </Box>
           </Form>

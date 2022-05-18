@@ -1,19 +1,19 @@
-import * as React from 'react';
-import clsx from 'clsx';
-import { styled } from '@mui/system';
-import { useSwitch } from '@mui/base/SwitchUnstyled';
+import * as React from "react";
+import clsx from "clsx";
+import { styled } from "@mui/system";
+import { useSwitch } from "@mui/base/SwitchUnstyled";
 
 const blue = {
-  500: '#37B2CF',
+  500: "#37B2CF",
 };
 
 const grey = {
-  400: '#5e82be',
-  500: '#5e82be',
-  600: '#5e82be',
+  400: "#5e82be",
+  500: "#5e82be",
+  600: "#5e82be",
 };
 
-const BasicSwitchRoot = styled('span')(
+const BasicSwitchRoot = styled("span")(
   ({ theme }) => `
   font-size: 0;
   position: relative;
@@ -21,7 +21,7 @@ const BasicSwitchRoot = styled('span')(
   width: 60px;
   height: 30px;
   margin: 10px 1.5rem;
-  background: ${theme.palette.mode === 'dark' ? grey[600] : grey[400]};
+  background: ${theme.palette.mode === "dark" ? grey[600] : grey[400]};
   border-radius: 50px;
   cursor: pointer;
 
@@ -36,7 +36,7 @@ const BasicSwitchRoot = styled('span')(
   `
 );
 
-const BasicSwitchInput = styled('input')`
+const BasicSwitchInput = styled("input")`
   cursor: inherit;
   position: absolute;
   width: 100%;
@@ -48,7 +48,7 @@ const BasicSwitchInput = styled('input')`
   margin: 0;
 `;
 
-const BasicSwitchThumb = styled('span')`
+const BasicSwitchThumb = styled("span")`
   display: block;
   width: 20px;
   height: 20px;
@@ -75,9 +75,9 @@ export function BasicSwitch(props) {
   const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
 
   const stateClasses = {
-    'Switch-checked': checked,
-    'Switch-disabled': disabled,
-    'Switch-focusVisible': focusVisible,
+    "Switch-checked": checked,
+    "Switch-disabled": disabled,
+    "Switch-focusVisible": focusVisible,
   };
 
   return (

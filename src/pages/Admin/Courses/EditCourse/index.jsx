@@ -13,6 +13,7 @@ import General from "./General";
 import { useParams } from "react-router-dom";
 import Teachers from "./Teachers";
 import Lessons from "./Lessons";
+import { useSelector } from "react-redux";
 
 const EditCourse = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,6 +24,11 @@ const EditCourse = () => {
     .trim()
     .toLowerCase()
     .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
+
+  //Obtener Id del curso
+  const courses = useSelector((state) => state.courses.courses);
+  const { id } = courses.find((course) => course.title === cleanCourseTitle);
+  //⬆️⬆️⬆️id del curso en cuestion
 
   return (
     <Container>
@@ -49,7 +55,7 @@ const EditCourse = () => {
                 <Teachers />
               </TabPanel>
               <TabPanel header="Clases">
-                <Lessons />
+                <Lessons courseId={id} />
               </TabPanel>
               <TabPanel header="FAQS">
                 Content IV Lorem ipsum dolor sit, amet consectetur adipisicing

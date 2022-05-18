@@ -6,7 +6,7 @@ import { useFormikContext } from "formik";
 const Selects2 = (props) => {
   const { options, previousValue, text } = props;
   //! "props" son todos los datos correspondientes del input
-  //! "options" son los datos que se mostraran en el dropdown
+  //! "options" son los datos que se mostraran en el dropdown. DEBE SER UN ARRAY DE OBJETOS
   //! "previusValue" es el valor que contenga el dropdown al renderizar (si lo tenia)
   //! "text" es el texto que se mostrara en el dropdown cuando no haya ningun valor seleccionado
   //?  id, name, type, padding, width, heigth, margin, color, backgroundColor, alignItems,errorPadding, inheritValue,
@@ -93,13 +93,18 @@ const Selects2 = (props) => {
 
       <InputContainer
         // Atributos input
+        width="0%"
         alignItems={props.alignItems}
       >
         <InputItem
           // Atributos input
           id={props.id}
           name={props.name}
-          type="hidden"
+          type="text"
+          display="none"
+          width="0px"
+          height="0px"
+          margin="0px"
           // variables de formikContext
           onChange={handleChange}
           value={value}

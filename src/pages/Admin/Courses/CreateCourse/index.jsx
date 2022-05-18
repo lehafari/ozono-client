@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import {
   Container,
@@ -11,7 +11,7 @@ import * as Yup from "yup";
 
 import Input from "../../../../components/common/Forms/Inputs";
 import Textarea2 from "../../../../components/common/Forms/TextArea2";
-import Select from "../../../../components/common/Forms/Selects";
+
 import { BoxButton } from "../../../Access/Login/style";
 import InputButton from "../../../../components/common/Forms/FormButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,6 +69,7 @@ const CreateCourse = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = async (values, { resetForm }) => {
+    values.title = values.title.trim().toLowerCase();
     await dispatch(startChecking());
     const res = await dispatch(startCreate(values));
     if (res.type === types.coursesCreateError) {
