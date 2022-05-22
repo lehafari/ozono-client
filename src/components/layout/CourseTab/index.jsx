@@ -44,10 +44,7 @@ export const CourseTab = () => {
               onTabChange={(e) => setActiveIndex(e.index)}
             >
               <TabPanel header="Descripcion" headerStyle={{}}>
-                <Description
-                  description={thisCourse.description}
-                  title={thisCourse.title}
-                />
+                <Description description={thisCourse.description} />
               </TabPanel>
               <TabPanel header="profesores">
                 Content II Lorem ipsum dolor sit, amet consectetur adipisicing
