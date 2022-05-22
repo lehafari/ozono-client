@@ -1,7 +1,14 @@
+<<<<<<< Updated upstream
 import { useFormikContext } from "formik";
 import { Editor } from "primereact/editor";
 import { useState } from "react";
 import { ErrorMessage, TextAreaContainer } from "./styles";
+=======
+import { useFormikContext } from 'formik';
+import { Editor } from 'primereact/editor';
+import { useEffect, useState } from 'react';
+import { ErrorMessage, TextAreaContainer } from './styles';
+>>>>>>> Stashed changes
 
 const Textarea2 = ({
   id,
@@ -11,14 +18,14 @@ const Textarea2 = ({
   width,
   height,
   margin,
-  editValue = "",
+  editValue = '',
 }) => {
   const { values, errors, touched, setTouched } = useFormikContext();
   // const [text, setText] = useState(editValue ? editValue : "");
   const [text, setText] = useState(editValue);
   values[name] = text;
-  const error = errors[name] ? errors[name] : "";
-  const touchedInput = touched[name] ? touched[name] : "";
+  const error = errors[name] ? errors[name] : '';
+  const touchedInput = touched[name] ? touched[name] : '';
 
   return (
     <TextAreaContainer>
@@ -29,10 +36,14 @@ const Textarea2 = ({
         placeholder={placeholder}
         value={text}
         onTextChange={(e) => setText(e.htmlValue)}
+<<<<<<< Updated upstream
         style={{
           width: width ? width : "100%",
           height: height ? height : "250px",
         }}
+=======
+        style={{ height: '250px' }}
+>>>>>>> Stashed changes
         onClick={() => setTouched({ ...touched, [name]: true })}
         onTouchStart={() => setTouched({ ...touched, [name]: true })}
       />

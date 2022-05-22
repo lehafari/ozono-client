@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Container,
   Content,
@@ -7,23 +7,24 @@ import {
   LogosContainer,
   TextContainer,
   VerticalLine,
-} from "./styles";
+} from './styles';
 
-import logo from "../../../assets/images/cenaoz-logo.svg";
+import logo from '../../../assets/images/cenaoz-logo.svg';
+import { toCapitalize } from 'helpers/toCapitalize';
 
-const CourseSection3 = () => {
+const CourseSection3 = ({ duration, level, numberOfStudents }) => {
   return (
     <Container>
       <Content>
         <TextContainer>
           <Details>
             <h4>Horas de video:</h4>
-            <p>1h 30min</p>
+            <p>{duration}</p>
           </Details>
 
           <Details>
             <h4>Nivel: </h4>
-            <p>Principiante</p>
+            <p>{toCapitalize(level)}</p>
           </Details>
 
           <Details>
@@ -38,7 +39,7 @@ const CourseSection3 = () => {
 
           <Details>
             <h4>Inscrito: </h4>
-            <p>93</p>
+            <p>{numberOfStudents}</p>
           </Details>
 
           <Details>

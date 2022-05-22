@@ -12,6 +12,7 @@ import {
 import courseImage from '../../../assets/images/hero-image.png';
 import PersonIcon from '@mui/icons-material/Person';
 import { Button } from '../../common/Buttons/MainButton';
+import { toCapitalize } from 'helpers/toCapitalize';
 
 export const CourseItem = ({
   price,
@@ -40,7 +41,7 @@ export const CourseItem = ({
         </CourseTitle>
         <CoruseDescription>
           <p>Duracion del curso: {duration}</p>
-          <p>Nivel: {level}</p>
+          <p>Nivel: {toCapitalize(level)}</p>
           {/* {text} */}
         </CoruseDescription>
         <CoursePrice>

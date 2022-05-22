@@ -22,7 +22,7 @@ const Course = () => {
     <Back>
       <CourseSection1 {...course} />
       <CourseSection2 />
-      <CourseSection3 />
+      <CourseSection3 {...course} />
       <FooterCourse />
     </Back>
   );
