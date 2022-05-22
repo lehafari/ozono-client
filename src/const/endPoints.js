@@ -20,6 +20,7 @@ export const endPoints = {
   //courses
   create_course: `/courses/create`,
 
+  get_course_image: `/courses/courseImage`,
   get_all_courses: `/courses/all`,
   get_courses_by_status: `/courses/status`,
   get_students: `/courses/users`,
