@@ -57,4 +57,38 @@ export const types = {
   sectionStartDelete: "[section] Start delete",
   sectionDelete: "[section] Delete",
   sectionDeleteError: "[section] Delete error",
+
+  // courseLessons
+  lessonStartCreate: "[lesson] Start create",
+  lessonCreate: "[lesson] Create",
+  lessonCreateError: "[lesson] Create error",
+
+  lessonStartFetch: "[lesson] Start fetch",
+  lessonFetch: "[lesson] Fetch",
+  lessonFetchError: "[lesson] Fetch error",
+
+  lessonStartUpdate: "[lesson] Start update",
+  lessonUpdate: "[lesson] Update",
+  lessonUpdateError: "[lesson] Update error",
+
+  lessonStartDelete: "[lesson] Start delete",
+  lessonDelete: "[lesson] Delete",
+  lessonDeleteError: "[lesson] Delete error",
+
+  // courseQuiz
+  quizStartCreate: "[quiz] Start create",
+  quizCreate: "[quiz] Create",
+  quizCreateError: "[quiz] Create error",
+
+  quizStartFetch: "[quiz] Start fetch",
+  quizFetch: "[quiz] Fetch",
+  quizFetchError: "[quiz] Fetch error",
+
+  quizStartUpdate: "[quiz] Start update",
+  quizUpdate: "[quiz] Update",
+  quizUpdateError: "[quiz] Update error",
+
+  quizStartDelete: "[quiz] Start delete",
+  quizDelete: "[quiz] Delete",
+  quizDeleteError: "[quiz] Delete error",
 };

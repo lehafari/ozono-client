@@ -42,10 +42,23 @@ export const endPoints = {
 
   //Sections
   create_section: `/sections/create`,
-
   get_all_sections_by_course: `/sections`,
-
   update_section: `/sections/update`,
-
   delete_section: `/sections/delete`,
+
+  //Lessons
+  create_lesson: `/lessons/create`, //falta el ID de la SECCION a la que pertenece la clase
+  get_all_lessons_by_section: `/lessons`, //falta el ID de la SECCION a la que pertenece la clase
+  update_lesson: `/lessons/update`,
+  delete_lesson: `/lessons/delete`,
+
+  //Lesson Content
+  upload_video: `/lessons/upload/video`, //falta el ID de la CLASE
+  get_video_by_lesson: `/lessons/video`, //falta el ID de la CLASE
+
+  //Quizzes
+  create_quiz: `/quiz/create`, //falta el id de la SECCION a la que pertenece el quiz
+  get_all_quiz_by_section: `/quiz`, //falta el id de la SECCION a la que pertenece el quiz
+  update_quiz: `/quiz/update`, //falta el id del QUIZ
+  delete_quiz: `/quiz /delete`, //falta el id del QUIZ
 };

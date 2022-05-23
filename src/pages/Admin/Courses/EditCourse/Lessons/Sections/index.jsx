@@ -16,22 +16,25 @@ const Sections = ({ i, text, id }) => {
 
   return (
     <div>
-      <Box>
-        <Typography sx={{ width: "33%", flexShrink: 0 }}>
-          Seccion {i}
-        </Typography>
-        <Button sx={{ width: "33%" }}>Editar</Button>
-        <Button sx={{ width: "33%" }} color="error">
-          Borrar
-        </Button>
-      </Box>
+      {/* <Box>
+       
+
+      </Box> */}
       <Accordion expanded={expanded} onChange={handleChange()} square={true}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
+          {" "}
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+            Seccion {i}
+          </Typography>
           <Typography sx={{ color: "text.secondary" }}>{text}</Typography>
+          <Button sx={{ width: "33%" }}>Editar</Button>
+          <Button sx={{ width: "33%" }} color="error">
+            Borrar
+          </Button>
         </AccordionSummary>
         <AccordionDetails>
           <Box

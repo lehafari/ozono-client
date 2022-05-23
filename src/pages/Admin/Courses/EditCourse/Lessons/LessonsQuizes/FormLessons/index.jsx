@@ -11,14 +11,12 @@ const Formlessons = () => {
   //***Form */
   const INITIAL_VALUES = {
     name: "",
-    status: "",
     duration: 0,
     description: "",
   };
 
   const VALIDATION_SCHEMA = {
     name: Yup.string().required("El nombre es requerido"),
-    status: Yup.string().required("El estado es requerido"),
     duration: Yup.number().required("La duracion es requerida"),
     description: Yup.string().required("La descripcion es requerida"),
   };
@@ -44,21 +42,11 @@ const Formlessons = () => {
               width: "100%",
             }}
           >
-            <Selects2
-              id="status"
-              name="status"
-              text="Estado del Quiz"
-              options={[{ name: "Activo" }, { name: "Inactivo" }]}
-              backgroundColor="#f5f5f5"
-              width="240px"
-              margin="0 0px"
-            />
             <Input
               id="duration"
               name="duration"
               type="number"
-              placeholder="Duracion"
-              width="150px"
+              placeholder="Duracion del video"
               margin="0 0px "
             />
           </Box>
