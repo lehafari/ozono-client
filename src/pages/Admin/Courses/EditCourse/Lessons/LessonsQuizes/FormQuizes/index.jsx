@@ -17,11 +17,14 @@ const FormQuizes = () => {
     description: "",
   };
 
-  const VALIDATION_SCHEMA = {
+  const VALIDATION_SCHEMA = Yup.object({
     name: Yup.string().required("El nombre es requerido"),
     status: Yup.string().required("El estado es requerido"),
     duration: Yup.number().required("La duracion es requerida"),
     description: Yup.string().required("La descripcion es requerida"),
+  });
+  const handledSubmit = (values) => {
+    console.log("Quizzes: ", values);
   };
 
   return (
@@ -29,6 +32,7 @@ const FormQuizes = () => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
+        onSubmit={handledSubmit}
       >
         <Form>
           <Input
@@ -36,6 +40,7 @@ const FormQuizes = () => {
             name="name"
             type="text"
             placeholder="Nombre del Quiz"
+            errorPadding="0 0 0 calc(100% - 85%)"
           />
           {/* Select e input uno al lado de otro */}
           <Box

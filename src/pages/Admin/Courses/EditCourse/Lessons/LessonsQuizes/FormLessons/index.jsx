@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import InputButton from "components/common/Forms/FormButton";
 import Input from "components/common/Forms/Inputs";
-import Selects2 from "components/common/Forms/Selects2";
 import Textarea2 from "components/common/Forms/TextArea2";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import React from "react";
+import { startCreate } from "actions/courses";
 
-const Formlessons = () => {
+const Formlessons = ({ dispatch, sectionId }) => {
   //***Form */
   const INITIAL_VALUES = {
     name: "",
@@ -15,17 +15,21 @@ const Formlessons = () => {
     description: "",
   };
 
-  const VALIDATION_SCHEMA = {
+  const VALIDATION_SCHEMA = Yup.object({
     name: Yup.string().required("El nombre es requerido"),
     duration: Yup.number().required("La duracion es requerida"),
     description: Yup.string().required("La descripcion es requerida"),
-  };
+  });
 
+  const handledSubmit = async (values) => {
+    const body = await startCreate(values, sectionId);
+  };
   return (
     <>
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={VALIDATION_SCHEMA}
+        onSubmit={handledSubmit}
       >
         <Form>
           <Input
@@ -33,6 +37,7 @@ const Formlessons = () => {
             name="name"
             type="text"
             placeholder="Nombre del Quiz"
+            errorPadding="0 0 0 calc(100% - 85%)"
           />
           {/* Select e input uno al lado de otro */}
           <Box

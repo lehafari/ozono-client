@@ -48,7 +48,7 @@ const ModalForm = () => {
         header="Agregar Quiz o Clase"
         visible={display}
         contentStyle={{ borderRadius: " 0 0 10px 10px", overflow: "hidden" }}
-        style={{ width: "60vw" }}
+        style={{ width: "65vw" }}
         onHide={() => onHide()}
         resizable={false}
         draggable={false}

@@ -12,9 +12,10 @@ import ModalFormSection from "./ModalFormSection";
 import Sections from "./Sections";
 
 const Lessons = ({ courseId }) => {
+  //reducer para SECTIONS
   const [sections, dispatch] = useReducer(sectionReducer, initialState);
-  console.log("secciones: ", sections);
 
+  //Fetch Sections
   useEffect(() => {
     const fetchSections = async () => {
       dispatch({ type: types.sectionStartFetch, payload: {} });
