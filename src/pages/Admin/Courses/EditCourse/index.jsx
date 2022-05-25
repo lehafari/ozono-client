@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { TabView, TabPanel } from "primereact/tabview";
+import { useState } from 'react';
+import { TabView, TabPanel } from 'primereact/tabview';
 import {
   Container,
   ImgContainer,
@@ -7,19 +7,19 @@ import {
   NavbarContainer,
   ShadowContainer,
   TileContainer,
-} from "./style";
-import img from "../../../../assets/images/course-image.png";
-import General from "./General";
-import { useParams } from "react-router-dom";
-import Teachers from "./Teachers";
-import Lessons from "./Lessons";
-import { useSelector } from "react-redux";
+} from './style';
+import img from '../../../../assets/images/course-image.png';
+import General from './General';
+import { useParams } from 'react-router-dom';
+import Teachers from './Teachers';
+import Lessons from './Lessons';
+import { useSelector } from 'react-redux';
 
 const EditCourse = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const courseTitle = useParams().courseTitle;
-  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
   const cleanTitle = cleanCourseTitle
     .trim()
     .toLowerCase()
@@ -51,7 +51,7 @@ const EditCourse = () => {
               <TabPanel header="General" headerStyle={{}}>
                 <General />
               </TabPanel>
-              <TabPanel header="profesores">
+              <TabPanel header="Profesores">
                 <Teachers />
               </TabPanel>
               <TabPanel header="Clases">
