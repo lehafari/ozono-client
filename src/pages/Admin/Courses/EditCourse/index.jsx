@@ -27,9 +27,11 @@ const EditCourse = () => {
 
   //Obtener Id del curso
   const courses = useSelector((state) => state.courses.courses);
-  const { id } = courses.find((course) => course.title === cleanCourseTitle);
-  //⬆️⬆️⬆️id del curso en cuestion
 
+  const course =
+    courses && courses.find((course) => course.title === cleanCourseTitle);
+  //⬆️⬆️⬆️id del curso en cuestion
+  const id = course && course.id;
   return (
     <Container>
       <h1>Edicion de curso</h1>

@@ -1,6 +1,6 @@
 import { types } from "../types/types";
 
-export const initialState = {
+export const initialStateQuizzes = {
   quizzes: [],
   loading: false,
   error: null,

@@ -41,7 +41,9 @@ const General = () => {
   const course = courses.find(
     (course) => course.title.toLowerCase() === cleanCourseTitle
   );
-
+  if (course === undefined) {
+    return <Spinner />;
+  }
   const {
     title,
     description,
@@ -54,7 +56,7 @@ const General = () => {
     premiumPrice,
     own,
     id,
-  } = course;
+  } = course && course;
   // ****** FORMULARIO ******
   const INITIAL_VALUES = {
     title: title,

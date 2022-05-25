@@ -7,8 +7,11 @@ import Input from "components/common/Forms/Inputs";
 import Selects2 from "components/common/Forms/Selects2";
 import Textarea2 from "components/common/Forms/TextArea2";
 import InputButton from "components/common/Forms/FormButton";
+import { types } from "context/types/types";
+import { startCreate } from "actions/quizzes";
+import Toast from "components/common/Popup/Toast";
 
-const FormQuizes = () => {
+const FormQuizes = ({ sectionId, setDisplay, dispatch }) => {
   //***Form */
   const INITIAL_VALUES = {
     name: "",
@@ -23,8 +26,34 @@ const FormQuizes = () => {
     duration: Yup.number().required("La duracion es requerida"),
     description: Yup.string().required("La descripcion es requerida"),
   });
-  const handledSubmit = (values) => {
-    console.log("Quizzes: ", values);
+  const handledSubmit = async (values) => {
+    dispatch({
+      type: types.quizStartCreate,
+      payload: {},
+    });
+    const body = await startCreate(values, sectionId);
+    if (body.statusCode) {
+      dispatch({
+        type: types.quizCreateError,
+        payload: body.message,
+      });
+      Toast("error", body.message);
+    } else {
+      dispatch({
+        type: types.quizCreate,
+        payload: {
+          id: body.id,
+          name: body.name,
+          status: body.status,
+          duration: body.duration,
+          description: body.description,
+          createdAt: body.createdAt,
+        },
+      });
+      Toast("success", "Quiz creado con exito");
+      setDisplay(false);
+      console.log(body);
+    }
   };
 
   return (
@@ -63,7 +92,7 @@ const FormQuizes = () => {
               id="duration"
               name="duration"
               type="number"
-              placeholder="Duracion"
+              placeholder="Duracion del examen"
               width="150px"
               margin="0 0px "
             />
@@ -81,7 +110,7 @@ const FormQuizes = () => {
             <Textarea2
               id="description"
               name="description"
-              placeholder="Descripcion"
+              placeholder="Descripcion del Quiz"
               height="200px"
             />
             <InputButton

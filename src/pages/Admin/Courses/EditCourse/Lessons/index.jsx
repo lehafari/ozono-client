@@ -7,20 +7,20 @@ import {
   sectionReducer,
 } from "context/courseSections/sectionsReducer";
 import { types } from "context/types/types";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import ModalFormSection from "./ModalFormSection";
 import Sections from "./Sections";
 
 const Lessons = ({ courseId }) => {
   //reducer para SECTIONS
   const [sections, dispatch] = useReducer(sectionReducer, initialState);
+  const [flag, setFlag] = useState(false);
 
   //Fetch Sections
   useEffect(() => {
     const fetchSections = async () => {
       dispatch({ type: types.sectionStartFetch, payload: {} });
       const body = await startFetchSections(courseId);
-      console.log("Body en el fetch get: ", body);
       if (body.statusCode) {
         dispatch({ type: types.sectionFetchError, payload: body.message });
       } else {
@@ -31,9 +31,11 @@ const Lessons = ({ courseId }) => {
       }
     };
     fetchSections();
-  }, [courseId]);
+    setFlag(false);
+  }, [flag, courseId]);
 
   if (sections.Loading) return <Spinner />;
+  console.log(sections);
 
   return (
     //Container de toda la seccion
@@ -82,7 +84,9 @@ const Lessons = ({ courseId }) => {
               key={section.id}
               i={i + 1}
               text={section.name}
-              id={section.id}
+              sectionId={section.id}
+              dispatchSection={dispatch}
+              setFlag={setFlag}
             />
           );
         })}

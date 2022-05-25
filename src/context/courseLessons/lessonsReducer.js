@@ -1,33 +1,33 @@
 import { types } from "../types/types";
 
-export const initialState = {
+export const initialStateLessons = {
   lessons: [],
   loading: false,
   error: null,
 };
 
 export const lessonsReducer = (state, action) => {
-  switch (action.types) {
+  switch (action.type) {
     //****** Lesson Create ******/
-    case types.lessonsStartCreate:
+    case types.lessonStartCreate:
       return {
         ...state,
         loading: true,
       };
-    case types.lessonsCreate:
+    case types.lessonCreate:
       return {
         ...state,
         lessons: [...state.lessons, action.payload],
         loading: false,
       };
-    case types.lessonsCreateError:
+    case types.lessonCreateError:
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
     //****** Lesson Fetch ******/
-    case types.lessonsStartFetch:
+    case types.lessonStartFetch:
       return {
         ...state,
         loading: true,
@@ -45,7 +45,7 @@ export const lessonsReducer = (state, action) => {
         error: action.payload,
       };
     //****** Lesson Update ******/
-    case types.lessonsStartUpdate:
+    case types.lessonStartUpdate:
       return {
         ...state,
         loading: true,
@@ -67,7 +67,7 @@ export const lessonsReducer = (state, action) => {
         error: action.payload,
       };
     //****** Lesson Delete ******/
-    case types.lessonsStartDelete:
+    case types.lessonStartDelete:
       return {
         ...state,
         loading: true,

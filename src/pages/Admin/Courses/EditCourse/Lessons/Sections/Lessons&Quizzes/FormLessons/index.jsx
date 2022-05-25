@@ -5,9 +5,12 @@ import Textarea2 from "components/common/Forms/TextArea2";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import React from "react";
-import { startCreate } from "actions/courses";
 
-const Formlessons = ({ dispatch, sectionId }) => {
+import { types } from "context/types/types";
+import { startCreate } from "actions/lessons";
+import Toast from "components/common/Popup/Toast";
+
+const Formlessons = ({ sectionId, setDisplay, dispatch }) => {
   //***Form */
   const INITIAL_VALUES = {
     name: "",
@@ -17,12 +20,37 @@ const Formlessons = ({ dispatch, sectionId }) => {
 
   const VALIDATION_SCHEMA = Yup.object({
     name: Yup.string().required("El nombre es requerido"),
-    duration: Yup.number().required("La duracion es requerida"),
+    duration: Yup.string().required("La duracion es requerida"),
     description: Yup.string().required("La descripcion es requerida"),
   });
 
   const handledSubmit = async (values) => {
+    dispatch({
+      type: types.lessonStartCreate,
+      payload: {},
+    });
     const body = await startCreate(values, sectionId);
+    if (body.statusCode) {
+      dispatch({
+        type: types.lessonCreateError,
+        payload: body.message,
+      });
+      Toast("error", body.message);
+    } else {
+      dispatch({
+        type: types.lessonCreate,
+        payload: {
+          id: body.id,
+          name: body.name,
+          duration: body.duration,
+          description: body.description,
+          createdAt: body.createdAt,
+        },
+      });
+      Toast("success", "Clase creada con exito");
+      setDisplay(false);
+      console.log(body);
+    }
   };
   return (
     <>
@@ -36,7 +64,7 @@ const Formlessons = ({ dispatch, sectionId }) => {
             id="name"
             name="name"
             type="text"
-            placeholder="Nombre del Quiz"
+            placeholder="Titulo de la clase"
             errorPadding="0 0 0 calc(100% - 85%)"
           />
           {/* Select e input uno al lado de otro */}
@@ -50,7 +78,7 @@ const Formlessons = ({ dispatch, sectionId }) => {
             <Input
               id="duration"
               name="duration"
-              type="number"
+              type="text"
               placeholder="Duracion del video"
               margin="0 0px "
             />
@@ -68,7 +96,7 @@ const Formlessons = ({ dispatch, sectionId }) => {
             <Textarea2
               id="description"
               name="description"
-              placeholder="Descripcion"
+              placeholder="Descripcion de la clase"
               height="200px"
             />
             <InputButton
