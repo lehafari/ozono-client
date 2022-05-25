@@ -52,6 +52,7 @@ const ModalFormSection = ({ dispatch, courseId }) => {
         payload: {
           id: body.id,
           name: body.name,
+          createdAt: body.createdAt,
         },
       });
       Toast("success", "Seccion creada con exito");

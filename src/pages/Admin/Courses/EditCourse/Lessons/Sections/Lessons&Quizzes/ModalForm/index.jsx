@@ -13,7 +13,7 @@ import {
   SelectSwitch,
 } from "./styles";
 
-const ModalForm = () => {
+const ModalForm = ({ sectionId, dispatchLessons, dispatchQuizzes }) => {
   //*** Modal */
   const [display, setDisplay] = useState(false);
   const onClick = () => {
@@ -69,7 +69,19 @@ const ModalForm = () => {
             margin: "10px 0",
           }}
         >
-          {!switchStatus ? <Formlessons /> : <FormQuizes />}
+          {!switchStatus ? (
+            <Formlessons
+              sectionId={sectionId}
+              setDisplay={setDisplay}
+              dispatch={dispatchLessons}
+            />
+          ) : (
+            <FormQuizes
+              sectionId={sectionId}
+              setDisplay={setDisplay}
+              dispatch={dispatchQuizzes}
+            />
+          )}
         </Box>
       </Dialog>
     </>

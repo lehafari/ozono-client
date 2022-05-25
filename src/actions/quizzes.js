@@ -15,7 +15,7 @@ export const startCreate = async (value, sectionId) => {
 //**** Fetch Quizzes ****/
 export const startFetchQuizzes = async (sectionId) => {
   const resp = await fetchWithToken(
-    `${endPoints.get_all_quizzes_by_section}/${sectionId}`,
+    `${endPoints.get_all_quiz_by_section}/${sectionId}`,
     {}
   );
   const body = await resp.json();
