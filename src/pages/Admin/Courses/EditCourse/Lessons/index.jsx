@@ -35,7 +35,6 @@ const Lessons = ({ courseId }) => {
   }, [flag, courseId]);
 
   if (sections.Loading) return <Spinner />;
-  console.log(sections);
 
   return (
     //Container de toda la seccion

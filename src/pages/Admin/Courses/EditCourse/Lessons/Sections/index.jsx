@@ -18,6 +18,7 @@ import { startFetchLessons } from "actions/lessons";
 import { types } from "context/types/types";
 import { startFetchQuizzes } from "actions/quizzes";
 import { startDelete } from "actions/sections";
+import { sortByCreateDate } from "helpers/sort";
 
 const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
   //!acordeon stuff**
@@ -32,8 +33,13 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
     lessonsReducer,
     initialStateLessons
   );
-  //fetch LESSONS
+  //? Quizzes reducer
+  const [quizzes, dispatchQuizzes] = useReducer(
+    quizReducer,
+    initialStateQuizzes
+  );
   useEffect(() => {
+    //fetch LESSONS
     const fetchLessons = async () => {
       dispatchLessons({ type: types.lessonStartFetch, payload: {} });
       const body = await startFetchLessons(sectionId);
@@ -45,34 +51,23 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
       } else {
         dispatchLessons({ type: types.lessonFetch, payload: body });
       }
-      // console.log("body en get lessons", body);
-      // console.log("clases: ", lessons);
     };
-    if (expanded) {
-      fetchLessons();
-    }
-  }, [expanded, sectionId]);
-
-  //? Quizzes reducer
-  const [quizzes, dispatchQuizzes] = useReducer(
-    quizReducer,
-    initialStateQuizzes
-  );
-  //fetch QUIZZES
-  useEffect(() => {
+    //fetch QUIZZES
     const fetchQuizzes = async () => {
-      dispatchLessons({ type: types.quizStartFetch, payload: {} });
+      dispatchQuizzes({ type: types.quizStartFetch, payload: {} });
       const body = await startFetchQuizzes(sectionId);
       if (body.statusCode) {
-        dispatchLessons({
+        dispatchQuizzes({
           type: types.quizFetchError,
           payload: body.message,
         });
       } else {
-        dispatchLessons({ type: types.quizFetch, payload: body });
+        dispatchQuizzes({ type: types.quizFetch, payload: body });
       }
+      console.log(body);
     };
     if (expanded) {
+      fetchLessons();
       fetchQuizzes();
     }
   }, [expanded, sectionId]);
@@ -81,7 +76,6 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
   const handleDelete = async () => {
     dispatchSection({ type: types.sectionStartDelete, payload: {} });
     const body = await startDelete(sectionId);
-    console.log(body);
     if (body.statusCode !== 200) {
       dispatchSection({
         type: types.sectionDeleteError,
@@ -92,7 +86,11 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
       setFlag(true);
     }
   };
-
+  if (lessons.lessons.length !== 0 && quizzes.quizzes.length !== 0) {
+    //Ordenamos los lessons y quizzes en un solo array
+    // const sortItems = sortByCreateDate(lessons, quizzes);
+    // console.log("ordenados", sortItems);
+  }
   return (
     <div>
       {/* <Box>
@@ -142,8 +140,8 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
             />
           </Box>
           {/* AQUI VAMOS A IMPRIMIR TODAS LAS CLASES  */}
-          {lessons.lessons.length === 0 ? (
-            <span> No hay cursos para mostrar </span>
+          {quizzes.quizzes.length === 0 ? (
+            <span> No hay nada para mostrar para mostrar </span>
           ) : (
             <span>ola</span>
           )}
