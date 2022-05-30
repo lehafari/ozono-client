@@ -14,7 +14,6 @@ import Sections from "./Sections";
 const Lessons = ({ courseId }) => {
   //reducer para SECTIONS
   const [sections, dispatch] = useReducer(sectionReducer, initialState);
-  const [flag, setFlag] = useState(false);
 
   //Fetch Sections
   useEffect(() => {
@@ -31,8 +30,7 @@ const Lessons = ({ courseId }) => {
       }
     };
     fetchSections();
-    setFlag(false);
-  }, [flag, courseId]);
+  }, [courseId]);
 
   if (sections.Loading) return <Spinner />;
 
@@ -85,7 +83,6 @@ const Lessons = ({ courseId }) => {
               text={section.name}
               sectionId={section.id}
               dispatchSection={dispatch}
-              setFlag={setFlag}
             />
           );
         })}

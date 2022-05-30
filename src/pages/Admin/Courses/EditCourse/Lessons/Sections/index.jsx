@@ -19,8 +19,10 @@ import { types } from "context/types/types";
 import { startFetchQuizzes } from "actions/quizzes";
 import { startDelete } from "actions/sections";
 import { sortByCreateDate } from "helpers/sort";
+import EditLesson from "./Lessons&Quizzes/EditLesson";
+import Deletelesson from "./Lessons&Quizzes/DeleteLesson";
 
-const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
+const Sections = ({ i, text, sectionId, dispatchSection }) => {
   //!acordeon stuff**
   const [expanded, setExpanded] = useState(false);
   const handleChange = () => (event, isExpanded) => {
@@ -38,6 +40,8 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
     quizReducer,
     initialStateQuizzes
   );
+  //? SortItems state
+  let sortItems = [];
   useEffect(() => {
     //fetch LESSONS
     const fetchLessons = async () => {
@@ -64,13 +68,13 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
       } else {
         dispatchQuizzes({ type: types.quizFetch, payload: body });
       }
-      console.log(body);
     };
+
     if (expanded) {
       fetchLessons();
       fetchQuizzes();
     }
-  }, [expanded, sectionId]);
+  }, [expanded]);
 
   //! Borrar Secciones **//
   const handleDelete = async () => {
@@ -83,20 +87,16 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
       });
     } else {
       dispatchSection({ type: types.sectionDelete, payload: sectionId });
-      setFlag(true);
     }
   };
-  if (lessons.lessons.length !== 0 && quizzes.quizzes.length !== 0) {
-    //Ordenamos los lessons y quizzes en un solo array
-    // const sortItems = sortByCreateDate(lessons, quizzes);
-    // console.log("ordenados", sortItems);
+  //! SortItems **//
+  if (lessons.lessons.length !== 0 || quizzes.quizzes.length !== 0) {
+    // Ordenamos los lessons y quizzes en un solo array
+    sortItems = sortByCreateDate(lessons.lessons, quizzes.quizzes);
   }
+
   return (
     <div>
-      {/* <Box>
-       
-
-      </Box> */}
       <Accordion expanded={expanded} onChange={handleChange()} square={true}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -140,10 +140,63 @@ const Sections = ({ i, text, sectionId, dispatchSection, setFlag }) => {
             />
           </Box>
           {/* AQUI VAMOS A IMPRIMIR TODAS LAS CLASES  */}
-          {quizzes.quizzes.length === 0 ? (
+          {sortItems.length === 0 ? (
             <span> No hay nada para mostrar para mostrar </span>
           ) : (
-            <span>ola</span>
+            sortItems.map((item, i) => {
+              if (item.status) {
+                return (
+                  <div
+                    key={item.id}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-evenly",
+                      backgroundColor: "#eea5a5",
+                      margin: "5px 0px",
+                    }}
+                  >
+                    <span>Contenido: Quiz</span>
+                    <span>{item.name}</span>
+                  </div>
+                );
+              } else {
+                return (
+                  <div
+                    key={item.id}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-evenly",
+                      backgroundColor: "#a5bcee",
+                      margin: "5px 0px",
+                    }}
+                  >
+                    <div>
+                      <span style={{ margin: "0 50px 0 0" }}>
+                        Contenido: Clase
+                      </span>
+                      <span>{item.name}</span>
+                    </div>
+                    <div>
+                      <span>
+                        {
+                          <EditLesson
+                            lessonId={item.id}
+                            lessons={lessons.lessons}
+                            dispatch={dispatchLessons}
+                          />
+                        }
+                      </span>
+                      <span>
+                        <Deletelesson
+                          lessonId={item.id}
+                          dispatch={dispatchLessons}
+                        />
+                      </span>
+                    </div>
+                  </div>
+                );
+              }
+            })
           )}
         </AccordionDetails>
       </Accordion>

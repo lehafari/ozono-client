@@ -52,7 +52,6 @@ const FormQuizes = ({ sectionId, setDisplay, dispatch }) => {
       });
       Toast("success", "Quiz creado con exito");
       setDisplay(false);
-      console.log(body);
     }
   };
 
