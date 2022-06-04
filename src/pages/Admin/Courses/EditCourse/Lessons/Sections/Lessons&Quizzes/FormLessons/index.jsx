@@ -49,7 +49,6 @@ const Formlessons = ({ sectionId, setDisplay, dispatch }) => {
       });
       Toast("success", "Clase creada con exito");
       setDisplay(false);
-      console.log(body);
     }
   };
   return (

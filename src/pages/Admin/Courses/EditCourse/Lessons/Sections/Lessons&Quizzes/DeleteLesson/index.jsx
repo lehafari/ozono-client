@@ -3,13 +3,14 @@ import { Dialog } from "primereact/dialog";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import InputButton from "components/common/Forms/FormButton";
-import { ButtonsContainer } from "./styles";
-import { Box } from "@mui/system";
-import { fetchWithToken } from "helpers/fetch";
-import { endPoints } from "const/endPoints";
-import Toast from "components/common/Popup/Toast";
 
-const DeleteUser = ({ id, flag }) => {
+import { Box } from "@mui/system";
+import { types } from "context/types/types";
+import Toast from "components/common/Popup/Toast";
+import { startDelete } from "actions/lessons";
+import { ButtonsContainer } from "pages/Admin/Users/DeleteUser/styles";
+
+const Deletelesson = ({ lessonId, dispatch }) => {
   //*MODAL*
   const [displayBasic, setDisplayBasic] = useState(false);
   const dialogFuncMap = {
@@ -23,18 +24,24 @@ const DeleteUser = ({ id, flag }) => {
   };
   //*Borrar usuario */
   const handleSubmit = async () => {
-    const resp = await fetchWithToken(
-      `${endPoints.delete_any_user}/${id}`,
-      {},
-      "DELETE"
-    );
-    const data = await resp.json();
-    if (data === 200) {
+    dispatch({
+      type: types.lessonStartDelete,
+      payload: {},
+    });
+    const body = await startDelete(lessonId);
+    if (body.statusCode !== 200) {
+      dispatch({
+        type: types.lessonDeleteError,
+        payload: body.message,
+      });
+      Toast("error", body.message);
       onHide("displayBasic");
-      flag(true);
-      Toast("success", "eliminado correctamente");
     } else {
-      Toast("error", "Error al eliminar usuario");
+      dispatch({
+        type: types.lessonDelete,
+        payload: lessonId,
+      });
+      Toast("success", body.message);
       onHide("displayBasic");
     }
   };
@@ -68,7 +75,7 @@ const DeleteUser = ({ id, flag }) => {
         <Box
           sx={{ textAlign: "center", margin: "30px 0px", fontSize: "1.2rem" }}
         >
-          <p>¿Estas seguro de eliminar a este usuario?</p>
+          <p>¿Estas seguro de eliminar esta clase?</p>
         </Box>
 
         <ButtonsContainer>
@@ -106,4 +113,4 @@ const DeleteUser = ({ id, flag }) => {
   );
 };
 
-export default DeleteUser;
+export default Deletelesson;
