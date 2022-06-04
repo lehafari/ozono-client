@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import img from 'assets/images/course-image.png';
 import {
+  ButtonContainer,
   Container,
   ImgContainer,
   MenuContainer,
@@ -12,9 +13,13 @@ import {
   TileContainer,
 } from './styles';
 import { Description } from './Description';
+import { CourseTeachers } from './Teachers';
+import { Lessons } from './Lessons';
+import { Button } from 'components/common/Buttons/MainButton';
 
-export const CourseTab = () => {
+export const CourseTab = ({ setTab, Tab }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  setTab(activeIndex);
   const { courses } = useSelector((state) => state.courses);
   const courseTitle = useParams().courseTitle;
   const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
@@ -25,20 +30,24 @@ export const CourseTab = () => {
   const thisCourse = courses.find(
     (course) => course && course.title.toLowerCase() === cleanCourseTitle
   );
-  console.log(thisCourse);
   return (
     <Container>
       <ShadowContainer>
         <ImgContainer>
           <img src={img} alt="imagen del curso" />
-          <TileContainer>
-            {/* <h1>
-              Curso <br /> {cleanTitle}
-            </h1> */}
-          </TileContainer>
+          <ButtonContainer>
+            <Button
+              text={'Entrar a clase'}
+              fontSize={'1.5rem'}
+              padding={'2rem 4rem'}
+              alignItems={'center'}
+              display={'flex'}
+              path={`/course/classroom/${courseTitle}`}
+            />
+          </ButtonContainer>
         </ImgContainer>
         <NavbarContainer>
-          <MenuContainer>
+          <MenuContainer maxHeight={Tab === 0 ? '450px' : null}>
             <TabView
               activeIndex={activeIndex}
               onTabChange={(e) => setActiveIndex(e.index)}
@@ -46,17 +55,11 @@ export const CourseTab = () => {
               <TabPanel header="Descripcion" headerStyle={{}}>
                 <Description description={thisCourse.description} />
               </TabPanel>
-              <TabPanel header="profesores">
-                Content II Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
+              <TabPanel header="Profesores">
+                <CourseTeachers />
               </TabPanel>
               <TabPanel header="Clases">
-                Content III Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
+                <Lessons courseId={thisCourse.id} />
               </TabPanel>
               <TabPanel header="FAQS">
                 Content IV Lorem ipsum dolor sit, amet consectetur adipisicing

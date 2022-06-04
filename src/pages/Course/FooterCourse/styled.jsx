@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Footer = styled.div`
   background: ${(props) => props.theme.gradient.blueGradientMain};

@@ -1,5 +1,5 @@
-import React from "react";
-import { Footer } from "./styled";
+import React from 'react';
+import { Footer } from './styled';
 
 const FooterCourse = () => {
   return <Footer></Footer>;

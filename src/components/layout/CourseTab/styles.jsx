@@ -2,30 +2,38 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 113px);
-  padding: 0 50px 0 50px;
+  height: -webkit-fill-available;
+  heigght: fill-available;
+  padding: 0 4.5rem 0 4.5rem;
 
   /* background-color: pink; */
   & > h1 {
     text-align: center;
   }
 `;
-export const ShadowContainer = styled.div`
-  /* box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5); */
-`;
+export const ShadowContainer = styled.div``;
 
 export const ImgContainer = styled.div`
   width: 100%;
   height: 400px;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 45px 45px 0px 0px;
   position: relative;
-  box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5);
   & > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 40px 40px 0px 0px;
+    position: absolute;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TileContainer = styled.div`
@@ -47,19 +55,26 @@ export const TileContainer = styled.div`
 export const NavbarContainer = styled.div`
   transform: translateY(-70px);
   border-radius: 0 0 45px 45px;
-  box-shadow: 1px 1px 10px 0px rgb(0, 0, 0, 0.5);
+
+  & > p {
+    font-size: 1.5rem;
+  }
 `;
 
 export const MenuContainer = styled.div`
   /* & > .p-tabview {
   } */
 
+  & span {
+    font-weight: 500;
+  }
+
   & .p-tabview-nav {
     background-color: #ffffff9d;
     display: flex;
     justify-content: space-around;
     padding: 6px 5px 0 5px;
-    /* border-radius: 20px 20px 0px 0px; */
+    font-weight: 500;
   }
   & .p-tabview-nav-link {
     background-color: rgba(255, 255, 255, 0) !important;
@@ -72,6 +87,7 @@ export const MenuContainer = styled.div`
   /* Cambiar color de la opcion activa */
   & .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
     color: ${(props) => props.theme.colors.titleBlue} !important;
+    font-weight: 500 !important;
   }
   /* Color de la barrita de seleccion */
   & .p-tabview .p-tabview-nav .p-tabview-ink-bar {
@@ -80,5 +96,23 @@ export const MenuContainer = styled.div`
 
   & .p-tabview-panels {
     border-radius: 0 0 45px 45px;
+    min-height: 300px;
+    max-height: ${(props) => props.maxHeight || '550px'};
+    overflow-y: scroll;
+    text-wrap: normal;
+    padding: 2rem 3rem;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+
+      &-track {
+        background: #f8f8f8;
+      }
+
+      &-thumb {
+        background: #5571b2;
+        border-radius: 0.5rem;
+      }
+    }
   }
 `;

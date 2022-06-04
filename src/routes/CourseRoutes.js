@@ -23,7 +23,7 @@ const CourseRoutes = () => {
         </Route>
 
         <Route
-          path="/course/classroom"
+          path="/course/classroom/:courseTitle/:lessonId"
           element={
             <PrivateRoute>
               <Classroom />

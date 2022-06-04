@@ -2,10 +2,10 @@ import { CourseTab } from 'components/layout/CourseTab';
 import React from 'react';
 import CourseNavbar from '../../../components/layout/CoursePage/CourseNavbar';
 
-const CourseSection2 = () => {
+const CourseSection2 = ({ setTab, Tab }) => {
   return (
     <div>
-      <CourseTab />
+      <CourseTab setTab={setTab} Tab={Tab} />
     </div>
   );
 };

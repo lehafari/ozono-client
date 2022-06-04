@@ -21,12 +21,8 @@ const CourseSection1 = ({ title }) => {
           <LineUp></LineUp>
         </Student>
         <CourseName>
-          <h1>
-            Curso <br /> {titleCapitalized}
-          </h1>
-          <CourseDetails>
-            <p>Curso de ampliación (Fellowship)</p>
-          </CourseDetails>
+          <h1>{titleCapitalized}</h1>
+          <CourseDetails></CourseDetails>
         </CourseName>
       </TextContainer>
     </SectionContainer>

@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   /* background-color: #f8f8f8; */
   margin: 10px 0px;
+  height: max-content;
 `;
 
 export const Content = styled.div`
-  padding: 50px 100px 50px 100px;
+  padding: 0 100px 50px 100px;
   margin-inline: 92px;
   display: flex;
   justify-content: space-between;
@@ -20,14 +21,17 @@ export const Content = styled.div`
     padding: 10px 10px;
   }
   @media only screen and (min-width: 850px) and (max-width: 1200px) {
-    padding: 50px 10px;
-    margin: 10px 10px;
+    padding: 0px 10px;
+    margin: 0 10px;
   }
 `;
 
 export const TextContainer = styled.div`
   width: 30%;
   margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     width: 100%;
     margin: auto;
@@ -36,13 +40,12 @@ export const TextContainer = styled.div`
 
 export const Details = styled.div`
   display: flex;
+  font-family: sans-serif;
   align-items: center;
+  color: #444444;
 
-  & > h4 {
-    margin-right: 10px;
-  }
   & > p {
-    margin: 0%;
+    margin: 10px 10px 10px 0;
   }
 `;
 

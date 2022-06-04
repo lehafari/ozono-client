@@ -4,7 +4,7 @@ export const SectionContainer = styled.section`
   padding-top: 85px;
   padding-bottom: 100px;
   width: 100%;
-  height: 500px;
+  height: max-content;
   margin-bottom: -85px;
   background: rgb(88, 102, 173);
   background: -moz-linear-gradient(
@@ -28,7 +28,7 @@ export const SectionContainer = styled.section`
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5866ad",endColorstr="#37b0cf",GradientType=1);
 `;
 export const TextContainer = styled.div`
-  padding-left: 180px;
+  margin: 5rem 7rem;
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     padding: 0px 10px 0px 10px;
   }
@@ -39,7 +39,7 @@ export const Student = styled.div`
   & h6 {
     color: white;
     margin: 30px 0px 10px 0px;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.9rem;
     font-weight: 100;
   }
@@ -60,6 +60,7 @@ export const CourseName = styled.div`
     font-size: 5rem;
     margin: 0;
     line-height: 1em;
+    font-weight: 300;
   }
   @media only screen and (min-width: 571px) and (max-width: 1000px) {
     & h1 {

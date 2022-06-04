@@ -2,15 +2,12 @@ import { Box } from '@mui/material';
 import Spinner from 'components/common/Spinner';
 import { endPoints } from 'const/endPoints';
 import { fetchWithToken } from 'helpers/fetch';
+import { TeacherCard } from 'pages/Admin/Courses/EditCourse/Teachers/TeacherCard';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AddTeacherModal } from './AddTeacherModal';
-import { DeleteTeacherModal } from './DeleteTeacherModal';
-import { TeacherCard } from './TeacherCard';
-import { AddTeacherButton } from './TeacherCard/styles';
 
-const Teachers = () => {
+export const CourseTeachers = () => {
   //**** get teacher by course id *****/
   const course = useParams().courseTitle;
   const cleanCourse = course && course.replaceAll('-', ' ').toLowerCase();
@@ -18,7 +15,6 @@ const Teachers = () => {
   const courseId = courses.find(
     (c) => c.title.toLowerCase() === cleanCourse
   ).id;
-
   const [teachers, setTeachers] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -40,11 +36,22 @@ const Teachers = () => {
 
   useEffect(() => {
     getTeachers(courseId);
-    console.log('falg', flag);
   }, [flag]);
 
   if (loading) {
-    return <Spinner />;
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '300px',
+          width: '100%',
+        }}
+      >
+        <Spinner />
+      </Box>
+    );
   }
   return (
     <>
@@ -53,14 +60,7 @@ const Teachers = () => {
           display: 'flex',
           justifyContent: 'flex-end',
         }}
-      >
-        <DeleteTeacherModal
-          courseId={courseId}
-          setFlag={setFlag}
-          teachers={teachers}
-        />
-        <AddTeacherModal courseId={courseId} setFlag={setFlag} />
-      </Box>
+      ></Box>
       <Box
         sx={{
           display: 'flex',
@@ -88,5 +88,3 @@ const Teachers = () => {
     </>
   );
 };
-
-export default Teachers;

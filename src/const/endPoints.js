@@ -14,6 +14,7 @@ export const endPoints = {
 
   //All users
   get_all_users: `/users/all`,
+  get_users_by_role: `/users/all`,
   update_any_user: `/users/updateUser`,
   delete_any_user: `/users/deleteUser`,
 
@@ -26,10 +27,14 @@ export const endPoints = {
   get_students: `/courses/users`,
   get_number_of_students: `/courses/users/count`,
 
+  get_teachers_by_course: `/courses/teachers`,
+
   update_course: `/courses/update`,
 
   delete_course: `/courses/delete`,
 
+  add_teacher_to_course: `/courses/teacher/add`,
+  delete_teacher_to_course: `/courses/teacher/remove`,
   set_feature_course: `/courses/featured`,
 
   //Categories

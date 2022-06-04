@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/common/Spinner';
@@ -9,6 +9,7 @@ import FooterCourse from './FooterCourse';
 import { Back } from './styles';
 
 const Course = () => {
+  const [Tab, setTab] = useState(1);
   const courseTitle = useParams().courseTitle;
   const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
   const { courses } = useSelector((state) => state.courses);
@@ -18,11 +19,12 @@ const Course = () => {
   const course = courses.find(
     (course) => course.title.toLowerCase() === cleanCourseTitle
   );
+
   return (
     <Back>
       <CourseSection1 {...course} />
-      <CourseSection2 />
-      <CourseSection3 />
+      <CourseSection2 setTab={setTab} Tab={Tab} />
+      {Tab === 0 && <CourseSection3 {...course} />}
       <FooterCourse />
     </Back>
   );

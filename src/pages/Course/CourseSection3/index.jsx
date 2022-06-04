@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Container,
   Content,
@@ -7,43 +7,52 @@ import {
   LogosContainer,
   TextContainer,
   VerticalLine,
-} from "./styles";
+} from './styles';
 
-import logo from "../../../assets/images/cenaoz-logo.svg";
+import logo from '../../../assets/images/cenaoz-logo.svg';
+import { toCapitalize } from 'helpers/toCapitalize';
 
-const CourseSection3 = () => {
+const CourseSection3 = ({
+  duration,
+  level,
+  numberOfStudents,
+  price,
+  category,
+}) => {
   return (
     <Container>
       <Content>
         <TextContainer>
           <Details>
-            <h4>Horas de video:</h4>
-            <p>1h 30min</p>
+            <p>
+              <b>Duración: </b>
+              <span> {duration}</span>
+            </p>
           </Details>
 
           <Details>
-            <h4>Nivel: </h4>
-            <p>Principiante</p>
+            <p>
+              <b>Nivel: </b>
+              <span> {toCapitalize(level)} </span>
+            </p>
           </Details>
-
           <Details>
-            <h4>Clases:</h4>
-            <p>6</p>
+            <p>
+              <b>Inscritos: </b>
+              <span> {numberOfStudents} </span>
+            </p>
           </Details>
-
           <Details>
-            <h4>Profesores:</h4>
-            <p>Andreina Tarazon y Luis Delgado</p>
+            <p>
+              <b>Precio: </b>
+              <span> {price} </span>
+            </p>
           </Details>
-
           <Details>
-            <h4>Inscrito: </h4>
-            <p>93</p>
-          </Details>
-
-          <Details>
-            <h4>Material Complementario:</h4>
-            <p>10</p>
+            <p>
+              <b>Categoria: </b>
+              <span> {category} </span>
+            </p>
           </Details>
         </TextContainer>
         <VerticalLine />

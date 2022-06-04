@@ -31,7 +31,6 @@ export const UploadImage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form_data);
     const res = await fetchWithTokenToUploadImage(
       endPoints.upload_profile_image,
       form_data,
