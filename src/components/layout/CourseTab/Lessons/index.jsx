@@ -6,7 +6,7 @@ import { fetchWithToken } from 'helpers/fetch';
 import { SectionAccordion } from './Accordion';
 import Spinner from 'components/common/Spinner';
 
-export const Lessons = ({ courseId }) => {
+export const Lessons = ({ courseId, courseTitle }) => {
   //***** Get lesson and quizzes *****//
   const [sections, setSections] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,20 +29,6 @@ export const Lessons = ({ courseId }) => {
     getSections(courseId);
   }, []);
 
-  // const getQuizzes = async (courseId) => {
-  //   const response = await fetchWithToken(
-  //     `${endPoints.get_all_quiz_by_section}/${courseId}`
-  //   );
-  //   const body = await response.json();
-  //   if (response.status === 200) {
-  //     setQuizzes(body);
-  //     setLoading(false);
-  //   } else {
-  //     setQuizzes([]);
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <>
       {loading ? (
@@ -59,7 +45,11 @@ export const Lessons = ({ courseId }) => {
         </Box>
       ) : (
         sections.map((section, i) => (
-          <SectionAccordion key={i} section={section} />
+          <SectionAccordion
+            key={i}
+            section={section}
+            courseTitle={courseTitle}
+          />
         ))
       )}
     </>

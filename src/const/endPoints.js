@@ -48,11 +48,13 @@ export const endPoints = {
   //Sections
   create_section: `/sections/create`,
   get_all_sections_by_course: `/sections`,
+  get_section_by_lesson: `/sections/findByLesson`,
   update_section: `/sections/update`,
   delete_section: `/sections/delete`,
 
   //Lessons
   create_lesson: `/lessons/create`, //falta el ID de la SECCION a la que pertenece la clase
+  get_lesson_by_id: `/lessons/me`,
   get_all_lessons_by_section: `/lessons`, //falta el ID de la SECCION a la que pertenece la clase
   update_lesson: `/lessons/update`,
   delete_lesson: `/lessons/delete`,

@@ -59,7 +59,7 @@ export const CourseTab = ({ setTab, Tab }) => {
                 <CourseTeachers />
               </TabPanel>
               <TabPanel header="Clases">
-                <Lessons courseId={thisCourse.id} />
+                <Lessons courseId={thisCourse.id} courseTitle={courseTitle} />
               </TabPanel>
               <TabPanel header="FAQS">
                 Content IV Lorem ipsum dolor sit, amet consectetur adipisicing

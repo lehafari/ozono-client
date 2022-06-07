@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ItemList = styled.div`
   display: flex;
@@ -11,16 +11,21 @@ export const ItemList = styled.div`
 `;
 
 export const ImgItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
   & > img {
-    margin: 5px 0 0 0;
-    height: 100px;
-    width: 90%;
+    margin: 0px 0 0 0;
+    height: 100%;
+    width: 100%;
     border-radius: 15px;
   }
 `;
 
 export const TextItem = styled.div`
-  margin-left: -15px;
+  width: 55%;
+  margin-left: 10px;
   & > h5 {
     margin: 0;
     color: #555555;

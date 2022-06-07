@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container2 = styled.div`
   width: 100%;
@@ -45,6 +45,8 @@ export const VideoList = styled.div`
   height: 100%;
   margin: 0px 0px 0px 40px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const HeaderList = styled.div`
@@ -91,7 +93,21 @@ export const Text = styled.div`
 export const List = styled.div`
   height: 324px;
   overflow-y: scroll;
-  border-radius: 25px;
+  border-radius: 10px;
+
+  &::-webkit-scrollbar {
+    width: 2.5px;
+    border-radius: 10px;
+
+    &-track {
+      background: #f8f8f8;
+    }
+
+    &-thumb {
+      background: #5571b2;
+      border-radius: 0.5rem;
+    }
+  }
 `;
 
 export const ButtonSection = styled.div`

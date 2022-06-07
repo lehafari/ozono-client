@@ -7,46 +7,40 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { IconButton, List, ListItem, ListItemText } from '@mui/material';
 import { Button } from 'components/common/Buttons/MainButton';
 import { Box } from '@mui/system';
+import parse from 'html-react-parser';
 
+import { sortByCreateDate } from 'helpers/sort';
 import { endPoints } from 'const/endPoints';
 import { fetchWithToken } from 'helpers/fetch';
 import Spinner from 'components/common/Spinner';
 
-export const SectionAccordion = ({ section }) => {
-  const [lessons, setLessons] = useState([]);
-  const [quizzes, setQuizzes] = useState([]);
+export const SectionAccordion = ({ section, courseTitle }) => {
+  const [lessonsAndQuizzes, setLessonsAndQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getLessons = async (sectionId) => {
-    console.log('entre');
-    const response = await fetchWithToken(
-      `${endPoints.get_all_lessons_by_section}/${sectionId}`
+  const getLessonsAndQuizzes = async (section) => {
+    const lessons = await fetchWithToken(
+      `${endPoints.get_all_lessons_by_section}/${section.id}`
     );
-    const body = await response.json();
-    if (response.status === 200) {
-      setLessons(body);
-    } else {
-      setLessons([]);
-    }
-  };
-
-  const getQuizzes = async (sectionId) => {
-    const response = await fetchWithToken(
-      `${endPoints.get_all_quiz_by_section}/${sectionId}`
+    const bodyLessons = await lessons.json();
+    const quizzes = await fetchWithToken(
+      `${endPoints.get_all_quiz_by_section}/${section.id}`
     );
-    const body = await response.json();
-    if (response.status === 200) {
-      setQuizzes(body);
+    const bodyQuizzes = await quizzes.json();
+    if (lessons.status === 200 && quizzes.status === 200) {
+      setLessonsAndQuizzes(sortByCreateDate(bodyLessons, bodyQuizzes));
+      setLoading(false);
     } else {
-      setQuizzes([]);
+      setLessonsAndQuizzes([]);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    getLessons(section.id);
-    getQuizzes(section.id);
-    setLoading(false);
+    getLessonsAndQuizzes(section);
   }, []);
+
+  console.log(lessonsAndQuizzes, 'lessonsAndQuizzes');
 
   if (loading) {
     return (
@@ -94,9 +88,10 @@ export const SectionAccordion = ({ section }) => {
             padding: '0',
           }}
         >
-          {lessons.length > 0 ? (
-            lessons.map((section, j) => {
+          {lessonsAndQuizzes.length > 0 ? (
+            lessonsAndQuizzes.map((lessonOrQuiz, j) => {
               const color = j % 2 === 0 ? '#F0F0F0' : '#fff';
+              const type = lessonOrQuiz.status ? 'quiz' : 'clase';
               return (
                 <ListItem
                   key={j}
@@ -106,7 +101,15 @@ export const SectionAccordion = ({ section }) => {
                         paddingRight: '2rem',
                       }}
                     >
-                      <Button text={'Entrar a la clase'} fontSize={'1rem'} />
+                      <Button
+                        path={`/course/classroom/${courseTitle}/${type}/${lessonOrQuiz.id}`}
+                        text={
+                          type === 'quiz'
+                            ? 'Entrar al Quiz'
+                            : 'Entrar a la clase'
+                        }
+                        fontSize={'1rem'}
+                      />
                     </Box>
                   }
                   sx={{
@@ -123,9 +126,9 @@ export const SectionAccordion = ({ section }) => {
                       color: '#5e82be',
                     }}
                   >
-                    {`Clase ${j + 1}`}
+                    {lessonOrQuiz.name}
                     <br />
-                    <Typography
+                    {/* <Typography
                       sx={{
                         fontSize: '0.9rem',
                         color: '#808080',
@@ -134,10 +137,8 @@ export const SectionAccordion = ({ section }) => {
                         fontWeight: '200',
                       }}
                     >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry Lorem Ipsum has been the ndustry’s
-                      standard dummy text ever since the 1500s
-                    </Typography>
+                      {parse(lessonOrQuiz.description)}
+                    </Typography> */}
                   </Typography>
                 </ListItem>
               );
@@ -156,7 +157,7 @@ export const SectionAccordion = ({ section }) => {
                 sx={{
                   color: '#808080',
                   fontFamily: 'Helvetica',
-                  fontWeight: '200',
+                  fontWeight: '500',
                 }}
               >
                 No hay clases
