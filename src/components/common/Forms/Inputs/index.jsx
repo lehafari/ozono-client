@@ -2,6 +2,7 @@ import { useFormikContext } from "formik";
 import { ErrorMessage, InputContainer, InputItem } from "./styles";
 
 const Input = ({
+  i,
   id,
   name,
   type,
@@ -15,6 +16,8 @@ const Input = ({
   alignItems,
   errorPadding,
   inheritValue,
+  radioValue,
+  setRadioValue = false,
 }) => {
   const { values, errors, touched, setTouched, handleChange, handleBlur } =
     useFormikContext();
@@ -24,6 +27,10 @@ const Input = ({
   const value = values[name] ? values[name] : "";
   const error = errors[name] ? errors[name] : "";
   const touchedInput = touched[name] ? touched[name] : "";
+
+  if (setRadioValue) {
+    setRadioValue((radioValue[i] = value));
+  }
   return (
     <InputContainer
       // Atributos input

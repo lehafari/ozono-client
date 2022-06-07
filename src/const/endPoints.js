@@ -65,5 +65,5 @@ export const endPoints = {
   create_quiz: `/quiz/create`, //falta el id de la SECCION a la que pertenece el quiz
   get_all_quiz_by_section: `/quiz`, //falta el id de la SECCION a la que pertenece el quiz
   update_quiz: `/quiz/update`, //falta el id del QUIZ
-  delete_quiz: `/quiz /delete`, //falta el id del QUIZ
+  delete_quiz: `/quiz/delete`, //falta el id del QUIZ
 };

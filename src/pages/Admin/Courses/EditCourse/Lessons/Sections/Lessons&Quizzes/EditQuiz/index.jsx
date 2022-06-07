@@ -15,11 +15,12 @@ import InputButton from "components/common/Forms/FormButton";
 import Textarea2 from "components/common/Forms/TextArea2";
 
 import { types } from "context/types/types";
-import Toast from "components/common/Popup/Toast";
-import { startUpdate } from "actions/lessons";
-import Spinner from "components/common/Spinner";
 
-const EditLesson = ({ lessonId, lessons, dispatch }) => {
+import Toast from "components/common/Popup/Toast";
+import Selects2 from "components/common/Forms/Selects2";
+import { startUpdate } from "actions/quizzes";
+
+const EditQuiz = ({ quizId, quizzes, dispatch }) => {
   //!! Modal ****/
   const [visible, setVisible] = useState(false);
 
@@ -35,48 +36,54 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
   };
 
   //!! FORMULARIO ****/
+
   //**** Obtenemos los datos anteriores ****/
-  const lesson = lessons.find((lesson) => lesson.id === lessonId);
-  const { name, duration, description } = lesson;
+  const quiz = quizzes.find((quiz) => quiz.id === quizId);
+  const { name, status, duration, description } = quiz;
 
   //** Form **/
   const INITIAL_VALUES = {
     name: name,
+    status: status,
     duration: duration,
     description: description,
   };
 
   const VALIDATION_SCHEMA = Yup.object({
     name: Yup.string(),
-    duration: Yup.string(),
+    status: Yup.string(),
+    duration: Yup.number(),
     description: Yup.string(),
   });
 
   const handleSubmit = async (values) => {
     dispatch({
-      type: types.lessonStartUpdate,
+      type: types.quizStartUpdate,
       payload: {},
     });
-    const body = await startUpdate(values, lessonId);
+    const body = await startUpdate(values, quizId);
     if (body.statusCode) {
+      console.log("Error");
       dispatch({
-        type: types.lessonUpdateError,
+        type: types.quizUpdateError,
         payload: body.message,
       });
       Toast("error", body.message);
     } else {
+      console.log("Apunto de salir");
       dispatch({
-        type: types.lessonUpdate,
+        type: types.quizUpdate,
         payload: {
           id: body.id,
           name: body.name,
+          status: body.status,
           duration: body.duration,
           description: body.description,
           createdAt: body.createdAt,
         },
       });
       onHide();
-      Toast("success", "Clase actualizada con exito");
+      Toast("success", "Quiz actualizado con exito");
     }
   };
 
@@ -96,7 +103,7 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
       </button>
 
       <Dialog
-        header="Crear Categoria"
+        header="Editar Quiz"
         visible={visible}
         style={{
           width: "60vw",
@@ -126,7 +133,7 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
             <CloseIcon />
           </MainButton>
         </ButtonContainer>
-        <Title>EDITAR CLASE</Title>
+        <Title>EDITAR QUIZ</Title>
         <Formik
           initialValues={INITIAL_VALUES}
           validationSchema={VALIDATION_SCHEMA}
@@ -137,7 +144,7 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
               id="name"
               name="name"
               type="text"
-              placeholder="Titulo de la clase"
+              placeholder="Nombre del Quiz"
               errorPadding="0 0 0 calc(100% - 85%)"
             />
             {/* Select e input uno al lado de otro */}
@@ -148,11 +155,22 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
                 width: "100%",
               }}
             >
+              <Selects2
+                id="status"
+                name="status"
+                text="Estado del Quiz"
+                options={[{ name: "Activo" }, { name: "Inactivo" }]}
+                backgroundColor="#f5f5f5"
+                width="240px"
+                margin="0 0px"
+                previousValue={status}
+              />
               <Input
                 id="duration"
                 name="duration"
-                type="text"
-                placeholder="Duracion del video"
+                type="number"
+                placeholder="Duracion del examen"
+                width="150px"
                 margin="0 0px "
               />
             </Box>
@@ -169,13 +187,13 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
               <Textarea2
                 id="description"
                 name="description"
-                placeholder="Descripcion de la clase"
+                placeholder="Descripcion del Quiz"
                 height="200px"
                 editValue={description}
               />
               <InputButton
                 width="22%"
-                text="Agregar"
+                text="Editar"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
@@ -189,4 +207,4 @@ const EditLesson = ({ lessonId, lessons, dispatch }) => {
   );
 };
 
-export default EditLesson;
+export default EditQuiz;

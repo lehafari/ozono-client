@@ -21,6 +21,10 @@ import { startDelete } from "actions/sections";
 import { sortByCreateDate } from "helpers/sort";
 import EditLesson from "./Lessons&Quizzes/EditLesson";
 import Deletelesson from "./Lessons&Quizzes/DeleteLesson";
+import UploadLesson from "./Lessons&Quizzes/UploadLesson";
+import EditQuiz from "./Lessons&Quizzes/EditQuiz";
+import DeleteQuiz from "./Lessons&Quizzes/DeleteQuiz";
+import ModalQuestionAnswer from "./Lessons&Quizzes/ModalQuestionAnswer";
 
 const Sections = ({ i, text, sectionId, dispatchSection }) => {
   //!acordeon stuff**
@@ -155,8 +159,31 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                       margin: "5px 0px",
                     }}
                   >
-                    <span>Contenido: Quiz</span>
-                    <span>{item.name}</span>
+                    <div>
+                      <span style={{ margin: "0 50px 0 0" }}>
+                        Contenido: Quiz
+                      </span>
+                      <span>{item.name}</span>
+                    </div>
+
+                    <div>
+                      <span>
+                        <ModalQuestionAnswer />
+                      </span>
+                      <span style={{ margin: "0 8px " }}>
+                        <EditQuiz
+                          quizId={item.id}
+                          quizzes={quizzes.quizzes}
+                          dispatch={dispatchQuizzes}
+                        />
+                      </span>
+                      <span>
+                        <DeleteQuiz
+                          quizId={item.id}
+                          dispatch={dispatchQuizzes}
+                        />
+                      </span>
+                    </div>
                   </div>
                 );
               } else {
@@ -166,6 +193,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                     style={{
                       display: "flex",
                       justifyContent: "space-evenly",
+                      alignItems: "center",
                       backgroundColor: "#a5bcee",
                       margin: "5px 0px",
                     }}
@@ -176,8 +204,14 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                       </span>
                       <span>{item.name}</span>
                     </div>
+
                     <div>
-                      <span>
+                      <span>{<UploadLesson lessonId={item.id} />}</span>
+                      <span
+                        style={{
+                          margin: "0 8px",
+                        }}
+                      >
                         {
                           <EditLesson
                             lessonId={item.id}

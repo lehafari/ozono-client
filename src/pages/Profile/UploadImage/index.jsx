@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
-import { FileUpload } from 'primereact/fileupload';
-import { endPoints } from '../../../const/endPoints';
+import React, { useState } from "react";
+import { endPoints } from "../../../const/endPoints";
 import {
   fetchWithToken,
   fetchWithTokenToUploadImage,
-} from '../../../helpers/fetch';
+} from "../../../helpers/fetch";
 
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Stack from '@mui/material/Stack';
-import { FormContainer, UploadButton } from './styles';
-import { ButtonBase } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { startChecking } from '../../../actions/auth';
-import PopupOk from '../../../components/common/Popup/PopupOk';
-import PopupError from '../../../components/common/Popup/PopupError';
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
-const Input = styled('input')({
-  display: 'none',
+import { FormContainer, UploadButton } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { startChecking } from "../../../actions/auth";
+import PopupOk from "../../../components/common/Popup/PopupOk";
+import PopupError from "../../../components/common/Popup/PopupError";
+
+const Input = styled("input")({
+  display: "none",
 });
 
 export const UploadImage = () => {
@@ -34,14 +32,13 @@ export const UploadImage = () => {
     const res = await fetchWithTokenToUploadImage(
       endPoints.upload_profile_image,
       form_data,
-      'PUT'
+      "PUT"
     );
     const body = await res.json();
     if (res.status === 200) {
       dispatch(startChecking());
       setTherefile(false);
-      console.log('respuesta del servidor', body);
-      PopupOk('22rem', 'success', 'Imagen subida correctamente');
+      PopupOk("22rem", "success", "Imagen subida correctamente");
       set_form_data(null);
     } else {
       PopupError(body.message);
@@ -52,7 +49,7 @@ export const UploadImage = () => {
 
   const send_image = (files) => {
     const formData = new FormData();
-    formData.append('image', files);
+    formData.append("image", files);
     set_form_data(formData);
   };
 
@@ -74,10 +71,10 @@ export const UploadImage = () => {
           component="span"
           sx={{
             backgroundImage: `url(${user.profileImageUrl})`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            color: '#757575',
-            marginBottom: '0.6rem',
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            color: "#757575",
+            marginBottom: "0.6rem",
           }}
         >
           <PhotoCamera />
@@ -86,8 +83,8 @@ export const UploadImage = () => {
           {!thereFile ? (
             <Button
               sx={{
-                color: '#707070 !important',
-                backgroundColor: '#cbcbcb !important',
+                color: "#707070 !important",
+                backgroundColor: "#cbcbcb !important",
               }}
               disabled
             >

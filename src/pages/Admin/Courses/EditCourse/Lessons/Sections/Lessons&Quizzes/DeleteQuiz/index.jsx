@@ -7,10 +7,10 @@ import InputButton from "components/common/Forms/FormButton";
 import { Box } from "@mui/system";
 import { types } from "context/types/types";
 import Toast from "components/common/Popup/Toast";
-import { startDelete } from "actions/lessons";
+import { startDelete } from "actions/quizzes";
 import { ButtonsContainer } from "pages/Admin/Users/DeleteUser/styles";
 
-const Deletelesson = ({ lessonId, dispatch }) => {
+const DeleteQuiz = ({ quizId, dispatch }) => {
   //*MODAL*
   const [displayBasic, setDisplayBasic] = useState(false);
 
@@ -23,24 +23,25 @@ const Deletelesson = ({ lessonId, dispatch }) => {
   //*Borrar usuario */
   const handleSubmit = async () => {
     dispatch({
-      type: types.lessonStartDelete,
+      type: types.quizStartDelete,
       payload: {},
     });
-    const body = await startDelete(lessonId);
+    const body = await startDelete(quizId);
+    console.log(body);
     if (body.statusCode !== 200) {
       dispatch({
-        type: types.lessonDeleteError,
+        type: types.quizDeleteError,
         payload: body.message,
       });
       Toast("error", body.message);
       onHide();
     } else {
       dispatch({
-        type: types.lessonDelete,
-        payload: lessonId,
+        type: types.quizDelete,
+        payload: quizId,
       });
-      Toast("success", body.message);
       onHide();
+      Toast("success", body.message);
     }
   };
   return (
@@ -59,10 +60,10 @@ const Deletelesson = ({ lessonId, dispatch }) => {
       </button>
 
       <Dialog
-        header="Borrar clase"
+        header="Borrar Quiz"
         visible={displayBasic}
         style={{ width: "50vw", boxShadow: "none" }}
-        onHide={() => onHide()}
+        onHide={() => onHide("displayBasic")}
         position="center"
         contentStyle={{
           borderRadius: "0 0 15px 15px",
@@ -73,7 +74,7 @@ const Deletelesson = ({ lessonId, dispatch }) => {
         <Box
           sx={{ textAlign: "center", margin: "30px 0px", fontSize: "1.2rem" }}
         >
-          <p>¿Estas seguro de eliminar esta clase?</p>
+          <p>¿Estas seguro de eliminar este quiz?</p>
         </Box>
 
         <ButtonsContainer>
@@ -103,7 +104,7 @@ const Deletelesson = ({ lessonId, dispatch }) => {
             alignItems="center"
             alignSelf="center"
             margin="0px 10px"
-            onClick={() => onHide()}
+            onClick={() => onHide("displayBasic")}
           />
         </ButtonsContainer>
       </Dialog>
@@ -111,4 +112,4 @@ const Deletelesson = ({ lessonId, dispatch }) => {
   );
 };
 
-export default Deletelesson;
+export default DeleteQuiz;
