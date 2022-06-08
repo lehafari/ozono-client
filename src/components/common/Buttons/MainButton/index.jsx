@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { MainButton } from "./styles";
+import { useNavigate } from 'react-router-dom';
+import { MainButton } from './styles';
 
 export const Button = (props, { children }) => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ export const Button = (props, { children }) => {
       {...props}
       // Atributos input
       //Acciones/Funciones
-      onClick={() => navigate(props.path)}
+      onClick={props.path ? () => navigate(props.path) : props.click}
       // Estilos
       // width={props.width}
       // padding={props.padding}

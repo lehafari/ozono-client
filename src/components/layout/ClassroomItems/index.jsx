@@ -34,7 +34,7 @@ const ClassRoomItems = ({ type, courseTitle, lessonId, item }) => {
       }}
     >
       <ImgItem>
-        {type === 'lesson' ? (
+        {type === 'clase' ? (
           <img src={mini} alt="miniatura video" />
         ) : (
           <HistoryEduOutlinedIcon

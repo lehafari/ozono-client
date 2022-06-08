@@ -66,6 +66,19 @@ export const endPoints = {
   //Quizzes
   create_quiz: `/quiz/create`, //falta el id de la SECCION a la que pertenece el quiz
   get_all_quiz_by_section: `/quiz`, //falta el id de la SECCION a la que pertenece el quiz
+  get_quiz_by_id: `/quiz/me`,
   update_quiz: `/quiz/update`, //falta el id del QUIZ
   delete_quiz: `/quiz/delete`, //falta el id del QUIZ
+
+  //Questions
+  create_question: `/questions/create`,
+  get_all_questions_by_quiz: `/questions/find`,
+  update_question: `/questions/update`,
+  delete_question: `/questions/delete`,
+
+  //Options
+  create_option: `/options/create`,
+  get_all_options_by_question: `/options/find`,
+  update_option: `/options/update`,
+  delete_option: `/options/delete`,
 };
