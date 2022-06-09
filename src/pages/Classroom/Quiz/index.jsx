@@ -6,6 +6,7 @@ import { ConfirmQuiz } from '../ConfirmQuiz';
 import { SectionContainer } from '../Lessons/styles';
 import { Typography } from '@mui/material';
 import { Question } from './Question';
+import { Box } from '@mui/system';
 
 export const Quiz = () => {
   const navigate = useNavigate();
@@ -41,12 +42,18 @@ export const Quiz = () => {
       {!confirm ? (
         <ConfirmQuiz quiz={quiz} setConfirm={setConfirm} />
       ) : (
-        <>
+        <Box>
           <Typography>Tiempo restante: {timer} minutos</Typography>
-          {questions.map((question) => (
-            <Question question={question} />
-          ))}
-        </>
+          <Box
+            sx={{
+              marginTop: '2rem',
+            }}
+          >
+            {questions.map((question) => (
+              <Question question={question} />
+            ))}
+          </Box>
+        </Box>
       )}
     </SectionContainer>
   );
