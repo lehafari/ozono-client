@@ -29,7 +29,7 @@ const Input = ({
   const touchedInput = touched[name] ? touched[name] : "";
 
   if (setRadioValue) {
-    setRadioValue((radioValue[i] = value));
+    setRadioValue(value);
   }
   return (
     <InputContainer

@@ -1,28 +1,91 @@
 import { Box, Button, Container } from "@mui/material";
-import { Form, Formik, useFormik } from "formik";
-import React, { useState } from "react";
+import Input2 from "components/common/Forms/Input2/InputItem";
+import React, { useEffect, useState } from "react";
+import { Form } from "./styles";
+import * as Yup from "yup";
+import { formatYupErrors } from "helpers/formatYupErrors";
 
-import Input from "components/common/Forms/Inputs";
-import InputButton from "components/common/Forms/FormButton";
-
-const MultiSelect = () => {
-  const [first, setfirst] = useState([]);
-  const [radioValue, setRadioValue] = useState(new Array(first.length));
-  console.log(radioValue);
-
-  const Counter = () => {
-    setfirst([...first, first.length + 1]);
+const MultiSelect = (props) => {
+  //** Formulario **/
+  //Estado del formulario
+  const [values, setValues] = useState(
+    props.data ?? { question: "", options: [] }
+  );
+  const [error, setError] = useState(null);
+  //Estado inicial de cada opcion de la pregunta
+  const initialOptionState = {
+    title: "",
+    isCorrect: false,
   };
 
-  //*form*//
-  const INITIAL_VALUES = new Object();
-  INITIAL_VALUES.question = "";
-  INITIAL_VALUES.answer = "";
-  for (let i = 0; i < first.length; i++) {
-    INITIAL_VALUES[`option${i}`] = "";
-  }
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleQuestionChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  //añadir nueva opcion de respuesta
+  const addOption = () => {
+    setValues({ ...values, options: [...values.options, initialOptionState] });
+  };
+
+  const handleOptionChange = (e, index) => {
+    const { name, value } = e.target;
+    const optionToEdit = values.options;
+    if (name === "isCorrect") {
+      optionToEdit.forEach((option, idx) => {
+        if (idx !== index) {
+          option.isCorrect = false;
+        }
+      });
+      optionToEdit[index] = {
+        ...optionToEdit[index],
+        [name]: value === "true",
+      };
+    } else {
+      optionToEdit[index] = {
+        ...optionToEdit[index],
+        [name]: value,
+      };
+    }
+    setValues({ ...values, options: optionToEdit });
+  };
+
+  //** Validaciones del formulario
+  const validationSchema = Yup.object().shape({
+    question: Yup.string()
+      .required("La pregunta es requerida")
+      .min(5, "debe tener al menos 5 caracteres"),
+    options: Yup.array()
+      .required("Las opciones son requeridas")
+      .min(2, "Debe tener al menos dos opciones"),
+  });
+
+  useEffect(() => {
+    validationSchema
+      .validate(values, { abortEarly: false })
+      .then(() => setError(null))
+      .catch((err) => {
+        setError(err);
+      });
+  }, [values]);
+
+  const verifyOptions = () => {
+    return values.options.find((option) => {
+      return option.title === "";
+    });
+  };
+
+  const verifyOptionChecked = () => {
+    return values.options.find((option) => {
+      return option.isCorrect === true;
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (error === null) {
+      console.log(values);
+    }
   };
 
   return (
@@ -34,93 +97,66 @@ const MultiSelect = () => {
         alignItems: "center",
       }}
     >
-      <Box>
-        <span style={{ width: "100%", fontSize: "25px", margin: "10px 0px" }}>
-          Tipo de prueba: Seleccion Multiple
-        </span>
-      </Box>
-      <Formik initialValues={INITIAL_VALUES} onSubmit={handleSubmit}>
-        <Form>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Input
-              id="question"
-              name="question"
-              type="text"
-              placeholder="Pregunta"
-              margin="5px 0px"
-              width="100%"
-            />
-            <Button
-              sx={{
-                margin: "10px auto",
-              }}
-              variant="contained"
-              color="primary"
-              onClick={Counter}
-            >
-              Agregar respuesta
-            </Button>
+      <Form onSubmit={handleSubmit}>
+        <Input2
+          name="question"
+          placeholder="Pregunta"
+          value={values.question}
+          onChange={handleQuestionChange}
+          errors={error?.inner}
+        />
 
-            {first.map((item, i) => {
-              return (
-                <Box
-                  sx={{
-                    display: "flex",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Input
-                      key={i}
-                      id={`option${item}`}
-                      name={`option${item}`}
-                      type="text"
-                      placeholder={`Opcion ${item}`}
-                      margin="5px 0px"
-                      width="100%"
-                      padding="0px 10px"
-                      radioValue={radioValue}
-                      setRadioValue={setRadioValue}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <label key={i}>
-                      <input
-                        key={i}
-                        type="radio"
-                        id="answer"
-                        name="answer"
-                        value="ola"
-                        required
-                      />
-                      correcta
-                    </label>
-                  </Box>
-                </Box>
-              );
-            })}
-          </Box>
-        </Form>
-      </Formik>
+        <Button color="primary" variant="contained" onClick={addOption}>
+          Agregar Respuesta
+        </Button>
+        <Box>
+          {values.options.map((item, i) => {
+            return (
+              <Box
+                key={i}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "10px 0px",
+                }}
+              >
+                <Input2
+                  name="title"
+                  placeholder="Opcion"
+                  value={item.title}
+                  onChange={(e) => handleOptionChange(e, i)}
+                  margin="0px"
+                />
+                <input
+                  name="isCorrect"
+                  type="radio"
+                  placeholder="Correcto"
+                  value={true}
+                  onChange={(e) => handleOptionChange(e, i)}
+                />
+              </Box>
+            );
+          })}
+
+          {error && formatYupErrors(error.inner, "options") && (
+            <span style={{ color: "red", fontSize: "12px" }}>
+              {formatYupErrors(error.inner, "options").message}
+            </span>
+          )}
+        </Box>
+        <Button
+          sx={{ margin: "10px 0px" }}
+          color="primary"
+          variant="contained"
+          onClick={handleSubmit}
+          disabled={
+            !values.question || !!verifyOptions() || !verifyOptionChecked()
+          }
+        >
+          Añadir pregunta
+        </Button>
+      </Form>
     </Container>
   );
 };

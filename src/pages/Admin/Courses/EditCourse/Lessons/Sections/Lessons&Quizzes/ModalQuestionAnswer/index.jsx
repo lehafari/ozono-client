@@ -76,8 +76,19 @@ const ModalQuestionAnswer = () => {
             }}
           >
             {selected === 1 && <span>Verdadero y Falso</span>}
-            {selected === 2 && <MultiSelect />}
+            {selected === 2 && (
+              <MultiSelect
+                data={{
+                  question: "marico el que lo lea",
+                  options: [
+                    { title: "marico1", isCorrect: false },
+                    { title: "marico2", isCorrect: false },
+                  ],
+                }}
+              />
+            )}
             {selected === 3 && <span>Completacion</span>}
+            {!selected && <span>todas las preguntas</span>}
           </Box>
         </Box>
       </Dialog>
