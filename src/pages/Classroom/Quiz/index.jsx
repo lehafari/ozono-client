@@ -7,14 +7,14 @@ import { SectionContainer } from '../Lessons/styles';
 import { Typography } from '@mui/material';
 import { Question } from './Question';
 import { Box } from '@mui/system';
+import { Timer } from './Timer';
 
 export const Quiz = () => {
   const navigate = useNavigate();
   const [confirm, setConfirm] = useState(false);
   const [quiz, setQuiz] = useState(null);
   const [questions, setQuestions] = useState(null);
-  const [options, setOptions] = useState([]);
-  const [timer, setTimer] = useState('00:00');
+  const [selectedOption, setSelectedOption] = useState({});
   const [loading, setLoading] = useState(true);
 
   const { lessonId } = useParams();
@@ -37,20 +37,33 @@ export const Quiz = () => {
     getQuizContent();
   }, []);
 
+  console.log(selectedOption);
   return (
     <SectionContainer>
       {!confirm ? (
         <ConfirmQuiz quiz={quiz} setConfirm={setConfirm} />
       ) : (
-        <Box>
-          <Typography>Tiempo restante: {timer} minutos</Typography>
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <Timer duration={quiz.duration} />
           <Box
             sx={{
+              width: '50%',
               marginTop: '2rem',
             }}
           >
             {questions.map((question) => (
-              <Question question={question} />
+              <Question
+                setSelectedOption={setSelectedOption}
+                question={question}
+              />
             ))}
           </Box>
         </Box>

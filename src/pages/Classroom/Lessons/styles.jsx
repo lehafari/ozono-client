@@ -10,7 +10,8 @@ export const SectionContainer = styled.div`
   padding: 40px 100px 0px 50px;
   display: flex;
   justify-content: space-evenly;
-  height: 430px;
+  height: max-content;
+  background-color: #f8f8f8;
 `;
 
 export const ImgContainer = styled.div`
