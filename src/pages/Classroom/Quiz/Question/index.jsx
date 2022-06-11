@@ -63,7 +63,7 @@ export const Question = ({ question, setSelectedOption }) => {
                     color: '#7f7f7f',
                   }}
                 >
-                  {option.option}
+                  {option.title}
                 </Typography>
               </Box>
             ))}

@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import { useState, useEffect } from 'react';
 
 export const Timer = ({ duration }) => {
-  const [timeLeft, setTimeLeft] = useState(`1:00`);
+  const [timeLeft, setTimeLeft] = useState(`${duration}:00`);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
