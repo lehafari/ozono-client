@@ -9,7 +9,7 @@ const MultiSelect = (props) => {
   //** Formulario **/
   //Estado del formulario
   const [values, setValues] = useState(
-    props.data ?? { question: "", options: [] }
+    props.data ?? { question: "", options: [], type: "opcionMultiple" }
   );
   const [error, setError] = useState(null);
   //Estado inicial de cada opcion de la pregunta

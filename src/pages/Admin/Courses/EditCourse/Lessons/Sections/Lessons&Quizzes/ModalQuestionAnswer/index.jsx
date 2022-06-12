@@ -4,6 +4,7 @@ import FactCheckIcon from "@mui/icons-material/FactCheck";
 import { Box } from "@mui/material";
 import { Dropdown } from "primereact/dropdown";
 import MultiSelect from "../FormsQuestions/MultiSelect";
+import TrueFalse from "../FormsQuestions/TrueFalse";
 
 const ModalQuestionAnswer = () => {
   //** Modal **/
@@ -24,7 +25,6 @@ const ModalQuestionAnswer = () => {
   const optionsItems = [
     { label: "Verdadero y Falso", value: 1 },
     { label: "Seleccion Multiple", value: 2 },
-    { label: "Completacion", value: 3 },
   ];
   return (
     <>
@@ -75,19 +75,8 @@ const ModalQuestionAnswer = () => {
               padding: "0px",
             }}
           >
-            {selected === 1 && <span>Verdadero y Falso</span>}
-            {selected === 2 && (
-              <MultiSelect
-                data={{
-                  question: "marico el que lo lea",
-                  options: [
-                    { title: "marico1", isCorrect: false },
-                    { title: "marico2", isCorrect: false },
-                  ],
-                }}
-              />
-            )}
-            {selected === 3 && <span>Completacion</span>}
+            {selected === 1 && <TrueFalse />}
+            {selected === 2 && <MultiSelect />}
             {!selected && <span>todas las preguntas</span>}
           </Box>
         </Box>
