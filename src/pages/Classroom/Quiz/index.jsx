@@ -8,16 +8,34 @@ import { Typography } from '@mui/material';
 import { Question } from './Question';
 import { Box } from '@mui/system';
 import { Timer } from './Timer';
+import { useSelector } from 'react-redux';
+import { Button } from 'components/common/Buttons/MainButton';
+import { Dialog } from 'primereact/dialog';
+import { QuizResults } from './Modal/QuizResults';
 
 export const Quiz = () => {
   const navigate = useNavigate();
+  const courses = useSelector((state) => state.courses.courses);
+  const { lessonId, courseTitle } = useParams();
+
   const [confirm, setConfirm] = useState(false);
   const [quiz, setQuiz] = useState(null);
   const [questions, setQuestions] = useState(null);
-  const [selectedOption, setSelectedOption] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const { lessonId } = useParams();
+  const [quizResults, setQuizResults] = useState(null);
+
+  const [displayModal, setDisplayModal] = useState(false);
+  const [responses, setResponses] = useState([]);
+
+  //**** Modal */
+
+  const onDislayModal = () => {
+    setDisplayModal(true);
+  };
+
+  const actualCourse =
+    courses && courses?.find((course) => course.title === courseTitle);
 
   const getQuizContent = async () => {
     const quizResponse = await fetchWithToken(
@@ -31,13 +49,51 @@ export const Quiz = () => {
 
     setQuiz(quizData);
     setQuestions(questionsData);
+    const initialResponses = questionsData.map((question) => ({
+      questionId: question.id,
+      option: {
+        title: '',
+        isCorrect: false,
+      },
+    }));
+    setResponses(initialResponses);
+  };
+
+  const setScore = (responses, courseId, quizId) => {
+    console.log(responses);
+    const options = responses.map((response) => {
+      const responseTitle = response.option.title;
+      const isCorrect = response.option.isCorrect;
+      return { responseTitle, isCorrect };
+    });
+    const scoreFormat = {
+      courseId,
+      quizId,
+      options,
+    };
+    return scoreFormat;
+  };
+
+  const handleSubmit = async () => {
+    const score = setScore(responses, actualCourse.id, quiz.id);
+    const response = await fetchWithToken(endPoints.set_score, score, 'PUT');
+    if (response.status === 200) {
+      const data = await response.json();
+      setQuizResults(data);
+      onDislayModal();
+    }
   };
 
   useEffect(() => {
     getQuizContent();
   }, []);
 
-  console.log(selectedOption);
+  useEffect(() => {
+    if (quiz && questions) {
+      const finalScore = setScore(responses, actualCourse.id, quiz.id);
+    }
+  }, [responses]);
+
   return (
     <SectionContainer>
       {!confirm ? (
@@ -52,20 +108,33 @@ export const Quiz = () => {
             flexDirection: 'column',
           }}
         >
-          <Timer duration={quiz.duration} />
+          <Timer
+            duration={quiz.duration}
+            handleSubmit={handleSubmit}
+            onDislayModal={onDislayModal}
+          />
           <Box
             sx={{
               width: '50%',
               marginTop: '2rem',
             }}
           >
-            {questions.map((question) => (
-              <Question
-                setSelectedOption={setSelectedOption}
-                question={question}
-              />
-            ))}
+            {questions.map((question) => {
+              return (
+                <Question
+                  key={question.id}
+                  responses={responses}
+                  setResponses={setResponses}
+                  question={question}
+                />
+              );
+            })}
           </Box>
+          <QuizResults
+            handleSubmit={handleSubmit}
+            displayModal={displayModal}
+            quizResults={quizResults}
+          />
         </Box>
       )}
     </SectionContainer>

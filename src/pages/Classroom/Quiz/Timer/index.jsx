@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useState, useEffect } from 'react';
 
-export const Timer = ({ duration }) => {
+export const Timer = ({ duration, handleSubmit, onDisplayModal }) => {
   const [timeLeft, setTimeLeft] = useState(`${duration}:00`);
   const [isActive, setIsActive] = useState(false);
 
@@ -30,6 +30,8 @@ export const Timer = ({ duration }) => {
       } else {
         setIsActive(false);
         clearInterval(interval);
+        handleSubmit();
+        onDisplayModal();
       }
     }, 1000);
 
