@@ -25,6 +25,7 @@ import UploadLesson from "./Lessons&Quizzes/UploadLesson";
 import EditQuiz from "./Lessons&Quizzes/EditQuiz";
 import DeleteQuiz from "./Lessons&Quizzes/DeleteQuiz";
 import ModalQuestionAnswer from "./Lessons&Quizzes/ModalQuestionAnswer";
+import EditSection from "./EditSection/EditSection";
 
 const Sections = ({ i, text, sectionId, dispatchSection }) => {
   //!acordeon stuff**
@@ -44,7 +45,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
     quizReducer,
     initialStateQuizzes
   );
-  //? SortItems state
+  //? SortItems Variable
   let sortItems = [];
   useEffect(() => {
     //fetch LESSONS
@@ -93,6 +94,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
       dispatchSection({ type: types.sectionDelete, payload: sectionId });
     }
   };
+
   //! SortItems **//
   if (lessons.lessons.length !== 0 || quizzes.quizzes.length !== 0) {
     // Ordenamos los lessons y quizzes en un solo array
@@ -101,21 +103,42 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
 
   return (
     <div>
+      {/* //? Inicio del acordeon de la seccion */}
       <Accordion expanded={expanded} onChange={handleChange()} square={true}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          {" "}
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
-            Seccion {i}
-          </Typography>
-          <Typography sx={{ color: "text.secondary" }}>{text}</Typography>
-          <Button sx={{ width: "33%" }}>Editar</Button>
-          <Button sx={{ width: "33%" }} color="error" onClick={handleDelete}>
-            Borrar
-          </Button>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            {/* //* Numero de la seccion */}
+            <Typography sx={{ width: "33%", flexShrink: 0 }}>#{i}</Typography>
+            {/* //* Nombre de la seccion */}
+            <Typography
+              sx={{ width: "33%", color: "text.secondary", flexShrink: 0 }}
+            >
+              {text}
+            </Typography>
+            {/* //*Boton de editar Seccion */}
+            <EditSection
+              sectionId={sectionId}
+              dispatchSection={dispatchSection}
+            />
+            {/* //*Boton de borrar Seccion */}
+            <Button
+              sx={{ width: "10%", flexShrink: 0 }}
+              color="error"
+              onClick={handleDelete}
+            >
+              Borrar
+            </Button>
+          </Box>
         </AccordionSummary>
         <AccordionDetails>
           <Box
@@ -143,11 +166,13 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
               dispatchQuizzes={dispatchQuizzes}
             />
           </Box>
-          {/* AQUI VAMOS A IMPRIMIR TODAS LAS CLASES  */}
+
+          {/* //?   AQUI VAMOS A IMPRIMIR TODAS LAS CLASES  */}
           {sortItems.length === 0 ? (
             <span> No hay nada para mostrar para mostrar </span>
           ) : (
             sortItems.map((item, i) => {
+              // ? Si es una Quiz
               if (item.status) {
                 return (
                   <div
@@ -168,6 +193,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
 
                     <div>
                       <span>
+                        {/* //*Preguntas del Quiz */}
                         <ModalQuestionAnswer />
                       </span>
                       <span style={{ margin: "0 8px " }}>
@@ -187,6 +213,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                   </div>
                 );
               } else {
+                // ? Si es una Clase
                 return (
                   <div
                     key={item.id}
@@ -206,6 +233,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                     </div>
 
                     <div>
+                      {/* //*Subir video de la clase */}
                       <span>{<UploadLesson lessonId={item.id} />}</span>
                       <span
                         style={{
