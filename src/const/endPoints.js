@@ -12,6 +12,9 @@ export const endPoints = {
   update_user: `/users/update`,
   upload_profile_image: `/users/profileImage/upload`,
 
+  // Set Score
+  set_score: `/score/set`,
+
   //All users
   get_all_users: `/users/all`,
   get_users_by_role: `/users/all`,

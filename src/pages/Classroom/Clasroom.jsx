@@ -29,7 +29,7 @@ const Classroom = () => {
     (course) => course.title.toLowerCase() === cleanTitle.toLowerCase()
   );
   useEffect(() => {
-    getLessonsAndQuizzes(course.id);
+    course && getLessonsAndQuizzes(course.id);
     getLesson();
   }, [lessonId]);
 

@@ -1,4 +1,4 @@
-import { types } from "../types/types";
+import { types } from '../types/types';
 
 const initialState = {
   courses: [],
@@ -69,6 +69,7 @@ export const coursesReducer = (state = initialState, action) => {
         ],
         loading: false,
       };
+
     case types.coursesUpdateSuccess:
       return {
         ...state,
