@@ -4,6 +4,9 @@ import * as Yup from "yup";
 
 import { Form } from "../MultiSelect/styles";
 import Input2 from "components/common/Forms/Input2/InputItem";
+import { startCreate } from "actions/question";
+import { types } from "context/types/types";
+import Toast from "components/common/Popup/Toast";
 
 const TrueFalse = (props) => {
   //** Formulario **/
@@ -71,10 +74,28 @@ const TrueFalse = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (error === null) {
-      console.log(values);
+      props.dispatch({
+        type: types.questionStartCreate,
+        payload: {},
+      });
+      const body = await startCreate(values, props.quizId);
+      if (body.statusCode) {
+        props.dispatch({
+          type: types.questionCreateError,
+          payload: body.message,
+        });
+        Toast("error", body.message);
+      } else {
+        props.dispatch({
+          type: types.questionCreateSuccess,
+          payload: values,
+        });
+        Toast("success", body.message);
+        props.setSelected(null);
+      }
     }
   };
 

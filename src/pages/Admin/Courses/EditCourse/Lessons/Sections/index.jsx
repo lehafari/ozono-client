@@ -172,7 +172,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
             <span> No hay nada para mostrar para mostrar </span>
           ) : (
             sortItems.map((item, i) => {
-              // ? Si es una Quiz
+              // ? Si es un Quiz
               if (item.status) {
                 return (
                   <div
@@ -194,7 +194,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                     <div>
                       <span>
                         {/* //*Preguntas del Quiz */}
-                        <ModalQuestionAnswer />
+                        <ModalQuestionAnswer quizId={item.id} />
                       </span>
                       <span style={{ margin: "0 8px " }}>
                         <EditQuiz

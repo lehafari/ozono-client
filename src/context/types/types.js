@@ -91,4 +91,21 @@ export const types = {
   quizStartDelete: "[quiz] Start delete",
   quizDelete: "[quiz] Delete",
   quizDeleteError: "[quiz] Delete error",
+
+  //quizQuestions
+  questionStartCreate: "[question] Start create",
+  questionCreate: "[question] Create",
+  questionCreateError: "[question] Create error",
+
+  questionStartFetch: "[question] Start fetch",
+  questionFetch: "[question] Fetch",
+  questionFetchError: "[question] Fetch error",
+
+  questionStartUpdate: "[question] Start update",
+  questionUpdate: "[question] Update",
+  questionUpdateError: "[question] Update error",
+
+  questionStartDelete: "[question] Start delete",
+  questionDelete: "[question] Delete",
+  questionDeleteError: "[question] Delete error",
 };

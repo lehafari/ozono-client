@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import { Box } from "@mui/material";
 import { Dropdown } from "primereact/dropdown";
 import MultiSelect from "../FormsQuestions/MultiSelect";
 import TrueFalse from "../FormsQuestions/TrueFalse";
+import {
+  initialState,
+  questionReducer,
+} from "context/quizzesQuestion/questionReducer";
+import { types } from "context/types/types";
+import { startFetchQuestions } from "actions/question";
+import GetAllQuestions from "../GetAllQuestions";
 
-const ModalQuestionAnswer = () => {
+const ModalQuestionAnswer = ({ quizId }) => {
   //** Modal **/
   const [display, setDisplay] = useState(false);
   const onClick = () => {
@@ -21,6 +28,32 @@ const ModalQuestionAnswer = () => {
   const onOptionChange = (e) => {
     setSelected(e.value);
   };
+
+  //*Reducer quizQuestion
+  const [questions, dispatch] = useReducer(questionReducer, initialState);
+
+  //*Get all Questions
+  useEffect(() => {
+    const getAllQuestions = async () => {
+      dispatch({
+        type: types.questionStartFetch,
+        payload: {},
+      });
+      const body = await startFetchQuestions(quizId);
+      if (body.statusCode) {
+        dispatch({
+          type: types.questionFetchError,
+          payload: {},
+        });
+      } else {
+        dispatch({
+          type: types.questionFetch,
+          payload: body,
+        });
+      }
+    };
+    getAllQuestions();
+  }, []);
 
   const optionsItems = [
     { label: "Verdadero y Falso", value: 1 },
@@ -44,7 +77,7 @@ const ModalQuestionAnswer = () => {
       <Dialog
         header="Crear preguntas del Quiz"
         visible={display}
-        style={{ width: "50vw" }}
+        style={{ width: "50vw", height: "60vh" }}
         onHide={() => onHide("displayBasic")}
         draggable={false}
         resizable={false}
@@ -75,9 +108,31 @@ const ModalQuestionAnswer = () => {
               padding: "0px",
             }}
           >
-            {selected === 1 && <TrueFalse />}
-            {selected === 2 && <MultiSelect />}
-            {!selected && <span>todas las preguntas</span>}
+            {selected === 1 && (
+              <TrueFalse
+                dispatch={dispatch}
+                quizId={quizId}
+                setSelected={setSelected}
+              />
+            )}
+            {selected === 2 && (
+              <MultiSelect
+                dispatch={dispatch}
+                quizId={quizId}
+                setSelected={setSelected}
+              />
+            )}
+            {!selected &&
+              questions.questions.map((item, i) => {
+                return (
+                  <GetAllQuestions
+                    questions={item}
+                    dispatch={dispatch}
+                    quizId={quizId}
+                    i={i}
+                  />
+                );
+              })}
           </Box>
         </Box>
       </Dialog>

@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { Form } from "./styles";
 import * as Yup from "yup";
 import { formatYupErrors } from "helpers/formatYupErrors";
+import { types } from "context/types/types";
+import { startCreate } from "actions/question";
+import Toast from "components/common/Popup/Toast";
 
 const MultiSelect = (props) => {
   //** Formulario **/
@@ -81,10 +84,28 @@ const MultiSelect = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (error === null) {
-      console.log(values);
+      props.dispatch({
+        type: types.questionStartCreate,
+        payload: {},
+      });
+      const body = await startCreate(values, props.quizId);
+      if (body.statusCode) {
+        props.dispatch({
+          type: types.questionCreateError,
+          payload: body.message,
+        });
+        Toast("error", body.message);
+      } else {
+        props.dispatch({
+          type: types.questionCreateSuccess,
+          payload: values,
+        });
+        Toast("success", body.message);
+        props.setSelected(null);
+      }
     }
   };
 
@@ -105,10 +126,11 @@ const MultiSelect = (props) => {
           onChange={handleQuestionChange}
           errors={error?.inner}
         />
-
-        <Button color="primary" variant="contained" onClick={addOption}>
-          Agregar Respuesta
-        </Button>
+        {!props.data ? (
+          <Button color="primary" variant="contained" onClick={addOption}>
+            Agregar Respuesta
+          </Button>
+        ) : null}
         <Box>
           {values.options.map((item, i) => {
             return (
@@ -134,6 +156,7 @@ const MultiSelect = (props) => {
                   placeholder="Correcto"
                   value={true}
                   onChange={(e) => handleOptionChange(e, i)}
+                  checked={item.isCorrect}
                 />
               </Box>
             );
@@ -145,17 +168,19 @@ const MultiSelect = (props) => {
             </span>
           )}
         </Box>
-        <Button
-          sx={{ margin: "10px 0px" }}
-          color="primary"
-          variant="contained"
-          onClick={handleSubmit}
-          disabled={
-            !values.question || !!verifyOptions() || !verifyOptionChecked()
-          }
-        >
-          Añadir pregunta
-        </Button>
+        {!props.data ? (
+          <Button
+            sx={{ margin: "10px 0px" }}
+            color="primary"
+            variant="contained"
+            onClick={handleSubmit}
+            disabled={
+              !values.question || !!verifyOptions() || !verifyOptionChecked()
+            }
+          >
+            Añadir pregunta
+          </Button>
+        ) : null}
       </Form>
     </Container>
   );
