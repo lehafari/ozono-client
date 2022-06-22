@@ -126,6 +126,7 @@ const ModalQuestionAnswer = ({ quizId }) => {
               questions.questions.map((item, i) => {
                 return (
                   <GetAllQuestions
+                    key={item.id}
                     questions={item}
                     dispatch={dispatch}
                     quizId={quizId}
