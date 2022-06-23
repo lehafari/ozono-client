@@ -49,6 +49,7 @@ export const Quiz = () => {
 
     setQuiz(quizData);
     setQuestions(questionsData);
+
     const initialResponses = questionsData.map((question) => ({
       questionId: question.id,
       option: {

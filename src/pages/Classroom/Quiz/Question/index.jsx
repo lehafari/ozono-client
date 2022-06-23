@@ -65,31 +65,33 @@ export const Question = ({ question, setResponses, responses }) => {
       <form>
         <Box>
           {options.length > 0 &&
-            options.map((option) => (
-              <Box
-                key={option.id}
-                sx={{
-                  padding: '1rem 5rem',
-                  backgroundColor:
-                    selected === option.id ? 'rgb(74 149 191 / 75%)' : '#fff',
-                  transition: 'all 0.2s ease-in-out',
-                  // '&:hover': {
-                  //   backgroundColor: '#f5f5f5',
-                  // },
-                }}
-                onClick={() => getResponses(option, question.id)}
-              >
-                <Typography
+            options.map((option) => {
+              return (
+                <Box
+                  key={option.id}
                   sx={{
-                    fontSize: '1.2rem',
-                    color: selected === option.id ? '#fff' : '#7f7f7f',
+                    padding: '1rem 5rem',
+                    backgroundColor:
+                      selected === option.id ? 'rgb(74 149 191 / 75%)' : '#fff',
                     transition: 'all 0.2s ease-in-out',
+                    // '&:hover': {
+                    //   backgroundColor: '#f5f5f5',
+                    // },
                   }}
+                  onClick={() => getResponses(option, question.id)}
                 >
-                  {option.title}
-                </Typography>
-              </Box>
-            ))}
+                  <Typography
+                    sx={{
+                      fontSize: '1.2rem',
+                      color: selected === option.id ? '#fff' : '#7f7f7f',
+                      transition: 'all 0.2s ease-in-out',
+                    }}
+                  >
+                    {option.title}
+                  </Typography>
+                </Box>
+              );
+            })}
         </Box>
       </form>
     </Box>

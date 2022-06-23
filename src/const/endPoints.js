@@ -78,4 +78,7 @@ export const endPoints = {
   get_all_questions_by_quiz: `/questions/findAll`, //falta el id del QUIZ
   update_question: `/questions/update`, // falta el id de la PREGUNTA
   delete_question: `/questions/delete`, // falta el id de la PREGUNTA
+
+  //Options
+  get_all_options_by_question: `/options/find`, //falta el id de la PREGUNTA
 };
