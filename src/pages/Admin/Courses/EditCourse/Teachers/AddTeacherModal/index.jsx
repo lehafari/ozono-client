@@ -35,7 +35,12 @@ export const AddTeacherModal = ({ courseId, setFlag }) => {
       `${endPoints.get_users_by_role}/profesor`
     );
     const body = await resp.json();
-    setAllTeachers(body);
+    if (resp.status === 200) {
+      setAllTeachers(body);
+    } else {
+      setAllTeachers([]);
+    }
+    console.log(AllTeachers);
   };
 
   useEffect(() => {
