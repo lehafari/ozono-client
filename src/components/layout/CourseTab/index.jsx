@@ -1,8 +1,8 @@
-import { TabPanel, TabView } from 'primereact/tabview';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import img from 'assets/images/course-image.png';
+import { TabPanel, TabView } from "primereact/tabview";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import img from "assets/images/course-image.png";
 import {
   ButtonContainer,
   Container,
@@ -10,19 +10,18 @@ import {
   MenuContainer,
   NavbarContainer,
   ShadowContainer,
-  TileContainer,
-} from './styles';
-import { Description } from './Description';
-import { CourseTeachers } from './Teachers';
-import { Lessons } from './Lessons';
-import { Button } from 'components/common/Buttons/MainButton';
+} from "./styles";
+import { Description } from "./Description";
+import { CourseTeachers } from "./Teachers";
+import { Lessons } from "./Lessons";
+import PaymenGateway from "../PaymentGateway";
 
 export const CourseTab = ({ setTab, Tab }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   setTab(activeIndex);
   const { courses } = useSelector((state) => state.courses);
   const courseTitle = useParams().courseTitle;
-  const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
   const cleanTitle = cleanCourseTitle
     .trim()
     .toLowerCase()
@@ -36,18 +35,12 @@ export const CourseTab = ({ setTab, Tab }) => {
         <ImgContainer>
           <img src={img} alt="imagen del curso" />
           <ButtonContainer>
-            <Button
-              text={'Entrar a clase'}
-              fontSize={'1.5rem'}
-              padding={'2rem 4rem'}
-              alignItems={'center'}
-              display={'flex'}
-              path={`/course/classroom/${courseTitle}`}
-            />
+            {/* Si el estudiante no Posee el curso mostrar boton de comprar */}
+            <PaymenGateway cleanTitle={cleanTitle} />
           </ButtonContainer>
         </ImgContainer>
         <NavbarContainer>
-          <MenuContainer maxHeight={Tab === 0 ? '450px' : null}>
+          <MenuContainer maxHeight={Tab === 0 ? "450px" : null}>
             <TabView
               activeIndex={activeIndex}
               onTabChange={(e) => setActiveIndex(e.index)}
