@@ -81,4 +81,10 @@ export const endPoints = {
 
   //Options
   get_all_options_by_question: `/options/find`, //falta el id de la PREGUNTA
+
+  //paids
+  create_payment: `/payments/create`,
+  get_all_payments: `/payments/findAll`,
+  payment_approved: `/payments/approved`, //falta el id del PAGO
+  payment_rejected: `/payments/rejected`, //falta el id del PAGO
 };

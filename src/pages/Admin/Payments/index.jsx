@@ -1,12 +1,35 @@
-import { useState } from "react";
+import { useReducer, useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import InputButton from "components/common/Forms/FormButton";
 import PaymenHistory from "./PaymentsHistory";
 import PendingPayments from "./PendingPayments";
+import {
+  initialState,
+  paymentsReducer,
+} from "context/payments/paymentsReducer";
+import { startGetAllPayments } from "actions/payments";
+import { types } from "context/types/types";
 
 const Payments = () => {
+  //Estado que controla el historial de pagos y los pagos pendientes
   const [optionDisplay, setOptionDisplay] = useState(null);
-  console.log(optionDisplay);
+  //reducer de pagos
+  const [payments, dispatch] = useReducer(paymentsReducer, initialState);
+  console.log(payments);
+
+  useEffect(() => {
+    const getAllPayments = async () => {
+      dispatch({ type: types.paymentStartFetch, payload: {} });
+      const body = await startGetAllPayments();
+      if (!body.statusCode) {
+        dispatch({ type: types.paymentFetch, payload: body });
+      } else {
+        dispatch({ type: types.paymentError, payload: body });
+      }
+    };
+    getAllPayments();
+  }, []);
+
   return (
     <>
       {/* Contenedor superior de los botones */}
@@ -40,8 +63,12 @@ const Payments = () => {
         }}
       >
         {optionDisplay === null && <span>Seleccione una opcion</span>}
-        {optionDisplay === false && <PaymenHistory />}
-        {optionDisplay === true && <PendingPayments />}
+        {optionDisplay === false && (
+          <PaymenHistory payments={payments.payments} />
+        )}
+        {optionDisplay === true && (
+          <PendingPayments payments={payments.payments} dispatch={dispatch} />
+        )}
       </Box>
     </>
   );

@@ -29,14 +29,19 @@ export const CourseTab = ({ setTab, Tab }) => {
   const thisCourse = courses.find(
     (course) => course && course.title.toLowerCase() === cleanCourseTitle
   );
+
   return (
     <Container>
       <ShadowContainer>
         <ImgContainer>
           <img src={img} alt="imagen del curso" />
           <ButtonContainer>
-            {/* Si el estudiante no Posee el curso mostrar boton de comprar */}
-            <PaymenGateway cleanTitle={cleanTitle} />
+            {/* //*Si el estudiante no Posee el curso mostrar boton de comprar */}
+            <PaymenGateway
+              cleanTitle={cleanTitle}
+              amount={thisCourse.price}
+              courseId={thisCourse.id}
+            />
           </ButtonContainer>
         </ImgContainer>
         <NavbarContainer>

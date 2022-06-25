@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import React from "react";
 
-const Transfer = () => {
+const Transfer = (props) => {
   return (
     <Box
       sx={{
@@ -113,7 +113,7 @@ const Transfer = () => {
         >
           Monto:
         </Typography>
-        <Typography>123,45 VES</Typography>
+        <Typography>{props.amount} VES</Typography>
       </Box>
     </Box>
   );

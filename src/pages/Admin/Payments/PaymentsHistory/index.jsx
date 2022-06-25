@@ -1,12 +1,12 @@
 import { Box, Container, Pagination, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { history } from "../paymentHistory";
 
-const PaymenHistory = () => {
+const PaymenHistory = ({ payments }) => {
+  console.log("que hay por ahi?", payments);
   //*Paginacion
   const [page, setPage] = useState(1); //pagina actual
   const n = 9; //Numero de elementos por paginas
-  const totalPages = Math.ceil(history.length / n) + 1; //total de paginas
+  const totalPages = Math.ceil(payments.length / n) + 1; //total de paginas
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -16,7 +16,7 @@ const PaymenHistory = () => {
     let pagination = {};
     let j = 0;
     for (let i = 1; i <= totalPages; i++) {
-      pagination[i] = history.slice(j * n, j * n + n);
+      pagination[i] = payments.slice(j * n, j * n + n);
       j++;
     }
 
@@ -40,7 +40,7 @@ const PaymenHistory = () => {
             alignItems: "center",
           }}
         >
-          <Typography sx={{ width: "20%", flexShrink: 0 }}>ID</Typography>
+          <Typography sx={{ width: "20%", flexShrink: 0 }}>#</Typography>
           <Typography sx={{ width: "20%", flexShrink: 0 }}>TITLE</Typography>
           <Typography sx={{ width: "20%", flexShrink: 0 }}>DATE</Typography>
           <Typography sx={{ width: "20%", flexShrink: 0 }}>AMOUNT</Typography>
@@ -66,19 +66,19 @@ const PaymenHistory = () => {
                 }}
               >
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.id}
+                  {i + 1}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.title}
+                  curso {i + 1}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.date}
+                  {item.createdAt}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
                   {item.amount}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.status}
+                  {item.paymentStatus}
                 </Typography>
               </Box>
             );

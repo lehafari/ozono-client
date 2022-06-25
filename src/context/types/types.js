@@ -108,4 +108,17 @@ export const types = {
   questionStartDelete: "[question] Start delete",
   questionDelete: "[question] Delete",
   questionDeleteError: "[question] Delete error",
+
+  //Payments
+  paymentStartFetch: "[payment] Start fetch",
+  paymentFetch: "[payment] Fetch",
+  paymentFetchError: "[payment] Fetch error",
+
+  paymentStartApproved: "[payment] Start update",
+  paymentApproved: "[payment] Update",
+  paymentApprovedError: "[payment] Update error",
+
+  paymentStartRejected: "[payment] Start delete",
+  paymentRejected: "[payment] Delete",
+  paymentRejectedError: "[payment] Delete error",
 };

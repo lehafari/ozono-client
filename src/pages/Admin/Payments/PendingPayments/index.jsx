@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Box, Container, Pagination, Typography } from "@mui/material";
-import { history } from "../paymentHistory";
 import ConfirmPaid from "./ConfirmPaid";
 
-const PendingPayments = () => {
+const PendingPayments = ({ payments, dispatch }) => {
   //*Paginacion
   const [page, setPage] = useState(1); //pagina actual
   const n = 6; //Numero de elementos por paginas
-  const totalPages = Math.ceil(history.length / n) + 1; //total de paginas
+  const totalPages = Math.ceil(payments.length / n) + 1; //total de paginas
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -17,7 +16,7 @@ const PendingPayments = () => {
     let pagination = {};
     let j = 0;
     for (let i = 1; i <= totalPages; i++) {
-      pagination[i] = history.slice(j * n, j * n + n);
+      pagination[i] = payments.slice(j * n, j * n + n);
       j++;
     }
 
@@ -63,22 +62,22 @@ const PendingPayments = () => {
                 }}
               >
                 <Typography sx={{ width: "16%", flexShrink: 0 }}>
-                  {item.id}
+                  {i + 1}
                 </Typography>
                 <Typography sx={{ width: "16%", flexShrink: 0 }}>
-                  {item.title}
+                  curso {i + 1}
                 </Typography>
                 <Typography sx={{ width: "16%", flexShrink: 0 }}>
-                  {item.date}
+                  {item.createdAt}
                 </Typography>
                 <Typography sx={{ width: "16%", flexShrink: 0 }}>
                   {item.amount}
                 </Typography>
                 <Typography sx={{ width: "16%", flexShrink: 0 }}>
-                  {item.status}
+                  {item.paymentStatus}
                 </Typography>
                 <Box sx={{ width: "16%", flexShring: 0 }}>
-                  <ConfirmPaid />
+                  <ConfirmPaid data={item} dispatch={dispatch} />
                 </Box>
               </Box>
             );
