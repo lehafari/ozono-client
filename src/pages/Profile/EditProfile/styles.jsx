@@ -7,6 +7,18 @@ export const Formulario = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+    }
+
+    button {
+      width: 80%;
+    }
+  }
 `;
 
 export const LeftSide = styled.div`
@@ -14,6 +26,7 @@ export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: center;
   margin: 0 15px 0 0px;
 `;
 
@@ -23,6 +36,7 @@ export const RightSide = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0 0px 0 15px;
+  justify-content: center;
 `;
 
 export const BoxButton = styled.div`

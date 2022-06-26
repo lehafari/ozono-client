@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { CourseItem } from 'components/layout/CourseItem';
 import { endPoints } from 'const/endPoints';
 import { fetchWithToken } from 'helpers/fetch';
@@ -20,7 +21,20 @@ export const MyCourses = () => {
   }, []);
 
   if (courses.length === 0) {
-    return <h1>No tienes cursos adquiridos aún</h1>;
+    return (
+      <Box
+        sx={{
+          height: 'calc(100vh - 300px)',
+          '& > h1': {
+            textAlign: 'center',
+            marginTop: '50px',
+            color: '#a0a0a0',
+          },
+        }}
+      >
+        <h1>No tienes cursos adquiridos aún</h1>;
+      </Box>
+    );
   }
 
   return (

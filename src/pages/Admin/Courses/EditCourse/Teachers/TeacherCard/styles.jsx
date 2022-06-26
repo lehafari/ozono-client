@@ -12,7 +12,7 @@ export const TeacherCardContainer = styled.div`
   margin: 1rem;
 
   h3 {
-    margin: 0;
+    margin: 0 0.6rem;
     font-size: 1.2rem;
     font-weight: 400;
     color: #a1a1a1;

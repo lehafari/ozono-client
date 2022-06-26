@@ -18,7 +18,7 @@ export const ProfileInfo = styled.div`
     border-radius: 50%;
 
     @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
-      width: 100px;
+      width: 80px;
     }
   }
 `;

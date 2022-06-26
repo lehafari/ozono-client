@@ -14,7 +14,7 @@ import { endPoints } from 'const/endPoints';
 import { fetchWithToken } from 'helpers/fetch';
 import Spinner from 'components/common/Spinner';
 
-export const SectionAccordion = ({ section, courseTitle }) => {
+export const SectionAccordion = ({ section, courseTitle, isPay }) => {
   const [lessonsAndQuizzes, setLessonsAndQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -101,15 +101,17 @@ export const SectionAccordion = ({ section, courseTitle }) => {
                         paddingRight: '2rem',
                       }}
                     >
-                      <Button
-                        path={`/course/classroom/${courseTitle}/${type}/${lessonOrQuiz.id}`}
-                        text={
-                          type === 'quiz'
-                            ? 'Entrar al Quiz'
-                            : 'Entrar a la clase'
-                        }
-                        fontSize={'1rem'}
-                      />
+                      {isPay && (
+                        <Button
+                          path={`/course/classroom/${courseTitle}/${type}/${lessonOrQuiz.id}`}
+                          text={
+                            type === 'quiz'
+                              ? 'Entrar al Quiz'
+                              : 'Entrar a la clase'
+                          }
+                          fontSize={'1rem'}
+                        />
+                      )}
                     </Box>
                   }
                   sx={{
