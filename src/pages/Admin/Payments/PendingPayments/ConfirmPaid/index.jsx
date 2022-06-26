@@ -5,26 +5,34 @@ import { Dialog } from "primereact/dialog";
 import { types } from "context/types/types";
 import { startPaymentApproved, startPaymentRejected } from "actions/payments";
 import Toast from "components/common/Popup/Toast";
+import Spinner from "components/common/Spinner";
 
-const ConfirmPaid = ({ data, dispatch }) => {
+const ConfirmPaid = ({ flag, setFlag, loading, data, dispatch }) => {
   const [visible, setVisible] = React.useState(false);
 
   const paymentApproved = async () => {
     dispatch({ type: types.paymentStartApproved, payload: {} });
-    const body = await startPaymentApproved(data.id);
-    console.log("aprobado", body);
+    const body = await startPaymentApproved(data.payment.id);
+    console.log(loading);
+    if (loading) {
+      return <Spinner />;
+    }
+
     if (!body.statusCode) {
       dispatch({ type: types.paymentApproved, payload: body });
       Toast("success", "Pago aprobado con exito");
+      setVisible(false);
+      setFlag(true);
     } else {
       dispatch({ type: types.paymentApprovedError, payload: body });
       Toast("error", "Error al aprobar el pago");
+      setVisible(false);
     }
   };
 
   const paymentRejected = async () => {
     dispatch({ type: types.paymentStartRejected, payload: {} });
-    const body = await startPaymentRejected(data.id);
+    const body = await startPaymentRejected(data.payment.id);
     console.log("rechazado", body);
     if (!body.statusCode) {
       dispatch({ type: types.paymentRejected, payload: body });
@@ -64,7 +72,7 @@ const ConfirmPaid = ({ data, dispatch }) => {
           <TextField
             label="Curso que pago"
             sx={{ margin: "0 10px", width: "100%" }}
-            value="falta poner en el response del get junto con los datos del usuario"
+            value={data.course.title}
             readOnly
           />
         </Box>
@@ -85,9 +93,24 @@ const ConfirmPaid = ({ data, dispatch }) => {
             flexShrink: "0",
           }}
         >
-          <TextField label="name" sx={{ margin: "0 10px", width: "50%" }} />
-          <TextField label="email" sx={{ margin: "0 10px" }} />
-          <TextField label="tlf" sx={{ margin: "0 10px" }} />
+          <TextField
+            label="name"
+            sx={{ margin: "0 10px", width: "50%" }}
+            value={`${data.user.firstName} ${data.user.lastName}`}
+            readOnly
+          />
+          <TextField
+            label="email"
+            sx={{ margin: "0 10px" }}
+            value={data.user.email}
+            readOnly
+          />
+          <TextField
+            label="tlf"
+            sx={{ margin: "0 10px" }}
+            value={data.user.phone}
+            readOnly
+          />
         </Box>
         <Typography
           sx={{
@@ -109,25 +132,25 @@ const ConfirmPaid = ({ data, dispatch }) => {
           <TextField
             label="date"
             sx={{ margin: "0 10px" }}
-            value={data.createdAt}
+            value={data.payment.createdAt}
             readOnly
           />
           <TextField
             label="Tipo de pago"
             sx={{ margin: "0 10px" }}
-            value={data.paymentMethod}
+            value={data.payment.paymentMethod}
             readOnly
           />
           <TextField
             label="Referencia"
             sx={{ margin: "0 10px" }}
-            value={data.paymentReference}
+            value={data.payment.paymentReference}
             readOnly
           />
           <TextField
             label="Monto"
             sx={{ margin: "0 10px" }}
-            value={data.amount}
+            value={data.payment.amount}
             readOnly
           />
         </Box>

@@ -15,7 +15,7 @@ const Payments = () => {
   const [optionDisplay, setOptionDisplay] = useState(null);
   //reducer de pagos
   const [payments, dispatch] = useReducer(paymentsReducer, initialState);
-  console.log(payments);
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     const getAllPayments = async () => {
@@ -28,7 +28,8 @@ const Payments = () => {
       }
     };
     getAllPayments();
-  }, []);
+    setFlag(false);
+  }, [flag]);
 
   return (
     <>
@@ -67,7 +68,13 @@ const Payments = () => {
           <PaymenHistory payments={payments.payments} />
         )}
         {optionDisplay === true && (
-          <PendingPayments payments={payments.payments} dispatch={dispatch} />
+          <PendingPayments
+            flag={flag}
+            setFlag={setFlag}
+            loading={payments.loading}
+            payments={payments.payments}
+            dispatch={dispatch}
+          />
         )}
       </Box>
     </>

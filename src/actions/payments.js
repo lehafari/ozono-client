@@ -26,7 +26,7 @@ export const startGetAllPayments = async () => {
 export const startPaymentApproved = async (paymentId) => {
   const resp = await fetchWithToken(
     `${endPoints.payment_approved}/${paymentId}`,
-    paymentId,
+    {},
     "PUT"
   );
   const body = await resp.json();
@@ -38,7 +38,7 @@ export const startPaymentApproved = async (paymentId) => {
 export const startPaymentRejected = async (paymentId) => {
   const resp = await fetchWithToken(
     `${endPoints.payment_rejected}/${paymentId}`,
-    paymentId,
+    {},
     "PUT"
   );
   const body = await resp.json();

@@ -1,10 +1,10 @@
 import { types } from "../types/types";
-import { useReducer } from "react";
 
 export const initialState = {
   payments: [],
   loading: false,
   error: null,
+  message: null,
 };
 
 export const paymentsReducer = (state, action) => {
@@ -35,13 +35,9 @@ export const paymentsReducer = (state, action) => {
       };
     case types.paymentApproved:
       return {
-        payments: [
-          ...state.payments.filter(
-            (payment) => payment.id !== action.payload.id
-          ),
-          action.payload,
-        ],
+        ...state,
         loading: false,
+        message: action.payload,
       };
     case types.paymentApprovedError:
       return {
@@ -59,13 +55,9 @@ export const paymentsReducer = (state, action) => {
       };
     case types.paymentRejected:
       return {
-        payments: [
-          ...state.payments.filter(
-            (payment) => payment.id !== action.payload.id
-          ),
-          action.payload,
-        ],
+        ...state,
         loading: false,
+        message: action.payload,
       };
     case types.paymentRejectedError:
       return {
