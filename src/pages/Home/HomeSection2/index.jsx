@@ -9,12 +9,16 @@ export const HomeSection2 = () => {
 
   return (
     <HomeCourseContainer>
-      <HomeCourseTitle>
-        <h1>Cursos destacados</h1>
-      </HomeCourseTitle>
-      <HomeCourseList>
-        <CourseItem {...featuredCourses[0]} />
-      </HomeCourseList>
+      {featuredCourses.length > 0 && (
+        <>
+          <HomeCourseTitle>
+            <h1>Curso destacados</h1>
+          </HomeCourseTitle>
+          <HomeCourseList>
+            <CourseItem {...featuredCourses[0]} />
+          </HomeCourseList>
+        </>
+      )}
     </HomeCourseContainer>
   );
 };

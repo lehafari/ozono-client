@@ -79,7 +79,7 @@ export const CoruseDescription = styled.div`
     font-size: 1rem;
     color: ${(props) => props.theme.colors.gray};
     font-weight: 300;
-    margin: 0;
+    margin: 10px 0 0 0;
 
     @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
       font-size: 0.8rem;
@@ -100,7 +100,7 @@ export const CourseInstructor = styled.div`
   }
 
   & p {
-    font-size: 0.6rem;
+    font-size: 0.9rem;
     color: ${(props) => props.theme.colors.darkGray};
     margin: 0;
 

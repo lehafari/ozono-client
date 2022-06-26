@@ -12,8 +12,13 @@ import {
 import courseImage from '../../../assets/images/course-image.png';
 import { Button } from '../../common/Buttons/MainButton';
 import { Divider } from '@mui/material';
+import { toCapitalize } from 'helpers/toCapitalize';
 
-export const MyCourseItem = () => {
+export const MyCourseItem = ({ course }) => {
+  const { title, duration, level } = course;
+  const titleToUrl = (title) => {
+    return title && title.toLowerCase().split(' ').join('-');
+  };
   return (
     <CourseContainer>
       <CourseImage>
@@ -21,11 +26,9 @@ export const MyCourseItem = () => {
       </CourseImage>
       <CourseContend>
         <CourseTitle>
-          <h1>Ozonoterapeuta Clinico</h1>
+          <h1>{title}</h1>
         </CourseTitle>
-        <CoruseDescription>
-          <p>Curso de ampliación (Fellowship)</p>
-        </CoruseDescription>
+        <CoruseDescription></CoruseDescription>
         <Divider
           sx={{
             margin: '2rem 0 0.5rem 0',
@@ -33,10 +36,14 @@ export const MyCourseItem = () => {
           }}
         />
         <CourseInstructor>
-          <h3>Prf. Alberto gonzalez</h3>
-          <p>Licenciado en Desarrollo web</p>
+          <p>Duración: {duration}</p>
+          <p>Nivel: {toCapitalize(level)}</p>
         </CourseInstructor>
-        <Button text="Ver Curso" width="%100" />
+        <Button
+          text="Ver Curso"
+          width="%100"
+          path={`/course/${titleToUrl(title)}`}
+        />
       </CourseContend>
     </CourseContainer>
   );
