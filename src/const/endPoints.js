@@ -14,6 +14,7 @@ export const endPoints = {
 
   // Set Score
   set_score: `/score/set`,
+  get_my_score: `/score/me`,
 
   //All users
   get_all_users: `/users/all`,

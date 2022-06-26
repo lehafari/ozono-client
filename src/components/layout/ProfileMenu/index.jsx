@@ -112,11 +112,11 @@ export default function ProfileMenu() {
               color: '#5e82be',
             },
           }}
-          onClick={() => navigate('/courses')}
+          onClick={() => navigate('/profile/courses')}
         >
-          Cursos
+          Mis Cursos
         </MenuItem>
-        <MenuItem
+        {/* <MenuItem
           sx={{
             justifyContent: 'end',
             fontSize: '1rem',
@@ -130,14 +130,7 @@ export default function ProfileMenu() {
           }}
         >
           Pagos
-        </MenuItem>
-        <Divider
-          sx={{
-            backgroundColor: '#5e82be',
-            width: '70%',
-            margin: '0.5rem auto',
-          }}
-        />
+        </MenuItem> */}
         <MenuItem
           sx={{
             paddingLeft: '1rem',
@@ -151,9 +144,18 @@ export default function ProfileMenu() {
               color: '#5e82be',
             },
           }}
+          onClick={() => navigate('/profile/scores')}
         >
           Mis calificaciones
         </MenuItem>
+        <Divider
+          sx={{
+            backgroundColor: '#5e82be',
+            width: '70%',
+            margin: '0.5rem auto',
+          }}
+        />
+
         <MenuItem
           sx={{
             justifyContent: 'end',
