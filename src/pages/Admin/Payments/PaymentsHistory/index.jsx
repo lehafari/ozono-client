@@ -2,7 +2,6 @@ import { Box, Container, Pagination, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 const PaymenHistory = ({ payments }) => {
-  console.log("que hay por ahi?", payments);
   //*Paginacion
   const [page, setPage] = useState(1); //pagina actual
   const n = 9; //Numero de elementos por paginas
@@ -40,11 +39,11 @@ const PaymenHistory = ({ payments }) => {
             alignItems: "center",
           }}
         >
-          <Typography sx={{ width: "20%", flexShrink: 0 }}>#</Typography>
-          <Typography sx={{ width: "20%", flexShrink: 0 }}>TITLE</Typography>
-          <Typography sx={{ width: "20%", flexShrink: 0 }}>DATE</Typography>
-          <Typography sx={{ width: "20%", flexShrink: 0 }}>AMOUNT</Typography>
-          <Typography sx={{ width: "20%", flexShrink: 0 }}>STATUS</Typography>
+          <Typography sx={{ width: "20%", flexShrink: 0 }}>ID</Typography>
+          <Typography sx={{ width: "20%", flexShrink: 0 }}>Producto</Typography>
+          <Typography sx={{ width: "20%", flexShrink: 0 }}>Fecha</Typography>
+          <Typography sx={{ width: "20%", flexShrink: 0 }}>Monto</Typography>
+          <Typography sx={{ width: "20%", flexShrink: 0 }}>Estado</Typography>
         </Box>
 
         {/* //* Contenido del historial de compras */}
@@ -57,7 +56,7 @@ const PaymenHistory = ({ payments }) => {
           {itemList[page].map((item, i) => {
             return (
               <Box
-                key={item.id}
+                key={item.payment.id}
                 sx={{
                   display: "flex",
                   justifyContent: "space-around",
@@ -66,19 +65,22 @@ const PaymenHistory = ({ payments }) => {
                 }}
               >
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {i + 1}
+                  {item.payment.id.substring(
+                    item.payment.id.length - 4,
+                    item.payment.id.length
+                  )}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  curso {i + 1}
+                  {item.course.title}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.createdAt}
+                  {item.payment.createdAt}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.amount}
+                  {item.payment.amount}
                 </Typography>
                 <Typography sx={{ width: "20%", flexShrink: 0 }}>
-                  {item.paymentStatus}
+                  {item.payment.paymentStatus}
                 </Typography>
               </Box>
             );

@@ -5,9 +5,8 @@ import { Dialog } from "primereact/dialog";
 import { types } from "context/types/types";
 import { startPaymentApproved, startPaymentRejected } from "actions/payments";
 import Toast from "components/common/Popup/Toast";
-import Spinner from "components/common/Spinner";
 
-const ConfirmPaid = ({ flag, setFlag, loading, data, dispatch }) => {
+const ConfirmPaid = ({ setFlag, data, dispatch }) => {
   const [visible, setVisible] = useState(false);
 
   const paymentApproved = async () => {
@@ -15,7 +14,7 @@ const ConfirmPaid = ({ flag, setFlag, loading, data, dispatch }) => {
     const body = await startPaymentApproved(data.payment.id);
     if (!body.statusCode) {
       dispatch({ type: types.paymentApproved, payload: body });
-      Toast("success", "Pago aprobado con exito");
+      Toast("success", body.message);
       setVisible(false);
       setFlag(true);
     } else {
@@ -31,10 +30,13 @@ const ConfirmPaid = ({ flag, setFlag, loading, data, dispatch }) => {
     console.log("rechazado", body);
     if (!body.statusCode) {
       dispatch({ type: types.paymentRejected, payload: body });
-      Toast("success", "Pago rechazado con exito");
+      Toast("success", body.message);
+      setVisible(false);
+      setFlag(true);
     } else {
       dispatch({ type: types.paymentRejectedError, payload: body });
       Toast("error", "Error al rechazar el pago");
+      setVisible(false);
     }
   };
 

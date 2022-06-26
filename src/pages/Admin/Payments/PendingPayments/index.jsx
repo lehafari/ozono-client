@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Container, Pagination, Typography } from "@mui/material";
 import ConfirmPaid from "./ConfirmPaid";
 
-const PendingPayments = ({ flag, setFlag, loading, payments, dispatch }) => {
+const PendingPayments = ({ setFlag, payments, dispatch }) => {
   //*Paginacion
   const [page, setPage] = useState(1); //pagina actual
   const n = 6; //Numero de elementos por paginas
@@ -38,10 +38,28 @@ const PendingPayments = ({ flag, setFlag, loading, payments, dispatch }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            margin: "0 0 2rem 0",
+            fontSize: "1.5rem",
           }}
         >
           Pagos Pendientes por procesar
         </Typography>
+
+        {/* //* header del historial de compras */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <Typography sx={{ width: "16%", flexShrink: 0 }}>ID</Typography>
+          <Typography sx={{ width: "16%", flexShrink: 0 }}>Producto</Typography>
+          <Typography sx={{ width: "16%", flexShrink: 0 }}>Fecha</Typography>
+          <Typography sx={{ width: "16%", flexShrink: 0 }}>Monto</Typography>
+          <Typography sx={{ width: "16%", flexShrink: 0 }}>Estado</Typography>
+          <Typography sx={{ width: "16%", flexShrink: 0 }}>CHECK</Typography>
+        </Box>
 
         {/* //* Contenido del historial de compras */}
         <Box
@@ -63,7 +81,10 @@ const PendingPayments = ({ flag, setFlag, loading, payments, dispatch }) => {
                   }}
                 >
                   <Typography sx={{ width: "16%", flexShrink: 0 }}>
-                    {i + 1}
+                    {item.payment.id.substring(
+                      item.payment.id.length - 4,
+                      item.payment.id.length
+                    )}
                   </Typography>
                   <Typography sx={{ width: "16%", flexShrink: 0 }}>
                     {item.course.title}
@@ -79,9 +100,7 @@ const PendingPayments = ({ flag, setFlag, loading, payments, dispatch }) => {
                   </Typography>
                   <Box sx={{ width: "16%", flexShring: 0 }}>
                     <ConfirmPaid
-                      flag={flag}
                       setFlag={setFlag}
-                      loading={loading}
                       data={item}
                       dispatch={dispatch}
                     />

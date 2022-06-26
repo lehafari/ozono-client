@@ -10,6 +10,7 @@ import {
 import { startGetAllPayments } from "actions/payments";
 import { types } from "context/types/types";
 import Spinner from "components/common/Spinner";
+import PaymentDetails from "./PaymentDetails";
 
 const Payments = () => {
   //Estado que controla el historial de pagos y los pagos pendientes
@@ -33,7 +34,11 @@ const Payments = () => {
   }, [flag]);
 
   if (payments.loading) {
-    return <Spinner />;
+    return (
+      <>
+        <Spinner />
+      </>
+    );
   }
 
   return (
@@ -53,6 +58,7 @@ const Payments = () => {
           text="Historial de pago"
           onClick={() => setOptionDisplay(false)}
         />
+        <PaymentDetails />
         <InputButton
           text="Pagos Pendientes"
           onClick={() => setOptionDisplay(true)}
@@ -74,11 +80,9 @@ const Payments = () => {
         )}
         {optionDisplay === true && (
           <PendingPayments
-            flag={flag}
             setFlag={setFlag}
-            loading={payments.loading}
-            payments={payments.payments}
             dispatch={dispatch}
+            payments={payments.payments}
           />
         )}
       </Box>

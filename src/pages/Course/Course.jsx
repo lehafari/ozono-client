@@ -22,7 +22,11 @@ const Course = () => {
   );
 
   if (loading) {
-    return <Spinner />;
+    return (
+      <>
+        <Spinner />
+      </>
+    );
   }
 
   return (
