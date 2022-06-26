@@ -29,6 +29,7 @@ export const endPoints = {
   get_courses_by_status: `/courses/status`,
   get_students: `/courses/users`,
   get_number_of_students: `/courses/users/count`,
+  get_courses_me: `/courses/me`,
 
   get_teachers_by_course: `/courses/teachers`,
 
