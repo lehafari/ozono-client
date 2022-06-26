@@ -12,6 +12,7 @@ import {
 import courseImage from '../../../assets/images/hero-image.png';
 import PersonIcon from '@mui/icons-material/Person';
 import { Button } from '../../common/Buttons/MainButton';
+import { toCapitalize } from 'helpers/toCapitalize';
 
 export const CourseItem = ({
   price,
@@ -21,6 +22,7 @@ export const CourseItem = ({
   level,
   id,
   description,
+  backgroundColor,
 }) => {
   const getWidth = () => {
     return window.innerWidth;
@@ -30,43 +32,45 @@ export const CourseItem = ({
     return title && title.toLowerCase().split(' ').join('-');
   };
   return (
-    <CourseContainer>
-      <CourseImage>
-        <img src={courseImage} alt="course" />
-      </CourseImage>
-      <CourseContend>
-        <CourseTitle>
-          <h1>{title}</h1>
-        </CourseTitle>
-        <CoruseDescription>
-          <p>Duracion del curso: {duration}</p>
-          <p>Nivel: {level}</p>
-          {/* {text} */}
-        </CoruseDescription>
-        <CoursePrice>
-          <p>
-            <PersonIcon
-              sx={{
-                color: '#898989',
-              }}
-              fontSize="large"
-            />
-            {numberOfStudents}
-          </p>
-          <p>{price}$</p>
-        </CoursePrice>
-        <CourseInstructor>
-          <h3>Prf. Alberto gonzalez</h3>
-          <p>Licenciado en Desarrollo web</p>
-        </CourseInstructor>
-        <Button
-          text="Ver Curso"
-          path={`/course/${titleToUrl(title)}`}
-          width="50%"
-          alignSelf={getWidth() < 600 ? 'center' : ''}
-          fontSize={getWidth() < 600 ? '1rem' : ''}
-        />
-      </CourseContend>
-    </CourseContainer>
+    <>
+      <CourseContainer backgroundColor={backgroundColor && backgroundColor}>
+        <CourseImage>
+          <img src={courseImage} alt="course" />
+        </CourseImage>
+        <CourseContend>
+          <CourseTitle>
+            <h1>{title}</h1>
+          </CourseTitle>
+          <CoruseDescription>
+            <p>Duracion del curso: {duration}</p>
+            <p>Nivel: {toCapitalize(level)}</p>
+            {/* {text} */}
+          </CoruseDescription>
+          <CoursePrice>
+            <p>
+              <PersonIcon
+                sx={{
+                  color: '#898989',
+                }}
+                fontSize="large"
+              />
+              {numberOfStudents}
+            </p>
+            <p>{price}$</p>
+          </CoursePrice>
+          <CourseInstructor>
+            {/* <h3>Prf. Alberto gonzalez</h3>
+          <p>Licenciado en Desarrollo web</p> */}
+          </CourseInstructor>
+          <Button
+            text="Ver Curso"
+            path={`/course/${titleToUrl(title)}/#top`}
+            width="50%"
+            alignSelf={getWidth() < 600 ? 'center' : ''}
+            fontSize={getWidth() < 600 ? '1rem' : ''}
+          />
+        </CourseContend>
+      </CourseContainer>
+    </>
   );
 };

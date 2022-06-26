@@ -2,13 +2,23 @@ import styled from 'styled-components';
 
 export const CourseContainer = styled.div`
   border-radius: 35px;
-  background-color: #f8f8f8;
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : '#f8f8f8'};
   width: 100%;
   height: 100%;
   display: flex;
+  overflow: hidden;
+
+  .anchorTop {
+    margin-top: -500px;
+  }
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     flex-direction: column;
+    text-align: center;
+    button {
+      align-self: center;
+    }
   }
 `;
 
@@ -22,7 +32,8 @@ export const CourseImage = styled.div`
   & > img {
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
-    width: 100%;
+    width: fill-available;
+    width: -webkit-fill-available;
     height: 100%;
     object-fit: cover;
     margin-right: -1rem;
@@ -43,7 +54,7 @@ export const CourseContend = styled.div`
   padding: 2rem 2.5rem 1rem 2.5rem;
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
-    width: fit-content;
+    width: 100%;
     padding: 1rem 1.5rem 1rem 1.5rem;
   }
 `;

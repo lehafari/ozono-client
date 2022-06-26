@@ -5,9 +5,14 @@ export const ProfileCourseList = styled.div`
   justify-content: space-around;
   padding: 4rem;
   flex-wrap: wrap;
-  margin: 0 -10%;
+  margin: 0 auto;
   align-items: center;
   height: fit-content;
+  width: 90%;
+
+  & > div {
+    margin: 2rem 0;
+  }
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     margin: 0;

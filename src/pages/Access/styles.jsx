@@ -4,8 +4,7 @@ export const SectionContainer = styled.section`
   padding: 0px 0px 0px 0px;
   display: flex;
   background-color: ${(props) => props.theme.colors.lightGrayBackground};
-  // heigh 100vh - header
-  height: calc(100vh - 85px);
+  min-height: calc(100vh - 80px);
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     flex-direction: column;

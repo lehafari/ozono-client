@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContactContainer = styled.div`
   background-color: ${(props) => props.theme.colors.lightGrayBackground};
-  height: max-content;
+  min-height: calc(100vh - 110px);
   display: flex;
   flex-direction: column;
   align-items: center;

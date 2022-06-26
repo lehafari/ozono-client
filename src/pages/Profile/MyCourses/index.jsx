@@ -1,3 +1,4 @@
+import { CourseItem } from 'components/layout/CourseItem';
 import { endPoints } from 'const/endPoints';
 import { fetchWithToken } from 'helpers/fetch';
 import { useEffect, useState } from 'react';
@@ -21,13 +22,27 @@ export const MyCourses = () => {
   if (courses.length === 0) {
     return <h1>No tienes cursos adquiridos aún</h1>;
   }
+
   return (
     <>
       <h1>Cursos adquiridos</h1>
       <ProfileCourseList>
-        {courses.map((course) => (
-          <MyCourseItem key={course.id} course={course} />
-        ))}
+        {courses.map((course) => {
+          const { id, title, price, numberOfStudents, duration, level } =
+            course;
+          return (
+            <CourseItem
+              key={course.id}
+              title={title}
+              price={price}
+              numberOfStudents={numberOfStudents}
+              duration={duration}
+              level={level}
+              id={id}
+              backgroundColor="#fff"
+            />
+          );
+        })}
       </ProfileCourseList>
     </>
   );

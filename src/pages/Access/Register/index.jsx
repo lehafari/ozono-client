@@ -65,7 +65,6 @@ const Register = () => {
               name="firstName"
               type="text"
               placeholder="Nombre"
-              width={'65%'}
               heigth={'50px'}
               margin={'10px 0px'}
               errorPadding="0 0 0 15%"
@@ -75,7 +74,6 @@ const Register = () => {
               name="lastName"
               type="text"
               placeholder="Apellido"
-              width={'65%'}
               heigth={'50px'}
               margin={'10px 0px'}
               errorPadding="0 0 0 15%"
@@ -86,7 +84,6 @@ const Register = () => {
               name="username"
               type="text"
               placeholder="Usuario"
-              width={'65%'}
               heigth={'50px'}
               margin={'10px 0px'}
               errorPadding="0 0 0 15%"
@@ -96,7 +93,6 @@ const Register = () => {
               name="email"
               type="email"
               placeholder="Email"
-              width={'65%'}
               heigth={'50px'}
               margin={'10px 0px'}
               errorPadding="0 0 0 15%"
@@ -107,7 +103,6 @@ const Register = () => {
               name="password"
               type="password"
               placeholder="Contraseña"
-              width={'65%'}
               heigth={'50px'}
               margin={'10px 0px'}
               errorPadding="0 0 0 15%"
@@ -118,7 +113,6 @@ const Register = () => {
               name="confirmPassword"
               type="password"
               placeholder="Confirmar Contraseña"
-              width={'65%'}
               heigth={'50px'}
               margin={'10px 0px'}
               errorPadding="0 0 0 15%"
