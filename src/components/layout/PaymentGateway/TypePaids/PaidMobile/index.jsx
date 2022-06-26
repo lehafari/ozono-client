@@ -1,8 +1,8 @@
-import { Box, Typography } from "@mui/material";
-
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
 
-const Transfer = (props) => {
+const PaidMobile = (props) => {
   return (
     <Box
       sx={{
@@ -13,8 +13,7 @@ const Transfer = (props) => {
       }}
     >
       <Typography sx={{ margin: "1rem 0rem" }}>
-        Realice la transferencia a la cuenta bancaria: usando los siguientes
-        datos
+        Realice la Transferencia al siguiente pago movil
       </Typography>
       {/* Contenedor completo */}
       <Box
@@ -45,21 +44,6 @@ const Transfer = (props) => {
             </Typography>
             <Typography>23456789</Typography>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-            }}
-          >
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
-              }}
-            >
-              Banco:
-            </Typography>
-            <Typography>Banco de Venezuela</Typography>
-          </Box>
         </Box>
         {/* Contenedor derecho */}
         <Box
@@ -78,30 +62,16 @@ const Transfer = (props) => {
                 margin: "0 5px ",
               }}
             >
-              Titular:
+              Banco:
             </Typography>
-            <Typography>Marcel Marin</Typography>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-            }}
-          >
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
-              }}
-            >
-              Cuenta Bancaria:
-            </Typography>
-            <Typography>0134123456789</Typography>
+            <Typography>Banco de Venezuela</Typography>
           </Box>
         </Box>
       </Box>
       <Box
         sx={{
           display: "flex",
+          margin: "1rem 0",
         }}
       >
         <Typography
@@ -110,9 +80,9 @@ const Transfer = (props) => {
             margin: "0 5px ",
           }}
         >
-          Tipo de cuenta
+          Telefono
         </Typography>
-        <Typography>Ahorro</Typography>
+        <Typography>04245552585</Typography>
       </Box>
       <Box
         sx={{
@@ -134,4 +104,4 @@ const Transfer = (props) => {
   );
 };
 
-export default Transfer;
+export default PaidMobile;

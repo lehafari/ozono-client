@@ -9,10 +9,12 @@ import FormControl from "@mui/material/FormControl";
 import * as Yup from "yup";
 
 import { Form } from "./styles";
-import Transfer from "./TypePaids/Transfer";
 import { formatYupErrors } from "helpers/formatYupErrors";
 import { startCreatePayment } from "actions/payments";
 import Toast from "components/common/Popup/Toast";
+import Transfer from "./TypePaids/Transfer";
+import Cash from "./TypePaids/Cash";
+import PaidMobile from "./TypePaids/PaidMobile";
 
 const PaymenGateway = (props) => {
   // Estado del modal
@@ -142,8 +144,12 @@ const PaymenGateway = (props) => {
             {values.paymentMethod === "TRANSFERENCIA" && (
               <Transfer amount={props.amount} />
             )}
-            {values.paymentMethod === "PAGO_MOVIL" && <span>pago movil</span>}
-            {values.paymentMethod === "EFECTIVO" && <span>efectivo</span>}
+            {values.paymentMethod === "PAGO_MOVIL" && (
+              <PaidMobile amount={props.amount} />
+            )}
+            {values.paymentMethod === "EFECTIVO" && (
+              <Cash amount={props.amount} />
+            )}
             {values.paymentMethod === "" && null}
 
             {/* Input para meter la Ref */}

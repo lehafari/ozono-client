@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import InputButton from "components/common/Forms/FormButton";
 import { Dialog } from "primereact/dialog";
 import React, { useState } from "react";
@@ -14,10 +14,16 @@ const PaymentDetails = () => {
     accountType: "",
     accountNumber: "",
     phoneNumber: "",
+    address: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(values);
   };
 
   return (
@@ -29,114 +35,130 @@ const PaymentDetails = () => {
         onHide={() => setDisplay(false)}
         style={{ width: "60vw", height: "60vh" }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography sx={{ margin: "1rem 0rem" }}>
-            DATOS de la cuenta bancaria a la que van a transferir
-          </Typography>
-          {/* Contenedor completo */}
+        <form onSubmit={handleSubmit}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography sx={{ margin: "1rem 0rem" }}>
+              Datos de la cuenta bancaria Y el pago movil
+            </Typography>
+            {/* Contenedor completo */}
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {/* Contenedor izquierdo */}
+              <Box
+                sx={{
+                  margin: "1rem",
+                  width: "50%",
+                }}
+              >
+                <TextField
+                  label="Nombre del titular"
+                  name="owner"
+                  value={values.owner}
+                  onChange={handleChange}
+                  sx={{
+                    margin: "0.5rem",
+                    width: "100%",
+                  }}
+                />
+                <TextField
+                  label="Documento de Identidad"
+                  name="CI"
+                  value={values.CI}
+                  onChange={handleChange}
+                  sx={{
+                    margin: "0.5rem",
+                    width: "100%",
+                  }}
+                />
+              </Box>
+              {/* Contenedor derecho */}
+              <Box
+                sx={{
+                  margin: "1rem",
+                  width: "50%",
+                }}
+              >
+                <TextField
+                  label="Banco"
+                  name="bankName"
+                  value={values.bankName}
+                  onChange={handleChange}
+                  sx={{
+                    margin: "0.5rem",
+                    width: "100%",
+                  }}
+                />
+                <TextField
+                  label="Tipo de cuenta"
+                  name="accountType"
+                  value={values.accountType}
+                  onChange={handleChange}
+                  sx={{
+                    margin: "0.5rem",
+                    width: "100%",
+                  }}
+                />
+              </Box>
+            </Box>
+
+            <TextField
+              label="Número de cuenta"
+              name="accountNumber"
+              value={values.accountNumber}
+              onChange={handleChange}
+              sx={{
+                margin: "0.3rem",
+                width: "100%",
+              }}
+            />
+            <TextField
+              label="Número de telefono"
+              name="phoneNumber"
+              value={values.phoneNumber}
+              onChange={handleChange}
+              sx={{
+                margin: "0.3rem",
+                width: "100%",
+              }}
+            />
+
+            <TextField
+              label="Direccion fisica para el pago en efectivo"
+              name="address"
+              value={values.address}
+              onChange={handleChange}
+              sx={{
+                margin: "0.3rem",
+                width: "100%",
+              }}
+            />
+          </Box>
+          {/* Botones */}
           <Box
             sx={{
               width: "100%",
               display: "flex",
               justifyContent: "center",
+              margin: "1rem 0rem 0 0",
             }}
           >
-            {/* Contenedor izquierdo */}
-            <Box
-              sx={{
-                margin: "1rem",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <TextField
-                  label="Documento de Identidad"
-                  name="CI"
-                  value={values.CI}
-                  onChange={(e) => handleChange()}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    margin: "0 5px ",
-                  }}
-                >
-                  Banco:
-                </Typography>
-                <Typography>Banco de Venezuela</Typography>
-              </Box>
-            </Box>
-            {/* Contenedor derecho */}
-            <Box
-              sx={{
-                margin: "1rem",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    margin: "0 5px ",
-                  }}
-                >
-                  Titular:
-                </Typography>
-                <Typography>Marcel Marin</Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    margin: "0 5px ",
-                  }}
-                >
-                  Cuenta Bancaria:
-                </Typography>
-                <Typography>0134123456789</Typography>
-              </Box>
-            </Box>
+            <Button variant="contained" onClick={handleSubmit}>
+              actualizar datos
+            </Button>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              margin: "1rem 0",
-            }}
-          >
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
-              }}
-            >
-              Monto:
-            </Typography>
-            <Typography>VES</Typography>
-          </Box>
-        </Box>
+        </form>
       </Dialog>
     </>
   );

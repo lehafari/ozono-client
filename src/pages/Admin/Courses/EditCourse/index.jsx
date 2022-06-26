@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { TabView, TabPanel } from 'primereact/tabview';
+import { useState } from "react";
+import { TabView, TabPanel } from "primereact/tabview";
 import {
   Container,
   ImgContainer,
@@ -7,19 +7,21 @@ import {
   NavbarContainer,
   ShadowContainer,
   TileContainer,
-} from './style';
-import img from '../../../../assets/images/course-image.png';
-import General from './General';
-import { useParams } from 'react-router-dom';
-import Teachers from './Teachers';
-import Lessons from './Lessons';
-import { useSelector } from 'react-redux';
+} from "./style";
+import imgDefault from "../../../../assets/images/course-image.png";
+import General from "./General";
+import { useParams } from "react-router-dom";
+import Teachers from "./Teachers";
+import Lessons from "./Lessons";
+import { useSelector } from "react-redux";
+import UploadImageCourse from "./UploadImageCourse";
+import { BASE_URL, endPoints } from "const/endPoints";
 
 const EditCourse = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const courseTitle = useParams().courseTitle;
-  const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
   const cleanTitle = cleanCourseTitle
     .trim()
     .toLowerCase()
@@ -32,12 +34,24 @@ const EditCourse = () => {
     courses && courses.find((course) => course.title === cleanCourseTitle);
   //⬆️⬆️⬆️id del curso en cuestion
   const id = course && course.id;
+
+  //subir imagen
+  console.log(course);
+
   return (
     <Container>
       <h1>Edicion de curso</h1>
       <ShadowContainer>
         <ImgContainer>
-          <img src={img} alt="imagen del curso" />
+          <UploadImageCourse id={id} />
+          <img
+            src={
+              course.image
+                ? `${BASE_URL}${endPoints.get_course_image}/${course.image}`
+                : imgDefault
+            }
+            alt="imagen del curso"
+          />
           <TileContainer>
             <h1>
               Curso <br /> {cleanTitle}
