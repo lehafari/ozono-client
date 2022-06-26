@@ -6,7 +6,7 @@ import { fetchWithToken } from 'helpers/fetch';
 import { SectionAccordion } from './Accordion';
 import Spinner from 'components/common/Spinner';
 
-export const Lessons = ({ courseId, courseTitle }) => {
+export const Lessons = ({ courseId, courseTitle, isPay }) => {
   //***** Get lesson and quizzes *****//
   const [sections, setSections] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,6 +49,7 @@ export const Lessons = ({ courseId, courseTitle }) => {
             key={i}
             section={section}
             courseTitle={courseTitle}
+            isPay={isPay}
           />
         ))
       )}

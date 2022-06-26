@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { videoUrl } from 'const/videoUrl';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toCapitalize } from 'helpers/toCapitalize';
 import { fetchWithToken } from 'helpers/fetch';
 import { endPoints } from 'const/endPoints';
@@ -20,6 +20,9 @@ const Classroom = () => {
   const [lessonsAndQuizzes, setLessonsAndQuizzes] = useState([]);
   const [lesson, setLesson] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [isPay, setIsPay] = React.useState(null);
+
+  const navigate = useNavigate();
 
   const { courseTitle, lessonId, type } = useParams();
   const cleanTitle = toCapitalize(courseTitle.replace(/-/g, ' '));
@@ -31,6 +34,7 @@ const Classroom = () => {
   useEffect(() => {
     course && getLessonsAndQuizzes(course.id);
     getLesson();
+    checkPayment();
   }, [lessonId]);
 
   const getLessonsAndQuizzes = async (courseId) => {
@@ -56,6 +60,13 @@ const Classroom = () => {
     }
   };
 
+  // check if the course is paid
+  const checkPayment = async () => {
+    const res = await fetchWithToken(`${endPoints.check_payment}/${course.id}`);
+    const isPay = await res.json();
+    setIsPay(isPay);
+  };
+
   const getLesson = async () => {
     const response = await fetchWithToken(
       `${endPoints.get_lesson_by_id}/${lessonId}`
@@ -71,6 +82,10 @@ const Classroom = () => {
   const date = getActualDate(lesson.createdAt);
   if (loading) {
     return <Spinner />;
+  }
+
+  if (isPay === false) {
+    navigate(`/courses`);
   }
 
   return (

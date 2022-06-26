@@ -1,17 +1,17 @@
-import { Formik, Form } from "formik";
+import { Formik, Form } from 'formik';
 
-import { BoxButton, Formulario, LeftSide, RightSide } from "./styles";
-import Input from "../../../components/common/Forms/Inputs/";
-import { useDispatch, useSelector } from "react-redux";
-import InputButton from "../../../components/common/Forms/FormButton";
+import { BoxButton, Formulario, LeftSide, RightSide } from './styles';
+import Input from '../../../components/common/Forms/Inputs/';
+import { useDispatch, useSelector } from 'react-redux';
+import InputButton from '../../../components/common/Forms/FormButton';
 
-import { countries } from "../../../const/countries";
-import { fetchWithToken } from "../../../helpers/fetch";
-import { endPoints } from "../../../const/endPoints";
-import { startChecking } from "../../../actions/auth";
-import PopupOk from "../../../components/common/Popup/PopupOk";
-import PopupError from "../../../components/common/Popup/PopupError";
-import Selects2 from "components/common/Forms/Selects2";
+import { countries } from '../../../const/countries';
+import { fetchWithToken } from '../../../helpers/fetch';
+import { endPoints } from '../../../const/endPoints';
+import { startChecking } from '../../../actions/auth';
+import PopupOk from '../../../components/common/Popup/PopupOk';
+import PopupError from '../../../components/common/Popup/PopupError';
+import Selects2 from 'components/common/Forms/Selects2';
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
@@ -35,11 +35,11 @@ export const EditProfile = () => {
     const updatedUser = await fetchWithToken(
       endPoints.update_user,
       values,
-      "PUT"
+      'PUT'
     );
     const data = await updatedUser.json();
     if (updatedUser.status === 200) {
-      PopupOk("22rem", "success", "Perfil actualizado");
+      PopupOk('22rem', 'success', 'Perfil actualizado');
       dispatch(startChecking());
     } else {
       PopupError(data.message);
@@ -72,44 +72,44 @@ export const EditProfile = () => {
                 name="firstName"
                 type="text"
                 placeholder="Primer nombre"
-                width={"75%"}
-                heigth={"50px"}
-                margin={"10px 0px"}
+                width={'90%'}
+                heigth={'50px'}
+                margin={'10px 0px'}
                 errorPadding="0 0 0 15%"
-                backgroundColor={"#fff"}
+                backgroundColor={'#fff'}
               />
               <Input
                 id="lastName"
                 name="lastName"
                 type="text"
                 placeholder="Segundo nombre"
-                width={"75%"}
-                heigth={"50px"}
-                margin={"10px 0px"}
+                width={'90%'}
+                heigth={'50px'}
+                margin={'10px 0px'}
                 errorPadding="0 0 0 15%"
-                backgroundColor={"#fff"}
+                backgroundColor={'#fff'}
               />
               <Input
                 id="username"
                 name="username"
                 type="text"
                 placeholder="Usuario"
-                width={"75%"}
-                heigth={"50px"}
-                margin={"10px 0px"}
+                width={'90%'}
+                heigth={'50px'}
+                margin={'10px 0px'}
                 errorPadding="0 0 0 15%"
-                backgroundColor={"#fff"}
+                backgroundColor={'#fff'}
               />
               <Input
                 id="email"
                 name="email"
                 type="email"
                 placeholder="Email"
-                width={"75%"}
-                heigth={"50px"}
-                margin={"10px 0px"}
+                width={'90%'}
+                heigth={'50px'}
+                margin={'10px 0px'}
                 errorPadding="0 0 0 15%"
-                backgroundColor={"#fff"}
+                backgroundColor={'#fff'}
               />
             </LeftSide>
             <RightSide>
@@ -117,6 +117,7 @@ export const EditProfile = () => {
               <Selects2
                 id="country"
                 name="country"
+                width={'85%'}
                 options={countries}
                 previousValue={country}
                 text="Estado"
@@ -127,10 +128,11 @@ export const EditProfile = () => {
                 id="gender"
                 name="gender"
                 options={[
-                  { name: "Hombre" },
-                  { name: "Mujer" },
-                  { name: "Otro" },
+                  { name: 'Hombre' },
+                  { name: 'Mujer' },
+                  { name: 'Otro' },
                 ]}
+                width={'85%'}
                 text="Sexo"
               />
 
@@ -139,22 +141,22 @@ export const EditProfile = () => {
                 name="phone"
                 type="text"
                 placeholder="Número de teléfono"
-                width={"75%"}
-                heigth={"50px"}
-                margin={"10px 0px"}
+                width={'90%'}
+                heigth={'50px'}
+                margin={'10px 0px'}
                 errorPadding="0 0 0 15%"
-                backgroundColor={"#fff"}
+                backgroundColor={'#fff'}
               ></Input>
               <Input
                 id="ci"
                 name="ci"
                 type="string"
                 placeholder="Cédula de identidad"
-                width={"75%"}
-                heigth={"50px"}
-                margin={"10px 0px"}
+                width={'90%'}
+                heigth={'50px'}
+                margin={'10px 0px'}
                 errorPadding="0 0 0 15%"
-                backgroundColor={"#fff"}
+                backgroundColor={'#fff'}
               ></Input>
             </RightSide>
             <BoxButton>

@@ -88,4 +88,6 @@ export const endPoints = {
   get_all_payments: `/payments/findAll`,
   payment_approved: `/payments/approved`, //falta el id del PAGO
   payment_rejected: `/payments/rejected`, //falta el id del PAGO
+
+  check_payment: `/payments/check`, //falta el id del PAGO
 };

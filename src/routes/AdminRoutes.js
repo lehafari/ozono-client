@@ -1,18 +1,19 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Admin from "../pages/Admin";
-import Advertisements from "../pages/Admin/advertisements";
-import Blogs from "../pages/Admin/Blogs";
-import Courses from "../pages/Admin/Courses";
-import CreateCourse from "../pages/Admin/Courses/CreateCourse";
-import EditCourse from "../pages/Admin/Courses/EditCourse";
-import Emails from "../pages/Admin/Emails";
-import Media from "../pages/Admin/Media";
-import News from "../pages/Admin/News";
-import Payments from "../pages/Admin/Payments";
-import Stats from "../pages/Admin/Stats";
-import Users from "../pages/Admin/Users";
-import { PrivateRoute } from "./PrivateRoute";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Admin from '../pages/Admin';
+import Advertisements from '../pages/Admin/advertisements';
+import Blogs from '../pages/Admin/Blogs';
+import Courses from '../pages/Admin/Courses';
+import CreateCourse from '../pages/Admin/Courses/CreateCourse';
+import EditCourse from '../pages/Admin/Courses/EditCourse';
+import Emails from '../pages/Admin/Emails';
+import Media from '../pages/Admin/Media';
+import News from '../pages/Admin/News';
+import Payments from '../pages/Admin/Payments';
+import Stats from '../pages/Admin/Stats';
+import Users from '../pages/Admin/Users';
+import { PrivateAdminRoute } from './PrivateAdminRoutes';
+import { PrivateRoute } from './PrivateRoute';
 
 const AdminRoutes = () => {
   return (
@@ -21,9 +22,9 @@ const AdminRoutes = () => {
         <Route
           path="/"
           element={
-            <PrivateRoute>
+            <PrivateAdminRoute>
               <Admin />
-            </PrivateRoute>
+            </PrivateAdminRoute>
           }
         >
           {/* //* Seccion de Cursos */}
