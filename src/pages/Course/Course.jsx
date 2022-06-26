@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import Spinner from '../../components/common/Spinner';
-import CourseSection1 from './CourseSection1';
-import CourseSection2 from './CourseSection2';
-import CourseSection3 from './CourseSection3';
-import FooterCourse from './FooterCourse';
-import { Back } from './styles';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import Spinner from "../../components/common/Spinner";
+import CourseSection1 from "./CourseSection1";
+import CourseSection2 from "./CourseSection2";
+import CourseSection3 from "./CourseSection3";
+import FooterCourse from "./FooterCourse";
+import { Back } from "./styles";
 
 const Course = () => {
+  const [loading, setLoading] = useState(false);
   const [Tab, setTab] = useState(1);
   const courseTitle = useParams().courseTitle;
-  const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
   const { courses } = useSelector((state) => state.courses);
   if (courses.length === 0) {
     return <Spinner />;
@@ -20,10 +21,14 @@ const Course = () => {
     (course) => course.title.toLowerCase() === cleanCourseTitle
   );
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Back>
       <CourseSection1 {...course} />
-      <CourseSection2 setTab={setTab} Tab={Tab} />
+      <CourseSection2 setTab={setTab} Tab={Tab} setLoading={setLoading} />
       {Tab === 0 && <CourseSection3 {...course} />}
       <FooterCourse />
     </Back>

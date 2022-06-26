@@ -9,6 +9,7 @@ import {
 } from "context/payments/paymentsReducer";
 import { startGetAllPayments } from "actions/payments";
 import { types } from "context/types/types";
+import Spinner from "components/common/Spinner";
 
 const Payments = () => {
   //Estado que controla el historial de pagos y los pagos pendientes
@@ -30,6 +31,10 @@ const Payments = () => {
     getAllPayments();
     setFlag(false);
   }, [flag]);
+
+  if (payments.loading) {
+    return <Spinner />;
+  }
 
   return (
     <>

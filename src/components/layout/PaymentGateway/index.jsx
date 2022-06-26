@@ -35,9 +35,10 @@ const PaymenGateway = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (error === null) {
+      props.setLoading(true);
       const body = await startCreatePayment(values);
-      console.log(body);
       if (!body.statusCode) {
+        props.setLoading(false);
         Toast("success", "Datos del pago enviados con exito");
         setVisible(false);
       } else {

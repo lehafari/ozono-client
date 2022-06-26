@@ -1,11 +1,10 @@
-import { CourseTab } from 'components/layout/CourseTab';
-import React from 'react';
-import CourseNavbar from '../../../components/layout/CoursePage/CourseNavbar';
+import { CourseTab } from "components/layout/CourseTab";
+import React from "react";
 
-const CourseSection2 = ({ setTab, Tab }) => {
+const CourseSection2 = ({ setTab, Tab, setLoading }) => {
   return (
     <div>
-      <CourseTab setTab={setTab} Tab={Tab} />
+      <CourseTab setTab={setTab} Tab={Tab} setLoading={setLoading} />
     </div>
   );
 };

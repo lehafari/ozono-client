@@ -29,6 +29,7 @@ export const paymentsReducer = (state, action) => {
 
     //******  Payment Approved ******/
     case types.paymentStartApproved:
+      console.log("entre al reducer");
       return {
         ...state,
         loading: true,

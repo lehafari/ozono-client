@@ -4,7 +4,6 @@ import ConfirmPaid from "./ConfirmPaid";
 
 const PendingPayments = ({ flag, setFlag, loading, payments, dispatch }) => {
   //*Paginacion
-
   const [page, setPage] = useState(1); //pagina actual
   const n = 6; //Numero de elementos por paginas
   const totalPages = Math.ceil(payments.length / n) + 1; //total de paginas
@@ -82,7 +81,7 @@ const PendingPayments = ({ flag, setFlag, loading, payments, dispatch }) => {
                     <ConfirmPaid
                       flag={flag}
                       setFlag={setFlag}
-                      loadgin={loading}
+                      loading={loading}
                       data={item}
                       dispatch={dispatch}
                     />

@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
-import React from "react";
+import React, { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { types } from "context/types/types";
 import { startPaymentApproved, startPaymentRejected } from "actions/payments";
@@ -8,16 +8,11 @@ import Toast from "components/common/Popup/Toast";
 import Spinner from "components/common/Spinner";
 
 const ConfirmPaid = ({ flag, setFlag, loading, data, dispatch }) => {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const paymentApproved = async () => {
     dispatch({ type: types.paymentStartApproved, payload: {} });
     const body = await startPaymentApproved(data.payment.id);
-    console.log(loading);
-    if (loading) {
-      return <Spinner />;
-    }
-
     if (!body.statusCode) {
       dispatch({ type: types.paymentApproved, payload: body });
       Toast("success", "Pago aprobado con exito");

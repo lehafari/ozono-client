@@ -16,7 +16,7 @@ import { CourseTeachers } from "./Teachers";
 import { Lessons } from "./Lessons";
 import PaymenGateway from "../PaymentGateway";
 
-export const CourseTab = ({ setTab, Tab }) => {
+export const CourseTab = ({ setTab, Tab, setLoading }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   setTab(activeIndex);
   const { courses } = useSelector((state) => state.courses);
@@ -38,6 +38,7 @@ export const CourseTab = ({ setTab, Tab }) => {
           <ButtonContainer>
             {/* //*Si el estudiante no Posee el curso mostrar boton de comprar */}
             <PaymenGateway
+              setLoading={setLoading}
               cleanTitle={cleanTitle}
               amount={thisCourse.price}
               courseId={thisCourse.id}
