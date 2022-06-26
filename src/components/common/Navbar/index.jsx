@@ -34,7 +34,7 @@ export const Navbar = () => {
               <Link to="/">Home</Link>
             </NavButton>
             <NavButton>
-              <Link to="/classroom">Cursos</Link>
+              <Link to="/courses">Cursos</Link>
             </NavButton>
             <NavButton>
               <Link to="/contact">Contacto</Link>

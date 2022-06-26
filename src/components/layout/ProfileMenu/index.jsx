@@ -95,7 +95,7 @@ export default function ProfileMenu() {
                 color: '#5e82be',
               },
             }}
-            onClick={() => navigate('/admin')}
+            onClick={() => navigate('/admin/courses')}
           >
             Administrador
           </MenuItem>
@@ -112,6 +112,7 @@ export default function ProfileMenu() {
               color: '#5e82be',
             },
           }}
+          onClick={() => navigate('/courses')}
         >
           Cursos
         </MenuItem>

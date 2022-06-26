@@ -5,6 +5,8 @@ import { Navbar } from '../components/common/Navbar';
 import CourseRoutes from './CourseRoutes';
 import { MyCourses } from '../pages/Profile/MyCourses';
 import { EditProfile } from '../pages/Profile/EditProfile';
+
+const PublicCourses = lazy(() => import('pages/PublicCourses/Courses'));
 const Contac = lazy(() => import('../pages/Contac/Contac'));
 
 const Home = lazy(() => import('../pages/Home/Home'));
@@ -18,6 +20,7 @@ const DashboardRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<CourseRoutes />} />
         <Route path="/contact" element={<Contac />} />
+        <Route path="/courses" element={<PublicCourses />} />
 
         <Route
           path="/profile"
