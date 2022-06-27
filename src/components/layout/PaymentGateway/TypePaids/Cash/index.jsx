@@ -1,49 +1,47 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Typography } from '@mui/material';
+import React from 'react';
 
 const Cash = (props) => {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-      <Typography sx={{ margin: "1rem 0rem" }}>
+      <Typography sx={{ margin: '1rem 0rem' }}>
         Direccion fisica donde puede ir a realizar el pago en efectivo
       </Typography>
       {/* Contenedor completo */}
 
       <Box
         sx={{
-          display: "flex",
-          margin: "1rem 0",
+          display: 'flex',
+          margin: '1rem 0',
         }}
       >
         <Typography
           sx={{
-            fontWeight: "bold",
-            margin: "0 5px ",
+            fontWeight: 'bold',
+            margin: '0 5px ',
           }}
         >
           Direccion
         </Typography>
-        <Typography>
-          Calle secreta con carreca secreta diagonal a la tienda secreta
-        </Typography>
+        <Typography>{props.account.address}</Typography>
       </Box>
       <Box
         sx={{
-          display: "flex",
-          margin: "1rem 0",
+          display: 'flex',
+          margin: '1rem 0',
         }}
       >
         <Typography
           sx={{
-            fontWeight: "bold",
-            margin: "0 5px ",
+            fontWeight: 'bold',
+            margin: '0 5px ',
           }}
         >
           Monto:

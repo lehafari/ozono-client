@@ -1,129 +1,132 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography } from '@mui/material';
 
-import React from "react";
+import React from 'react';
 
 const Transfer = (props) => {
+  const { document, bank, accountNumber, accountType, titularName } =
+    props.account;
+
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-      <Typography sx={{ margin: "1rem 0rem" }}>
+      <Typography sx={{ margin: '1rem 0rem' }}>
         Realice la transferencia a la cuenta bancaria: usando los siguientes
         datos
       </Typography>
       {/* Contenedor completo */}
       <Box
         sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
         {/* Contenedor izquierdo */}
         <Box
           sx={{
-            margin: "1rem",
+            margin: '1rem',
           }}
         >
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
             }}
           >
             <Typography
               sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
+                fontWeight: 'bold',
+                margin: '0 5px ',
               }}
             >
               Documento de identidad:
             </Typography>
-            <Typography>23456789</Typography>
+            <Typography>{document}</Typography>
           </Box>
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
             }}
           >
             <Typography
               sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
+                fontWeight: 'bold',
+                margin: '0 5px ',
               }}
             >
               Banco:
             </Typography>
-            <Typography>Banco de Venezuela</Typography>
+            <Typography>{bank}</Typography>
           </Box>
         </Box>
         {/* Contenedor derecho */}
         <Box
           sx={{
-            margin: "1rem",
+            margin: '1rem',
           }}
         >
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
             }}
           >
             <Typography
               sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
+                fontWeight: 'bold',
+                margin: '0 5px ',
               }}
             >
               Titular:
             </Typography>
-            <Typography>Marcel Marin</Typography>
+            <Typography>{titularName}</Typography>
           </Box>
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
             }}
           >
             <Typography
               sx={{
-                fontWeight: "bold",
-                margin: "0 5px ",
+                fontWeight: 'bold',
+                margin: '0 5px ',
               }}
             >
               Cuenta Bancaria:
             </Typography>
-            <Typography>0134123456789</Typography>
+            <Typography>{accountNumber}</Typography>
           </Box>
         </Box>
       </Box>
       <Box
         sx={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <Typography
           sx={{
-            fontWeight: "bold",
-            margin: "0 5px ",
+            fontWeight: 'bold',
+            margin: '0 5px ',
           }}
         >
           Tipo de cuenta
         </Typography>
-        <Typography>Ahorro</Typography>
+        <Typography>{accountType}</Typography>
       </Box>
       <Box
         sx={{
-          display: "flex",
-          margin: "1rem 0",
+          display: 'flex',
+          margin: '1rem 0',
         }}
       >
         <Typography
           sx={{
-            fontWeight: "bold",
-            margin: "0 5px ",
+            fontWeight: 'bold',
+            margin: '0 5px ',
           }}
         >
           Monto:
