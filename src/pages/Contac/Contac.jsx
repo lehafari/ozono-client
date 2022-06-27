@@ -34,7 +34,7 @@ const Contac = () => {
             Soporte Educacional
           </ContactSwitchTextRight>
         </ContactSwitch>
-        <ContactForm />
+        <ContactForm status={switchStatus} />
       </ContactContainer>
     </>
   );

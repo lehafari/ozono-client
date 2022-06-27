@@ -93,4 +93,7 @@ export const endPoints = {
   payment_rejected: `/payments/rejected`, //falta el id del PAGO
 
   check_payment: `/payments/check`, //falta el id del PAGO
+
+  // mails
+  mail_contact: `/mails/contact`,
 };
