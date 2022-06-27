@@ -1,16 +1,16 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import menuLogo from '../../../assets/images/profile-menu.svg';
-import menuLogoBlue from '../../../assets/images/profile-menu-blue.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { Avatar } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { startLogout } from '../../../actions/auth';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import menuLogo from "../../../assets/images/profile-menu.svg";
+import menuLogoBlue from "../../../assets/images/profile-menu-blue.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { Avatar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { startLogout } from "../../../actions/auth";
 
 export default function MobileMenu() {
   const { user } = useSelector((state) => state.auth);
@@ -27,7 +27,7 @@ export default function MobileMenu() {
   const handleLogout = async () => {
     dispatch(startLogout());
     setTimeout(() => {
-      navigate('/');
+      navigate("/");
     }, 2100);
     handleClose();
   };
@@ -35,19 +35,19 @@ export default function MobileMenu() {
     <React.Fragment>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginRight: '1rem',
+          display: "flex",
+          justifyContent: "flex-end",
+          marginRight: "1rem",
         }}
       >
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="large"
-            sx={{ ml: 2, transition: 'all 0.3s ease-in-out' }}
-            aria-controls={open ? 'account-menu' : undefined}
+            sx={{ ml: 2, transition: "all 0.3s ease-in-out" }}
+            aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+            aria-expanded={open ? "true" : undefined}
           >
             <img src={menuLogo} alt="Menu" />
           </IconButton>
@@ -64,11 +64,11 @@ export default function MobileMenu() {
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: 'visible',
-              filter: 'drop-shadow(0px 13px 36px rgba(23, 10, 162, 0.1))',
-              borderRadius: '10px',
+              overflow: "visible",
+              filter: "drop-shadow(0px 13px 36px rgba(23, 10, 162, 0.1))",
+              borderRadius: "10px",
               mt: 0,
-              '& .MuiAvatar-root': {
+              "& .MuiAvatar-root": {
                 width: 32,
                 height: 32,
                 ml: -0.5,
@@ -76,79 +76,63 @@ export default function MobileMenu() {
               },
             },
           }}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "top" }}
         >
           <MenuItem
             sx={{
-              justifyContent: 'end',
-              marginBottom: '1.2rem',
-              '&:hover': {
-                backgroundColor: '#fff',
+              justifyContent: "end",
+              marginBottom: "1.2rem",
+              "&:hover": {
+                backgroundColor: "#fff",
               },
             }}
           >
             <img src={menuLogoBlue} alt="logo" />
           </MenuItem>
           <MenuItem
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
             Home
           </MenuItem>
           <MenuItem
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/courses")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
             Cursos
           </MenuItem>
           <MenuItem
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/contact")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
-              },
-            }}
-          >
-            Pagos
-          </MenuItem>
-          <MenuItem
-            onClick={() => navigate('/contact')}
-            sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
@@ -156,58 +140,60 @@ export default function MobileMenu() {
           </MenuItem>
           <Divider
             sx={{
-              backgroundColor: '#5e82be',
-              width: '70%',
-              margin: '0.5rem auto',
+              backgroundColor: "#5e82be",
+              width: "70%",
+              margin: "0.5rem auto",
             }}
           />
           <MenuItem
-            onClick={() => navigate('/profile')}
+            onClick={() => navigate("/profile/courses")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
             <Avatar
               sx={{
-                marginRight: '0.5rem',
+                marginRight: "0.5rem",
               }}
             />
             {user.username}
           </MenuItem>
           <MenuItem
+            onClick={() => navigate("/profile/scores")}
             sx={{
-              paddingLeft: '1rem',
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              paddingLeft: "1rem",
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
             Mis calificaciones
           </MenuItem>
           <MenuItem
+            onClick={() => navigate("/profile/edit")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
@@ -216,15 +202,15 @@ export default function MobileMenu() {
           <MenuItem
             onClick={handleLogout}
             sx={{
-              justifyContent: 'end',
-              marginBottom: '0.5rem',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              marginBottom: "0.5rem",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
@@ -241,11 +227,11 @@ export default function MobileMenu() {
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: 'visible',
-              filter: 'drop-shadow(0px 13px 36px rgba(23, 10, 162, 0.1))',
-              borderRadius: '10px',
+              overflow: "visible",
+              filter: "drop-shadow(0px 13px 36px rgba(23, 10, 162, 0.1))",
+              borderRadius: "10px",
               mt: 0,
-              '& .MuiAvatar-root': {
+              "& .MuiAvatar-root": {
                 width: 32,
                 height: 32,
                 ml: -0.5,
@@ -253,47 +239,47 @@ export default function MobileMenu() {
               },
             },
           }}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "top" }}
         >
           <MenuItem
             sx={{
-              justifyContent: 'end',
-              marginBottom: '1.2rem',
-              '&:hover': {
-                backgroundColor: '#fff',
+              justifyContent: "end",
+              marginBottom: "1.2rem",
+              "&:hover": {
+                backgroundColor: "#fff",
               },
             }}
           >
             <img src={menuLogoBlue} alt="logo" />
           </MenuItem>
           <MenuItem
-            onClick={() => navigate('/access/login')}
+            onClick={() => navigate("/access/login")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
             Iniciar sesión
           </MenuItem>
           <MenuItem
-            onClick={() => navigate('/access/register')}
+            onClick={() => navigate("/access/register")}
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
@@ -301,23 +287,23 @@ export default function MobileMenu() {
           </MenuItem>
           <Divider
             sx={{
-              backgroundColor: '#5e82be',
-              width: '70%',
-              margin: '0.5rem auto',
+              backgroundColor: "#5e82be",
+              width: "70%",
+              margin: "0.5rem auto",
             }}
           />
           <MenuItem
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             sx={{
-              paddingLeft: '1rem',
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              paddingLeft: "1rem",
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
@@ -325,31 +311,31 @@ export default function MobileMenu() {
           </MenuItem>
           <MenuItem
             sx={{
-              justifyContent: 'end',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
             Cursos
           </MenuItem>
           <MenuItem
-            onClick={() => navigate('/contact')}
+            onClick={() => navigate("/contact")}
             sx={{
-              justifyContent: 'end',
-              marginBottom: '1.2rem',
-              fontSize: '1rem',
-              color: '#767676',
-              padding: '0.5rem 3rem 0.5rem 3rem ',
-              fontWeight: '500',
-              fontFamily: 'helvetica',
-              '&:hover': {
-                color: '#5e82be',
+              justifyContent: "end",
+              marginBottom: "1.2rem",
+              fontSize: "1rem",
+              color: "#767676",
+              padding: "0.5rem 3rem 0.5rem 3rem ",
+              fontWeight: "500",
+              fontFamily: "helvetica",
+              "&:hover": {
+                color: "#5e82be",
               },
             }}
           >
