@@ -60,6 +60,7 @@ export const endPoints = {
   get_section_by_lesson: `/sections/findByLesson`,
   update_section: `/sections/update`,
   delete_section: `/sections/delete`,
+  get_section_by_index: `/sections/index`,
 
   //Lessons
   create_lesson: `/lessons/create`, //falta el ID de la SECCION a la que pertenece la clase
