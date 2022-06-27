@@ -16,6 +16,7 @@ import Lessons from "./Lessons";
 import { useSelector } from "react-redux";
 import UploadImageCourse from "./UploadImageCourse";
 import { BASE_URL, endPoints } from "const/endPoints";
+import Students from "./Students";
 
 const EditCourse = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,13 +74,10 @@ const EditCourse = () => {
               <TabPanel header="Clases">
                 <Lessons courseId={id} />
               </TabPanel>
-              <TabPanel header="FAQS">
-                Content IV Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
+              <TabPanel header="Alumnos">
+                <Students courseId={id} />
               </TabPanel>
-              <TabPanel header="Configuration">
+              <TabPanel header="Certificado">
                 Content V Lorem ipsum dolor sit, amet consectetur adipisicing
                 elit. Impedit doloremque itaque a voluptatum eius modi eum
                 soluta saepe beatae debitis omnis facere ducimus animi ipsum

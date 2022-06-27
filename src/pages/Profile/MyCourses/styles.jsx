@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ProfileCourseList = styled.div`
   display: flex;
@@ -12,6 +12,8 @@ export const ProfileCourseList = styled.div`
 
   & > div {
     margin: 2rem 0;
+    height: 350px;
+    overflow: hidden;
   }
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {

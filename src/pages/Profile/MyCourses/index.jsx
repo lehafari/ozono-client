@@ -1,10 +1,10 @@
-import { Box } from '@mui/system';
-import { CourseItem } from 'components/layout/CourseItem';
-import { endPoints } from 'const/endPoints';
-import { fetchWithToken } from 'helpers/fetch';
-import { useEffect, useState } from 'react';
-import { MyCourseItem } from '../../../components/layout/MyCourseItem';
-import { MyCoursesContainer, ProfileCourseList } from './styles';
+import { Box } from "@mui/system";
+import { CourseItem } from "components/layout/CourseItem";
+import { endPoints } from "const/endPoints";
+import { fetchWithToken } from "helpers/fetch";
+import { useEffect, useState } from "react";
+import { MyCourseItem } from "../../../components/layout/MyCourseItem";
+import { MyCoursesContainer, ProfileCourseList } from "./styles";
 
 export const MyCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -24,11 +24,11 @@ export const MyCourses = () => {
     return (
       <Box
         sx={{
-          height: 'calc(100vh - 300px)',
-          '& > h1': {
-            textAlign: 'center',
-            marginTop: '50px',
-            color: '#a0a0a0',
+          height: "calc(100vh - 300px)",
+          "& > h1": {
+            textAlign: "center",
+            marginTop: "50px",
+            color: "#a0a0a0",
           },
         }}
       >
@@ -54,6 +54,7 @@ export const MyCourses = () => {
               level={level}
               id={id}
               backgroundColor="#fff"
+              image={course.image}
             />
           );
         })}
