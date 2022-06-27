@@ -1,18 +1,18 @@
-import React from 'react';
-import { ImgItem, ItemList, TextItem } from './style';
-import mini from '../../../assets/images//classroom-mini.svg';
-import parse from 'html-react-parser';
-import { Box } from '@mui/system';
-import { truncate } from 'helpers/truncate';
-import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
-import { useNavigate, useHref } from 'react-router-dom';
+import React from "react";
+import { ImgItem, ItemList, TextItem } from "./style";
+import mini from "../../../assets/images//classroom-mini.svg";
+import parse from "html-react-parser";
+import { Box } from "@mui/system";
+import { truncate } from "helpers/truncate";
+import HistoryEduOutlinedIcon from "@mui/icons-material/HistoryEduOutlined";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import { useNavigate, useHref } from "react-router-dom";
 
 const ClassRoomItems = ({ type, courseTitle, lessonId, item }) => {
   const description = truncate(item.description, 100);
-
   const navigate = useNavigate();
 
-  const courseTitleToUrl = courseTitle.replace(/ /g, '-').toLowerCase();
+  const courseTitleToUrl = courseTitle.replace(/ /g, "-").toLowerCase();
   const route = useHref(
     `/course/classroom/${courseTitleToUrl}/${type}/${item.id}`
   );
@@ -20,12 +20,12 @@ const ClassRoomItems = ({ type, courseTitle, lessonId, item }) => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        margin: '10px 0px 10px 0px',
-        padding: '10px',
-        '&:hover': {
-          cursor: 'pointer',
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
+        display: "flex",
+        margin: "10px 0px 10px 0px",
+        padding: "5px",
+        "&:hover": {
+          cursor: "pointer",
+          backgroundColor: "rgba(0, 0, 0, 0.05)",
         },
       }}
       onClick={() => {
@@ -34,14 +34,10 @@ const ClassRoomItems = ({ type, courseTitle, lessonId, item }) => {
       }}
     >
       <ImgItem>
-        {type === 'clase' ? (
-          <img src={mini} alt="miniatura video" />
+        {type === "clase" ? (
+          <OndemandVideoIcon color="info" />
         ) : (
-          <HistoryEduOutlinedIcon
-            sx={{
-              fontSize: '50px',
-            }}
-          />
+          <HistoryEduOutlinedIcon color="info" />
         )}
       </ImgItem>
       <TextItem>

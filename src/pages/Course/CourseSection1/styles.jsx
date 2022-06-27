@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SectionContainer = styled.section`
   padding-top: 85px;
@@ -28,35 +28,12 @@ export const SectionContainer = styled.section`
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5866ad",endColorstr="#37b0cf",GradientType=1);
 `;
 export const TextContainer = styled.div`
-  margin: 5rem 7rem;
-  @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
-    padding: 0px 10px 0px 10px;
-  }
-`;
+  padding: 10% 5% 5% 12%;
+  color: black;
 
-export const Student = styled.div`
-  margin-bottom: 20px;
-  & h6 {
-    color: white;
-    margin: 30px 0px 10px 0px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 100;
-  }
-`;
-
-export const LineUp = styled.div`
-  width: 20%;
-  height: 1.5px;
-  background: #fff;
-  border-radius: 5px;
-  margin-bottom: 20px;
-`;
-
-export const CourseName = styled.div`
-  color: white;
   & h1 {
-    font-family: 'PlantagenetCherokee';
+    height: 200px;
+    font-family: "PlantagenetCherokee";
     font-size: 5rem;
     margin: 0;
     line-height: 1em;
@@ -73,6 +50,10 @@ export const CourseName = styled.div`
       font-size: 2.8rem;
     }
   }
+`;
+
+export const CourseName = styled.div`
+  width: 100%;
 `;
 
 export const CourseDetails = styled.div`

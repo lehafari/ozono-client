@@ -36,9 +36,6 @@ const EditCourse = () => {
   //⬆️⬆️⬆️id del curso en cuestion
   const id = course && course.id;
 
-  //subir imagen
-  console.log(course);
-
   return (
     <Container>
       <h1>Edicion de curso</h1>
@@ -76,12 +73,6 @@ const EditCourse = () => {
               </TabPanel>
               <TabPanel header="Alumnos">
                 <Students courseId={id} />
-              </TabPanel>
-              <TabPanel header="Certificado">
-                Content V Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
               </TabPanel>
             </TabView>
           </MenuContainer>

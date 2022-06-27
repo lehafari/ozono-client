@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container2 = styled.div`
   width: 100%;
@@ -11,7 +11,13 @@ export const SectionContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   height: max-content;
-  background-color: #f8f8f8;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 40px 0px;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -22,9 +28,13 @@ export const ImgContainer = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  @media screen and (max-width: 900px) {
+    width: 90%;
+  }
 `;
 
 export const VideoTitle = styled.div`
+  margin: 10px 0px;
   padding: 20px 0px 0 60px;
 
   & > h1 {
@@ -48,6 +58,13 @@ export const VideoList = styled.div`
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 900px) {
+    width: 95%;
+    margin: 10% 0px;
+    border-radius: 0px;
+  }
 `;
 
 export const HeaderList = styled.div`
@@ -58,6 +75,12 @@ export const HeaderList = styled.div`
     rgba(83, 103, 180, 1) 100%
   );
   border-radius: 15px 15px 0px 0px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 900px) {
+    border-radius: 0px;
+    text-align: center;
+  }
 `;
 
 export const Title = styled.div`
@@ -66,6 +89,9 @@ export const Title = styled.div`
     margin: 0;
     color: #ffff;
     font-size: 1.2rem;
+  }
+  @media screen and (max-width: 900px) {
+    padding: 10px 0px;
   }
 `;
 

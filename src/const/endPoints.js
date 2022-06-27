@@ -36,6 +36,8 @@ export const endPoints = {
 
   get_teachers_by_course: `/courses/teachers`,
 
+  get_students_by_course: `/courses/users`, //falta el id del curso
+
   update_course: `/courses/update`,
 
   delete_course: `/courses/delete`,

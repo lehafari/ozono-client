@@ -9,6 +9,7 @@ export const CoursesContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
+  width: 100%;
   & > h1 {
     font-size: 1.8rem;
     margin: 4rem 0;
@@ -19,12 +20,20 @@ export const TitleContainer = styled.div`
 `;
 
 export const Courses = styled.div`
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
   & > div {
-    width: 100%;
+    width: 65%;
     margin: 3rem 0;
     height: 350px;
     overflow: hidden;
+    @media only screen and (max-width: 700px) {
+      width: 100%;
+    }
   }
 `;

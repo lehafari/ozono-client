@@ -52,6 +52,7 @@ export const CourseTab = ({ setTab, Tab, setLoading, isPay }) => {
                 padding={"2rem 4rem"}
                 alignItems={"center"}
                 display={"flex"}
+                path={`/course/classroom/${courseTitle}`}
               />
             ) : (
               <PaymenGateway
@@ -81,18 +82,6 @@ export const CourseTab = ({ setTab, Tab, setLoading, isPay }) => {
                   courseTitle={courseTitle}
                   isPay={isPay}
                 />
-              </TabPanel>
-              <TabPanel header="FAQS">
-                Content IV Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
-              </TabPanel>
-              <TabPanel header="Configuration">
-                Content V Lorem ipsum dolor sit, amet consectetur adipisicing
-                elit. Impedit doloremque itaque a voluptatum eius modi eum
-                soluta saepe beatae debitis omnis facere ducimus animi ipsum
-                accusamus, molestiae quae provident commodi.
               </TabPanel>
             </TabView>
           </MenuContainer>

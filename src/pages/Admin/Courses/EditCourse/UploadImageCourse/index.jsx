@@ -6,13 +6,9 @@ import { fetchWithTokenToUploadImage } from "helpers/fetch";
 
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
+import { Input } from "./styles";
 
 const UploadImageCourse = (props) => {
-  const Input = styled("input")({
-    display: "none",
-  });
-
   const dispatch = useDispatch();
   const [form_data, set_form_data] = useState();
   const [thereFile, setTherefile] = useState(false);

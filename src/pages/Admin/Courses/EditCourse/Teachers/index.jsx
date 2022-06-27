@@ -1,25 +1,25 @@
-import { Box } from '@mui/material';
-import Spinner from 'components/common/Spinner';
-import { endPoints } from 'const/endPoints';
-import { fetchWithToken } from 'helpers/fetch';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { AddTeacherModal } from './AddTeacherModal';
-import { DeleteTeacherModal } from './DeleteTeacherModal';
-import { TeacherCard } from './TeacherCard';
-import { AddTeacherButton } from './TeacherCard/styles';
+import { Box } from "@mui/material";
+import Spinner from "components/common/Spinner";
+import { endPoints } from "const/endPoints";
+import { fetchWithToken } from "helpers/fetch";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { AddTeacherModal } from "./AddTeacherModal";
+import { DeleteTeacherModal } from "./DeleteTeacherModal";
+import { TeacherCard } from "./TeacherCard";
+import { AddTeacherButton } from "./TeacherCard/styles";
 
 const Teachers = () => {
   //**** get teacher by course id *****/
   const course = useParams().courseTitle;
-  const cleanCourse = course && course.replaceAll('-', ' ').toLowerCase();
+  const cleanCourse = course && course.replaceAll("-", " ").toLowerCase();
   const courses = useSelector((state) => state.courses.courses);
   const courseId = courses.find(
     (c) => c.title.toLowerCase() === cleanCourse
   ).id;
 
-  const [teachers, setTeachers] = useState('');
+  const [teachers, setTeachers] = useState("");
   const [loading, setLoading] = useState(true);
 
   const getTeachers = async (courseId) => {
@@ -40,18 +40,27 @@ const Teachers = () => {
 
   useEffect(() => {
     getTeachers(courseId);
-    console.log('falg', flag);
+    console.log("falg", flag);
   }, [flag]);
 
   if (loading) {
-    return <Spinner />;
+    return (
+      <div
+        style={{
+          width: "200px",
+          height: "200px",
+        }}
+      >
+        cargando...
+      </div>
+    );
   }
   return (
     <>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
+          display: "flex",
+          justifyContent: "flex-end",
         }}
       >
         <DeleteTeacherModal
@@ -63,12 +72,12 @@ const Teachers = () => {
       </Box>
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: '1rem',
-          marginTop: '1rem',
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "1rem",
+          marginTop: "1rem",
         }}
       >
         {teachers.length !== 0 ? (

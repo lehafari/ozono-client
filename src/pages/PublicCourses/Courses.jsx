@@ -1,4 +1,3 @@
-import { Switch } from "@mui/material";
 import { CourseItem } from "components/layout/CourseItem";
 import React from "react";
 import { useSelector } from "react-redux";
