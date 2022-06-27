@@ -144,12 +144,12 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
           <Box
             sx={{
               textAlign: "center",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              color: "red",
+              fontSize: "0.9rem",
+              fontWeight: "600",
+              color: "#757373",
             }}
           >
-            <span>Presione el boton para agregar una clase o Quiz</span>
+            <span>Presione el boton para agregar una clase o quiz</span>
           </Box>
           {/* Boton crear clase/quiz  */}
           <Box
@@ -179,19 +179,40 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                     key={item.id}
                     style={{
                       display: "flex",
-                      justifyContent: "space-evenly",
-                      backgroundColor: "#eea5a5",
-                      margin: "5px 0px",
+                      justifyContent: "space-between",
+                      backgroundColor: "#F0F0F0",
+                      margin: "10px 0px",
+                      width: "100%",
                     }}
                   >
-                    <div>
-                      <span style={{ margin: "0 50px 0 0" }}>
-                        Contenido: Quiz
+                    <div
+                      style={{
+                        width: "50%",
+                        flexShrink: 0,
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                      }}
+                    >
+                      <span
+                        style={{
+                          margin: "0 50px 0 0",
+                          fontWeight: "700",
+                          fontSize: "1.1rem",
+                        }}
+                      >
+                        Quiz
                       </span>
                       <span>{item.name}</span>
                     </div>
 
-                    <div>
+                    <div
+                      style={{
+                        width: "50%",
+                        flexShrink: 0,
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
                       <span>
                         {/* //*Preguntas del Quiz */}
                         <ModalQuestionAnswer quizId={item.id} />
@@ -221,18 +242,38 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
                       display: "flex",
                       justifyContent: "space-evenly",
                       alignItems: "center",
-                      backgroundColor: "#a5bcee",
+                      backgroundColor: "#fff",
                       margin: "5px 0px",
                     }}
                   >
-                    <div>
-                      <span style={{ margin: "0 50px 0 0" }}>
-                        Contenido: Clase
+                    <div
+                      style={{
+                        width: "50%",
+                        flexShrink: 0,
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                      }}
+                    >
+                      <span
+                        style={{
+                          margin: "0 50px 0 0",
+                          fontWeight: "700",
+                          fontSize: "1.1rem",
+                        }}
+                      >
+                        Clase
                       </span>
                       <span>{item.name}</span>
                     </div>
 
-                    <div>
+                    <div
+                      style={{
+                        width: "50%",
+                        flexShrink: 0,
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
                       {/* //*Subir video de la clase */}
                       <span>{<UploadLesson lessonId={item.id} />}</span>
                       <span
