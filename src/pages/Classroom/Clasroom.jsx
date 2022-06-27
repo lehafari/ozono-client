@@ -1,31 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { videoUrl } from "const/videoUrl";
-import { useNavigate, useParams } from "react-router-dom";
-import { toCapitalize } from "helpers/toCapitalize";
-import { fetchWithToken } from "helpers/fetch";
-import { endPoints } from "const/endPoints";
-import Spinner from "components/common/Spinner";
+import { videoUrl } from 'const/videoUrl';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toCapitalize } from 'helpers/toCapitalize';
+import { fetchWithToken } from 'helpers/fetch';
+import { endPoints } from 'const/endPoints';
+import Spinner from 'components/common/Spinner';
 
-import { sortByCreateDate } from "helpers/sort";
-import { useSelector } from "react-redux";
-import { getActualDate } from "helpers/getDate";
-import { VideoLesson } from "./Lessons";
-import { Box } from "@mui/system";
-import { BackgroundNavbar } from "components/common/BackgroundNavbar";
-import { MenuBar } from "components/common/MenuBar";
-import { Quiz } from "./Quiz";
+import { sortByCreateDate } from 'helpers/sort';
+import { useSelector } from 'react-redux';
+import { getActualDate } from 'helpers/getDate';
+import { VideoLesson } from './Lessons';
+import { Box } from '@mui/system';
+import { BackgroundNavbar } from 'components/common/BackgroundNavbar';
+import { MenuBar } from 'components/common/MenuBar';
+import { Quiz } from './Quiz';
 
 const Classroom = () => {
   const [lessonsAndQuizzes, setLessonsAndQuizzes] = useState([]);
   const [lesson, setLesson] = React.useState([]);
+  const [section, setSection] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [nextSection, setNextSection] = React.useState([]);
+  console.log(
+    '🚀 ~ file: Clasroom.jsx ~ line 25 ~ Classroom ~ nextSection',
+    nextSection
+  );
+  const [nextId, setNextId] = React.useState('');
+
   const [isPay, setIsPay] = React.useState(null);
 
   const navigate = useNavigate();
 
   const { courseTitle, lessonId, type } = useParams();
-  const cleanTitle = toCapitalize(courseTitle.replace(/-/g, " "));
+  const cleanTitle = toCapitalize(courseTitle.replace(/-/g, ' '));
 
   const { courses } = useSelector((state) => state.courses);
   const course = courses.find(
@@ -37,13 +45,16 @@ const Classroom = () => {
     checkPayment();
   }, [lessonId]);
 
+  useEffect(() => {
+    getSection();
+  }, []);
+
   const getLessonsAndQuizzes = async (courseId) => {
     const section = await fetchWithToken(
       `${endPoints.get_section_by_lesson}/${lessonId}`
     );
     const bodySection = await section.json();
-    console.log("body Section", bodySection);
-    console.log(lessonId);
+    setSection(bodySection);
 
     const lessons = await fetchWithToken(
       `${endPoints.get_all_lessons_by_section}/${bodySection.id}`
@@ -52,7 +63,7 @@ const Classroom = () => {
     const quizzes = await fetchWithToken(
       `${endPoints.get_all_quiz_by_section}/${bodySection.id}`
     );
-    console.log("body Lesson", bodyLessons);
+
     const bodyQuizzes = await quizzes.json();
     if (lessons.status === 200 && quizzes.status === 200) {
       setLessonsAndQuizzes(sortByCreateDate(bodyLessons, bodyQuizzes));
@@ -82,6 +93,14 @@ const Classroom = () => {
     setLoading(false);
   };
 
+  const getSection = async () => {
+    const response = await fetchWithToken(
+      `${endPoints.get_all_sections_by_course}/${course.id}`
+    );
+    const body = await response.json();
+    const index = body.findIndex((s) => s.id === section.id);
+  };
+
   const date = getActualDate(lesson.createdAt);
   if (loading) {
     return <Spinner />;
@@ -94,17 +113,18 @@ const Classroom = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#f8f8f8",
-        height: "calc(100vh - 84px)",
+        backgroundColor: '#f8f8f8',
+        height: 'calc(100vh - 84px)',
       }}
     >
       <BackgroundNavbar />
       <MenuBar />
 
-      {type === "clase" ? (
+      {type === 'clase' ? (
         <VideoLesson
           date={date}
           lesson={lesson}
+          section={section}
           lessonsAndQuizzes={lessonsAndQuizzes}
           cleanTitle={cleanTitle}
           courseTitle={courseTitle}
