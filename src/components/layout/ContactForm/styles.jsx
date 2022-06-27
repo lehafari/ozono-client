@@ -16,7 +16,7 @@ export const ContactFormContainer = styled.div`
   }
 
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
-    width: 70%;
+    width: 85%;
     padding: 1rem 30px;
   }
 `;
