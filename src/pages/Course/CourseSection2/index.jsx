@@ -1,7 +1,8 @@
-import { CourseTab } from "components/layout/CourseTab";
-import React from "react";
+import { CourseTab } from 'components/layout/CourseTab';
+import React from 'react';
 
 const CourseSection2 = ({ setTab, Tab, setLoading, isPay }) => {
+  console.log(isPay);
   return (
     <>
       <CourseTab

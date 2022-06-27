@@ -31,7 +31,14 @@ const Course = () => {
   // check if the course is paid
   const checkPayment = async () => {
     const res = await fetchWithToken(`${endPoints.check_payment}/${course.id}`);
+
     const isPay = await res.json();
+
+    if (res.status === 401) {
+      console.log('qwe');
+      setIsPay(false);
+      return;
+    }
     setIsPay(isPay);
   };
 
