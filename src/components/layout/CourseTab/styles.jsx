@@ -1,14 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
   height: -webkit-fill-available;
-  heigght: fill-available;
+  height: fill-available;
   padding: 0 4.5rem 0 4.5rem;
-
-  /* background-color: pink; */
   & > h1 {
     text-align: center;
+  }
+  @media only screen and (min-width: 571px) and (max-width: 1000px) {
+    padding: 0 5%;
+  }
+  @media only screen and (${(props) => props.theme.breakpoints.s}) {
+    padding: 0;
   }
 `;
 export const ShadowContainer = styled.div``;
@@ -24,6 +28,12 @@ export const ImgContainer = styled.div`
     object-fit: cover;
     border-radius: 40px 40px 0px 0px;
     position: absolute;
+  }
+  @media only screen and (${(props) => props.theme.breakpoints.s}) {
+    border-radius: 20px 20px 0 0;
+    & > img {
+      border-radius: 20px 20px 0 0;
+    }
   }
 `;
 
@@ -45,7 +55,7 @@ export const TileContainer = styled.div`
   & > h1 {
     margin: 0;
     font-size: 3.5rem;
-    font-family: 'PlantagenetCherokee';
+    font-family: "PlantagenetCherokee";
     padding-right: 150px;
     padding-left: 20px;
     color: ${(props) => props.theme.colors.titleBlue};
@@ -75,6 +85,9 @@ export const MenuContainer = styled.div`
     justify-content: space-around;
     padding: 6px 5px 0 5px;
     font-weight: 500;
+    @media only screen and (${(props) => props.theme.breakpoints.s}) {
+      font-size: 0.8rem;
+    }
   }
   & .p-tabview-nav-link {
     background-color: rgba(255, 255, 255, 0) !important;
@@ -92,12 +105,14 @@ export const MenuContainer = styled.div`
   /* Color de la barrita de seleccion */
   & .p-tabview .p-tabview-nav .p-tabview-ink-bar {
     background-color: ${(props) => props.theme.colors.titleBlue} !important;
+    @media only screen and (${(props) => props.theme.breakpoints.s}) {
+    }
   }
 
   & .p-tabview-panels {
     border-radius: 0 0 45px 45px;
     min-height: 300px;
-    max-height: ${(props) => props.maxHeight || '550px'};
+    max-height: ${(props) => props.maxHeight || "550px"};
     overflow-y: scroll;
     text-wrap: normal;
     padding: 2rem 3rem;

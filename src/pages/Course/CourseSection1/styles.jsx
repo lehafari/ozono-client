@@ -28,11 +28,10 @@ export const SectionContainer = styled.section`
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5866ad",endColorstr="#37b0cf",GradientType=1);
 `;
 export const TextContainer = styled.div`
-  padding: 10% 5% 5% 12%;
-  color: black;
+  padding: 10% 0% 10% 12%;
+  color: white;
 
   & h1 {
-    height: 200px;
     font-family: "PlantagenetCherokee";
     font-size: 5rem;
     margin: 0;
@@ -49,16 +48,5 @@ export const TextContainer = styled.div`
     & h1 {
       font-size: 2.8rem;
     }
-  }
-`;
-
-export const CourseName = styled.div`
-  width: 100%;
-`;
-
-export const CourseDetails = styled.div`
-  & p {
-    font-size: 1.5rem;
-    font-weight: lighter;
   }
 `;

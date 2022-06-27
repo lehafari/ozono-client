@@ -1,11 +1,6 @@
 import { toCapitalize } from "helpers/toCapitalize";
 import React from "react";
-import {
-  CourseDetails,
-  CourseName,
-  SectionContainer,
-  TextContainer,
-} from "./styles";
+import { SectionContainer, TextContainer } from "./styles";
 
 const CourseSection1 = ({ title }) => {
   //title to capitalize
@@ -13,9 +8,7 @@ const CourseSection1 = ({ title }) => {
   return (
     <SectionContainer>
       <TextContainer>
-        <h1>asdasdasdsadsadasdasd</h1>
-        {/* {toCapitalize(title)} */}
-        <CourseDetails></CourseDetails>
+        <h1>{toCapitalize(title)}</h1>
       </TextContainer>
     </SectionContainer>
   );

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   /* background-color: #f8f8f8; */
@@ -34,7 +34,7 @@ export const TextContainer = styled.div`
   justify-content: center;
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     width: 100%;
-    margin: auto;
+    align-items: center;
   }
 `;
 
