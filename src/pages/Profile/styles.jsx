@@ -12,6 +12,7 @@ export const ProfileInfo = styled.div`
     object-fit: cover;
     width: 150px;
     height: 150px;
+    border-radius: 50%;
   }
 
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
