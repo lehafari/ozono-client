@@ -31,7 +31,13 @@ export const SectionAccordion = ({ section, courseTitle, isPay }) => {
       setLessonsAndQuizzes(sortByCreateDate(bodyLessons, bodyQuizzes));
       setLoading(false);
     } else {
-      setLessonsAndQuizzes([]);
+      if (lessons.status === 200) {
+        setLessonsAndQuizzes(bodyLessons);
+        setLoading(false);
+      } else {
+        setLessonsAndQuizzes(bodyQuizzes);
+        setLoading(false);
+      }
       setLoading(false);
     }
   };

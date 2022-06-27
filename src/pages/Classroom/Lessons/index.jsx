@@ -26,7 +26,15 @@ export const VideoLesson = ({
   videoUrl,
   lessonId,
   section,
+  nextSection,
+  type,
 }) => {
+  // const firstNextLesson = nextSection[0];
+  // const newType = type === 'clase' ? 'clase' : 'quiz';
+
+  // const nextPath =
+  //   firstNextLesson &&
+  //   `/course/classroom/${cleanTitle}/${newType}/${firstNextLesson.id}`;
   return (
     <Box
       sx={{
@@ -95,15 +103,16 @@ export const VideoLesson = ({
         </VideoList>
       </SectionContainer>
       <Container2>
-        <ButtonSection>
+        {/* <ButtonSection>
           <h2>Quiz 1</h2>
           <Button
             text={<ArrowForwardIcon fontSize="medium" />}
             padding="9px 11px"
             borderRadius="50%"
             shadow="0px 13px 56px  rgba(82, 124, 182, 0.71)"
+            path={nextPath}
           />
-        </ButtonSection>
+        </ButtonSection> */}
       </Container2>
     </Box>
   );

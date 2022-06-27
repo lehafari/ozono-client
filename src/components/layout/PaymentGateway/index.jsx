@@ -17,8 +17,14 @@ import Cash from './TypePaids/Cash';
 import PaidMobile from './TypePaids/PaidMobile';
 import { fetchWithToken } from 'helpers/fetch';
 import { endPoints } from 'const/endPoints';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const PaymenGateway = (props) => {
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
+
+  const navigate = useNavigate();
   // Estado del modal
   const [visible, setVisible] = useState(null);
   // Estado del formulario
@@ -82,8 +88,10 @@ const PaymenGateway = (props) => {
   return (
     <>
       <InputButton
-        text="Comprar"
-        onClick={() => setVisible(true)}
+        text={user ? 'Pagar' : 'Registrarse'}
+        onClick={
+          user ? () => setVisible(true) : () => navigate('/access/login')
+        }
         fontSize={'1.5rem'}
         padding={'2rem 4rem'}
         alignItems={'center'}

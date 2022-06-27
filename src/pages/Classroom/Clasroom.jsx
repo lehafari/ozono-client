@@ -22,11 +22,6 @@ const Classroom = () => {
   const [section, setSection] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [nextSection, setNextSection] = React.useState([]);
-  console.log(
-    '🚀 ~ file: Clasroom.jsx ~ line 25 ~ Classroom ~ nextSection',
-    nextSection
-  );
-  const [nextId, setNextId] = React.useState('');
 
   const [isPay, setIsPay] = React.useState(null);
 
@@ -45,15 +40,16 @@ const Classroom = () => {
     checkPayment();
   }, [lessonId]);
 
-  useEffect(() => {
-    getSection();
-  }, []);
+  // useEffect(() => {
+  //   getNextSection();
+  // }, []);
 
   const getLessonsAndQuizzes = async (courseId) => {
     const section = await fetchWithToken(
       `${endPoints.get_section_by_lesson}/${lessonId}`
     );
     const bodySection = await section.json();
+
     setSection(bodySection);
 
     const lessons = await fetchWithToken(
@@ -93,13 +89,32 @@ const Classroom = () => {
     setLoading(false);
   };
 
-  const getSection = async () => {
-    const response = await fetchWithToken(
-      `${endPoints.get_all_sections_by_course}/${course.id}`
-    );
-    const body = await response.json();
-    const index = body.findIndex((s) => s.id === section.id);
-  };
+  // const getNextSection = async () => {
+  //   const section = await fetchWithToken(
+  //     `${endPoints.get_section_by_lesson}/${lessonId}`
+  //   );
+  //   const bodySection = await section.json();
+  //   const findDto = { courseId: course.id, index: bodySection.index + 1 };
+  //   const res = await fetchWithToken(
+  //     `${endPoints.get_section_by_index}`,
+  //     findDto,
+  //     'POST'
+  //   );
+  //   const body = await res.json();
+  //   const nextLessons = await fetchWithToken(
+  //     `${endPoints.get_all_lessons_by_section}/${body.id}`
+  //   );
+  //   const bodyNextLessons = await nextLessons.json();
+  //   if (bodyNextLessons.length < 0) {
+  //     const res = await fetchWithToken(
+  //       `${endPoints.get_all_quiz_by_section}/${body.id}`
+  //     );
+  //     const bodyQuizzes = await res.json();
+  //     setNextSection(bodyQuizzes);
+  //     return;
+  //   }
+  //   setNextSection(bodyNextLessons);
+  // };
 
   const date = getActualDate(lesson.createdAt);
   if (loading) {
@@ -123,6 +138,7 @@ const Classroom = () => {
       {type === 'clase' ? (
         <VideoLesson
           date={date}
+          type={type}
           lesson={lesson}
           section={section}
           lessonsAndQuizzes={lessonsAndQuizzes}
@@ -130,6 +146,7 @@ const Classroom = () => {
           courseTitle={courseTitle}
           lessonId={lessonId}
           videoUrl={videoUrl}
+          nextSection={nextSection}
         />
       ) : (
         <Quiz />
