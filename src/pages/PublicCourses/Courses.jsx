@@ -1,11 +1,11 @@
-import { Switch } from '@mui/material';
-import { CourseItem } from 'components/layout/CourseItem';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
-import { MenuBar } from '../../components/common/MenuBar';
-import Resize from '../../helpers/Resize';
-import { Courses, CoursesContainer, TitleContainer } from './styles';
+import { Switch } from "@mui/material";
+import { CourseItem } from "components/layout/CourseItem";
+import React from "react";
+import { useSelector } from "react-redux";
+import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
+import { MenuBar } from "../../components/common/MenuBar";
+import Resize from "../../helpers/Resize";
+import { Courses, CoursesContainer, TitleContainer } from "./styles";
 
 const PublicCourses = () => {
   const width = Resize();
@@ -33,6 +33,7 @@ const PublicCourses = () => {
                   level={level}
                   id={id}
                   backgroundColor="#fff"
+                  image={course.image}
                 />
               );
             })}

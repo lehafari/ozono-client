@@ -22,7 +22,8 @@ const ModalQuestionAnswer = ({ quizId }) => {
   const onHide = () => {
     setDisplay(false);
   };
-  //** Select data **/
+
+  //** Opcion seleccionada **/
   const [selected, setSelected] = useState(null);
 
   const onOptionChange = (e) => {
@@ -31,29 +32,33 @@ const ModalQuestionAnswer = ({ quizId }) => {
 
   //*Reducer quizQuestion
   const [questions, dispatch] = useReducer(questionReducer, initialState);
+  const [flag, setFlag] = useState(true);
 
   //*Get all Questions
   useEffect(() => {
     const getAllQuestions = async () => {
-      dispatch({
-        type: types.questionStartFetch,
-        payload: {},
-      });
-      const body = await startFetchQuestions(quizId);
-      if (body.statusCode) {
+      if (flag) {
         dispatch({
-          type: types.questionFetchError,
+          type: types.questionStartFetch,
           payload: {},
         });
-      } else {
-        dispatch({
-          type: types.questionFetch,
-          payload: body,
-        });
+        const body = await startFetchQuestions(quizId);
+        if (body.statusCode) {
+          dispatch({
+            type: types.questionFetchError,
+            payload: {},
+          });
+        } else {
+          dispatch({
+            type: types.questionFetch,
+            payload: body,
+          });
+        }
       }
     };
     getAllQuestions();
-  }, []);
+    setFlag(false);
+  }, [flag]);
 
   const optionsItems = [
     { label: "Verdadero y Falso", value: 1 },
@@ -113,6 +118,7 @@ const ModalQuestionAnswer = ({ quizId }) => {
                 dispatch={dispatch}
                 quizId={quizId}
                 setSelected={setSelected}
+                setFlag={setFlag}
               />
             )}
             {selected === 2 && (
@@ -120,6 +126,7 @@ const ModalQuestionAnswer = ({ quizId }) => {
                 dispatch={dispatch}
                 quizId={quizId}
                 setSelected={setSelected}
+                setFlag={setFlag}
               />
             )}
             {!selected &&

@@ -1,8 +1,8 @@
-import { TabPanel, TabView } from 'primereact/tabview';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import img from 'assets/images/course-image.png';
+import { TabPanel, TabView } from "primereact/tabview";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import imgDefault from "assets/images/course-image.png";
 import {
   ButtonContainer,
   Container,
@@ -10,19 +10,20 @@ import {
   MenuContainer,
   NavbarContainer,
   ShadowContainer,
-} from './styles';
-import { Description } from './Description';
-import { CourseTeachers } from './Teachers';
-import { Lessons } from './Lessons';
-import PaymenGateway from '../PaymentGateway';
-import { Button } from 'components/common/Buttons/MainButton';
+} from "./styles";
+import { Description } from "./Description";
+import { CourseTeachers } from "./Teachers";
+import { Lessons } from "./Lessons";
+import PaymenGateway from "../PaymentGateway";
+import { Button } from "components/common/Buttons/MainButton";
+import { BASE_URL, endPoints } from "const/endPoints";
 
 export const CourseTab = ({ setTab, Tab, setLoading, isPay }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   setTab(activeIndex);
   const { courses } = useSelector((state) => state.courses);
   const courseTitle = useParams().courseTitle;
-  const cleanCourseTitle = courseTitle && courseTitle.replaceAll('-', ' ');
+  const cleanCourseTitle = courseTitle && courseTitle.replaceAll("-", " ");
   const cleanTitle = cleanCourseTitle
     .trim()
     .toLowerCase()
@@ -35,15 +36,22 @@ export const CourseTab = ({ setTab, Tab, setLoading, isPay }) => {
     <Container>
       <ShadowContainer>
         <ImgContainer>
-          <img src={img} alt="imagen del curso" />
+          <img
+            src={
+              thisCourse.image
+                ? `${BASE_URL}${endPoints.get_course_image}/${thisCourse.image}`
+                : imgDefault
+            }
+            alt="imagen del curso"
+          />
           <ButtonContainer>
             {isPay ? (
               <Button
                 text="Entra al classroom"
-                fontSize={'1.2rem'}
-                padding={'2rem 4rem'}
-                alignItems={'center'}
-                display={'flex'}
+                fontSize={"1.2rem"}
+                padding={"2rem 4rem"}
+                alignItems={"center"}
+                display={"flex"}
               />
             ) : (
               <PaymenGateway
@@ -56,7 +64,7 @@ export const CourseTab = ({ setTab, Tab, setLoading, isPay }) => {
           </ButtonContainer>
         </ImgContainer>
         <NavbarContainer>
-          <MenuContainer maxHeight={Tab === 0 ? '450px' : null}>
+          <MenuContainer maxHeight={Tab === 0 ? "450px" : null}>
             <TabView
               activeIndex={activeIndex}
               onTabChange={(e) => setActiveIndex(e.index)}

@@ -95,6 +95,7 @@ const TrueFalse = (props) => {
         });
         Toast("success", body.message);
         props.setSelected(null);
+        props.setFlag(true);
       }
     }
   };

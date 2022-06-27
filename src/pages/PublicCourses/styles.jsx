@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CoursesContainer = styled.div`
   background-color: ${(props) => props.theme.colors.lightGrayBackground};
@@ -21,8 +21,10 @@ export const TitleContainer = styled.div`
 export const Courses = styled.div`
   width: 70%;
   margin: 0 auto;
-
   & > div {
+    width: 100%;
     margin: 3rem 0;
+    height: 350px;
+    overflow: hidden;
   }
 `;

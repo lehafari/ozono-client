@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CourseContainer = styled.div`
   border-radius: 35px;
   background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : '#f8f8f8'};
+    props.backgroundColor ? props.backgroundColor : "#f8f8f8"};
   width: 100%;
   height: 100%;
   display: flex;
@@ -25,6 +25,7 @@ export const CourseContainer = styled.div`
 export const CourseImage = styled.div`
   width: 50%;
   height: auto;
+  overflow: hidden;
 
   @media only screen and (${(props) => props.theme.breakpoints.tablet}) {
     width: 100%;

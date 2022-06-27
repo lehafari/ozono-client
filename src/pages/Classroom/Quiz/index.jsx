@@ -1,17 +1,18 @@
-import { endPoints } from 'const/endPoints';
-import { fetchWithToken } from 'helpers/fetch';
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { ConfirmQuiz } from '../ConfirmQuiz';
-import { SectionContainer } from '../Lessons/styles';
-import { Typography } from '@mui/material';
-import { Question } from './Question';
-import { Box } from '@mui/system';
-import { Timer } from './Timer';
-import { useSelector } from 'react-redux';
-import { Button } from 'components/common/Buttons/MainButton';
-import { Dialog } from 'primereact/dialog';
-import { QuizResults } from './Modal/QuizResults';
+import { endPoints } from "const/endPoints";
+import { fetchWithToken } from "helpers/fetch";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ConfirmQuiz } from "../ConfirmQuiz";
+import { SectionContainer } from "../Lessons/styles";
+import { Typography } from "@mui/material";
+import { Question } from "./Question";
+import { Box } from "@mui/system";
+import { Timer } from "./Timer";
+import { useSelector } from "react-redux";
+import { Button } from "components/common/Buttons/MainButton";
+import { Dialog } from "primereact/dialog";
+import { QuizResults } from "./Modal/QuizResults";
+import Spinner from "components/common/Spinner";
 
 export const Quiz = () => {
   const navigate = useNavigate();
@@ -29,7 +30,6 @@ export const Quiz = () => {
   const [responses, setResponses] = useState([]);
 
   //**** Modal */
-
   const onDislayModal = () => {
     setDisplayModal(true);
   };
@@ -53,7 +53,7 @@ export const Quiz = () => {
     const initialResponses = questionsData.map((question) => ({
       questionId: question.id,
       option: {
-        title: '',
+        title: "",
         isCorrect: false,
       },
     }));
@@ -77,7 +77,7 @@ export const Quiz = () => {
 
   const handleSubmit = async () => {
     const score = setScore(responses, actualCourse.id, quiz.id);
-    const response = await fetchWithToken(endPoints.set_score, score, 'PUT');
+    const response = await fetchWithToken(endPoints.set_score, score, "PUT");
     if (response.status === 200) {
       const data = await response.json();
       setQuizResults(data);
@@ -91,7 +91,7 @@ export const Quiz = () => {
 
   useEffect(() => {
     if (quiz && questions) {
-      const finalScore = setScore(responses, actualCourse.id, quiz.id);
+      setScore(responses, actualCourse.id, quiz.id);
     }
   }, [responses]);
 
@@ -102,11 +102,11 @@ export const Quiz = () => {
       ) : (
         <Box
           sx={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
           }}
         >
           <Timer
@@ -116,8 +116,8 @@ export const Quiz = () => {
           />
           <Box
             sx={{
-              width: '50%',
-              marginTop: '2rem',
+              width: "50%",
+              marginTop: "2rem",
             }}
           >
             {questions.map((question) => {

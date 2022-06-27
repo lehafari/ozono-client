@@ -7,12 +7,13 @@ import {
   CourseInstructor,
   CoursePrice,
   CourseTitle,
-} from './styles';
+} from "./styles";
 
-import courseImage from '../../../assets/images/hero-image.png';
-import PersonIcon from '@mui/icons-material/Person';
-import { Button } from '../../common/Buttons/MainButton';
-import { toCapitalize } from 'helpers/toCapitalize';
+import imgDefault from "../../../assets/images/hero-image.png";
+import PersonIcon from "@mui/icons-material/Person";
+import { Button } from "../../common/Buttons/MainButton";
+import { toCapitalize } from "helpers/toCapitalize";
+import { BASE_URL, endPoints } from "const/endPoints";
 
 export const CourseItem = ({
   price,
@@ -23,19 +24,27 @@ export const CourseItem = ({
   id,
   description,
   backgroundColor,
+  image,
 }) => {
   const getWidth = () => {
     return window.innerWidth;
   };
 
   const titleToUrl = (title) => {
-    return title && title.toLowerCase().split(' ').join('-');
+    return title && title.toLowerCase().split(" ").join("-");
   };
   return (
     <>
       <CourseContainer backgroundColor={backgroundColor && backgroundColor}>
         <CourseImage>
-          <img src={courseImage} alt="course" />
+          <img
+            src={
+              image
+                ? `${BASE_URL}${endPoints.get_course_image}/${image}`
+                : imgDefault
+            }
+            alt="course"
+          />
         </CourseImage>
         <CourseContend>
           <CourseTitle>
@@ -50,7 +59,7 @@ export const CourseItem = ({
             <p>
               <PersonIcon
                 sx={{
-                  color: '#898989',
+                  color: "#898989",
                 }}
                 fontSize="large"
               />
@@ -66,8 +75,8 @@ export const CourseItem = ({
             text="Ver Curso"
             path={`/course/${titleToUrl(title)}/#top`}
             width="50%"
-            alignSelf={getWidth() < 600 ? 'center' : ''}
-            fontSize={getWidth() < 600 ? '1rem' : ''}
+            alignSelf={getWidth() < 600 ? "center" : ""}
+            fontSize={getWidth() < 600 ? "1rem" : ""}
           />
         </CourseContend>
       </CourseContainer>
