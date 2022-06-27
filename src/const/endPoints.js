@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3333";
+export const BASE_URL = 'http://localhost:3333';
 
 export const endPoints = {
   //auth
@@ -93,6 +93,8 @@ export const endPoints = {
   get_all_payments: `/payments/findAll`,
   payment_approved: `/payments/approved`, //falta el id del PAGO
   payment_rejected: `/payments/rejected`, //falta el id del PAGO
+  payment_set_account: `/payments/setAccount`,
+  payment_get_account: `/payments/getAccount`,
 
   check_payment: `/payments/check`, //falta el id del PAGO
 
