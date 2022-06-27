@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ProfileContainer = styled.div``;
 
@@ -7,6 +7,13 @@ export const ProfileInfo = styled.div`
   height: 100px;
   align-items: center;
   padding: 0 7rem;
+  background-color: #f5f5f5;
+  & > img {
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
 
   @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
     padding: 0 1.5rem;
@@ -31,7 +38,7 @@ export const ProfileInfoText = styled.div`
   align-items: flex-start;
 
   & > h2 {
-    family-font: 'helvetica';
+    family-font: "helvetica";
     font-size: 1.5rem;
     font-weight: 500;
     margin: 0;
@@ -43,7 +50,7 @@ export const ProfileInfoText = styled.div`
 
   & > p {
     margin: 0;
-    family-font: 'helvetica';
+    family-font: "helvetica";
     font-size: 0.9rem;
     font-weight: 200;
     color: ${(props) => props.theme.colors.gray};

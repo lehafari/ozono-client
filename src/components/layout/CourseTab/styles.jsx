@@ -116,6 +116,9 @@ export const MenuContainer = styled.div`
     overflow-y: scroll;
     text-wrap: normal;
     padding: 2rem 3rem;
+    @media only screen and (${(props) => props.theme.breakpoints.mobile}) {
+      padding: 2rem 0.5rem;
+    }
 
     &::-webkit-scrollbar {
       width: 0px;

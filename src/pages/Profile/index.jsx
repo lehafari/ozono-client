@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import ProfileMenu from '../../components/layout/ProfileMenu';
+import ProfileMenu from "../../components/layout/ProfileMenu";
 import {
   DashboardContainer,
   MyCourses,
@@ -9,37 +9,37 @@ import {
   ProfileDashboard,
   ProfileInfo,
   ProfileInfoText,
-} from './styles';
-import profileImage from '../../assets/images/default-user.png';
-import { MyCourseItem } from '../../components/layout/MyCourseItem';
-import { MenuBar } from '../../components/common/MenuBar';
-import { BackgroundNavbar } from '../../components/common/BackgroundNavbar';
-import { useSelector } from 'react-redux';
-import Spinner from '../../components/common/Spinner';
-import Resize from '../../helpers/Resize';
-import { Outlet, useParams } from 'react-router-dom';
+} from "./styles";
+import profileImage from "../../assets/images/default-user.png";
+import { MyCourseItem } from "../../components/layout/MyCourseItem";
+import { MenuBar } from "../../components/common/MenuBar";
+import { BackgroundNavbar } from "../../components/common/BackgroundNavbar";
+import { useSelector } from "react-redux";
+import Spinner from "../../components/common/Spinner";
+import Resize from "../../helpers/Resize";
+import { Outlet, useParams } from "react-router-dom";
 
-import { FileUpload } from 'primereact/fileupload';
-import { UploadImage } from './UploadImage';
-import { fetchWithToken } from '../../helpers/fetch';
-import { endPoints } from '../../const/endPoints';
-import { toCapitalize } from '../../helpers/toCapitalize';
+import { FileUpload } from "primereact/fileupload";
+import { UploadImage } from "./UploadImage";
+import { fetchWithToken } from "../../helpers/fetch";
+import { endPoints } from "../../const/endPoints";
+import { toCapitalize } from "../../helpers/toCapitalize";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-  const [profileImageUrl, setProfileImageUrl] = useState('');
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
   //async fetch to get the user profile image
   const fetchProfileImage = async () => {
     const res = await fetchWithToken(
       `${endPoints.get_profile_image}/${user.image}`,
       {},
-      'GET'
+      "GET"
     );
     if (res.status === 200) {
       setProfileImageUrl(res.url);
     } else {
-      setProfileImageUrl('false');
+      setProfileImageUrl("false");
     }
   };
 
@@ -48,11 +48,11 @@ const Profile = () => {
   }, []);
 
   const param = useParams();
-  const path = param['*'];
+  const path = param["*"];
 
   const width = Resize();
 
-  const name = user.firstName + ' ' + user.lastName;
+  const name = user.firstName + " " + user.lastName;
   const capitalizeName = toCapitalize(name);
 
   if (!user) {
@@ -64,12 +64,12 @@ const Profile = () => {
       <MenuBar />
       <ProfileContainer>
         <ProfileInfo>
-          {path === 'profile/edit' ? (
+          {path === "profile/edit" ? (
             <UploadImage />
-          ) : user.image !== 'false' ? (
+          ) : user.image !== "false" ? (
             <img src={profileImageUrl} alt="profile" />
           ) : (
-            <img src={profileImage} alt="profile image" />
+            <img src={profileImage} alt="profile standar" />
           )}
           <ProfileInfoText>
             <h2>{capitalizeName}</h2>

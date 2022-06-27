@@ -1,18 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { IconButton, List, ListItem, ListItemText } from '@mui/material';
-import { Button } from 'components/common/Buttons/MainButton';
-import { Box } from '@mui/system';
-import parse from 'html-react-parser';
+import React, { useEffect, useMemo, useState } from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { Button } from "components/common/Buttons/MainButton";
+import { Box } from "@mui/system";
+import parse from "html-react-parser";
 
-import { sortByCreateDate } from 'helpers/sort';
-import { endPoints } from 'const/endPoints';
-import { fetchWithToken } from 'helpers/fetch';
-import Spinner from 'components/common/Spinner';
+import { sortByCreateDate } from "helpers/sort";
+import { endPoints } from "const/endPoints";
+import { fetchWithToken } from "helpers/fetch";
+import Spinner from "components/common/Spinner";
 
 export const SectionAccordion = ({ section, courseTitle, isPay }) => {
   const [lessonsAndQuizzes, setLessonsAndQuizzes] = useState([]);
@@ -46,17 +46,17 @@ export const SectionAccordion = ({ section, courseTitle, isPay }) => {
     getLessonsAndQuizzes(section);
   }, []);
 
-  console.log(lessonsAndQuizzes, 'lessonsAndQuizzes');
+  console.log(lessonsAndQuizzes, "lessonsAndQuizzes");
 
   if (loading) {
     return (
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '300px',
-          width: '100%',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "300px",
+          width: "100%",
         }}
       >
         <Spinner />
@@ -68,9 +68,9 @@ export const SectionAccordion = ({ section, courseTitle, isPay }) => {
     <Accordion
       key={section.id}
       sx={{
-        border: 'none',
-        boxShadow: 'none',
-        margin: '1.2rem 0 1.5rem 0',
+        border: "none",
+        boxShadow: "none",
+        margin: "1.2rem 0 1.5rem 0",
       }}
     >
       <AccordionSummary
@@ -81,8 +81,11 @@ export const SectionAccordion = ({ section, courseTitle, isPay }) => {
         <Typography
           variant="h4"
           sx={{
-            color: '#5e82be',
-            fontSize: '2.2rem',
+            color: "#5e82be",
+            fontSize: "2.2rem",
+            "@media (max-width: 768px)": {
+              fontSize: "1.2rem",
+            },
           }}
         >
           {section.name}
@@ -91,47 +94,57 @@ export const SectionAccordion = ({ section, courseTitle, isPay }) => {
       <AccordionDetails>
         <List
           sx={{
-            padding: '0',
+            padding: "0",
           }}
         >
           {lessonsAndQuizzes.length > 0 ? (
             lessonsAndQuizzes.map((lessonOrQuiz, j) => {
-              const color = j % 2 === 0 ? '#F0F0F0' : '#fff';
-              const type = lessonOrQuiz.status ? 'quiz' : 'clase';
+              const color = j % 2 === 0 ? "#F0F0F0" : "#fff";
+              const type = lessonOrQuiz.status ? "quiz" : "clase";
               return (
                 <ListItem
                   key={j}
                   secondaryAction={
                     <Box
                       sx={{
-                        paddingRight: '2rem',
+                        paddingRight: "2rem",
+
+                        "@media (max-width: 768px)": {
+                          paddingRight: "0.1rem",
+                        },
                       }}
                     >
                       {isPay && (
                         <Button
                           path={`/course/classroom/${courseTitle}/${type}/${lessonOrQuiz.id}`}
                           text={
-                            type === 'quiz'
-                              ? 'Entrar al Quiz'
-                              : 'Entrar a la clase'
+                            type === "quiz"
+                              ? "Entrar al Quiz"
+                              : "Entrar a la clase"
                           }
-                          fontSize={'1rem'}
+                          fontSize={"0.8rem"}
                         />
                       )}
                     </Box>
                   }
                   sx={{
-                    border: 'none',
-                    boxShadow: 'none',
+                    border: "none",
+                    boxShadow: "none",
                     backgroundColor: color,
-                    padding: '2rem 3rem',
-                    display: 'flex',
+                    padding: "2rem 3rem",
+                    display: "flex",
+                    "@media (max-width: 768px)": {
+                      padding: "2rem 0.5rem",
+                    },
                   }}
                 >
                   <Typography
                     sx={{
-                      fontSize: '1.8rem',
-                      color: '#5e82be',
+                      fontSize: "1.8rem",
+                      color: "#5e82be",
+                      "@media (max-width: 768px)": {
+                        fontSize: "1rem",
+                      },
                     }}
                   >
                     {lessonOrQuiz.name}
@@ -154,18 +167,18 @@ export const SectionAccordion = ({ section, courseTitle, isPay }) => {
           ) : (
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '100px',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100px",
               }}
             >
               <Typography
                 sx={{
-                  color: '#808080',
-                  fontFamily: 'Helvetica',
-                  fontWeight: '500',
+                  color: "#808080",
+                  fontFamily: "Helvetica",
+                  fontWeight: "500",
                 }}
               >
                 No hay clases
