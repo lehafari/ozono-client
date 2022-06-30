@@ -46,7 +46,11 @@ const EditSection = ({ sectionId, dispatchSection }) => {
   };
   return (
     <>
-      <Button onClick={() => onClick()} sx={{ width: "10%", flexShrink: 0 }}>
+      <Button
+        onClick={() => onClick()}
+        sx={{ width: "10%", flexShrink: 0 }}
+        variant="outlined"
+      >
         Editar
       </Button>
       <Dialog

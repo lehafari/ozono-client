@@ -30,7 +30,7 @@ const ConfirmPaid = ({ setFlag, data, dispatch }) => {
     console.log("rechazado", body);
     if (!body.statusCode) {
       dispatch({ type: types.paymentRejected, payload: body });
-      Toast("success", body.message);
+      Toast("error", "El fue pago rechazado");
       setVisible(false);
       setFlag(true);
     } else {
@@ -42,8 +42,8 @@ const ConfirmPaid = ({ setFlag, data, dispatch }) => {
 
   return (
     <>
-      <Button size="small" onClick={() => setVisible(true)}>
-        <FactCheckIcon />
+      <Button size="medium" onClick={() => setVisible(true)}>
+        <FactCheckIcon size="large" />
       </Button>
 
       <Dialog

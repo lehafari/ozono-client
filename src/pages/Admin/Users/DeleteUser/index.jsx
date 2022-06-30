@@ -8,6 +8,7 @@ import { Box } from "@mui/system";
 import { fetchWithToken } from "helpers/fetch";
 import { endPoints } from "const/endPoints";
 import Toast from "components/common/Popup/Toast";
+import { Button } from "@mui/material";
 
 const DeleteUser = ({ id, flag }) => {
   //*MODAL*
@@ -40,18 +41,9 @@ const DeleteUser = ({ id, flag }) => {
   };
   return (
     <>
-      <button
-        onClick={() => onClick("displayBasic")}
-        style={{
-          margin: "0px",
-          padding: "0px",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
+      <Button size="small" onClick={() => onClick("displayBasic")}>
         <DeleteForeverIcon color="error" />
-      </button>
+      </Button>
 
       <Dialog
         header="Confirma tu contraseña"

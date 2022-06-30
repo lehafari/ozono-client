@@ -76,7 +76,11 @@ const Payments = () => {
       >
         {optionDisplay === null && <span>Seleccione una opcion</span>}
         {optionDisplay === false && (
-          <PaymenHistory payments={payments.payments} />
+          <PaymenHistory
+            setFlag={setFlag}
+            dispatch={dispatch}
+            payments={payments.payments}
+          />
         )}
         {optionDisplay === true && (
           <PendingPayments

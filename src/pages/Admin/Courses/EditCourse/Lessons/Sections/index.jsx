@@ -132,6 +132,7 @@ const Sections = ({ i, text, sectionId, dispatchSection }) => {
             />
             {/* //*Boton de borrar Seccion */}
             <Button
+              variant="outlined"
               sx={{ width: "10%", flexShrink: 0 }}
               color="error"
               onClick={handleDelete}

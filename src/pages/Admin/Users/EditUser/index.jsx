@@ -22,6 +22,7 @@ import { endPoints } from "const/endPoints";
 import Toast from "components/common/Popup/Toast";
 import Selects2 from "components/common/Forms/Selects2";
 import { countries } from "const/countries";
+import { Button } from "@mui/material";
 
 const EditUser = ({ user, flag }) => {
   //!! Modal ****/
@@ -77,18 +78,9 @@ const EditUser = ({ user, flag }) => {
 
   return (
     <>
-      <button
-        onClick={() => click()}
-        style={{
-          margin: "0px",
-          padding: "0px",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
+      <Button size="small" onClick={() => click()}>
         <EditIcon color="success" />
-      </button>
+      </Button>
 
       <Modal>
         <Dialog
