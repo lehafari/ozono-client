@@ -225,7 +225,7 @@ export default function Admin() {
           )}
         </List>
         <Divider />
-        <List>
+        {/* <List>
           {['Emails', 'Multimedia', 'Anuncios', 'Blogs', 'Noticias'].map(
             (text, index) => (
               <ListItemButton
@@ -254,11 +254,21 @@ export default function Admin() {
               </ListItemButton>
             )
           )}
-        </List>
+        </List> */}
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f8f8f8' }}>
         <DrawerHeader />
-        {path['*'] === '' && <span>ola</span>}
+        {path['*'] === '' && (
+          <h2
+            style={{
+              textAlign: 'center',
+              marginTop: '20px',
+              color: 'c0c0e0',
+            }}
+          >
+            Escoge una opcion en el menú
+          </h2>
+        )}
         <Outlet />
       </Box>
     </Box>
