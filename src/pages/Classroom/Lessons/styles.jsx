@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container2 = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const SectionContainer = styled.div`

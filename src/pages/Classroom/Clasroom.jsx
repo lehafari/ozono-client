@@ -142,6 +142,7 @@ const Classroom = () => {
           lessonId={lessonId}
           videoUrl={videoUrl}
           nextSection={nextSection}
+          course={course}
         />
       ) : (
         <Quiz />

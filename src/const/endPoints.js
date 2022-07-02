@@ -101,4 +101,7 @@ export const endPoints = {
 
   // mails
   mail_contact: `/mails/contact`,
+
+  //certificates
+  get_certificate: `/certificate`,
 };

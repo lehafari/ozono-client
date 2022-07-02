@@ -16,6 +16,9 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ClassRoomItems from 'components/layout/ClassroomItems';
 import { Button } from 'components/common/Buttons/MainButton';
 import { Box } from '@mui/material';
+import { fetchWithToken } from 'helpers/fetch';
+import { endPoints } from 'const/endPoints';
+import Toast from 'components/common/Popup/Toast';
 
 export const VideoLesson = ({
   lesson,
@@ -28,7 +31,20 @@ export const VideoLesson = ({
   section,
   nextSection,
   type,
+  course,
 }) => {
+  const handleCertificate = async () => {
+    const resp = await fetchWithToken(
+      `${endPoints.get_certificate}/${course.id}`
+    );
+    const body = await resp.json();
+    console.log(body);
+    if (resp.status === 200) {
+      Toast('success', body.message);
+    } else {
+      Toast('error', body.message);
+    }
+  };
   // const firstNextLesson = nextSection[0];
   // const newType = type === 'clase' ? 'clase' : 'quiz';
 
@@ -103,6 +119,7 @@ export const VideoLesson = ({
         </VideoList>
       </SectionContainer>
       <Container2>
+        <Button text="Obtener Certificado" click={handleCertificate} />
         {/* <ButtonSection>
           <h2>Quiz 1</h2>
           <Button
