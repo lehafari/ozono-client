@@ -40,16 +40,11 @@ const Classroom = () => {
     checkPayment();
   }, [lessonId]);
 
-  // useEffect(() => {
-  //   getNextSection();
-  // }, []);
-
   const getLessonsAndQuizzes = async (courseId) => {
     const section = await fetchWithToken(
       `${endPoints.get_section_by_lesson}/${lessonId}`
     );
     const bodySection = await section.json();
-
     setSection(bodySection);
 
     const lessons = await fetchWithToken(
