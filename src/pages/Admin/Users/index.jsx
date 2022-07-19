@@ -65,7 +65,7 @@ const Users = () => {
           fontSize: '1.5rem',
         }}
       >
-        Pagos Pendientes por procesar
+        USUARIOS
       </Typography>
 
       {/* //* header del historial de compras */}

@@ -27,7 +27,6 @@ const Course = () => {
       const isPay = await res.json();
 
       if (res.status === 401) {
-        console.log('qwe');
         setIsPay(false);
         return;
       }
