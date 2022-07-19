@@ -108,8 +108,8 @@ export const AvatarContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  & > h1 {
-    font-size: 1rem;
+  & .username {
+    font-size: 0.55rem;
     font-weight: 600;
     margin-left: 0.8rem;
     font-family: 'Lato', sans-serif;

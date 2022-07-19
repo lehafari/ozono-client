@@ -16,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import MobileMenu from '../MobileMenu';
 import Resize from '../../../helpers/Resize';
 import { useSelector } from 'react-redux';
-import { Avatar } from '@mui/material';
+import { Avatar, Box } from '@mui/material';
 export const Navbar = () => {
   const width = Resize();
   const navigate = useNavigate();
@@ -74,7 +74,15 @@ export const Navbar = () => {
                   onClick={() => navigate('/profile/courses')}
                 />
               )}
-              <h1>{user.username}</h1>
+              <Box
+                onClick={() => navigate('/profile/courses')}
+                sx={{
+                  cursor: 'pointer',
+                }}
+                className="username"
+              >
+                <h1>{user.username}</h1>
+              </Box>
             </AvatarContainer>
           )}
         </NavbarMenu>

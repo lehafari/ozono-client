@@ -95,6 +95,7 @@ const MyScore = () => {
               value={scores}
               responsiveLayout="stack"
               breakpoint="960px"
+              emptyMessage="No tienes calificaciones disponibles"
               style={{ borderRadius: '10px' }}
             >
               <Column field="Curso" header="Curso" />

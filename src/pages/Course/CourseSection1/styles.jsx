@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const SectionContainer = styled.section`
+export const SectionContainer = styled.div`
   padding-top: 85px;
   padding-bottom: 100px;
   width: 100%;
@@ -32,7 +32,7 @@ export const TextContainer = styled.div`
   color: white;
 
   & h1 {
-    font-family: "PlantagenetCherokee";
+    font-family: 'PlantagenetCherokee';
     font-size: 5rem;
     margin: 0;
     line-height: 1em;

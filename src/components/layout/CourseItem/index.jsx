@@ -7,13 +7,13 @@ import {
   CourseInstructor,
   CoursePrice,
   CourseTitle,
-} from "./styles";
+} from './styles';
 
-import imgDefault from "../../../assets/images/hero-image.png";
-import PersonIcon from "@mui/icons-material/Person";
-import { Button } from "../../common/Buttons/MainButton";
-import { toCapitalize } from "helpers/toCapitalize";
-import { BASE_URL, endPoints } from "const/endPoints";
+import imgDefault from '../../../assets/images/hero-image.png';
+import PersonIcon from '@mui/icons-material/Person';
+import { Button } from '../../common/Buttons/MainButton';
+import { toCapitalize } from 'helpers/toCapitalize';
+import { BASE_URL, endPoints } from 'const/endPoints';
 
 export const CourseItem = ({
   price,
@@ -31,7 +31,7 @@ export const CourseItem = ({
   };
 
   const titleToUrl = (title) => {
-    return title && title.toLowerCase().split(" ").join("-");
+    return title && title.toLowerCase().split(' ').join('-');
   };
   return (
     <>
@@ -59,7 +59,7 @@ export const CourseItem = ({
             <p>
               <PersonIcon
                 sx={{
-                  color: "#898989",
+                  color: '#898989',
                 }}
                 fontSize="large"
               />
@@ -73,10 +73,10 @@ export const CourseItem = ({
           </CourseInstructor>
           <Button
             text="Ver Curso"
-            path={`/course/${titleToUrl(title)}/#top`}
+            path={`/course/${titleToUrl(title)}`}
             width="50%"
-            alignSelf={getWidth() < 600 ? "center" : ""}
-            fontSize={getWidth() < 600 ? "1rem" : ""}
+            alignSelf={getWidth() < 600 ? 'center' : ''}
+            fontSize={getWidth() < 600 ? '1rem' : ''}
           />
         </CourseContend>
       </CourseContainer>
